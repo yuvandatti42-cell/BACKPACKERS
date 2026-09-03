@@ -4,8 +4,22 @@ import { StoriesBackgroundMap } from './StoriesBackgroundMap';
 import { TravellerCharacterSVG } from '../TravellerTransition/TravellerCharacterSVG';
 import './TravelerStories.css';
 
+const LOOPED_REVIEWS = [
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+  ...REVIEWS_DATA,
+];
+
 export const TravelerStories: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [trackIndex, setTrackIndex] = useState<number>(0);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [isInView, setIsInView] = useState<boolean>(false);
   const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isImageHovered, setIsImageHovered] = useState<boolean>(false);
@@ -13,6 +27,7 @@ export const TravelerStories: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const totalReviews = REVIEWS_DATA.length;
+  const activeIndex = trackIndex % totalReviews;
   const activeReview = REVIEWS_DATA[activeIndex];
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -21,11 +36,13 @@ export const TravelerStories: React.FC = () => {
   const minSwipeDistance = 35;
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % totalReviews);
+    setIsTransitioning(true);
+    setTrackIndex((prev) => prev + 1);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + totalReviews) % totalReviews);
+    setIsTransitioning(true);
+    setTrackIndex((prev) => (prev > 0 ? prev - 1 : 0));
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -73,11 +90,23 @@ export const TravelerStories: React.FC = () => {
   // Continuous forward auto-scroll every 4 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % totalReviews);
+      setIsTransitioning(true);
+      setTrackIndex((prev) => prev + 1);
     }, 4000);
 
     return () => clearInterval(timer);
-  }, [totalReviews]);
+  }, []);
+
+  // Soft loop reset back to activeIndex when trackIndex gets large
+  useEffect(() => {
+    if (trackIndex >= 21) {
+      const resetTimer = setTimeout(() => {
+        setIsTransitioning(false);
+        setTrackIndex(activeIndex);
+      }, 700);
+      return () => clearTimeout(resetTimer);
+    }
+  }, [trackIndex, activeIndex]);
 
   // Subtle tactile cursor depth parallax for the photograph
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -136,7 +165,10 @@ export const TravelerStories: React.FC = () => {
               {REVIEWS_DATA.map((_, idx) => (
                 <span 
                   key={idx} 
-                  onClick={() => setActiveIndex(idx)}
+                  onClick={() => {
+                    setIsTransitioning(true);
+                    setTrackIndex(idx);
+                  }}
                   className={`bar-indicator ${activeIndex === idx ? 'bar-active' : ''}`}
                   style={{ cursor: 'pointer' }}
                   aria-label={`Go to slide ${idx + 1}`}
@@ -178,19 +210,19 @@ export const TravelerStories: React.FC = () => {
               <div 
                 className="testimonial-slider-track"
                 style={{
-                  transform: `translateX(-${activeIndex * 100}%)`,
-                  transition: 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transform: `translateX(-${trackIndex * 100}%)`,
+                  transition: isTransitioning ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
                 }}
               >
-                {REVIEWS_DATA.map((review, idx) => (
-                  <div key={review.id} className="slider-slide-item">
+                {LOOPED_REVIEWS.map((review, idx) => (
+                  <div key={`${review.id}-${idx}`} className="slider-slide-item">
                     <img 
                       src={review.image} 
                       alt={`Photo of ${review.reviewer}`} 
                       className="testimonial-photo"
                       style={{ 
                         objectPosition: review.imagePosition || 'center bottom',
-                        transform: (isImageHovered && activeIndex === idx)
+                        transform: (isImageHovered && activeIndex === (idx % totalReviews))
                           ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
                           : 'scale(1) translate3d(0, 0, 0)',
                       }}
