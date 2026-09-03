@@ -101,21 +101,24 @@
 }
 
 .brand-logo-circle {
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .brand-logo-img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.75);
+  transform-origin: center 52%;
 }
 
 .brand-center-name {
@@ -254,8 +257,8 @@
     font-size: 1.2rem;
   }
   .brand-logo-circle {
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
   }
   .btn-contact-header {
     padding: 0.45rem 0.9rem;
