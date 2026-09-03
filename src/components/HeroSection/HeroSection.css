@@ -465,12 +465,12 @@
     margin-top: auto;
     margin-bottom: 0;
     gap: 0.45rem;
-    align-items: flex-start;
-    text-align: left;
+    align-items: flex-end;
+    text-align: right;
   }
 
   .hero-eyebrow-text {
-    align-self: flex-start;
+    align-self: flex-end;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
   }
@@ -480,29 +480,15 @@
     line-height: 0.92;
     letter-spacing: -0.02em;
     max-width: 100%;
-    text-align: left;
+    text-align: right;
   }
 
   .hero-headline-line {
-    text-align: left;
+    text-align: right;
   }
 
   .hero-action-panel {
-    position: static;
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  .btn-editorial-rect {
-    width: 100%;
-    justify-content: center;
-    padding: 0.95rem 1.25rem;
-    font-size: clamp(0.68rem, 2.8vw, 0.74rem);
-    letter-spacing: 0.1em;
-    box-sizing: border-box;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none !important;
   }
 }
 

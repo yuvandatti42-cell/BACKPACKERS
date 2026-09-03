@@ -394,9 +394,10 @@
     font-size: clamp(1.85rem, 8vw, 2.4rem);
   }
 
-  .mission-stats-strip {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+  .mission-lead-text,
+  .mission-stats-strip,
+  .mission-panorama-card {
+    display: none !important;
   }
 
   .mission-action-row {
