@@ -11,14 +11,14 @@ export interface ClientReview {
 
 export const REVIEWS_DATA: ClientReview[] = [
   {
-    id: 'robert-bhutan',
+    id: 'robert-kerala',
     number: '01',
-    title: 'A SPIRITUAL ADVENTURE',
+    title: 'THROUGH MISTY GHATS & COAST',
     paragraphs: [
-      'From the moment we dropped into Paro airport, flanked by 5,500 metre peaks, we were greeted with care and attention. Our guides Pelden and S.T., ably assisted by the crew, went to considerable lengths to ensure we were minded and individual requests were accommodated with good cheer and enthusiasm.',
-      'If you want an adventure and have any capacity for awe or wonder, Bhutan is for you.'
+      'Riding through the winding tea plantations of Munnar and down the wet rainforest hairpins of the Western Ghats was pure magic. The pacing was perfect and the team\'s local route knowledge made all the difference.',
+      'From dense green mountain canopy to quiet coastal stretches, Kerala gave us an unforgettable journey on two wheels.'
     ],
-    reviewer: 'ROBERT, IRELAND - BHUTAN',
+    reviewer: 'ROBERT, IRELAND - KERALA',
     rating: 5,
     image: '/reviwe.jpeg',
     imagePosition: 'center bottom'
