@@ -166,7 +166,7 @@ export const TravelerStories: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Image with Subtle Hover Scale & Tactile Depth */}
+          {/* Right Column: Image with Smooth Sliding Track & Tactile Depth */}
           <div className="testimonial-visual-col">
             
             <div 
@@ -175,41 +175,27 @@ export const TravelerStories: React.FC = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <img 
-                src={activeReview.image} 
-                alt={`Photo of ${activeReview.reviewer}`} 
-                className="testimonial-photo"
-                style={{ 
-                  objectPosition: activeReview.imagePosition || 'center bottom',
-                  transform: isImageHovered 
-                    ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
-                    : 'scale(1) translate3d(0, 0, 0)',
+              <div 
+                className="testimonial-slider-track"
+                style={{
+                  transform: `translateX(-${activeIndex * 100}%)`,
                 }}
-              />
-              
-              {/* Stepped overlay navigation block */}
-              <div className="testimonial-slider-nav">
-                <button 
-                  onClick={handleNext} 
-                  className="nav-arrow-btn arrow-next"
-                  aria-label="Next review"
-                >
-                  &rsaquo;
-                </button>
-                
-                <div className="nav-counter-vertical">
-                  <span className="current-num">0{activeIndex + 1}</span>
-                  <span className="counter-slash">/</span>
-                  <span className="total-num">0{totalReviews}</span>
-                </div>
-                
-                <button 
-                  onClick={handlePrev} 
-                  className="nav-arrow-btn arrow-prev"
-                  aria-label="Previous review"
-                >
-                  &lsaquo;
-                </button>
+              >
+                {REVIEWS_DATA.map((review, idx) => (
+                  <div key={review.id} className="slider-slide-item">
+                    <img 
+                      src={review.image} 
+                      alt={`Photo of ${review.reviewer}`} 
+                      className="testimonial-photo"
+                      style={{ 
+                        objectPosition: review.imagePosition || 'center bottom',
+                        transform: (isImageHovered && activeIndex === idx)
+                          ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
+                          : 'scale(1) translate3d(0, 0, 0)',
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
 
             </div>
