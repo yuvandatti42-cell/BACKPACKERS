@@ -73,13 +73,6 @@ export const OurStory: React.FC = () => {
             "We wanted to craft our own mountain bike tours that reflected and fuelled our passion for experiencing the world on two wheels. Importantly, this meant they had to be designed with a high level of integrity, local guides and a true understanding of the culture of each destination."
           </p>
 
-          {/* Small Pill Action Button */}
-          <div className="story-btn-wrap">
-            <a href="#planner" className="btn btn-pill-story">
-              FIND OUT MORE
-            </a>
-          </div>
-
         </div>
 
       </div>
