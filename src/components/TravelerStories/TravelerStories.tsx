@@ -44,6 +44,17 @@ export const TravelerStories: React.FC = () => {
     };
   }, []);
 
+  // Auto-scroll review slider every 5 seconds when in view
+  useEffect(() => {
+    if (!isInView || isImageHovered) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % totalReviews);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [isInView, isImageHovered, totalReviews]);
+
   // Subtle tactile cursor depth parallax for the photograph
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();

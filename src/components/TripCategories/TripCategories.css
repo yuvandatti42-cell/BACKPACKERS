@@ -364,6 +364,10 @@
 }
 
 @media (max-width: 600px) {
+  .dest-row-desc {
+    display: none !important;
+  }
+
   .destinations-title-wrap {
     flex-direction: column;
     align-items: flex-start;
