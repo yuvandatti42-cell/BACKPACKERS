@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BACKPACKERS DESTINATIONS — Authentic Travel & Road Expeditions</title>
+  <meta name="description" content="Backpackers Destinations organizes road journeys, motorcycle expeditions, weekend getaways, and long overland trips across Ladakh, Kerala, Karnataka, and Tamil Nadu.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BACKPACKERS DESTINATIONS — Authentic Travel & Road Expeditions">
+  <meta property="og:description" content="Independent road expeditions, motorcycle routes, and overland journeys across Ladakh, Kerala, Karnataka, and Tamil Nadu.">
+  <meta property="og:site_name" content="BACKPACKERS DESTINATIONS">
+
+  <!-- Favicon -->
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23111111'/><rect x='25' y='25' width='50' height='50' fill='%23C85A32'/></svg>">
+
+  <!-- Google Fonts: Bebas Neue (Display) + Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* DESIGN TOKENS */
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F7F7F7;
+      --bg-tertiary: #EFEFEF;
+      --bg-surface: #FFFFFF;
+      --bg-dark: #111111;
+      --bg-dark-subtle: #1C1E22;
+      --text-primary: #111111;
+      --text-secondary: #4A4E57;
+      --text-muted: #737882;
+      --text-inverted: #FFFFFF;
+      --text-inverted-muted: #ADB5BD;
+      --border-light: #E5E5E5;
+      --border-medium: #CCCCCC;
+      --border-dark: #2B2E35;
+      --border-strong: #111111;
+      --accent-primary: #E6A817;
+      --accent-hover: #C58C0E;
+      --accent-subtle: #FFF9E6;
+      --accent-border: rgba(230, 168, 23, 0.2);
+      --font-display: 'Bebas Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+      --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+      --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+      --text-xl: clamp(1.35rem, 1.2rem + 0.6vw, 1.625rem);
+      --text-2xl: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+      --text-3xl: clamp(2.25rem, 1.85rem + 1.6vw, 3.25rem);
+      --text-4xl: clamp(3rem, 2.2rem + 3vw, 4.5rem);
+      --text-hero: clamp(3.75rem, 2.8rem + 4.5vw, 6.25rem);
+      --leading-tight: 0.94;
+      --leading-snug: 1.2;
+      --leading-normal: 1.6;
+      --leading-relaxed: 1.75;
+      --tracking-tight: -0.02em;
+      --tracking-normal: 0em;
+      --tracking-wide: 0.06em;
+      --tracking-widest: 0.18em;
+      --container-max: 1380px;
+      --container-narrow: 1040px;
+      --gutter: clamp(1.25rem, 1rem + 2vw, 3.5rem);
+      --space-2xs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1.25rem;
+      --space-lg: 2rem;
+      --space-xl: 3.5rem;
+      --space-2xl: 5.5rem;
+      --space-3xl: 8rem;
+      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-lift: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+      --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 180ms var(--ease-editorial);
+      --transition-normal: 300ms var(--ease-editorial);
+      --transition-slow: 550ms var(--ease-editorial);
+      --radius-none: 0px;
+    }
+
+    /* BASE RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      font-weight: 400;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, .display-title, .section-headline {
+      font-family: var(--font-display);
+      font-weight: 400;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--text-primary);
+      line-height: var(--leading-tight);
+    }
+    h1 { font-size: var(--text-4xl); }
+    h2 { font-size: var(--text-3xl); }
+    h3 { font-size: var(--text-2xl); }
+    h4 { font-size: var(--text-xl); }
+    p { color: var(--text-secondary); line-height: var(--leading-normal); margin-bottom: var(--space-sm); }
+    p:last-child { margin-bottom: 0; }
+    .text-lead { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-primary); }
+    .text-meta { font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); }
+    .text-accent { color: var(--accent-primary); }
+    a { color: inherit; text-decoration: none; transition: color var(--transition-fast), border-color var(--transition-fast); }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--accent-primary); outline-offset: 3px;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    ul { list-style: none; }
+    button { background: none; border: none; font: inherit; color: inherit; cursor: pointer; }
+
+    /* CONTAINERS & SECTIONS */
+    .container { width: 100%; max-width: var(--container-max); margin-left: auto; margin-right: auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+    .section { padding-top: var(--space-2xl); padding-bottom: var(--space-2xl); position: relative; }
+    .section-bordered-top { border-top: 1px solid var(--border-light); }
+    .section-bordered-bottom { border-bottom: 1px solid var(--border-light); }
+    .bg-secondary { background-color: var(--bg-secondary); }
+    .bg-dark { background-color: var(--bg-dark); color: var(--text-inverted); }
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4 { color: var(--text-inverted); }
+    .bg-dark p { color: var(--text-inverted-muted); }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: var(--space-xl); gap: var(--space-lg);
+      border-bottom: 1px solid var(--border-light); padding-bottom: var(--space-md);
+    }
+    .section-header-left { display: flex; flex-direction: column; gap: var(--space-2xs); }
+
+    /* SCROLL PROGRESS INDICATOR */
+    .scroll-progress-track {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 2.5px;
+      background-color: rgba(229, 229, 229, 0.4); z-index: 10000; pointer-events: none;
+    }
+    .scroll-progress-bar {
+      height: 100%; width: 0%; background-color: var(--accent-primary, #C85A32);
+      box-shadow: 0 0 8px rgba(200, 90, 50, 0.4); transition: width 0.1s linear; will-change: width;
+    }
+
+    /* PERSISTENT ROUTE CHECKPOINT INDICATOR */
+    .route-indicator-badge {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 900; pointer-events: none;
+      animation: badgeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .route-indicator-inner {
+      display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.5rem 0.95rem;
+      background-color: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px);
+      border: 1px solid var(--border-medium, #E0E0E0); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .route-beacon-dot {
+      width: 7px; height: 7px; background-color: var(--accent-primary, #C85A32);
+      position: relative;
+    }
+    .route-beacon-dot::after {
+      content: ''; position: absolute; inset: -3px; border: 1px solid var(--accent-primary, #C85A32);
+      animation: beaconPulse 2s infinite ease-in-out;
+    }
+    .route-indicator-num {
+      font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); letter-spacing: 0.05em; line-height: 1;
+    }
+    .route-indicator-divider { color: var(--border-strong, #888888); font-size: 0.75rem; line-height: 1; }
+    .route-indicator-title {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: var(--tracking-widest);
+      text-transform: uppercase; color: var(--text-secondary); line-height: 1;
+    }
+    @keyframes badgeSlideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes beaconPulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.6); opacity: 0; } }
+
+    /* SECTION ROUTE LINES & NUMBERING */
+    .section-meta-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .section-num { font-family: var(--font-display); font-size: 1.15rem; color: var(--accent-primary); letter-spacing: var(--tracking-wider); line-height: 1; }
+    .section-route-line { display: inline-flex; align-items: center; width: 44px; position: relative; }
+    .route-node-start, .route-node-end { width: 4px; height: 4px; background-color: var(--accent-primary); display: inline-block; }
+    .route-path-track { height: 1px; flex: 1; background-color: var(--border-medium); position: relative; overflow: hidden; }
+    .route-path-track::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--accent-primary); transform: translateX(-100%);
+      animation: routeLineDraw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes routeLineDraw { to { transform: translateX(0); } }
+
+    /* BUTTONS & BADGES */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
+      font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600;
+      letter-spacing: var(--tracking-widest); text-transform: uppercase;
+      padding: 1rem 1.85rem; border: 1px solid transparent; border-radius: var(--radius-none);
+      transition: all var(--transition-fast); cursor: pointer; white-space: nowrap; line-height: 1;
+    }
+    .btn-primary { background-color: var(--text-primary); color: var(--text-inverted); border-color: var(--text-primary); }
+    .btn-primary:hover { background-color: #2B2E35; border-color: #2B2E35; color: var(--text-inverted); transform: translateY(-1px); }
+    .btn-secondary { background-color: transparent; color: var(--text-primary); border-color: var(--border-strong); }
+    .btn-secondary:hover { background-color: var(--text-primary); color: var(--text-inverted); }
+    .btn-white { background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--bg-primary); }
+    .btn-white:hover { background-color: var(--bg-secondary); border-color: var(--bg-secondary); }
+    .btn-icon-arrow { display: inline-block; transition: transform var(--transition-fast); }
+    .btn:hover .btn-icon-arrow { transform: translateX(4px); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.35rem; font-size: var(--text-xs);
+      font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase;
+      padding: 0.35rem 0.65rem; border: 1px solid var(--border-light); background-color: var(--bg-secondary);
+      color: var(--text-secondary); line-height: 1;
+    }
+    .badge-dark { background-color: var(--bg-dark); color: var(--text-inverted); border-color: var(--bg-dark); }
+    .badge-accent { background-color: var(--accent-subtle); color: var(--accent-primary); border-color: var(--accent-border); }
+
+    /* BRAND LOGO */
+    /* BRAND LOGO CIRCULAR */
+    /* HORIZONTAL BRAND LOCKUP: [ OFFICIAL LOGO ] + BACKPACKERS DESTINATIONS */
+    .brand-header-lockup {
+      display: inline-flex; align-items: center; gap: 0.85rem; text-decoration: none;
+      color: var(--text-primary); transition: opacity var(--transition-fast), transform var(--transition-fast);
+      user-select: none;
+    }
+    .brand-header-lockup:hover { opacity: 0.88; transform: translateY(-1px); }
+    .brand-logo-mark { width: 52px; height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .brand-logo-img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+    .brand-text-block { display: flex; flex-direction: column; justify-content: center; gap: 0.08rem; line-height: 1; }
+    .brand-name-primary {
+      font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.04em;
+      color: var(--text-primary); line-height: 0.95; text-transform: uppercase;
+    }
+    .brand-name-sub {
+      font-family: var(--font-body); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.26em; color: var(--text-muted); line-height: 1; text-transform: uppercase; padding-left: 1px;
+    }
+
+    /* SPLASH SCREEN & ORBITAL ROUTE SYSTEM */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #FFFFFF;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+      overflow: hidden;
+    }
+    .splash-screen.is-exiting {
+      opacity: 0;
+      transform: scale(1.04);
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.25rem;
+      padding: var(--gutter, 2rem);
+      position: relative;
+      max-width: 90vw;
+    }
+    .splash-circular-system {
+      position: relative;
+      width: clamp(280px, 42vw, 460px);
+      height: clamp(280px, 42vw, 460px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .splash-orbital-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .orbital-ring { fill: none; stroke: var(--border-medium, #E5E5E5); stroke-width: 1; }
+    .orbital-ring-outer { stroke: #ECECEC; stroke-width: 1; animation: ringScaleFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .orbital-ring-dashed {
+      stroke: #D6D6D6; stroke-width: 1; stroke-dasharray: 4 6;
+      animation: ringRotateSlow 24s linear infinite, ringScaleFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: 250px 250px;
+    }
+    .orbital-ring-inner { stroke: var(--text-primary, #111111); stroke-width: 1.5; animation: ringScaleFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .orbital-tick { stroke: var(--text-muted, #888888); stroke-width: 1.5; animation: ringFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.2s; opacity: 0; }
+    .orbital-route-path {
+      fill: none; stroke: var(--accent-primary, #C85A32); stroke-width: 2;
+      stroke-dasharray: 1225; stroke-dashoffset: 1225;
+      animation: drawRoutePath 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.25s; transform-origin: 250px 250px; transform: rotate(-90deg);
+    }
+    .orbital-marker-group {
+      transform-origin: 250px 250px; animation: orbitMarker 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.25s;
+    }
+    .orbital-marker-dot { fill: var(--accent-primary, #C85A32); }
+    .orbital-marker-pulse {
+      fill: none; stroke: var(--accent-primary, #C85A32); stroke-width: 1; opacity: 0.4;
+      animation: markerPulse 1.4s ease-in-out infinite; transform-origin: 250px 55px;
+    }
+    .splash-logo-core {
+      position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;
+      animation: logoCoreEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .splash-logo-circle-frame {
+      width: clamp(190px, 28vw, 300px); height: clamp(190px, 28vw, 300px);
+      border-radius: 50%; background-color: #FFFFFF; display: flex; align-items: center; justify-content: center;
+      padding: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    .splash-logo-img { width: 90%; height: 90%; object-fit: contain; mix-blend-mode: multiply; user-select: none; }
+    .splash-brand-meta {
+      display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
+      animation: metaEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.4s; opacity: 0;
+    }
+    .splash-meta-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: var(--tracking-widest, 0.15em); text-transform: uppercase; color: var(--text-muted, #71717A); }
+    .splash-progress-track { width: 150px; height: 1.5px; background-color: #EAEAEA; overflow: hidden; position: relative; border-radius: 1px; }
+    .splash-progress-bar {
+      position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+      background-color: var(--text-primary, #111111); animation: progressFill 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s;
+    }
+    @keyframes ringScaleFade { 0% { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
+    @keyframes ringRotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes ringFadeIn { to { opacity: 1; } }
+    @keyframes drawRoutePath { 0% { stroke-dashoffset: 1225; } 100% { stroke-dashoffset: 200; } }
+    @keyframes orbitMarker { 0% { transform: rotate(-90deg); opacity: 0; } 15% { opacity: 1; } 100% { transform: rotate(210deg); opacity: 1; } }
+    @keyframes markerPulse { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.6); opacity: 0; } }
+    @keyframes logoCoreEntrance {
+      0% { opacity: 0; transform: translateY(12px) scale(0.95); }
+      45% { opacity: 1; transform: translateY(0) scale(1); }
+      80% { opacity: 1; transform: translateY(0) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes metaEntrance { to { opacity: 1; transform: translateY(0); } }
+    @keyframes progressFill { 0% { width: 0%; } 70% { width: 80%; } 100% { width: 100%; } }
+
+    /* HEADER */
+    .site-header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-light);
+      transition: box-shadow var(--transition-normal);
+    }
+    .site-header.nav-scrolled { box-shadow: var(--shadow-subtle); }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link {
+      font-size: var(--text-sm); font-weight: 500; letter-spacing: var(--tracking-wide);
+      text-transform: uppercase; color: var(--text-secondary); position: relative; padding: 0.5rem 0;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px;
+      background-color: var(--text-primary); transition: width var(--transition-fast);
+    }
+    .nav-link:hover { color: var(--text-primary); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-toggle {
+      display: none; flex-direction: column; justify-content: center; gap: 6px;
+      width: 40px; height: 40px; padding: 8px;
+    }
+    .nav-toggle span { display: block; height: 2px; width: 100%; background-color: var(--text-primary); transition: transform var(--transition-fast), opacity var(--transition-fast); }
+    .nav-toggle.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-drawer {
+      display: none; position: fixed; top: 80px; left: 0; width: 100%; height: calc(100vh - 80px);
+      background-color: var(--bg-primary); padding: var(--space-xl) var(--gutter); z-index: 99;
+      flex-direction: column; justify-content: space-between; border-top: 1px solid var(--border-light);
+      overflow-y: auto;
+    }
+    .mobile-drawer.is-open { display: flex; }
+    .mobile-nav-links { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .mobile-nav-link { font-family: var(--font-display); font-size: 2.25rem; letter-spacing: var(--tracking-wide); color: var(--text-primary); border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem; }
+
+    /* HERO EDITORIAL (IMAGE-FREE & ROAD MAP UI) */
+    .hero-editorial {
+      position: relative; background-color: var(--bg-primary);
+      padding-top: var(--space-2xl); padding-bottom: var(--space-2xl);
+      border-bottom: 1px solid var(--border-light); overflow: hidden;
+    }
+    .hero-container { display: flex; flex-direction: column; }
+    .hero-split-layout {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-2xl); align-items: center;
+    }
+    .hero-left-column { display: flex; flex-direction: column; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 0.85rem; margin-bottom: var(--space-md); flex-wrap: wrap; }
+    .hero-badge {
+      display: inline-flex; align-items: center; font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: var(--tracking-widest); text-transform: uppercase; background-color: var(--accent-subtle);
+      color: var(--accent-primary); border: 1px solid var(--accent-border); padding: 0.35rem 0.75rem; line-height: 1;
+    }
+    .hero-meta-divider { color: var(--border-medium); font-size: var(--text-xs); }
+    .hero-region-meta { font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); }
+    .hero-display-headline {
+      font-family: var(--font-display); font-size: clamp(3.75rem, 6.5vw, 6.5rem);
+      line-height: 0.92; letter-spacing: 0.02em; color: var(--text-primary);
+      display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: var(--space-lg); text-transform: uppercase;
+    }
+    .hero-headline-line { display: block; }
+    .hero-lead-text { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); max-width: 540px; margin-bottom: var(--space-xl); }
+    .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: var(--space-xl); }
+    .btn-hero { padding: 1.1rem 2.2rem; font-size: var(--text-xs); }
+    .btn-hero .btn-icon-arrow { transition: transform 0.25s var(--ease-editorial); }
+    .btn-hero:hover .btn-icon-arrow { transform: translateX(5px); }
+    .hero-scroll-indicator { display: flex; align-items: center; padding-top: var(--space-sm); border-top: 1px solid var(--border-light); }
+    .scroll-indicator-link {
+      display: inline-flex; align-items: center; gap: 1rem; color: var(--text-muted);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase;
+      transition: color var(--transition-fast);
+    }
+    .scroll-indicator-link:hover { color: var(--text-primary); }
+    .scroll-track-line { display: inline-block; width: 40px; height: 1.5px; background-color: var(--border-medium); position: relative; overflow: hidden; }
+    .scroll-track-line::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background-color: var(--accent-primary); animation: scrollPulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    @keyframes scrollPulse { 0% { left: -100%; } 50% { left: 0%; } 100% { left: 100%; } }
+
+    /* SIGNATURE ROAD MAP UI */
+    .hero-right-column { display: flex; justify-content: center; align-items: center; }
+    .hero-map-frame {
+      width: 100%; max-width: 480px; background-color: #FAFAFA; border: 1px solid var(--border-medium);
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: relative; transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .hero-map-frame:hover { border-color: #D4D4D8; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); }
+    .hero-map-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); }
+    .map-badge-group { display: flex; align-items: center; gap: 0.5rem; }
+    .map-live-dot { width: 6px; height: 6px; background-color: var(--accent-primary); display: inline-block; position: relative; }
+    .map-live-dot::after { content: ''; position: absolute; inset: -3px; border: 1px solid var(--accent-primary); animation: beaconPulse 2s infinite ease-in-out; }
+    .map-badge-text { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-primary); }
+    .map-meta-code { font-family: monospace; font-size: 0.625rem; color: var(--text-muted); letter-spacing: 0.05em; }
+    .hero-route-svg { width: 100%; height: auto; overflow: visible; }
+    .route-track-drawn { stroke-dasharray: 600; stroke-dashoffset: 600; animation: drawRoutePath 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s; }
+    @keyframes drawRoutePath { to { stroke-dashoffset: 0; } }
+    .map-waypoint { cursor: pointer; transition: transform 0.2s ease; }
+    .map-waypoint:hover { transform: scale(1.05); }
+    .waypoint-title { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.06em; fill: #18181B; }
+    .waypoint-meta { font-family: var(--font-body); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.12em; fill: #71717A; text-transform: uppercase; }
+    .waypoint-title-accent { fill: var(--accent-primary); }
+    .waypoint-meta-accent { fill: var(--accent-primary); font-weight: 700; }
+    .dest-pulse-ring { animation: pulseDestRing 2s infinite ease-in-out; transform-origin: 440px 310px; }
+    @keyframes pulseDestRing { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.4); opacity: 0; } }
+    .hero-map-footer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-light); }
+    .map-stat-col { display: flex; flex-direction: column; gap: 0.2rem; }
+    .map-stat-label { font-size: 0.5625rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); }
+    .map-stat-value { font-size: 0.75rem; font-weight: 700; color: var(--text-primary); }
+
+    .animate-fade-in { opacity: 0; animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-slide-up { opacity: 0; transform: translateY(28px); animation: heroSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes heroFadeIn { to { opacity: 1; } }
+    @keyframes heroSlideUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* EDITORIAL INTRO */
+    .statement-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--space-2xl); align-items: flex-start; }
+    .statement-headline { font-size: var(--text-3xl); line-height: 1.05; color: var(--text-primary); margin-top: 0.5rem; }
+    .statement-body { display: flex; flex-direction: column; gap: var(--space-md); }
+
+    /* CATEGORIES (ANIMATED EDITORIAL PANELS) */
+    .btn-custom-inquiry { display: inline-flex; align-items: center; gap: 0.75rem; transition: all var(--transition-fast); }
+    .btn-custom-inquiry .btn-icon-arrow { transition: transform 0.25s var(--ease-editorial); }
+    .btn-custom-inquiry:hover .btn-icon-arrow { transform: translateX(5px); }
+
+    .categories-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-lg); align-items: stretch;
+      transition: opacity 0.3s ease;
+    }
+    .category-lead-card {
+      position: relative; min-height: 560px; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: var(--space-2xl); overflow: hidden; background-color: var(--bg-dark); border: 1px solid var(--border-light);
+      cursor: pointer; outline: none; transition: transform 0.35s var(--ease-editorial), opacity 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      will-change: transform, opacity;
+    }
+    .category-card-media { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1; }
+    .category-lead-card .category-card-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.82;
+      transition: transform 0.85s var(--ease-editorial), opacity 0.4s ease; will-change: transform;
+    }
+    .category-lead-card:hover .category-card-bg { transform: scale(1.035); opacity: 0.95; }
+    .category-card-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg, rgba(17, 17, 17, 0.12) 0%, rgba(17, 17, 17, 0.55) 45%, rgba(17, 17, 17, 0.92) 100%);
+      z-index: 2; transition: opacity 0.4s ease;
+    }
+    .panel-edge-line {
+      position: absolute; top: 0; left: 0; width: 0%; height: 3px;
+      background-color: var(--accent-primary, #C85A32); z-index: 5; transition: width 0.45s var(--ease-editorial);
+    }
+    .category-lead-card:hover .panel-edge-line { width: 100%; }
+    .category-card-content {
+      position: relative; z-index: 3; color: var(--text-inverted); display: flex; flex-direction: column;
+      gap: var(--space-xs); transition: transform 0.35s var(--ease-editorial); will-change: transform;
+    }
+    .category-lead-card:hover .category-card-content { transform: translateY(-6px); }
+    .category-meta-badge-row { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.25rem; }
+    .lead-tagline { font-size: 0.6875rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-inverted-muted); }
+    .category-title {
+      color: var(--text-inverted); font-size: clamp(2.25rem, 3.5vw, 3.25rem); line-height: 1;
+      letter-spacing: var(--tracking-wide); transition: transform 0.3s var(--ease-editorial); margin: 0.2rem 0;
+    }
+    .category-desc {
+      color: var(--text-inverted-muted); font-size: var(--text-sm); max-width: 480px;
+      line-height: var(--leading-relaxed); transition: color 0.3s ease; margin: 0;
+    }
+    .category-lead-card:hover .category-desc { color: #F0F0F0; }
+
+    /* Internal Route Tracker */
+    .lead-route-tracker { display: inline-flex; align-items: center; gap: 0.75rem; margin: var(--space-sm) 0; padding: 0.5rem 0; }
+    .tracker-label { font-size: 0.625rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--accent-primary, #C85A32); }
+    .tracker-node { font-size: 0.5rem; color: var(--accent-primary, #C85A32); line-height: 1; }
+    .tracker-line { width: 80px; height: 1.5px; background-color: rgba(255, 255, 255, 0.25); position: relative; overflow: hidden; }
+    .tracker-beacon {
+      position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: var(--accent-primary, #C85A32);
+      animation: trackerTravel 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    @keyframes trackerTravel { 0% { left: -100%; } 50% { left: 0%; } 100% { left: 100%; } }
+
+    .category-action-row { margin-top: 0.5rem; }
+    .btn-lead-action { padding: 0.85rem 1.65rem; font-size: var(--text-xs); transition: all var(--transition-fast); }
+    .btn-lead-action .btn-icon-arrow { transition: transform 0.25s var(--ease-editorial); }
+    .btn-lead-action:hover .btn-icon-arrow { transform: translateX(5px); }
+
+    /* SUB-CARDS */
+    .categories-stack { display: flex; flex-direction: column; gap: var(--space-md); }
+    .category-sub-card {
+      position: relative; flex: 1; min-height: 170px; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: var(--space-lg); overflow: hidden; background-color: var(--bg-dark); border: 1px solid var(--border-light);
+      cursor: pointer; outline: none; transition: transform 0.35s var(--ease-editorial), opacity 0.35s ease, border-color 0.35s ease;
+      will-change: transform, opacity;
+    }
+    .category-sub-card .category-card-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.78;
+      transition: transform 0.8s var(--ease-editorial), opacity 0.35s ease;
+    }
+    .category-sub-card:hover .category-card-bg { transform: scale(1.035); opacity: 0.92; }
+    .sub-panel-edge-line {
+      position: absolute; top: 0; left: 0; width: 3px; height: 0%;
+      background-color: var(--accent-primary, #C85A32); z-index: 5; transition: height 0.4s var(--ease-editorial);
+    }
+    .category-sub-card:hover .sub-panel-edge-line { height: 100%; }
+    .category-sub-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; }
+    .category-sub-arrow { color: var(--text-inverted-muted); font-size: 1.15rem; transition: transform 0.3s var(--ease-editorial), color 0.3s ease; }
+    .category-sub-card:hover .category-sub-arrow { transform: translateX(6px); color: var(--accent-primary); }
+    .category-sub-card .category-title { font-size: var(--text-2xl); transition: transform 0.3s var(--ease-editorial); }
+    .category-sub-card:hover .category-title { transform: translateX(4px); }
+    .category-sub-card .category-desc { font-size: var(--text-xs); color: var(--text-inverted-muted); line-height: var(--leading-normal); transition: color 0.3s ease; }
+    .category-sub-card:hover .category-desc { color: #F0F0F0; }
+
+    /* SIBLING FOCUS SYSTEM */
+    .categories-grid.has-active-child .category-lead-card.is-dimmed,
+    .categories-grid.has-active-child .category-sub-card.is-dimmed { opacity: 0.82; transform: scale(0.995); }
+    .category-lead-card.is-active,
+    .category-sub-card.is-active {
+      opacity: 1 !important; transform: translateY(-2px) scale(1) !important;
+      border-color: rgba(200, 90, 50, 0.4); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* FEATURED TRIPS */
+    .routes-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+    .route-item { display: flex; flex-direction: column; border-bottom: 1px solid var(--border-light); padding-bottom: var(--space-xl); }
+    .route-media-frame {
+      position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden;
+      background-color: var(--bg-tertiary); margin-bottom: var(--space-md); border: 1px solid var(--border-light);
+    }
+    .route-media-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-editorial); }
+    .route-item:hover .route-media-frame img { transform: scale(1.03); }
+    .route-header-info { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-2xs); gap: 1rem; }
+    .route-title { font-size: var(--text-2xl); color: var(--text-primary); }
+    .route-specs {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+      margin: var(--space-sm) 0 var(--space-md); padding-top: var(--space-xs); border-top: 1px dashed var(--border-medium);
+    }
+    .route-spec-item { display: flex; flex-direction: column; gap: 2px; }
+    .route-spec-label { font-size: 0.6875rem; font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); }
+    .route-spec-val { font-size: var(--text-xs); font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+    .route-item p { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-normal); margin-bottom: var(--space-md); }
+    .route-action-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; font-size: var(--text-xs); font-weight: 600;
+      letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-primary);
+      border-bottom: 1.5px solid var(--text-primary); padding-bottom: 2px; width: fit-content;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+    .route-action-link:hover { color: var(--accent-primary); border-color: var(--accent-primary); }
+
+    /* DESTINATION SPOTLIGHT & ROUTE BRANCHING */
+    .destinations-spotlight { display: grid; grid-template-columns: 1fr 1.35fr; gap: var(--space-xl); align-items: stretch; }
+    .destination-spotlight-nav { display: flex; flex-direction: column; position: relative; }
+    .dest-route-origin {
+      display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.5rem 0.85rem;
+      background-color: var(--bg-primary); border: 1px solid var(--border-medium); margin-bottom: 0.75rem; width: fit-content;
+    }
+    .origin-dot { font-size: 0.6rem; color: var(--accent-primary); }
+    .origin-text { font-size: 0.625rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-secondary); }
+    .dest-nav-buttons-wrap { display: flex; flex-direction: column; gap: var(--space-xs); position: relative; }
+    .dest-nav-btn {
+      display: flex; align-items: center; gap: 1rem; text-align: left; padding: 1.15rem var(--space-md);
+      background-color: var(--bg-primary); border: 1px solid var(--border-light); cursor: pointer; position: relative;
+      transition: all var(--transition-fast); outline: none;
+    }
+    .dest-nav-btn:hover { background-color: #FAFAFA; border-color: var(--border-medium); transform: translateX(3px); }
+    .dest-nav-btn.is-active { background-color: var(--bg-primary); border-color: var(--text-primary); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04); }
+    .dest-branch-node { display: flex; align-items: center; justify-content: center; position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+    .branch-node-dot { width: 8px; height: 8px; background-color: var(--border-strong); transition: all 0.25s var(--ease-editorial); }
+    .dest-nav-btn:hover .branch-node-dot { background-color: var(--text-primary); }
+    .dest-nav-btn.is-active .branch-node-dot { background-color: var(--accent-primary); transform: scale(1.3); box-shadow: 0 0 8px rgba(200, 90, 50, 0.4); }
+    .dest-nav-body { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
+    .dest-nav-btn-header { display: flex; align-items: center; gap: 0.75rem; }
+    .dest-nav-num { font-family: var(--font-display); font-size: var(--text-base); color: var(--accent-primary); letter-spacing: var(--tracking-wider); line-height: 1; }
+    .dest-nav-btn h4 { font-size: var(--text-lg); color: var(--text-primary); margin: 0; transition: color var(--transition-fast); }
+    .dest-branch-tag {
+      font-size: 0.5625rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase;
+      color: var(--accent-primary); margin-left: auto; opacity: 0; transform: translateX(-4px); transition: all 0.25s ease;
+    }
+    .dest-nav-btn.is-active .dest-branch-tag { opacity: 1; transform: translateX(0); }
+    .dest-nav-btn p { font-size: var(--text-xs); color: var(--text-muted); line-height: var(--leading-normal); margin: 0; }
+    .dest-nav-btn.is-active p { color: var(--text-secondary); }
+    .dest-nav-indicator {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background-color: var(--accent-primary);
+      opacity: 0; transform: scaleY(0); transition: opacity 0.2s ease, transform 0.2s var(--ease-editorial);
+    }
+    .dest-nav-btn.is-active .dest-nav-indicator { opacity: 1; transform: scaleY(1); }
+    .destination-preview-box {
+      background-color: var(--bg-primary); border: 1px solid var(--border-light); display: flex; flex-direction: column;
+      overflow: hidden; position: relative; transition: opacity 0.22s ease, transform 0.22s var(--ease-editorial);
+    }
+    .destination-preview-box.is-exiting { opacity: 0.4; transform: translateY(6px); }
+    .destination-preview-box.is-entering { opacity: 1; transform: translateY(0); }
+    .dest-preview-img-wrap { position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden; background-color: var(--bg-tertiary); }
+    .dest-preview-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-editorial); }
+    .destination-preview-box:hover .dest-preview-img-wrap img { transform: scale(1.03); }
+    .dest-img-badge {
+      position: absolute; bottom: var(--space-md); left: var(--space-md); background-color: rgba(17, 17, 17, 0.85);
+      backdrop-filter: blur(4px); color: var(--text-inverted); padding: 0.35rem 0.75rem; font-size: var(--text-xs);
+      font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.45rem;
+    }
+    .dest-img-live-dot { width: 5px; height: 5px; background-color: var(--accent-primary); display: inline-block; }
+    .dest-preview-details { padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-xs); }
+    .dest-preview-title { font-size: var(--text-3xl); color: var(--text-primary); margin-top: 0.25rem; }
+    .dest-preview-desc { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); }
+    .dest-route-meta-strip {
+      display: flex; gap: 1.5rem; padding: 0.75rem 0; margin-top: 0.5rem;
+      border-top: 1px dashed var(--border-medium); border-bottom: 1px dashed var(--border-medium);
+    }
+    .strip-item { display: flex; flex-direction: column; gap: 0.15rem; }
+    .strip-label { font-size: 0.5625rem; font-weight: 700; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-muted); }
+    .strip-val { font-size: 0.75rem; font-weight: 700; color: var(--text-primary); }
+
+    /* WHY SECTION (EDITORIAL REDESIGN) */
+    .differentiators-editorial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2xl); margin-top: var(--space-md); }
+    .diff-editorial-item { display: flex; flex-direction: column; position: relative; transition: transform var(--transition-fast); }
+    .diff-editorial-item:hover { transform: translateY(-2px); }
+    .diff-number-row { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: var(--space-xs); }
+    .diff-large-num { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.75rem); color: var(--text-primary); line-height: 1; letter-spacing: var(--tracking-wider); }
+    .diff-accent-dot { display: inline-block; width: 6px; height: 6px; background-color: var(--accent-primary); border-radius: var(--radius-none); margin-bottom: 0.4rem; }
+    .diff-editorial-title { font-size: var(--text-2xl); letter-spacing: var(--tracking-wide); color: var(--text-primary); margin-bottom: var(--space-xs); }
+    .diff-editorial-divider { width: 100%; height: 2px; background-color: var(--border-strong); position: relative; overflow: hidden; margin: var(--space-sm) 0 var(--space-md); }
+    .diff-divider-line { position: absolute; top: 0; left: 0; width: 0%; height: 100%; background-color: var(--accent-primary); transition: width 0.4s var(--ease-editorial); }
+    .diff-editorial-item:hover .diff-divider-line { width: 100%; }
+    .diff-editorial-desc { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    /* TRAVELER STORIES */
+    .notes-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center; }
+    .note-quote-block {
+      padding: var(--space-xl); border-left: 3px solid var(--text-primary); background-color: var(--bg-primary);
+      border-top: 1px solid var(--border-light); border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
+    }
+    .note-quote-text { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.15; letter-spacing: var(--tracking-wide); color: var(--text-primary); margin-bottom: var(--space-md); }
+    .note-quote-author { font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-secondary); }
+
+    /* VISUAL MOMENTS (ON THE ROAD GALLERY) */
+    .moments-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+    .moment-item { position: relative; overflow: hidden; aspect-ratio: 4/5; background-color: var(--bg-tertiary); border: 1px solid var(--border-light); cursor: pointer; }
+    .moment-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-editorial); }
+    .moment-item:hover img { transform: scale(1.04); }
+    .moment-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 0.85rem 1rem;
+      background: linear-gradient(0deg, rgba(17, 17, 17, 0.85) 0%, rgba(17, 17, 17, 0.4) 60%, transparent 100%);
+      color: var(--text-inverted); font-size: var(--text-xs); letter-spacing: var(--tracking-wide);
+      font-weight: 600; text-transform: uppercase; opacity: 0; transform: translateY(4px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+    .moment-item:hover .moment-caption { opacity: 1; transform: translateY(0); }
+
+    /* ABOUT SECTION */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--space-2xl); align-items: center; }
+    .about-media-frame { position: relative; aspect-ratio: 4/5; overflow: hidden; background-color: var(--bg-tertiary); border: 1px solid var(--border-light); }
+    .about-media-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .about-content { display: flex; flex-direction: column; gap: var(--space-md); }
+
+    /* TRIP PLANNER */
+    .planner-wrapper { background-color: var(--bg-primary); border: 1px solid var(--border-light); padding: var(--space-2xl); }
+    .planner-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: var(--space-2xl); }
+    .planner-info { display: flex; flex-direction: column; gap: var(--space-md); }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full-width { grid-column: 1 / -1; }
+    .form-label { font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-secondary); transition: color var(--transition-fast); }
+    .form-group:focus-within .form-label { color: var(--text-primary); }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 0.9rem 1.1rem; font-family: var(--font-body); font-size: var(--text-sm);
+      color: var(--text-primary); background-color: var(--bg-secondary); border: 1px solid var(--border-medium);
+      border-radius: var(--radius-none); transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--text-primary); background-color: var(--bg-primary); box-shadow: 0 0 0 1px var(--text-primary); outline: none; }
+    .form-input.is-error, .form-select.is-error { border-color: #D32F2F; background-color: #FFF8F8; }
+    .form-error-msg { font-size: 0.72rem; color: #D32F2F; font-weight: 500; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .btn-submit.is-loading { background-color: #4A4E57; border-color: #4A4E57; cursor: wait; }
+    .form-feedback {
+      display: none; padding: 1.25rem 1.5rem; background-color: #F1F8F3; border: 1px solid #B8E0C4;
+      color: #19582A; font-size: var(--text-sm); font-weight: 500; margin-top: var(--space-md); line-height: 1.55;
+    }
+    .form-feedback.is-visible { display: block; animation: feedbackSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes feedbackSlideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* FOOTER */
+    .site-footer {
+      background-color: var(--bg-dark); color: var(--text-inverted); padding-top: var(--space-3xl);
+      padding-bottom: var(--space-xl); border-top: 1px solid var(--border-dark);
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+    .footer-brand { display: flex; flex-direction: column; gap: var(--space-md); }
+    .footer-brand-lockup {
+      display: inline-flex; align-items: center; gap: 0.85rem; text-decoration: none;
+      color: var(--text-inverted); transition: opacity var(--transition-fast), transform var(--transition-fast);
+      user-select: none; width: fit-content;
+    }
+    .footer-brand-lockup:hover { opacity: 0.9; transform: translateY(-1px); }
+    .footer-logo-mark {
+      width: 52px; height: 52px; background-color: #FFFFFF; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; padding: 4px; flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .footer-logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .footer-text-block { display: flex; flex-direction: column; justify-content: center; gap: 0.08rem; line-height: 1; }
+    .footer-brand-name {
+      font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.04em;
+      color: #FFFFFF; line-height: 0.95; text-transform: uppercase;
+    }
+    .footer-brand-sub {
+      font-family: var(--font-body); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.26em; color: rgba(255, 255, 255, 0.6); line-height: 1; text-transform: uppercase; padding-left: 1px;
+    }
+    .footer-desc { font-size: var(--text-sm); color: var(--text-inverted-muted); max-width: 340px; line-height: var(--leading-relaxed); }
+    .footer-column-title { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: var(--tracking-widest); color: var(--text-inverted); margin-bottom: var(--space-md); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.875rem; }
+    .footer-link { font-size: var(--text-sm); color: var(--text-inverted-muted); transition: color var(--transition-fast); }
+    .footer-link:hover { color: var(--text-inverted); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-dark); font-size: var(--text-xs); color: #6C757D;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .hero-media-wrapper { max-width: 640px; }
+      .statement-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .categories-grid { grid-template-columns: 1fr; }
+      .category-lead-card { min-height: 400px; }
+      .destinations-spotlight { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .differentiators-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-media-frame { max-width: 540px; }
+      .planner-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+    }
+    @media (max-width: 768px) {
+      .nav-container { height: 74px; }
+      .brand-logo-circle { width: 56px; height: 56px; padding: 4px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .mobile-drawer { top: 74px; height: calc(100vh - 74px); }
+      .hero-editorial { padding-top: calc(75px + var(--space-xl)); min-height: auto; }
+      .routes-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .differentiators-editorial-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .notes-layout { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .moments-grid { grid-template-columns: repeat(2, 1fr); }
+      .moment-item.is-wide { grid-column: span 2; aspect-ratio: 16/9; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+    }
+    @media (max-width: 480px) {
+      .brand-logo-circle { width: 48px; height: 48px; padding: 3px; }
+      .nav-actions .btn-primary { display: none; }
+      .hero-display-headline { font-size: clamp(3rem, 12vw, 4.75rem); }
+      .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+      .hero-actions .btn { width: 100%; }
+      .category-lead-card { min-height: 320px; padding: var(--space-md); }
+      .category-sub-card { min-height: 140px; padding: var(--space-md); }
+      .moments-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-xs); }
+      .moment-item.is-wide { grid-column: span 2; aspect-ratio: 16/10; }
+      .moment-caption { opacity: 1; font-size: 0.65rem; padding: 0.4rem 0.6rem; }
+      .planner-wrapper { padding: var(--space-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS INDICATOR -->
+  <div id="scrollProgress" class="scroll-progress-track" role="progressbar" aria-label="Reading progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <!-- SPLASH SCREEN & ORBITAL ROUTE SYSTEM -->
+  <div id="splashScreen" class="splash-screen" role="presentation" aria-hidden="true">
+    <div class="splash-stage">
+      
+      <!-- Animated Circular Route / Orbital Exploration System -->
+      <div class="splash-circular-system">
+        <svg class="splash-orbital-svg" viewBox="0 0 500 500" aria-hidden="true">
+          <!-- Outer Coordinate Grid Ring -->
+          <circle cx="250" cy="250" r="230" class="orbital-ring orbital-ring-outer" />
+          
+          <!-- Cardinal Ticks -->
+          <line x1="250" y1="12" x2="250" y2="28" class="orbital-tick" />
+          <line x1="250" y1="472" x2="250" y2="488" class="orbital-tick" />
+          <line x1="12" y1="250" x2="28" y2="250" class="orbital-tick" />
+          <line x1="472" y1="250" x2="488" y2="250" class="orbital-tick" />
+          
+          <!-- Middle Dashed Route Ring -->
+          <circle cx="250" cy="250" r="195" class="orbital-ring orbital-ring-dashed" />
+          
+          <!-- Active Drawing Route Path -->
+          <circle cx="250" cy="250" r="195" class="orbital-route-path" />
+          
+          <!-- Inner Framing Circle -->
+          <circle cx="250" cy="250" r="150" class="orbital-ring orbital-ring-inner" />
+
+          <!-- Orbiting Route Marker Element -->
+          <g class="orbital-marker-group">
+            <circle cx="250" cy="55" r="4.5" class="orbital-marker-dot" />
+            <circle cx="250" cy="55" r="8" class="orbital-marker-pulse" />
+          </g>
+        </svg>
+
+        <!-- Large Centered Official Logo Container -->
+        <div class="splash-logo-core">
+          <div class="splash-logo-circle-frame">
+            <img 
+              src="logo.jpg" 
+              alt="Backpackers Destinations Official Logo" 
+              class="splash-logo-img" 
+            />
+          </div>
+        </div>
+      </di      <!-- Subtle Bottom Brand Route Metadata -->
+      <div class="splash-brand-meta">
+        <div class="splash-brand-title-wrap">
+          <span class="splash-brand-title">BACKPACKERS</span>
+          <span class="splash-brand-sub">DESTINATIONS</span>
+        </div>
+        <span class="splash-meta-tag">EXPEDITIONS • ROUTES • OVERLAND</span>
+        <div class="splash-progress-track">
+          <div class="splash-progress-bar"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      
+      <!-- Official Logo + Editorial Brand Name Lockup -->
+      <a href="#hero" class="brand-header-lockup" aria-label="Backpackers Destinations Home">
+        <div class="brand-logo-mark">
+          <img 
+            src="logo.jpg" 
+            alt="Backpackers Destinations Official Logo" 
+            class="brand-logo-img" 
+          />
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name-primary">BACKPACKERS</span>
+          <span class="brand-name-sub">DESTINATIONS</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#destinations" class="nav-link">Destinations</a>
+        <a href="#categories" class="nav-link">Trips</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#planner" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#planner" class="btn btn-primary">PLAN YOUR TRIP</a>
+        <button 
+          class="nav-toggle" 
+          aria-label="Toggle Menu" 
+          aria-expanded="false" 
+          aria-controls="mobile-nav-drawer"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div 
+    id="mobile-nav-drawer" 
+    class="mobile-drawer" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Mobile Navigation"
+  >
+    <div class="mobile-nav-links">
+      <a href="#hero" class="mobile-nav-link">Home</a>
+      <a href="#destinations" class="mobile-nav-link">Destinations</a>
+      <a href="#categories" class="mobile-nav-link">Trips</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#planner" class="mobile-nav-link">Contact</a>
+    </div>
+    <div>
+      <a href="#planner" class="btn btn-primary" style="width: 100%;">
+        PLAN YOUR TRIP
+      </a>
+      <p class="text-meta" style="margin-top: 1.5rem; text-align: center;">
+        BACKPACKERS DESTINATIONS &copy; 2026
+      </p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- HERO EDITORIAL (IMAGE-FREE & ROAD MAP UI) -->
+    <section id="hero" class="hero-editorial" aria-labelledby="hero-heading">
+      <div class="container hero-container">
+        
+        <div class="hero-split-layout">
+          
+          <!-- Left Column: Typography & CTAs -->
+          <div className="hero-left-column">
+            <div class="hero-eyebrow animate-fade-in" style="animation-delay: 100ms;">
+              <span class="hero-badge">EXPEDITIONS &amp; ROAD TRAVEL</span>
+              <span class="hero-meta-divider">—</span>
+              <span class="hero-region-meta">LADAKH • WESTERN GHATS • SOUTH CORRIDORS</span>
+            </div>
+
+            <h1 id="hero-heading" class="hero-display-headline">
+              <span class="hero-headline-line animate-slide-up" style="animation-delay: 200ms;">
+                GO FURTHER.
+              </span>
+              <span class="hero-headline-line hero-headline-accent animate-slide-up" style="animation-delay: 350ms;">
+                TAKE THE LONG ROAD.
+              </span>
+            </h1>
+
+            <p class="hero-lead-text animate-fade-in" style="animation-delay: 500ms;">
+              Independent road expeditions, motorcycle routes, and overland journeys built around the places we actually want to ride. Pick a route and we handle the scouted logistics.
+            </p>
+
+            <div class="hero-actions animate-fade-in" style="animation-delay: 650ms;">
+              <a href="#categories" class="btn btn-primary btn-hero">
+                <span>EXPLORE TRIPS</span>
+                <span class="btn-icon-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a href="#planner" class="btn btn-secondary btn-hero">
+                PLAN YOUR TRIP
+              </a>
+            </div>
+
+            <div class="hero-scroll-indicator animate-fade-in" style="animation-delay: 800ms;">
+              <a href="#categories" class="scroll-indicator-link" aria-label="Scroll to explore">
+                <span class="scroll-track-line"></span>
+                <span class="scroll-text">SCROLL TO EXPLORE</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Signature Editorial Road Map & Route UI -->
+          <div class="hero-right-column animate-fade-in" style="animation-delay: 300ms;">
+            <div class="hero-map-frame" role="img" aria-label="Abstract expedition road map illustration">
+              
+              <div class="hero-map-header">
+                <div class="map-badge-group">
+                  <span class="map-live-dot" aria-hidden="true"></span>
+                  <span class="map-badge-text">EXPEDITION ROUTE BD-01</span>
+                </div>
+                <span class="map-meta-code">N 34° 09' • E 77° 34'</span>
+              </div>
+
+              <svg 
+                class="hero-route-svg" 
+                viewBox="0 0 500 380" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <!-- Subtle Topographic Contour Lines -->
+                <g class="map-contours" stroke="#E4E4E7" stroke-width="1" stroke-dasharray="3 3">
+                  <path d="M 10 60 Q 140 20 280 90 T 500 40" />
+                  <path d="M 0 140 Q 160 110 320 180 T 500 130" />
+                  <path d="M 10 240 Q 180 200 340 280 T 500 220" />
+                  <path d="M 0 330 Q 150 310 300 360 T 500 310" />
+                </g>
+
+                <!-- Coordinate Grid Ticks -->
+                <g class="map-ticks" stroke="#D4D4D8" stroke-width="1">
+                  <line x1="250" y1="10" x2="250" y2="20" />
+                  <line x1="250" y1="360" x2="250" y2="370" />
+                  <line x1="10" y1="190" x2="20" y2="190" />
+                  <line x1="480" y1="190" x2="490" y2="190" />
+                </g>
+
+                <!-- Secondary Inactive Route Branch -->
+                <path 
+                  d="M 60 70 C 160 70, 180 190, 260 190 C 310 190, 360 130, 440 110" 
+                  stroke="#E4E4E7" 
+                  stroke-width="1.5" 
+                  stroke-dasharray="4 4"
+                />
+
+                <!-- Main Road Track Background -->
+                <path 
+                  d="M 60 70 C 160 70, 180 190, 260 190 S 370 310, 440 310" 
+                  stroke="#E2E8F0" 
+                  stroke-width="3" 
+                />
+
+                <!-- Main Active Road Drawing Path -->
+                <path 
+                  d="M 60 70 C 160 70, 180 190, 260 190 S 370 310, 440 310" 
+                  stroke="#18181B" 
+                  stroke-width="2.5" 
+                  stroke-linecap="round"
+                  class="route-track-drawn" 
+                />
+
+                <!-- Traveling Route Dot Marker -->
+                <circle cx="0" cy="0" r="4.5" fill="#C85A32">
+                  <animateMotion 
+                    path="M 60 70 C 160 70, 180 190, 260 190 S 370 310, 440 310" 
+                    dur="4s" 
+                    repeatCount="indefinite" 
+                  />
+                </circle>
+
+                <!-- Waypoint 1: START -->
+                <g class="map-waypoint">
+                  <circle cx="60" cy="70" r="5" fill="#18181B" />
+                  <circle cx="60" cy="70" r="9" stroke="#18181B" stroke-width="1" stroke-dasharray="2 2" />
+                  <text x="60" y="48" class="waypoint-title" text-anchor="middle">START</text>
+                  <text x="60" y="100" class="waypoint-meta" text-anchor="middle">KM 00 • BASE</text>
+                </g>
+
+                <!-- Waypoint 2: EXPLORE -->
+                <g class="map-waypoint">
+                  <circle cx="260" cy="190" r="4.5" fill="#18181B" />
+                  <circle cx="260" cy="190" r="8" stroke="#71717A" stroke-width="1" />
+                  <text x="260" y="168" class="waypoint-title" text-anchor="middle">EXPLORE</text>
+                  <text x="260" y="218" class="waypoint-meta" text-anchor="middle">PASS 1,850M</text>
+                </g>
+
+                <!-- Waypoint 3: DESTINATION -->
+                <g class="map-waypoint">
+                  <circle cx="440" cy="310" r="5.5" fill="#C85A32" />
+                  <circle cx="440" cy="310" r="10" stroke="#C85A32" stroke-width="1.5" class="dest-pulse-ring" />
+                  <text x="440" y="288" class="waypoint-title waypoint-title-accent" text-anchor="middle">DESTINATION</text>
+                  <text x="440" y="338" class="waypoint-meta waypoint-meta-accent" text-anchor="middle">SECTOR NORTH • 3,200M</text>
+                </g>
+              </svg>
+
+              <div class="hero-map-footer">
+                <div class="map-stat-col">
+                  <span class="map-stat-label">TOTAL DISTANCE</span>
+                  <span class="map-stat-value">1,480 KM</span>
+                </div>
+                <div class="map-stat-col">
+                  <span class="map-stat-label">TERRAIN GRADE</span>
+                  <span class="map-stat-value">HIGH PASSES</span>
+                </div>
+                <div class="map-stat-col">
+                  <span class="map-stat-label">STATUS</span>
+                  <span class="map-stat-value" style="color: var(--accent-primary);">SCOUTED ROUTE</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDITORIAL INTRO -->
+    <section class="section section-bordered-top section-bordered-bottom" aria-labelledby="statement-heading">
+      <div class="container statement-grid">
+        <div>
+          <span class="text-meta">OUR APPROACH</span>
+          <h2 id="statement-heading" class="statement-headline">
+            SOME ROADS ARE BETTER TRAVELLED SLOWLY.
+          </h2>
+        </div>
+        <div class="statement-body">
+          <p class="text-lead">
+            We build trips around the places we actually want to ride. Real routes, manageable group sizes, and no rushed tourist checklists.
+          </p>
+          <p>
+            Whether it's two days in the Western Ghats or two weeks through the high passes of the north, our focus is the road and the terrain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIP CATEGORIES -->
+    <section id="categories" class="section bg-secondary section-categories-animated" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <div class="section-meta-row">
+              <span class="section-num">01</span>
+              <span class="text-meta">TRIP CATEGORIES</span>
+            </div>
+            <h2 id="categories-heading" class="section-headline">
+              WHERE DO YOU WANT TO GO?
+            </h2>
+          </div>
+          <a href="#planner" class="btn btn-secondary btn-custom-inquiry">
+            <span>CUSTOM INQUIRY</span>
+            <span class="btn-icon-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Featured Lead Category (BIKE TRIPS) -->
+          <article class="category-lead-card" tabIndex="0">
+            <div class="panel-edge-line" aria-hidden="true"></div>
+            
+            <div class="category-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80" 
+                alt="Motorcycles parked along a winding scenic mountain pass" 
+                class="category-card-bg" 
+                loading="lazy" 
+              />
+              <div class="category-card-overlay"></div>
+            </div>
+
+            <div class="category-card-content">
+              <div class="category-meta-badge-row">
+                <span class="badge badge-accent">CATEGORY 01</span>
+                <span class="lead-tagline">PRIMARY EXPEDITION FORMAT</span>
+              </div>
+
+              <h3 class="category-title">BIKE TRIPS</h3>
+              <p class="category-desc">Two wheels on open asphalt, rocky passes, and coastal highways. Guided support vehicles and scouted halts.</p>
+              
+              <!-- Animated Route Tracker -->
+              <div class="lead-route-tracker" aria-hidden="true">
+                <span class="tracker-label">START</span>
+                <span class="tracker-node">●</span>
+                <div class="tracker-line">
+                  <span class="tracker-beacon"></span>
+                </div>
+                <span class="tracker-node">●</span>
+                <span class="tracker-label">DESTINATION</span>
+              </div>
+
+              <div class="category-action-row">
+                <a href="#planner" class="btn btn-white btn-lead-action">
+                  <span>VIEW BIKE ROUTES</span>
+                  <span class="btn-icon-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stack of Supporting Categories -->
+          <div class="categories-stack">
+            <article class="category-sub-card" tabIndex="0">
+              <div class="sub-panel-edge-line" aria-hidden="true"></div>
+              
+              <div class="category-card-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" 
+                  alt="Rugged mountain landscape with vast open horizons" 
+                  class="category-card-bg" 
+                  loading="lazy" 
+                />
+                <div class="category-card-overlay"></div>
+              </div>
+
+              <div class="category-card-content">
+                <div class="category-sub-top-row">
+                  <span class="badge badge-dark">CATEGORY 02</span>
+                  <span class="category-sub-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+                <h3 class="category-title">LONG EXPEDITIONS</h3>
+                <p class="category-desc">Multi-day cross-region itineraries with remote stays and high-altitude crossings.</p>
+              </div>
+            </article>
+
+            <article class="category-sub-card" tabIndex="0">
+              <div class="sub-panel-edge-line" aria-hidden="true"></div>
+              
+              <div class="category-card-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" 
+                  alt="Tranquil forest lake at sunrise" 
+                  class="category-card-bg" 
+                  loading="lazy" 
+                />
+                <div class="category-card-overlay"></div>
+              </div>
+
+              <div class="category-card-content">
+                <div class="category-sub-top-row">
+                  <span class="badge badge-dark">CATEGORY 03</span>
+                  <span class="category-sub-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+                <h3 class="category-title">WEEKEND GETAWAYS</h3>
+                <p class="category-desc">Short 2 to 4-day road escapes into hills, plantations, and quiet coastlines.</p>
+              </div>
+            </article>
+
+            <article class="category-sub-card" tabIndex="0">
+              <div class="sub-panel-edge-line" aria-hidden="true"></div>
+              
+              <div class="category-card-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80" 
+                  alt="Scenic road winding through tropical landscape" 
+                  class="category-card-bg" 
+                  loading="lazy" 
+                />
+                <div class="category-card-overlay"></div>
+              </div>
+
+              <div class="category-card-content">
+                <div class="category-sub-top-row">
+                  <span class="badge badge-dark">CATEGORY 04</span>
+                  <span class="category-sub-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+                <h3 class="category-title">INTERNATIONAL TRIPS</h3>
+                <p class="category-desc">Overland routes and cross-border expeditions designed for independent riders and small groups.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS SPOTLIGHT -->
+    <section id="destinations" class="section section-bordered-top bg-secondary" aria-labelledby="destinations-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <div class="section-meta-row">
+              <span class="text-meta">CORE REGIONS</span>
+            </div>
+            <h2 id="destinations-heading" class="section-headline">
+              WHERE WE OPERATE
+            </h2>
+          </div>
+          <span class="text-meta">SELECT A REGION TO VIEW</span>
+        </div>
+
+        <div class="destinations-spotlight">
+          
+          <!-- Interactive Route Branching Navigation -->
+          <div class="destination-spotlight-nav" role="tablist" aria-label="Regional Destinations">
+            
+            <div class="dest-route-origin">
+              <span class="origin-dot">●</span>
+              <span class="origin-text">EXPEDITION NETWORK ORIGIN</span>
+            </div>
+
+            <div class="dest-nav-buttons-wrap">
+              <button class="dest-nav-btn is-active" data-dest="ladakh" role="tab" aria-selected="true">
+                <div class="dest-branch-node" aria-hidden="true">
+                  <span class="branch-node-dot is-active-dot"></span>
+                </div>
+                <div class="dest-nav-body">
+                  <div class="dest-nav-btn-header">
+                    <span class="dest-nav-num">01</span>
+                    <h4>LADAKH</h4>
+                    <span class="dest-branch-tag">ROUTE ACTIVE</span>
+                  </div>
+                  <p>High mountain roads across Khardung La and Chang La.</p>
+                </div>
+                <span class="dest-nav-indicator" aria-hidden="true"></span>
+              </button>
+
+              <button class="dest-nav-btn" data-dest="kerala" role="tab" aria-selected="false">
+                <div class="dest-branch-node" aria-hidden="true">
+                  <span class="branch-node-dot"></span>
+                </div>
+                <div class="dest-nav-body">
+                  <div class="dest-nav-btn-header">
+                    <span class="dest-nav-num">02</span>
+                    <h4>KERALA</h4>
+                    <span class="dest-branch-tag">ROUTE ACTIVE</span>
+                  </div>
+                  <p>Winding routes through Munnar tea hills, misty Ghat passes.</p>
+                </div>
+                <span class="dest-nav-indicator" aria-hidden="true"></span>
+              </button>
+
+              <button class="dest-nav-btn" data-dest="karnataka" role="tab" aria-selected="false">
+                <div class="dest-branch-node" aria-hidden="true">
+                  <span class="branch-node-dot"></span>
+                </div>
+                <div class="dest-nav-body">
+                  <div class="dest-nav-btn-header">
+                    <span class="dest-nav-num">03</span>
+                    <h4>KARNATAKA</h4>
+                    <span class="dest-branch-tag">ROUTE ACTIVE</span>
+                  </div>
+                  <p>From the boulder terrain of Hampi to the dense rainforest corridors.</p>
+                </div>
+                <span class="dest-nav-indicator" aria-hidden="true"></span>
+              </button>
+
+              <button class="dest-nav-btn" data-dest="tamilnadu" role="tab" aria-selected="false">
+                <div class="dest-branch-node" aria-hidden="true">
+                  <span class="branch-node-dot"></span>
+                </div>
+                <div class="dest-nav-body">
+                  <div class="dest-nav-btn-header">
+                    <span class="dest-nav-num">04</span>
+                    <h4>TAMIL NADU</h4>
+                    <span class="dest-branch-tag">ROUTE ACTIVE</span>
+                  </div>
+                  <p>The 36 hairpin bends of Valparai, high Nilgiri mountain passes.</p>
+                </div>
+                <span class="dest-nav-indicator" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="destination-preview-box" role="tabpanel">
+            <div class="dest-preview-img-wrap">
+              <img 
+                id="destSpotlightImg"
+                src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80" 
+                alt="Rugged high-altitude mountain valley road in Ladakh" 
+                loading="lazy" 
+              />
+              <div class="dest-img-badge">
+                <span class="dest-img-live-dot" aria-hidden="true"></span>
+                <span id="destSpotlightBadge">LADAKH CORRIDOR</span>
+              </div>
+            </div>
+            
+            <div class="dest-preview-details">
+              <span id="destSpotlightTerrain" class="badge badge-accent" style="margin-bottom: 0.5rem; width: fit-content;">
+                Mountain Passes, High-Altitude Valleys, Cold Desert
+              </span>
+              <h3 id="destSpotlightTitle" style="font-size: var(--text-2xl); margin-bottom: 0.5rem;">
+                Ladakh High Passes
+              </h3>
+              <p id="destSpotlightDesc">
+                High mountain roads across Khardung La and Chang La. Cold desert landscapes, high-altitude lakes, and raw Himalayan passes.
+              </p>
+              
+              <div class="dest-route-meta-strip">
+                <div class="strip-item">
+                  <span class="strip-label">NETWORK ID</span>
+                  <span class="strip-val" id="destSpotlightCode">BD-EXP-01</span>
+                </div>
+                <div class="strip-item">
+                  <span class="strip-label">SEASON</span>
+                  <span class="strip-val">BEST TIMING OPEN</span>
+                </div>
+              </div>
+
+              <a href="#planner" class="btn btn-primary" style="margin-top: 1rem; width: fit-content;">
+                <span>INQUIRE FOR THIS REGION</span>
+                <span class="btn-icon-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY BACKPACKERS -->
+    <section id="about" class="section section-bordered-top" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <div class="section-meta-row">
+              <span class="section-num">04</span>
+              <span class="text-meta">HOW WE OPERATE</span>
+            </div>
+            <h2 id="why-heading" class="section-headline">
+              WHY TRAVEL WITH US
+            </h2>
+          </div>
+          <span class="text-meta">OPERATIONAL PILLARS</span>
+        </div>
+
+        <div class="differentiators-editorial-grid">
+          <div class="diff-editorial-item">
+            <div class="diff-number-row">
+              <span class="diff-large-num">01</span>
+              <span class="diff-accent-dot" aria-hidden="true"></span>
+            </div>
+            <h3 class="diff-editorial-title">SCOUTED ROUTES</h3>
+            <div class="diff-editorial-divider">
+              <span class="diff-divider-line"></span>
+            </div>
+            <p class="diff-editorial-desc">Every itinerary is driven before it's offered. We know where the tarmac ends, where the fuel stops are, and where to stay.</p>
+          </div>
+
+          <div class="diff-editorial-item">
+            <div class="diff-number-row">
+              <span class="diff-large-num">02</span>
+              <span class="diff-accent-dot" aria-hidden="true"></span>
+            </div>
+            <h3 class="diff-editorial-title">ROAD-FIRST LOGISTICS</h3>
+            <div class="diff-editorial-divider">
+              <span class="diff-divider-line"></span>
+            </div>
+            <p class="diff-editorial-desc">Backup vehicles, mechanical support on bike trips, and sensible daily riding distances that leave time to actually see the place.</p>
+          </div>
+
+          <div class="diff-editorial-item">
+            <div class="diff-number-row">
+              <span class="diff-large-num">03</span>
+              <span class="diff-accent-dot" aria-hidden="true"></span>
+            </div>
+            <h3 class="diff-editorial-title">INDEPENDENT SPIRIT</h3>
+            <div class="diff-editorial-divider">
+              <span class="diff-divider-line"></span>
+            </div>
+            <p class="diff-editorial-desc">No generic bus tours or rigid megaphone groups. We travel with people who want to experience the route directly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAVELER STORIES -->
+    <section id="notes" class="section bg-secondary section-bordered-top section-bordered-bottom" aria-labelledby="notes-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <div class="section-meta-row">
+              <span class="section-num">05</span>
+              <span class="text-meta">FROM THE ROAD</span>
+            </div>
+            <h2 id="notes-heading" class="section-headline">
+              ROUTE PERSPECTIVES
+            </h2>
+          </div>
+          <span class="text-meta">FIELD NOTES</span>
+        </div>
+
+        <div class="notes-layout">
+          <div class="note-quote-block">
+            <blockquote class="note-quote-text">
+              "Ten days on the road through Ladakh. High passes, long rides and a group you'll remember."
+            </blockquote>
+            <span class="note-quote-author">
+              EXPEDITION DISPATCH — LADAKH HIGH PASSES
+            </span>
+          </div>
+          <div class="note-quote-block">
+            <blockquote class="note-quote-text">
+              "Four wheels can take you there. Two wheels make you feel the road."
+            </blockquote>
+            <span class="note-quote-author">
+              RIDER FIELD NOTES — WESTERN GHATS CORRIDOR
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL MOMENTS -->
+    <section class="section" aria-labelledby="moments-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <span class="text-meta">TRAVEL MOMENTS</span>
+            <h2 id="moments-heading" class="section-headline">
+              ON THE ROAD
+            </h2>
+          </div>
+        </div>
+
+        <div class="moments-grid">
+          <div class="moment-item">
+            <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80" alt="Motorcycle expedition on a scenic high-altitude mountain pass" loading="lazy" />
+            <div class="moment-caption">Himalayan Pass Crossing</div>
+          </div>
+          <div class="moment-item">
+            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80" alt="Winding road through misty tea plantation ridges in Western Ghats" loading="lazy" />
+            <div class="moment-caption">Munnar Ridge Switchbacks</div>
+          </div>
+          <div class="moment-item">
+            <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80" alt="Remote asphalt ribbon through barren high-altitude desert mountains" loading="lazy" />
+            <div class="moment-caption">Cold Desert Valley Trail</div>
+          </div>
+          <div class="moment-item">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80" alt="Mountain roads curving through lush forest reserves in Tamil Nadu" loading="lazy" />
+            <div class="moment-caption">Nilgiri Hairpin Passes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section section-bordered-top" aria-labelledby="about-brand-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-media-frame">
+            <img 
+              src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80" 
+              alt="Motorcycle traveler overlooking high mountain ridges" 
+              loading="lazy" 
+            />
+          </div>
+
+          <div class="about-content">
+            <span class="text-meta">ABOUT THE BRAND</span>
+            <h2 id="about-brand-heading" class="section-headline">
+              BUILT AROUND THE ROAD
+            </h2>
+            <p class="text-lead">
+              Backpackers Destinations organizes motorcycle tours, weekend drives, and overland expeditions.
+            </p>
+            <p>
+              We plan routes that prioritize the driving experience, regional landscapes, and manageable daily pacing. Whether navigating mountain passes in Ladakh or coastal corridors in the south, our journeys are structured for travellers who value real routes over rushed itineraries.
+            </p>
+            <div style="margin-top: 0.75rem;">
+              <a href="#planner" class="btn btn-secondary">
+                START A CONVERSATION
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIP PLANNER -->
+    <section id="planner" class="section bg-secondary section-bordered-top" aria-labelledby="planner-heading">
+      <div class="container">
+        <div class="planner-wrapper">
+          <div class="planner-grid">
+            <div class="planner-info">
+              <div class="section-meta-row">
+                <span class="section-num">06</span>
+                <span class="text-meta">ROUTE INQUIRY</span>
+              </div>
+              <h2 id="planner-heading" class="section-headline">
+                PLAN YOUR TRIP
+              </h2>AN YOUR TRIP
+              </h2>
+              <p>
+                Tell us where you want to ride or travel. We'll send route availability, itinerary details, and practical information.
+              </p>
+              <div style="margin-top: auto; padding-top: var(--space-md); border-top: 1px solid var(--border-medium);">
+                <p class="text-meta" style="color: var(--text-primary); margin-bottom: 0.25rem;">
+                  RESPONSE TIME
+                </p>
+                <p style="font-size: var(--text-sm);">
+                  Our team reviews every route inquiry directly.
+                </p>
+              </div>
+            </div>
+
+            <form id="inquiryForm" class="planner-form" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="userName" class="form-label">Name *</label>
+                  <input type="text" id="userName" name="name" class="form-input" placeholder="Your full name" required />
+                  <span id="nameError" class="form-error-msg" style="display:none;">Please enter your name.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userPhone" class="form-label">Phone *</label>
+                  <input type="tel" id="userPhone" name="phone" class="form-input" placeholder="Phone number" required />
+                  <span id="phoneError" class="form-error-msg" style="display:none;">Please enter your phone number.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userEmail" class="form-label">Email *</label>
+                  <input type="email" id="userEmail" name="email" class="form-input" placeholder="Email address" required />
+                  <span id="emailError" class="form-error-msg" style="display:none;">Please enter a valid email address.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userDestination" class="form-label">Trip / Destination *</label>
+                  <select id="userDestination" name="destination" class="form-select" required>
+                    <option value="" disabled selected>Select a destination or format</option>
+                    <option value="Ladakh Circuit">Ladakh Circuit</option>
+                    <option value="Kerala Western Ghats">Kerala Western Ghats</option>
+                    <option value="Karnataka Ridge &amp; Ruins">Karnataka Ridge &amp; Ruins</option>
+                    <option value="Tamil Nadu Passes">Tamil Nadu Passes</option>
+                    <option value="Weekend Getaway (General)">Weekend Getaway (General)</option>
+                    <option value="Long Expedition (General)">Long Expedition (General)</option>
+                    <option value="Bike Trip (General)">Bike Trip (General)</option>
+                    <option value="International Trip">International Trip</option>
+                  </select>
+                  <span id="destError" class="form-error-msg" style="display:none;">Please select a destination.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userDate" class="form-label">Preferred Travel Date</label>
+                  <input type="date" id="userDate" name="date" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                  <label for="userTravellers" class="form-label">Number of Travellers</label>
+                  <select id="userTravellers" name="travellers" class="form-select">
+                    <option value="1">Solo (1 person)</option>
+                    <option value="2">2 people</option>
+                    <option value="3-5">Small group (3-5 people)</option>
+                    <option value="6+">Group (6+ people)</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="userMessage" class="form-label">Message / Route Notes</label>
+                  <textarea id="userMessage" name="message" class="form-textarea" placeholder="Tell us about your experience level, bike preferences, or specific route questions..."></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    SEND INQUIRY
+                  </button>
+                </div>
+              </div>
+
+              <div id="formFeedback" class="form-feedback" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-brand-lockup" aria-label="Backpackers Destinations Home">
+            <div class="footer-logo-mark">
+              <img 
+                src="logo.jpg" 
+                alt="Backpackers Destinations Official Logo" 
+                class="footer-logo-img" 
+              />
+            </div>
+            <div class="footer-text-block">
+              <span class="footer-brand-name">BACKPACKERS</span>
+              <span class="footer-brand-sub">DESTINATIONS</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Independent road expeditions, motorcycle routes, and overland journeys built around the places we actually want to ride.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">CATEGORIES</h4>
+          <ul class="footer-links">
+            <li><a href="#categories" class="footer-link">Weekend Getaways</a></li>
+            <li><a href="#categories" class="footer-link">Long Expeditions</a></li>
+            <li><a href="#categories" class="footer-link">Bike Trips</a></li>
+            <li><a href="#categories" class="footer-link">International Trips</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">REGIONS</h4>
+          <ul class="footer-links">
+            <li><a href="#destinations" class="footer-link">Ladakh</a></li>
+            <li><a href="#destinations" class="footer-link">Kerala</a></li>
+            <li><a href="#destinations" class="footer-link">Karnataka</a></li>
+            <li><a href="#destinations" class="footer-link">Tamil Nadu</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">INQUIRIES</h4>
+          <p class="footer-desc" style="margin-bottom: 1rem;">
+            Ready to plan your next route? Contact our expedition desk.
+          </p>
+          <a href="#planner" class="btn btn-white" style="width: fit-content;">
+            START PLANNING
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 BACKPACKERS DESTINATIONS. All rights reserved.</span>
+        <span>Authentic Road &amp; Overland Journeys.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Splash Screen Handling
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hasSeenSplash = sessionStorage.getItem('bd_splash_seen');
+        
+        if (hasSeenSplash) {
+          splash.style.display = 'none';
+        } else {
+          const duration = prefersReducedMotion ? 500 : 2200;
+          setTimeout(() => {
+            splash.classList.add('is-exiting');
+          }, duration);
+          setTimeout(() => {
+            splash.style.display = 'none';
+            sessionStorage.setItem('bd_splash_seen', 'true');
+          }, duration + 600);
+        }
+      }
+
+      // Scroll Progress Indicator
+      const progressBar = document.querySelector('.scroll-progress-bar');
+      // Header & Scroll Handling
+      const header = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        
+        // Scroll Progress
+        if (progressBar && totalScroll > 0) {
+          const progress = Math.min(100, Math.max(0, (scrollY / totalScroll) * 100));
+          progressBar.style.width = `${progress}%`;
+        }
+
+        // Header Scroll
+        if (scrollY > 40) {
+          header.classList.add('nav-scrolled');
+        } else {
+          header.classList.remove('nav-scrolled');
+        }
+      }, { passive: true });
+
+      // Mobile Menu
+      const toggleBtn = document.querySelector('.nav-toggle');
+      const drawer = document.querySelector('.mobile-drawer');
+      const links = document.querySelectorAll('.mobile-nav-link, .mobile-drawer .btn');
+
+      function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !drawer.classList.contains('is-open');
+        drawer.classList.toggle('is-open', isOpen);
+        toggleBtn.classList.toggle('is-active', isOpen);
+        toggleBtn.setAttribute('aria-expanded', isOpen.toString());
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      if (toggleBtn && drawer) {
+        toggleBtn.addEventListener('click', () => toggleMenu());
+        links.forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            toggleMenu(false);
+          }
+        });
+      }
+
+      // Destinations Data & Switcher
+      const REGIONS_DATA = {
+        ladakh: {
+          title: "Ladakh High Passes",
+          terrain: "Mountain Passes, High-Altitude Valleys, Cold Desert",
+          description: "High mountain roads across Khardung La and Chang La. Cold desert landscapes, high-altitude lakes, and raw Himalayan passes.",
+          image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80",
+          alt: "Rugged high-altitude mountain valley road in Ladakh",
+          badge: "LADAKH CORRIDOR",
+          code: "BD-EXP-01"
+        },
+        kerala: {
+          title: "Kerala Backwaters & Western Ghats",
+          terrain: "Coastal Roads, Tropical Forests, Tea Plantations",
+          description: "Winding routes through Munnar tea hills, misty Ghat passes, and tranquil backwater coastal paths.",
+          image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+          alt: "Misty tea hills and winding roads in Western Ghats, Kerala",
+          badge: "KERALA CORRIDOR",
+          code: "BD-EXP-02"
+        },
+        karnataka: {
+          title: "Karnataka Heritage & Western Ghats",
+          terrain: "Ancient Boulders, Western Ghats Ridge, Dense Foliage",
+          description: "From the boulder terrain of Hampi to the dense rainforest corridors of Coorg and Chikmagalur.",
+          image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1200&q=80",
+          alt: "Historical stone architecture and landscape in Karnataka",
+          badge: "KARNATAKA CORRIDOR",
+          code: "BD-EXP-03"
+        },
+        tamilnadu: {
+          title: "Tamil Nadu Mountain Corridors",
+          terrain: "Hairpin Bends, Shola Forests, High Ridges",
+          description: "The 36 hairpin bends of Valparai, high Nilgiri mountain passes, and historic temple-flanked routes.",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80",
+          alt: "Dramatic mountain roads and viewpoints in Tamil Nadu",
+          badge: "TAMIL NADU CORRIDOR",
+          code: "BD-EXP-04"
+        }
+      };
+
+      const destBtns = document.querySelectorAll('.dest-nav-btn');
+      const imgEl = document.getElementById('destSpotlightImg');
+      const titleEl = document.getElementById('destSpotlightTitle');
+      const terrainEl = document.getElementById('destSpotlightTerrain');
+      const descEl = document.getElementById('destSpotlightDesc');
+      const badgeEl = document.getElementById('destSpotlightBadge');
+      const codeEl = document.getElementById('destSpotlightCode');
+
+      destBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const destKey = btn.getAttribute('data-dest');
+          const data = REGIONS_DATA[destKey];
+          if (!data) return;
+
+          destBtns.forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+            const dot = b.querySelector('.branch-node-dot');
+            if (dot) dot.classList.remove('is-active-dot');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+          const activeDot = btn.querySelector('.branch-node-dot');
+          if (activeDot) activeDot.classList.add('is-active-dot');
+
+          imgEl.style.opacity = '0.3';
+          setTimeout(() => {
+            imgEl.src = data.image;
+            imgEl.alt = data.alt;
+            if (titleEl) titleEl.textContent = data.title;
+            if (terrainEl) terrainEl.textContent = data.terrain;
+            if (descEl) descEl.textContent = data.description;
+            if (badgeEl) badgeEl.textContent = data.badge;
+            if (codeEl) codeEl.textContent = data.code;
+            imgEl.style.opacity = '1';
+          }, 150);
+        });
+      });
+
+      // Categories Interactive Sibling Focus System
+      const catGrid = document.getElementById('categoriesGrid');
+      const catCards = document.querySelectorAll('.category-lead-card, .category-sub-card');
+      if (catGrid && catCards.length) {
+        catCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            catGrid.classList.add('has-active-child');
+            catCards.forEach(c => {
+              if (c === card) {
+                c.classList.add('is-active');
+                c.classList.remove('is-dimmed');
+              } else {
+                c.classList.remove('is-active');
+                c.classList.add('is-dimmed');
+              }
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            catGrid.classList.remove('has-active-child');
+            catCards.forEach(c => {
+              c.classList.remove('is-active', 'is-dimmed');
+            });
+          });
+
+          // Sub-card click smooth scroll to planner
+          if (card.classList.contains('category-sub-card')) {
+            card.addEventListener('click', () => {
+              const plannerEl = document.getElementById('planner');
+              if (plannerEl) plannerEl.scrollIntoView({ behavior: 'smooth' });
+            });
+          }
+        });
+      }
+
+      // Planner Form Validation
+      const form = document.getElementById('inquiryForm');
+      const feedback = document.getElementById('formFeedback');
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameInput = document.getElementById('userName');
+          const phoneInput = document.getElementById('userPhone');
+          const emailInput = document.getElementById('userEmail');
+          const destSelect = document.getElementById('userDestination');
+
+          let hasError = false;
+
+          const checkField = (input, errId, condition) => {
+            const errEl = document.getElementById(errId);
+            if (condition) {
+              input.classList.add('is-error');
+              if (errEl) errEl.style.display = 'block';
+              hasError = true;
+            } else {
+              input.classList.remove('is-error');
+              if (errEl) errEl.style.display = 'none';
+            }
+          };
+
+          checkField(nameInput, 'nameError', !nameInput.value.trim());
+          checkField(phoneInput, 'phoneError', !phoneInput.value.trim());
+          checkField(emailInput, 'emailError', !emailInput.value.trim() || !emailInput.value.includes('@'));
+          checkField(destSelect, 'destError', !destSelect.value);
+
+          if (hasError) return;
+
+          if (feedback) {
+            feedback.textContent = `Thank you, ${nameInput.value.trim()}. Your inquiry for "${destSelect.value}" has been received. Our team will contact you directly via ${emailInput.value.trim()} or ${phoneInput.value.trim()}.`;
+            feedback.classList.add('is-visible');
+            feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

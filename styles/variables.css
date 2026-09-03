@@ -1,0 +1,92 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — DESIGN SYSTEM TOKENS
+   Strict Human-Made Travel Brand Palette:
+   - 50% Dominant Clean White Canvas
+   - 30% Crisp High-Contrast Black & Editorial Greys
+   - 5-8% Restrained Earth Accent (Warm Terracotta / Ochre)
+   - Typography: Bebas Neue (Display) + Inter (Body)
+   ========================================================================== */
+
+:root {
+  /* Color System */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F5;
+  --bg-dark: #121316;
+  --bg-dark-subtle: #1C1E22;
+  --bg-surface: #FFFFFF;
+
+  /* Typography Colors */
+  --text-primary: #121316;
+  --text-secondary: #495057;
+  --text-muted: #868E96;
+  --text-inverted: #FFFFFF;
+  --text-inverted-muted: #ADB5BD;
+
+  /* Border & Dividers */
+  --border-light: #E9ECEF;
+  --border-medium: #CED4DA;
+  --border-dark: #2B2E35;
+  --border-strong: #121316;
+
+  /* Restrained Accent - Alpine Gold Yellow */
+  --accent-primary: #E6A817;
+  --accent-hover: #C58C0E;
+  --accent-subtle: #FFF9E6;
+  --accent-border: rgba(230, 168, 23, 0.2);
+
+  /* Typography */
+  --font-display: 'Bebas Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);      /* 12-13px */
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem);   /* 14-15px */
+  --text-base: clamp(1rem, 0.95rem + 0.3vw, 1.0625rem);       /* 16-17px */
+  --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);      /* 18-20px */
+  --text-xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.625rem);      /* 22-26px */
+  --text-2xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.25rem);      /* 28-36px */
+  --text-3xl: clamp(2.25rem, 1.85rem + 2vw, 3.25rem);        /* 36-52px */
+  --text-4xl: clamp(3rem, 2.2rem + 3.5vw, 4.75rem);          /* 48-76px */
+  --text-hero: clamp(3.75rem, 2.8rem + 5vw, 6.5rem);         /* 60-104px */
+
+  /* Leading & Tracking */
+  --leading-tight: 0.95;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.18em;
+
+  /* Layout & Spacing */
+  --container-max: 1380px;
+  --container-narrow: 1040px;
+  --gutter: clamp(1.25rem, 1rem + 2vw, 3.5rem);
+  
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8rem;
+
+  /* Shadows (Extremely subtle, no heavy blurred glows) */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-lift: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 180ms var(--ease-editorial);
+  --transition-normal: 300ms var(--ease-editorial);
+  --transition-slow: 550ms var(--ease-editorial);
+
+  /* Border Radius (Strictly restrained, no pill/bubble cards) */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+}

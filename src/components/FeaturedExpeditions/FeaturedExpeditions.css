@@ -1,0 +1,371 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — FEATURED TOURS POSTER RAIL
+   ========================================================================== */
+
+.featured-expeditions-section {
+  background-color: #F5F4EF; /* Exact spec background */
+  padding-top: var(--space-md); /* Squeezed top padding */
+  padding-bottom: var(--space-md); /* Squeezed bottom padding */
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spacious Editorial Header Layout */
+.expeditions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-md); /* Squeezed margin below header */
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.heading-eyebrow {
+  color: var(--accent-primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.expeditions-display-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.title-row {
+  display: block;
+}
+
+.expeditions-lead-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 440px;
+  margin: 0;
+}
+
+/* Horizontal Scroll Rail */
+.expeditions-rail-wrap {
+  width: auto;
+  position: relative;
+  cursor: grab;
+  margin-right: calc(-1 * var(--gutter)); /* Bleed to container edge safely without 100vw overflow */
+  padding-right: var(--gutter);
+}
+
+.expeditions-rail-wrap.is-dragging {
+  cursor: grabbing;
+}
+
+.expeditions-rail {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  padding-bottom: var(--space-lg);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.expeditions-rail::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card Wrapper */
+.expedition-card-wrapper {
+  flex: 0 0 290px;
+  width: 290px;
+}
+
+.expedition-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0;
+}
+
+/* Outer Colored Frame (approx 12-18px padding, dynamic colors) */
+.poster-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(500px, 65vh, 600px); /* Tall portrait rectangular poster */
+  padding: 14px 28px 14px 14px; /* More padding on the right for vertical label */
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inner Photograph Container */
+.poster-inner-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  background-color: var(--bg-secondary);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.card-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.85) 0%, rgba(18, 18, 18, 0.3) 40%, transparent 70%);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* Large White Display Typography Inside Photograph */
+.poster-title-overlay {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 2.35rem; /* Huge title inside photograph */
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  font-weight: 800;
+}
+
+.title-word {
+  display: block;
+}
+
+/* Vertical label along the right side of the colored frame */
+.vertical-label {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color var(--transition-fast);
+}
+
+/* Tiny View Expedition overlay label appearing on hover */
+.hover-explore-indicator {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #FFFFFF;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 5;
+}
+
+/* Destination Name & Details Below */
+.card-meta-below {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-dest-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem; /* bold, approximately 15-17px */
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.card-details-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.6875rem; /* Tiny editorial typography */
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.difficulty-tag {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.meta-dot {
+  font-size: 0.65rem;
+  color: var(--border-medium);
+}
+
+.card-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 0.75rem 0 0;
+  width: 100%;
+}
+
+/* Hover Interactions */
+.expedition-card-wrapper:hover .expedition-card {
+  transform: translateY(-8px); /* Card rises slightly */
+}
+
+.expedition-card-wrapper:hover .card-img {
+  transform: scale(1.04); /* Zoom inside the colored frame */
+}
+
+.expedition-card-wrapper:hover .poster-title-overlay {
+  transform: translateY(-8px); /* Title moves upward slightly */
+}
+
+.expedition-card-wrapper:hover .vertical-label {
+  transform: translateY(-50%) translateX(-2px); /* Vertical label shifts */
+  color: #FFFFFF;
+}
+
+.expedition-card-wrapper:hover .hover-explore-indicator {
+  opacity: 1; /* View expedition tag appears */
+  transform: translateY(0);
+}
+
+/* Navigation Progress Bar styling */
+.expeditions-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-md); /* Squeezed margin above controls bar */
+  border-top: 1px solid var(--border-light);
+  padding-top: 1.25rem; /* Squeezed padding */
+  gap: var(--space-lg);
+}
+
+.controls-progress-track {
+  flex-grow: 1;
+  max-width: 65%;
+  height: 1px;
+  background-color: var(--border-medium);
+  position: relative;
+}
+
+.controls-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--accent-primary);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.controls-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.controls-counter {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.counter-divider {
+  color: var(--border-medium);
+  font-size: 1rem;
+}
+
+.controls-arrows {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-control-arrow {
+  background: none;
+  border: none;
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-control-arrow:hover {
+  color: var(--accent-primary);
+}
+
+.btn-control-arrow:active {
+  transform: scale(0.92);
+}
+
+.arrow-separator {
+  color: var(--border-light);
+  font-size: 0.85rem;
+}
+
+/* Responsive dimensions */
+@media (max-width: 992px) {
+  .expeditions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .expeditions-lead-desc {
+    max-width: 100%;
+  }
+
+  .controls-progress-track {
+    max-width: 45%;
+  }
+  
+  .expeditions-rail-wrap {
+    margin-right: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .expedition-card-wrapper {
+    flex: 0 0 260px;
+    width: 260px;
+  }
+
+  .poster-frame {
+    height: 500px; /* Keep it tall on mobile too */
+  }
+
+  .controls-progress-track {
+    display: none;
+  }
+
+  .expeditions-controls-bar {
+    justify-content: flex-end;
+  }
+}

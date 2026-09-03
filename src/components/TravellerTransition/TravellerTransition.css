@@ -1,0 +1,264 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — SUBTLE TRAVELLER JOURNEY TRANSITION
+   Transition area between "Our Mission" (#1F1F1D) & "Route Exploration" (#FAF8F5)
+   ========================================================================== */
+
+.traveller-transition-section {
+  position: relative;
+  width: 100%;
+  height: 72px; /* Generous, elegant horizontal transition space */
+  background-color: var(--bg-primary, #FAF8F5); /* Clean white/cream path for maximum visibility */
+  overflow: hidden; /* Prevent any horizontal page scrolling */
+  display: flex;
+  align-items: flex-end;
+  border-top: 1px solid rgba(0, 0, 0, 0.08); /* Clean boundary against dark upper section */
+  user-select: none;
+  pointer-events: none; /* Decorative ambient transition */
+  z-index: 4;
+}
+
+/* Ambient Trail Line along which the traveller walks on the white path */
+.traveller-trail-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px; /* Ground line resting cleanly across the white path */
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(200, 90, 50, 0.4) 25%,
+    rgba(230, 168, 23, 0.4) 60%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+}
+
+/* Subtle dashed expedition waypoint dashes on white path */
+.traveller-trail-dashes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  height: 1.5px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.22) 0,
+    rgba(0, 0, 0, 0.22) 6px,
+    transparent 6px,
+    transparent 20px
+  );
+  opacity: 0.8;
+}
+
+/* Understated Expedition Waypoint Metadata in whitespace */
+.traveller-trail-meta {
+  position: absolute;
+  top: 12px;
+  right: 6%;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(28, 28, 28, 0.38); /* Refined dark grey metadata on white */
+  text-transform: uppercase;
+}
+
+/* Horizontal Moving Wrapper: Slowly travels from Left to Right */
+.traveller-motion-carrier {
+  position: absolute;
+  bottom: 12px; /* Feet step directly along the ground trail line */
+  left: 0;
+  width: auto;
+  height: 48px; /* Small, understated height */
+  display: flex;
+  align-items: flex-end;
+  will-change: transform;
+  transform: translateX(-70px);
+}
+
+/* Linear cross-screen traverse animation */
+.traveller-motion-carrier.is-active {
+  animation: travellerCrossScreen 32s linear infinite;
+}
+
+/* Character SVG styling */
+.traveller-character-svg {
+  height: 48px; /* Small human scale */
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25)); /* Crisp contrast shadow on white path */
+}
+
+/* ==========================================================================
+   NATURAL BIOMECHANICAL WALK CYCLE ANIMATIONS
+   Realistic, understated, small steps — no cartoon bounce or fast jumping
+   ========================================================================== */
+
+/* Torso vertical weight displacement (gentle 1px bob per step) */
+.traveller-character-svg.is-walking .traveller-torso-group {
+  animation: naturalTorsoBob 0.7s ease-in-out infinite alternate;
+  transform-origin: 25px 42px;
+}
+
+/* Near (Right) Leg: Heel strike -> Mid stance -> Push off */
+.traveller-character-svg.is-walking .leg-front {
+  transform-origin: 24px 41px;
+  animation: naturalLegFront 1.4s ease-in-out infinite;
+}
+
+/* Far (Left) Leg: Exact opposite phase (counter-stride) */
+.traveller-character-svg.is-walking .leg-back {
+  transform-origin: 21px 41px;
+  animation: naturalLegBack 1.4s ease-in-out infinite;
+}
+
+/* Near (Right) Arm: Swings opposite to Near Leg */
+.traveller-character-svg.is-walking .arm-front {
+  transform-origin: 26px 20px;
+  animation: naturalArmFront 1.4s ease-in-out infinite;
+}
+
+/* Far (Left) Arm: Swings with Near Leg */
+.traveller-character-svg.is-walking .arm-back {
+  transform-origin: 22px 20px;
+  animation: naturalArmBack 1.4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   KEYFRAME DEFINITIONS
+   ========================================================================== */
+
+/* Continuous horizontal movement across full screen width */
+@keyframes travellerCrossScreen {
+  0% {
+    transform: translateX(-70px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 70px));
+  }
+}
+
+/* Subtle vertical torso bob */
+@keyframes naturalTorsoBob {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(1.1px);
+  }
+}
+
+/* Front Leg small, controlled realistic steps */
+@keyframes naturalLegFront {
+  0% {
+    transform: rotate(-13deg); /* Forward step heel contact */
+  }
+  25% {
+    transform: rotate(0deg);   /* Passing through vertical support */
+  }
+  50% {
+    transform: rotate(13deg);  /* Push off rear */
+  }
+  75% {
+    transform: rotate(3deg);   /* Knee bends slightly swinging forward */
+  }
+  100% {
+    transform: rotate(-13deg);
+  }
+}
+
+/* Back Leg complementary stride */
+@keyframes naturalLegBack {
+  0% {
+    transform: rotate(13deg);  /* Pushing off rear */
+  }
+  25% {
+    transform: rotate(3deg);   /* Knee swinging forward */
+  }
+  50% {
+    transform: rotate(-13deg); /* Forward step contact */
+  }
+  75% {
+    transform: rotate(0deg);   /* Passing through vertical */
+  }
+  100% {
+    transform: rotate(13deg);
+  }
+}
+
+/* Front Arm natural relaxed counter-swing */
+@keyframes naturalArmFront {
+  0% {
+    transform: rotate(10deg);  /* Swings rearward as front leg steps forward */
+  }
+  50% {
+    transform: rotate(-9deg);  /* Swings forward as front leg pushes back */
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Back Arm relaxed counter-swing */
+@keyframes naturalArmBack {
+  0% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-9deg);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE OPTIMIZATIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .traveller-transition-section {
+    height: 58px; /* Slightly tighter on mobile */
+  }
+
+  .traveller-motion-carrier {
+    height: 40px;
+    bottom: 9px;
+  }
+
+  .traveller-trail-track,
+  .traveller-trail-dashes {
+    bottom: 9px;
+  }
+
+  .traveller-character-svg {
+    height: 40px; /* Perfectly scaled on mobile */
+  }
+
+  /* Faster traversal on narrower mobile screen to maintain consistent ground speed */
+  .traveller-motion-carrier.is-active {
+    animation-duration: 20s;
+  }
+
+  .traveller-trail-meta {
+    font-size: 0.48rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .traveller-motion-carrier.is-active {
+    animation: none !important;
+    left: 20%;
+    transform: translateX(0) !important;
+  }
+
+  .traveller-character-svg.is-walking .traveller-torso-group,
+  .traveller-character-svg.is-walking .leg-front,
+  .traveller-character-svg.is-walking .leg-back,
+  .traveller-character-svg.is-walking .arm-front,
+  .traveller-character-svg.is-walking .arm-back {
+    animation: none !important;
+  }
+}

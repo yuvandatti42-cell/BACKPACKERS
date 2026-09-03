@@ -1,0 +1,113 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — PERSISTENT ROUTE CHECKPOINT INDICATOR
+   ========================================================================== */
+
+.route-indicator-badge {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  pointer-events: none;
+  animation: badgeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.route-indicator-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-medium, #E0E0E0);
+  border-radius: var(--radius-none, 0px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.route-beacon-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-primary, #C85A32);
+  border-radius: var(--radius-none, 0px);
+  position: relative;
+}
+
+.route-beacon-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 1px solid var(--accent-primary, #C85A32);
+  border-radius: var(--radius-none, 0px);
+  animation: beaconPulse 2s infinite ease-in-out;
+}
+
+.route-indicator-num {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: 0.95rem;
+  color: var(--text-primary, #111111);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.route-indicator-divider {
+  color: var(--border-strong, #888888);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.route-indicator-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest, 0.15em);
+  text-transform: uppercase;
+  color: var(--text-secondary, #4A4E57);
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+@keyframes badgeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes beaconPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .route-indicator-badge {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+  
+  .route-indicator-title {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .route-indicator-badge {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-indicator-badge {
+    animation: none;
+  }
+  .route-beacon-dot::after {
+    animation: none;
+  }
+}

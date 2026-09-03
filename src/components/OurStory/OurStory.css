@@ -1,0 +1,252 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — OUR STORY SECTION
+   ========================================================================== */
+
+.our-story-section {
+  background-color: #20211D; /* Spec dark warm charcoal background */
+  color: #F3F2EC; /* Spec off-white text */
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  min-height: 700px; /* Minimum height on desktop */
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.story-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+
+/* Left Side: Asymmetrical Image Collage */
+.story-media-collage {
+  position: relative;
+  width: 50%; /* Approx 48-52% of section width */
+  height: 450px; /* Increased image height to fit complete scene */
+  flex-shrink: 0;
+  margin-left: 1.5%; /* Sits approx 8-10% from screen edge */
+  overflow: visible; /* CRITICAL - let overlay bleed out */
+}
+
+.main-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: 55% 88%; /* Focuses directly on the rider and bike in the center of the frame */
+  display: block;
+  z-index: 1; /* Behind secondary image */
+  position: relative;
+  border-radius: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.secondary-img {
+  position: absolute;
+  width: 30%; /* Approx 30% of main image width */
+  aspect-ratio: 0.85 / 1; /* Keep portrait/square shape */
+  right: -10%; /* Shifted right to prevent covering the motorcycle rider */
+  bottom: -10%;
+  object-fit: cover;
+  z-index: 2; /* Sits on top */
+  border-radius: 0;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, box-shadow var(--transition-normal);
+}
+
+/* Hover zooms */
+.story-media-collage:hover .main-img {
+  transform: scale(1.02);
+}
+
+.story-media-collage:hover .secondary-img {
+  transform: scale(1.04);
+}
+
+/* Right Side: Editorial Content Panel */
+.story-content-panel {
+  width: 44%; /* Sits approx 55-58% from left edge */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-left: 2rem;
+  margin-top: 1.5rem; /* Editorial vertical offset offset */
+}
+
+/* Label */
+.story-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem; /* Increased from 10px to match standard eyebrows */
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #A9A9A3; /* Spec eyebrow text color */
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+/* Bold Display Headline */
+.story-display-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.8vw, 3.5rem); /* Increased size for prominent editorial headline */
+  line-height: 0.92; /* Spec 0.88-0.95 */
+  letter-spacing: -0.015em; /* Slightly negative */
+  color: #F3F2EC;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Understated Paragraph Copy */
+.story-body-paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.125rem); /* Increased copy font size to match main paragraph standard */
+  line-height: 1.65;
+  color: #AAA9A3; /* Spec body color */
+  max-width: 460px; /* Increased from 300px to expand narrow stacking */
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-out 0.6s;
+}
+
+/* Button */
+.story-btn-wrap {
+  opacity: 0;
+  transition: opacity 0.8s ease-out 0.8s;
+  margin-top: 0.5rem;
+}
+
+.btn-pill-story {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F4F2EA; /* Spec off-white background */
+  color: #20211D; /* Spec dark text */
+  font-family: var(--font-body);
+  font-size: 0.6875rem; /* Increased from 10px */
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  width: 140px; /* Expanded button dimensions */
+  height: 42px;
+  border-radius: 999px; /* Fully rounded */
+  border: 1px solid #F4F2EA;
+  transition: transform var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.btn-pill-story:hover {
+  transform: translateY(-2px); /* Moves upward 2px on hover */
+  background-color: #E2E0D8;
+  border-color: #E2E0D8;
+}
+
+/* Scroll Trigger Animations in-view states */
+.is-in-view .main-img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-in-view .secondary-img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-in-view .story-eyebrow {
+  opacity: 1;
+}
+
+.is-in-view .heading-line {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger display line reveals */
+.is-in-view .heading-line:nth-child(1) { transition-delay: 0.15s; }
+.is-in-view .heading-line:nth-child(2) { transition-delay: 0.25s; }
+.is-in-view .heading-line:nth-child(3) { transition-delay: 0.35s; }
+.is-in-view .heading-line:nth-child(4) { transition-delay: 0.45s; }
+.is-in-view .heading-line:nth-child(5) { transition-delay: 0.55s; }
+
+.is-in-view .story-body-paragraph {
+  opacity: 1;
+}
+
+.is-in-view .story-btn-wrap {
+  opacity: 1;
+}
+
+/* Responsive Editorial Adjustments */
+@media (max-width: 1024px) {
+  .story-media-collage {
+    width: 48%;
+    height: 340px;
+  }
+
+  .main-img {
+    height: 340px;
+  }
+
+  .secondary-img {
+    right: -6%;
+    bottom: -15%;
+  }
+
+  .story-content-panel {
+    width: 48%;
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .our-story-section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .story-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xl);
+  }
+
+  .story-media-collage {
+    width: 100%;
+    max-width: 480px;
+    height: 310px;
+    margin-left: 0;
+  }
+
+  .main-img {
+    height: 310px;
+  }
+
+  .secondary-img {
+    right: -5%;
+    bottom: -12%;
+  }
+
+  .story-content-panel {
+    width: 100%;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+
+  .story-body-paragraph {
+    max-width: 100%;
+  }
+}

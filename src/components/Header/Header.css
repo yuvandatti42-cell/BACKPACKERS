@@ -1,0 +1,286 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — ALPINE TRAVERSE HEADER STYLING
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: padding var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+  padding: 1.5rem 0;
+}
+
+.site-header.nav-scrolled {
+  padding: 0.85rem 0;
+  background-color: rgba(31, 31, 29, 0.92); /* Translucent dark charcoal #1F1F1D */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+/* Symmetrical Layout Columns - Equal 1 1 0% flex-basis guarantees center logo remains dead-centered */
+.nav-col-left {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  flex: 1 1 0%;
+}
+
+.nav-col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.nav-col-right {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  flex: 1 1 0%;
+  justify-content: flex-end;
+}
+
+/* Nav Links style */
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(245, 244, 239, 0.8); /* Spec White #F5F4EF with opacity */
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #F5F4EF;
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: #F5F4EF;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-waiver-link {
+  color: var(--accent-primary) !important;
+}
+
+.nav-waiver-link::after {
+  background-color: var(--accent-primary) !important;
+}
+
+/* Centered logo brand block */
+.brand-center-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-logo-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-logo-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.brand-center-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  color: #F5F4EF;
+  line-height: 1;
+}
+
+/* Pill Contact button */
+.btn-contact-header {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.6875rem;
+  border-radius: 30px;
+  border: 1px solid rgba(245, 244, 239, 0.35);
+  background-color: transparent;
+  color: #F5F4EF;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+}
+
+.btn-contact-header:hover {
+  background-color: #F5F4EF;
+  color: #1F1F1D;
+  border-color: #F5F4EF;
+}
+
+/* Mobile Toggle Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: #F5F4EF;
+  transition: all var(--transition-fast);
+}
+
+.nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  background-color: #1F1F1D; /* Dark charcoal */
+  z-index: 999;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6.5rem var(--gutter) 3.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity var(--transition-normal), visibility var(--transition-normal), transform var(--transition-normal);
+}
+
+.mobile-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #F5F4EF;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.mobile-nav-link:hover {
+  color: var(--accent-primary);
+  transform: translateX(6px);
+}
+
+/* Responsive Navigation Spacing (1200px - 1440px) */
+@media (max-width: 1280px) {
+  .nav-col-left,
+  .nav-col-right {
+    gap: 1.5rem;
+  }
+  .nav-link {
+    font-size: 0.7rem;
+  }
+  .btn-contact-header {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* 1024px Laptop Tier - Compact spacing preventing any logo overlap */
+@media (max-width: 1080px) {
+  .nav-col-left,
+  .nav-col-right {
+    gap: 1rem;
+  }
+  .nav-link {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+  .brand-center-name {
+    font-size: 1.2rem;
+  }
+  .brand-logo-circle {
+    width: 34px;
+    height: 34px;
+  }
+  .btn-contact-header {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.625rem;
+  }
+}
+
+/* Responsive Grid Collapsing (Tablets & Mobile) */
+@media (max-width: 900px) {
+  .nav-col-left,
+  .nav-col-right {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-col-center {
+    flex: 1;
+    justify-content: flex-start;
+  }
+}

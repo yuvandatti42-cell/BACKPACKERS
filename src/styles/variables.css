@@ -1,0 +1,90 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — DESIGN SYSTEM TOKENS
+   Strict Visual Balance:
+   - 50% Dominant Pure White Canvas (#FFFFFF)
+   - 30% Crisp High-Contrast Black & Editorial Greys (#111111, #222222, #666666, #E5E5E5, #F7F7F7)
+   - 5-8% Restrained Earth Accent (Warm Terracotta #C85A32)
+   - Typography: Bebas Neue (Display) + Inter (Body)
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Premium Warm Ivory & Off-White */
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F4F1EA;
+  --bg-tertiary: #E8E3D9;
+  --bg-surface: #FAF8F5;
+
+  /* Deep Charcoal & Editorial Greys */
+  --bg-dark: #121212;
+  --bg-dark-subtle: #1A1A1A;
+  --text-primary: #1C1C1C;
+  --text-secondary: #474747;
+  --text-muted: #7E7E7E;
+  --text-inverted: #FAF8F5;
+  --text-inverted-muted: #CCCCCC;
+
+  /* Borders & Dividers - Ultra-thin editorial dividers */
+  --border-light: #E2DDD3;
+  --border-medium: #D0C9BA;
+  --border-dark: #333333;
+  --border-strong: #1C1C1C;
+
+  /* Restrained Muted Accent - Alpine Gold Yellow */
+  --accent-primary: #E6A817;
+  --accent-hover: #C58C0E;
+  --accent-subtle: #FFF9E6;
+  --accent-border: rgba(230, 168, 23, 0.2);
+
+  /* Typography Families */
+  --font-display: 'Bebas Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);      /* 12-13px */
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem);   /* 14-15px */
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);      /* 16-17px */
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);     /* 18-20px */
+  --text-xl: clamp(1.35rem, 1.2rem + 0.6vw, 1.625rem);       /* 22-26px */
+  --text-2xl: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);         /* 28-36px */
+  --text-3xl: clamp(2.25rem, 1.85rem + 1.6vw, 3.25rem);      /* 36-52px */
+  --text-4xl: clamp(3rem, 2.2rem + 3vw, 4.5rem);             /* 48-72px */
+  --text-hero: clamp(3.75rem, 2.8rem + 4.5vw, 6.25rem);      /* 60-100px */
+
+  /* Leading & Tracking */
+  --leading-tight: 0.94;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.06em;
+  --tracking-widest: 0.18em;
+
+  /* Layout & Spacing */
+  --container-max: 1380px;
+  --container-narrow: 1040px;
+  --gutter: clamp(1.25rem, 1rem + 2vw, 3.5rem);
+  
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8rem;
+
+  /* Shadows (Subtle, no heavy glows) */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-lift: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 180ms var(--ease-editorial);
+  --transition-normal: 300ms var(--ease-editorial);
+  --transition-slow: 550ms var(--ease-editorial);
+
+  /* Radius (Minimal, sharp corners) */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+}

@@ -1,0 +1,567 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — EDITORIAL CINEMATIC HERO
+   Full-screen responsive landing experience preserving visual hierarchy:
+   - Left/Center: Motorcycle expedition riders (unobstructed focal point)
+   - Right: Large "ESCAPE / EXPLORE / EXPERIENCE" right-aligned typography
+   - Lower-Left: Editorial CTA button positioned relative to container
+   - Top: Horizontally aligned navigation with perfectly centered brand logo
+   - ZERO horizontal overflow at all screen sizes
+   ========================================================================== */
+
+.hero-alpine {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px; /* Sensible minimum to prevent collapse on squat screens */
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  background-color: #1F1F1D; /* Deep dark page background fallback */
+  box-sizing: border-box;
+}
+
+/* Background image wrapper with natural framing */
+.hero-alpine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/heroo.jpg');
+  background-size: cover;
+  background-position: 22% 32%; /* Positions lead Himalayan rider at left-center */
+  background-repeat: no-repeat;
+  filter: none;
+  z-index: 1;
+}
+
+/* Clear, vibrant presentation with soft shading ONLY near title texts:
+   - ZERO vignette or overall dimming over the motorcycle, riders, or mountain
+   - Soft focused shading localized specifically near the right-hand headline
+   - Gentle, subtle bottom blend into the page body (#1F1F1D)
+*/
+.hero-alpine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-image: 
+    /* 1. Subtle, gentle bottom transition to the dark page body (#1F1F1D) */
+    linear-gradient(to top, 
+      #1F1F1D 0%, 
+      rgba(31, 31, 29, 0.75) 4%, 
+      rgba(31, 31, 29, 0.15) 10%, 
+      transparent 18%
+    ),
+    /* 2. Barely-there top overlay for navbar legibility without dimming the mountain */
+    linear-gradient(to bottom, 
+      rgba(15, 15, 14, 0.45) 0%, 
+      rgba(15, 15, 14, 0.12) 8%, 
+      transparent 16%
+    ),
+    /* 3. Soft focused shading localized ONLY near the right-hand title texts */
+    linear-gradient(to left, 
+      rgba(12, 12, 11, 0.82) 0%, 
+      rgba(12, 12, 11, 0.55) 20%, 
+      rgba(12, 12, 11, 0.2) 36%, 
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Layout and containers */
+.hero-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-max);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(var(--header-height, 72px) + 1.5rem);
+  padding-bottom: clamp(3rem, 5.5vh, 5.5rem);
+  box-sizing: border-box;
+}
+
+/* Row reversing puts headline on the RIGHT and CTA on the LOWER-LEFT */
+.hero-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+}
+
+/* Typography elements — Right-aligned editorial styling */
+.hero-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 5;
+  width: auto;
+  max-width: 620px;
+  align-items: flex-end;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.hero-eyebrow-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #BDBDB8;
+  text-transform: uppercase;
+  width: fit-content;
+  align-self: flex-end;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.hero-display-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.85rem, 5.5vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: #FAF8F5;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: right;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-headline-line {
+  display: block;
+  text-align: right;
+}
+
+/* Action panel CTA — Anchored in the lower-left area relative to container */
+.hero-action-panel {
+  margin-bottom: 0.25rem;
+  z-index: 5;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.btn-editorial-rect {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1.25rem 2.25rem;
+  background-color: #FAF8F5;
+  color: #121212;
+  border: none;
+  border-radius: var(--radius-none);
+  transition: filter 300ms ease, transform 300ms ease;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.btn-editorial-rect:hover {
+  filter: brightness(1.15);
+}
+
+.btn-editorial-rect .btn-icon-arrow {
+  transition: transform 300ms ease;
+  display: inline-block;
+}
+
+.btn-editorial-rect:hover .btn-icon-arrow {
+  transform: translateX(6px);
+}
+
+/* Keyframe animations */
+.animate-fade-in {
+  opacity: 0;
+  animation: heroFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes heroSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS & RESPONSIVE REBALANCING
+   ========================================================================== */
+
+/* 1440px+ (Wide Screen Displays e.g. 1920x1080, 1600x900, 1440x900):
+   - Full-scale two-sided editorial composition
+   - Lead rider on left/center (22% 32%)
+   - Right-aligned typography (clamp(4rem, 5.5vw, 6.5rem))
+   - CTA lower-left
+*/
+@media (min-width: 1440px) {
+  .hero-alpine {
+    min-height: 680px;
+  }
+
+  .hero-alpine::before {
+    background-position: 22% 32%;
+  }
+
+  .hero-container {
+    padding-bottom: clamp(3.5rem, 5.5vh, 5.5rem);
+  }
+
+  .hero-content-wrap {
+    max-width: 620px;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(4rem, 5.4vw, 6.5rem);
+  }
+}
+
+/* 1200px - 1439px (Laptops e.g. 1366x768, 1280x800):
+   - Slightly reduced heading size and horizontal spacing
+   - Preserved two-sided composition
+   - No unnecessary vertical scrolling on 768px/800px high viewports
+*/
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hero-alpine {
+    min-height: 620px;
+  }
+
+  .hero-alpine::before {
+    background-position: 18% 32%;
+  }
+
+  .hero-container {
+    padding-bottom: clamp(3rem, 4.8vh, 4.5rem);
+  }
+
+  .hero-bottom-row {
+    gap: 2rem;
+  }
+
+  .hero-content-wrap {
+    max-width: 520px;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(3.35rem, 4.6vw, 4.5rem);
+  }
+
+  .btn-editorial-rect {
+    padding: 1.15rem 1.85rem;
+    font-size: 0.72rem;
+  }
+}
+
+/* 1024px - 1199px (Small Laptops & Tablets Landscape e.g. 1024x768):
+   - Heading size reduced significantly
+   - Background position adjusted (10% 30%) so rider shifts left and never collides with text
+   - Compact navigation spacing already applied in Header.css
+*/
+@media (min-width: 769px) and (max-width: 1199px) {
+  .hero-alpine {
+    min-height: 580px;
+  }
+
+  .hero-alpine::before {
+    background-position: 10% 30%; /* Shift rider safely left */
+  }
+
+  .hero-container {
+    padding-bottom: clamp(2.5rem, 4vh, 3.75rem);
+  }
+
+  .hero-bottom-row {
+    gap: 1.5rem;
+  }
+
+  .hero-content-wrap {
+    max-width: 420px;
+    gap: 0.65rem;
+  }
+
+  .hero-eyebrow-text {
+    font-size: 0.7rem;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(2.65rem, 4.1vw, 3.4rem);
+    line-height: 0.92;
+  }
+
+  .btn-editorial-rect {
+    padding: 1rem 1.5rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* 768px TABLET (Portrait e.g. 768x1024):
+   - Careful transition: compact responsive navigation active
+   - Rider kept fully visible at 28% 28%
+   - Readable typography and accessible CTA without overlapping
+*/
+@media (min-width: 601px) and (max-width: 768px) {
+  .hero-alpine {
+    min-height: 600px;
+  }
+
+  .hero-alpine::before {
+    background-image: url('/heroo.jpg');
+    background-position: 28% 28%;
+    background-size: cover;
+    filter: none;
+  }
+
+  .hero-alpine::after {
+    background-image: 
+      /* Subtle bottom blend into #1F1F1D */
+      linear-gradient(to top, 
+        #1F1F1D 0%, 
+        rgba(31, 31, 29, 0.75) 5%, 
+        transparent 16%
+      ),
+      /* Light top header blend */
+      linear-gradient(to bottom, 
+        rgba(15, 15, 14, 0.45) 0%, 
+        transparent 14%
+      ),
+      /* Soft shading only near the right-side text */
+      linear-gradient(to left, 
+        rgba(12, 12, 11, 0.82) 0%, 
+        rgba(12, 12, 11, 0.45) 26%, 
+        transparent 50%
+      );
+  }
+
+  .hero-container {
+    padding-top: 5.5rem;
+    padding-bottom: clamp(2.5rem, 4vh, 3.5rem);
+  }
+
+  .hero-bottom-row {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .hero-content-wrap {
+    width: auto;
+    max-width: 360px;
+    align-items: flex-end;
+    text-align: right;
+    gap: 0.55rem;
+  }
+
+  .hero-eyebrow-text {
+    align-self: flex-end;
+    font-size: 0.6875rem;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(2.4rem, 5vw, 3.15rem);
+    line-height: 0.92;
+    text-align: right;
+  }
+
+  .btn-editorial-rect {
+    padding: 0.95rem 1.35rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* 600px AND BELOW (INTENTIONAL MOBILE HERO e.g. 600x900, 430x932, 390x844, 375x812, 360x800):
+   - Motorcycle & rider remains the visual hero
+   - background-position 36% 18% keeps helmet, goggles, jacket, handlebars, and headlight in clear view
+   - Heading sits in lower road area with deep bottom gradient
+   - clamp() scaling ensures powerful words fit without line-wrapping
+   - CTA is a full-width, properly sized mobile button
+   - ZERO horizontal overflow
+   - Everything fits inside 100svh
+*/
+@media (max-width: 600px) {
+  .hero-alpine {
+    height: 100vh;
+    height: 100svh;
+    min-height: 520px;
+  }
+
+  /* Repositioned mobile framing: rider's helmet, goggles, and motorcycle are 100% visible */
+  .hero-alpine::before {
+    background-image: url('/heroo.jpg');
+    background-position: 36% 18%;
+    background-size: cover;
+    filter: none;
+  }
+
+  /* Shading only in the lower road area behind the mobile text and CTA */
+  .hero-alpine::after {
+    background-image: 
+      linear-gradient(to top, 
+        #1F1F1D 0%, 
+        rgba(31, 31, 29, 0.88) 12%, 
+        rgba(31, 31, 29, 0.45) 24%, 
+        transparent 38%
+      );
+  }
+
+  .hero-container {
+    padding-top: calc(var(--header-height, 64px) + 0.75rem);
+    padding-bottom: max(1.75rem, env(safe-area-inset-bottom, 1.75rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* On mobile: Headline sits above CTA button in a vertical stack */
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.15rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-content-wrap {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    margin-top: auto;
+    margin-bottom: 0;
+    gap: 0.45rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-eyebrow-text {
+    align-self: flex-start;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(2.15rem, 8.8vw, 2.85rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .hero-headline-line {
+    text-align: left;
+  }
+
+  .hero-action-panel {
+    position: static;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .btn-editorial-rect {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.25rem;
+    font-size: clamp(0.68rem, 2.8vw, 0.74rem);
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Extra small mobile screens (360px - 380px) */
+@media (max-width: 380px) {
+  .hero-alpine::before {
+    background-position: 36% 16%;
+  }
+
+  .hero-container {
+    padding-bottom: 1.35rem;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(1.95rem, 8.2vw, 2.35rem);
+  }
+
+  .btn-editorial-rect {
+    padding: 0.85rem 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Height-constrained landscape viewports (e.g. mobile landscape max-height: 520px) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-alpine {
+    min-height: 400px;
+  }
+
+  .hero-container {
+    padding-bottom: 1rem;
+    padding-top: 4rem;
+  }
+
+  .hero-bottom-row {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .hero-content-wrap {
+    max-width: 320px;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .hero-display-headline {
+    font-size: clamp(1.6rem, 5vh, 2.2rem);
+    text-align: right;
+  }
+
+  .hero-headline-line {
+    text-align: right;
+  }
+
+  .btn-editorial-rect {
+    width: auto;
+    padding: 0.75rem 1.15rem;
+    font-size: 0.625rem;
+  }
+}

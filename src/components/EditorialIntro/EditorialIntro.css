@@ -1,0 +1,419 @@
+/* ==========================================================================
+   BACKPACKERS DESTINATIONS — SQUEEZED EDITORIAL MISSION SECTION
+   Image & Text side-by-side (Top-Aligned), zero empty gaps, ultra-clean aesthetic
+   ========================================================================== */
+
+.editorial-mission-section {
+  background-color: #1F1F1D;
+  color: #F5F4EF;
+  padding-top: 3.5rem; /* Squeezed tight from 10rem */
+  padding-bottom: 4rem; /* Squeezed tight from 12rem */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Main Top Grid: Image on Left, Text Directly Beside It on Right */
+.mission-top-grid {
+  display: grid;
+  grid-template-columns: 42% 54%;
+  column-gap: 4%;
+  align-items: start; /* Both start at the exact same top line */
+  width: 100%;
+}
+
+/* Left Column: Portrait trekker image (NO top padding, NO dead space) */
+.mission-image-col {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.portrait-image-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #141413;
+}
+
+.portrait-image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Matches native 2715x3354 trek.png dimensions closely */
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.7s var(--ease-editorial);
+}
+
+.portrait-image-card:hover img {
+  transform: scale(1.025);
+}
+
+.image-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FAF8F5;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 0.35rem 0.65rem;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Portrait photo caption metadata */
+.portrait-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0.25rem;
+}
+
+.caption-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.detail-label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #8C8C87;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #FAF8F5;
+}
+
+/* Right Column: Texts directly beside the image (Top-Aligned) */
+.mission-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.mission-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.mission-eyebrow {
+  color: #BDBDB8;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.mission-meta-pill {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #E6A817;
+  border: 1px solid rgba(230, 168, 23, 0.35);
+  background-color: rgba(230, 168, 23, 0.08);
+  padding: 0.2rem 0.55rem;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.mission-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.3rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: #FAF8F5;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.mission-line {
+  display: block;
+}
+
+.text-accent-yellow {
+  color: #E6A817;
+}
+
+.mission-lead-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 0.85rem + 0.2vw, 0.98rem);
+  line-height: 1.6;
+  color: #CCCCCC;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Stats row to fill the space cleanly */
+.mission-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  line-height: 1;
+  color: #E6A817;
+  letter-spacing: 0.02em;
+}
+
+.stat-name {
+  font-family: var(--font-body);
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #FAF8F5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stat-desc {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #8C8C87;
+  line-height: 1.35;
+}
+
+/* Action button row */
+.mission-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.btn-mission-primary {
+  background-color: #E6A817;
+  color: #121212;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.65rem;
+  border: 1px solid #E6A817;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-editorial);
+  cursor: pointer;
+}
+
+.btn-mission-primary:hover {
+  background-color: #FAF8F5;
+  border-color: #FAF8F5;
+  color: #121212;
+  transform: translateY(-2px);
+}
+
+.mission-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9C9A94;
+  letter-spacing: 0.06em;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+  display: inline-block;
+}
+
+/* Wide Landscape Feature Banner (pi2.jpg) - Squeezed nicely below */
+.mission-panorama-card {
+  margin-top: 2.5rem; /* Squeezed gap between top grid and panorama */
+  width: 100%;
+}
+
+.panorama-image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #141413;
+}
+
+.panorama-image-wrap img {
+  width: 100%;
+  aspect-ratio: 16 / 7; /* Cinematic wide landscape */
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.8s var(--ease-editorial);
+}
+
+.panorama-image-wrap:hover img {
+  transform: scale(1.02);
+}
+
+.panorama-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.35) 65%, transparent 100%);
+  padding: 1.35rem 1.5rem 1.15rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.panorama-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.panorama-tag {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #E6A817;
+  display: block;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.panorama-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  color: #FAF8F5;
+  line-height: 1;
+  margin: 0;
+}
+
+.panorama-location {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #BDBDB8;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.3rem 0.6rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .editorial-mission-section {
+    padding-top: 2.75rem;
+    padding-bottom: 3rem;
+  }
+
+  .mission-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .portrait-image-card img {
+    aspect-ratio: 16 / 10;
+    object-position: center 30%;
+  }
+
+  .mission-headline {
+    font-size: clamp(2.2rem, 6vw, 3rem);
+  }
+
+  .mission-stats-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .panorama-image-wrap img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .editorial-mission-section {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .mission-headline {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+  }
+
+  .mission-stats-strip {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .mission-action-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn-mission-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .panorama-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
