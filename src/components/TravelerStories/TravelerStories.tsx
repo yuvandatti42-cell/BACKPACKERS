@@ -15,12 +15,38 @@ export const TravelerStories: React.FC = () => {
   const totalReviews = REVIEWS_DATA.length;
   const activeReview = REVIEWS_DATA[activeIndex];
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 35;
+
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % totalReviews);
   };
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + totalReviews) % totalReviews);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
   };
 
   // Scroll reveal trigger via IntersectionObserver
@@ -44,16 +70,14 @@ export const TravelerStories: React.FC = () => {
     };
   }, []);
 
-  // Auto-scroll review slider every 5 seconds when in view
+  // Auto-scroll review slider through images 1-3 continuously every 4 seconds
   useEffect(() => {
-    if (!isInView || isImageHovered) return;
-
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % totalReviews);
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(timer);
-  }, [isInView, isImageHovered, totalReviews]);
+  }, [totalReviews]);
 
   // Subtle tactile cursor depth parallax for the photograph
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -78,6 +102,9 @@ export const TravelerStories: React.FC = () => {
       ref={sectionRef}
       className={`traveler-stories-editorial ${isInView ? 'is-in-view' : ''}`} 
       aria-labelledby="stories-heading"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* ====================================================================
           ATMOSPHERIC LAYERS: TACTILE PAPER GRAIN & SLOW MOVING AMBIENT LIGHT
@@ -106,8 +133,15 @@ export const TravelerStories: React.FC = () => {
           {/* Left Column: Review Content */}
           <div className="testimonial-content-col">
             <div className="accent-bars-wrap">
-              <span className="bar-indicator bar-active"></span>
-              <span className="bar-indicator"></span>
+              {REVIEWS_DATA.map((_, idx) => (
+                <span 
+                  key={idx} 
+                  onClick={() => setActiveIndex(idx)}
+                  className={`bar-indicator ${activeIndex === idx ? 'bar-active' : ''}`}
+                  style={{ cursor: 'pointer' }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
 
             <h2 id="stories-heading" className="testimonial-display-title">
