@@ -31,11 +31,14 @@
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(to top, 
-      rgba(18, 18, 18, 0.95) 0%, 
-      rgba(18, 18, 18, 0.6) 35%, 
-      rgba(18, 18, 18, 0.1) 65%, 
-      transparent 100%);
+    /* Dual gradient: dark top gradient to guarantee badge readability against bright sky,
+       and heavy bottom gradient for bottom titles/stats legibility */
+    linear-gradient(to bottom, 
+      rgba(15, 17, 21, 0.85) 0%, 
+      rgba(15, 17, 21, 0.45) 25%, 
+      rgba(15, 17, 21, 0.25) 50%, 
+      rgba(15, 17, 21, 0.75) 80%, 
+      rgba(15, 17, 21, 0.96) 100%);
 }
 
 .featured-expedition-container {
@@ -45,7 +48,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  padding-top: var(--space-2xl);
+  padding-top: calc(var(--space-2xl) + 1rem);
   padding-bottom: var(--space-2xl);
 }
 
@@ -53,11 +56,13 @@
   margin-top: 1rem;
 }
 
+.featured-expedition .expedition-badge,
 .expedition-badge {
-  color: var(--accent-primary);
-  border-left: 2px solid var(--accent-primary);
+  color: #FFC72C !important;
+  border-left: 2px solid #FFC72C !important;
   padding-left: 0.75rem;
   font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
 }
 
 /* Large display typography overlapping the imagery */

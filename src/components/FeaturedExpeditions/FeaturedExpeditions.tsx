@@ -2,81 +2,67 @@ import React, { useRef, useState, useEffect } from 'react';
 import { EXPEDITIONS_DATA } from '../../data/expeditionsData';
 import './FeaturedExpeditions.css';
 
-export const FeaturedExpeditions: React.FC = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const dragStartRef = useRef<{ x: number; scrollLeft: number }>({ x: 0, scrollLeft: 0 });
+// 4 sets of 5 items = 20 cards total in infinite marquee
+const DUPLICATION_FACTOR = 4;
+const MARQUEE_EXPEDITIONS = Array.from({ length: DUPLICATION_FACTOR }, () => EXPEDITIONS_DATA).flat();
 
-  const handleScroll = () => {
-    const container = scrollContainerRef.current;
+export const FeaturedExpeditions: React.FC = () => {
+  const railWrapRef = useRef<HTMLDivElement>(null);
+  const activeIndexRef = useRef<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [manualOffset, setManualOffset] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const dragStartRef = useRef<{ startX: number; initialOffset: number }>({ startX: 0, initialOffset: 0 });
+
+  // Update active index based on card nearest to container center
+  useEffect(() => {
+    const container = railWrapRef.current;
     if (!container) return;
 
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    const currentScroll = container.scrollLeft;
+    let animationFrameId: number;
 
-    const progress = maxScroll > 0 ? (currentScroll / maxScroll) * 100 : 0;
-    setScrollProgress(progress);
+    const updateActiveIndex = () => {
+      const cardElements = container.querySelectorAll('.expedition-card-wrapper');
+      if (!cardElements || cardElements.length === 0) return;
 
-    const cardElements = container.querySelectorAll('.expedition-card-wrapper');
-    if (cardElements.length > 0) {
-      let closestIndex = 0;
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+
       let minDistance = Infinity;
+      let closestCardIndex = 0;
 
       cardElements.forEach((el, idx) => {
         const rect = el.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
         const cardCenter = rect.left + rect.width / 2;
-        const containerCenter = containerRect.left + containerRect.width / 2;
         const distance = Math.abs(cardCenter - containerCenter);
 
         if (distance < minDistance) {
           minDistance = distance;
-          closestIndex = idx;
+          closestCardIndex = idx;
         }
       });
 
-      setActiveIndex(closestIndex);
-    }
-  };
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      if (e.deltaY !== 0) {
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        const isAtStart = container.scrollLeft <= 0 && e.deltaY < 0;
-        const isAtEnd = container.scrollLeft >= maxScroll && e.deltaY > 0;
-
-        if (!isAtStart && !isAtEnd) {
-          e.preventDefault();
-          container.scrollLeft += e.deltaY * 0.85;
-        }
+      const normalizedIndex = closestCardIndex % EXPEDITIONS_DATA.length;
+      if (normalizedIndex !== activeIndexRef.current) {
+        activeIndexRef.current = normalizedIndex;
+        setActiveIndex(normalizedIndex);
       }
     };
 
-    container.addEventListener('wheel', handleWheel, { passive: false });
-    container.addEventListener('scroll', handleScroll, { passive: true });
-
-    handleScroll();
-
-    return () => {
-      container.removeEventListener('wheel', handleWheel);
-      container.removeEventListener('scroll', handleScroll);
+    const loop = () => {
+      updateActiveIndex();
+      animationFrameId = requestAnimationFrame(loop);
     };
+
+    animationFrameId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
     setIsDragging(true);
     dragStartRef.current = {
-      x: e.pageX - container.offsetLeft,
-      scrollLeft: container.scrollLeft
+      startX: e.pageX,
+      initialOffset: manualOffset
     };
   };
 
@@ -90,32 +76,33 @@ export const FeaturedExpeditions: React.FC = () => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    e.preventDefault();
+    const deltaX = e.pageX - dragStartRef.current.startX;
+    setManualOffset(dragStartRef.current.initialOffset + deltaX);
+  };
 
-    const container = scrollContainerRef.current;
-    if (!container) return;
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      dragStartRef.current = {
+        startX: e.touches[0].pageX,
+        initialOffset: manualOffset
+      };
+    }
+  };
 
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - dragStartRef.current.x) * 1.5;
-    container.scrollLeft = dragStartRef.current.scrollLeft - walk;
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const deltaX = e.touches[0].pageX - dragStartRef.current.startX;
+    setManualOffset(dragStartRef.current.initialOffset + deltaX);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
   };
 
   const scrollNav = (direction: 'prev' | 'next') => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const card = container.querySelector('.expedition-card-wrapper');
-    if (!card) return;
-
-    const scrollAmount = card.clientWidth + 32;
-    const targetScroll = direction === 'next' 
-      ? container.scrollLeft + scrollAmount 
-      : container.scrollLeft - scrollAmount;
-
-    container.scrollTo({
-      left: targetScroll,
-      behavior: 'smooth'
-    });
+    const cardWidthWithGap = 290 + 32; // 322px
+    setManualOffset((prev) => (direction === 'next' ? prev - cardWidthWithGap : prev + cardWidthWithGap));
   };
 
   return (
@@ -138,17 +125,30 @@ export const FeaturedExpeditions: React.FC = () => {
           </div>
         </div>
 
-        {/* Gallery Rail */}
+      </div>
+
+      {/* Gallery Rail Marquee */}
+      <div 
+        className={`expeditions-rail-wrap ${isDragging ? 'is-dragging' : ''}`}
+        ref={railWrapRef}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div 
-          className={`expeditions-rail-wrap ${isDragging ? 'is-dragging' : ''}`}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
+          className="expeditions-nudge-track" 
+          style={{ 
+            transform: `translate3d(${manualOffset}px, 0, 0)`,
+            transition: isDragging ? 'none' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}
         >
-          <div className="expeditions-rail" ref={scrollContainerRef}>
-            {EXPEDITIONS_DATA.map((exp) => (
-              <div key={exp.id} className="expedition-card-wrapper">
+          <div className="expeditions-marquee-track">
+            {MARQUEE_EXPEDITIONS.map((exp, idx) => (
+              <div key={`${exp.id}-${idx}`} className="expedition-card-wrapper">
                 <article className="expedition-card">
                   
                   {/* Outer Colored Frame Container (approx 12-18px padding, dynamic bgColor) */}
@@ -208,15 +208,14 @@ export const FeaturedExpeditions: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
 
+      <div className="container">
         {/* Navigation & Progress Bar */}
         <div className="expeditions-controls-bar">
           
           <div className="controls-progress-track">
-            <div 
-              className="controls-progress-bar" 
-              style={{ width: `${scrollProgress}%` }}
-            />
+            <div className="controls-progress-bar" />
           </div>
 
           <div className="controls-nav-group">
@@ -244,8 +243,8 @@ export const FeaturedExpeditions: React.FC = () => {
           </div>
 
         </div>
-
       </div>
     </section>
   );
 };
+

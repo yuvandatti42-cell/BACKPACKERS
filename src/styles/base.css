@@ -119,15 +119,38 @@ button {
   color: var(--bg-primary);
 }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Back To Home Universal Action Button */
+.back-to-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.25rem;
+  background-color: rgba(230, 168, 23, 0.14);
+  border: 1px solid rgba(230, 168, 23, 0.45);
+  color: var(--accent-primary, #E6A817);
+  font-family: var(--font-body);
+  font-size: 0.775rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-home-btn:hover {
+  background-color: var(--accent-primary, #E6A817);
+  color: #141412;
+  border-color: var(--accent-primary, #E6A817);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 20px rgba(230, 168, 23, 0.45);
+}
+
+.back-btn-icon {
+  font-size: 0.95rem;
+}
+
+.back-btn-text {
+  text-transform: uppercase;
 }

@@ -9,6 +9,7 @@
   border-bottom: 1px solid var(--border-light);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 /* Spacious Editorial Header Layout */
@@ -49,33 +50,49 @@
   margin: 0;
 }
 
-/* Horizontal Scroll Rail */
+/* Horizontal Scroll Marquee Rail */
 .expeditions-rail-wrap {
-  width: auto;
+  width: 100%;
   position: relative;
+  overflow: hidden;
   cursor: grab;
-  margin-right: calc(-1 * var(--gutter)); /* Bleed to container edge safely without 100vw overflow */
-  padding-right: var(--gutter);
+  padding-bottom: 0.5rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .expeditions-rail-wrap.is-dragging {
   cursor: grabbing;
 }
 
-.expeditions-rail {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-behavior: auto;
-  user-select: none;
-  -webkit-user-select: none;
-  padding-bottom: var(--space-lg);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+/* Pause animation on desktop hover */
+@media (hover: hover) {
+  .expeditions-rail-wrap:hover .expeditions-marquee-track,
+  .expeditions-rail-wrap:hover .controls-progress-bar {
+    animation-play-state: paused;
+  }
 }
 
-.expeditions-rail::-webkit-scrollbar {
-  display: none;
+.expeditions-nudge-track {
+  width: max-content;
+  will-change: transform;
+}
+
+.expeditions-marquee-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* Card Wrapper */
@@ -271,6 +288,7 @@
   height: 1px;
   background-color: var(--border-medium);
   position: relative;
+  overflow: hidden;
 }
 
 .controls-progress-bar {
@@ -279,7 +297,17 @@
   left: 0;
   height: 1px;
   background-color: var(--accent-primary);
-  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: width;
+  animation: marquee-progress 35s linear infinite;
+}
+
+@keyframes marquee-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .controls-nav-group {
@@ -329,6 +357,17 @@
   font-size: 0.85rem;
 }
 
+/* Reduced Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .expeditions-marquee-track,
+  .controls-progress-bar {
+    animation: none !important;
+  }
+  .expeditions-rail-wrap {
+    overflow-x: auto;
+  }
+}
+
 /* Responsive dimensions */
 @media (max-width: 992px) {
   .expeditions-header {
@@ -344,11 +383,6 @@
   .controls-progress-track {
     max-width: 45%;
   }
-  
-  .expeditions-rail-wrap {
-    margin-right: 0;
-    padding-right: 0;
-  }
 }
 
 @media (max-width: 580px) {
@@ -361,6 +395,10 @@
     height: 500px; /* Keep it tall on mobile too */
   }
 
+  .expeditions-marquee-track {
+    gap: 1.5rem;
+  }
+
   .controls-progress-track {
     display: none;
   }
@@ -369,3 +407,4 @@
     justify-content: flex-end;
   }
 }
+

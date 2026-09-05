@@ -12,22 +12,26 @@ import { TravelerStories } from '../components/TravelerStories/TravelerStories';
 import { TripPlanner } from '../components/TripPlanner/TripPlanner';
 import { Footer } from '../components/Footer/Footer';
 
-export const Home: React.FC = () => {
+interface HomeProps {
+  onNavigate?: (route: string, sectionId?: string) => void;
+}
+
+export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   return (
     <div className={`app-wrapper ${isReady ? 'is-loaded' : ''}`}>
       <ScrollProgress />
       <SplashScreen onComplete={() => setIsReady(true)} />
-      <Header />
+      <Header onNavigate={onNavigate} currentRoute="home" />
       <main id="main-content">
         <HeroSection />
-        <EditorialIntro />
         <TripCategories />
         <FeaturedExpedition />
         <FeaturedExpeditions />
         <OurStory />
         <TravelerStories />
+        <EditorialIntro />
         <TripPlanner />
       </main>
       <Footer />

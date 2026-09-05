@@ -1,9 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
+  currentRoute?: string;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
+  
+  const [isNotHome, setIsNotHome] = useState<boolean>(() => {
+    if (currentRoute) return currentRoute !== 'home';
+    const hash = window.location.hash.replace('#', '');
+    const pathname = window.location.pathname;
+    return hash === 'destinations' || hash === 'tours' || pathname === '/destinations' || pathname === '/tours';
+  });
+
+  useEffect(() => {
+    const checkRoute = () => {
+      if (currentRoute) {
+        setIsNotHome(currentRoute !== 'home');
+      } else {
+        const hash = window.location.hash.replace('#', '');
+        const pathname = window.location.pathname;
+        setIsNotHome(hash === 'destinations' || hash === 'tours' || pathname === '/destinations' || pathname === '/tours');
+      }
+    };
+
+    checkRoute();
+    window.addEventListener('hashchange', checkRoute);
+    window.addEventListener('popstate', checkRoute);
+    return () => {
+      window.removeEventListener('hashchange', checkRoute);
+      window.removeEventListener('popstate', checkRoute);
+    };
+  }, [currentRoute]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,44 +69,190 @@ export const Header: React.FC = () => {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>, 
+    route: string, 
+    sectionId?: string, 
+    categoryFilter?: string
+  ) => {
+    e.preventDefault();
+    closeMenu();
+    setIsDropdownHovered(false);
+
+    if (onNavigate) {
+      onNavigate(route, sectionId, categoryFilter);
+    } else {
+      if (route === 'tours') {
+        window.location.hash = 'tours';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (route === 'destinations') {
+        window.location.hash = 'destinations';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        if (window.location.hash === '#destinations') {
+          window.location.hash = sectionId ? sectionId : 'hero';
+        } else if (sectionId) {
+          const el = document.getElementById(sectionId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   return (
     <>
       <header className={`site-header ${isScrolled ? 'nav-scrolled' : ''}`} role="banner">
         <div className="container nav-container">
           
-          {/* Left Column: Symmetrical Navigation */}
+          {/* Left Column: Symmetrical Navigation with Hover Dropdown */}
           <div className="nav-col-left">
-            <a href="#destinations-section" className="nav-link">DESTINATIONS</a>
-            <a href="#featured-tours" className="nav-link">TOURS</a>
+            {isNotHome && (
+              <a 
+                href="#hero" 
+                className="nav-back-arrow-btn"
+                onClick={(e) => handleNavClick(e, 'home', 'hero')}
+                aria-label="Back to Home"
+                title="Back to Home"
+              >
+                &larr;
+              </a>
+            )}
+
+            <div 
+              className="nav-dropdown-wrapper"
+              onMouseEnter={() => setIsDropdownHovered(true)}
+              onMouseLeave={() => setIsDropdownHovered(false)}
+            >
+              <a 
+                href="#destinations" 
+                className="nav-link nav-dropdown-trigger"
+                onClick={(e) => handleNavClick(e, 'destinations')}
+              >
+                DESTINATIONS <span className="dropdown-caret">▾</span>
+              </a>
+
+              {/* Hover Dropdown Menu */}
+              <div className={`nav-dropdown-menu ${isDropdownHovered ? 'is-visible' : ''}`}>
+                <div className="dropdown-header-tag">+ EXPLORE BY TRIP TYPE</div>
+                
+                <a 
+                  href="#destinations" 
+                  className="dropdown-item-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
+                >
+                  <img src="/type_weekend.jpg" alt="" className="dropdown-thumb-img" />
+                  <div className="dropdown-item-text">
+                    <span className="item-title">Weekend Trips</span>
+                    <span className="item-sub">Quick 2–3 Day Escapes</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#destinations" 
+                  className="dropdown-item-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
+                >
+                  <img src="/type_expedition.jpg" alt="" className="dropdown-thumb-img" />
+                  <div className="dropdown-item-text">
+                    <span className="item-title">Long Expedition</span>
+                    <span className="item-sub">6–14 Day Overlands</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#destinations" 
+                  className="dropdown-item-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
+                >
+                  <img src="/type_biketrip.jpg" alt="" className="dropdown-thumb-img" />
+                  <div className="dropdown-item-text">
+                    <span className="item-title">Bike Trips</span>
+                    <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#destinations" 
+                  className="dropdown-item-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
+                >
+                  <img src="/type_offbeaten.jpg" alt="" className="dropdown-thumb-img" />
+                  <div className="dropdown-item-text">
+                    <span className="item-title">Off Beaten Places</span>
+                    <span className="item-sub">Raw Backcountry Routes</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#destinations" 
+                  className="dropdown-item-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}
+                >
+                  <img src="/type_private.jpg" alt="" className="dropdown-thumb-img" />
+                  <div className="dropdown-item-text">
+                    <span className="item-title">Private Trips</span>
+                    <span className="item-sub">Bespoke Custom Squads</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="#destinations" 
+                  className="dropdown-footer-link"
+                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
+                >
+                  <span>VIEW ALL DESTINATIONS</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <a 
+              href="#tours" 
+              className="nav-link"
+              onClick={(e) => handleNavClick(e, 'tours')}
+            >
+              TOURS
+            </a>
           </div>
 
           {/* Centered Brand Logo */}
           <div className="nav-col-center">
-            <a href="#hero" className="brand-center-lockup" aria-label="Backpackers Destinations Home">
+            <a 
+              href="#hero" 
+              className="brand-center-lockup" 
+              aria-label="Backpackers Destinations Home"
+              onClick={(e) => handleNavClick(e, 'home', 'hero')}
+            >
               <div className="brand-logo-circle">
                 <img 
                   src="/logo.jpg" 
-                  alt="Backpackers Logo" 
+                  alt="Backpackers Destinations Logo" 
                   className="brand-logo-img" 
                 />
               </div>
-              <span className="brand-center-name">BACKPACKERS</span>
+              <div className="brand-center-text">
+                <span className="brand-center-name">BACKPACKERS</span>
+                <span className="brand-center-sub">DESTINATIONS</span>
+              </div>
             </a>
           </div>
 
           {/* Right Column: Symmetrical Navigation & Action buttons */}
           <div className="nav-col-right">
-            <a href="#stories" className="nav-link">STORIES</a>
             <a 
-              href="/terms_and_conditions.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="nav-link nav-waiver-link"
-              title="Open Terms & Liability Waiver PDF"
+              href="#stories" 
+              className="nav-link"
+              onClick={(e) => handleNavClick(e, 'home', 'stories')}
             >
-              WAIVER PDF 📄
+              STORIES
             </a>
-            <a href="#planner" className="btn btn-contact-header">CONTACT US</a>
+            <a 
+              href="#planner" 
+              className="btn btn-contact-header"
+              onClick={(e) => handleNavClick(e, 'home', 'planner')}
+            >
+              CONTACT US
+            </a>
           </div>
 
           {/* Mobile hamburger menu toggle */}
@@ -100,24 +279,60 @@ export const Header: React.FC = () => {
         aria-label="Mobile Navigation"
       >
         <div className="mobile-nav-links">
-          <a href="#hero" className="mobile-nav-link" onClick={closeMenu}>HOME</a>
-          <a href="#destinations-section" className="mobile-nav-link" onClick={closeMenu}>DESTINATIONS</a>
-          <a href="#featured-tours" className="mobile-nav-link" onClick={closeMenu}>TOURS</a>
-          <a href="#stories" className="mobile-nav-link" onClick={closeMenu}>STORIES</a>
           <a 
-            href="/terms_and_conditions.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="#hero" 
             className="mobile-nav-link" 
-            onClick={closeMenu}
-            style={{ color: 'var(--accent-primary)' }}
+            onClick={(e) => handleNavClick(e, 'home', 'hero')}
           >
-            WAIVER (PDF 📄)
+            HOME
           </a>
-          <a href="#planner" className="mobile-nav-link" onClick={closeMenu}>CONTACT US</a>
+
+          <div className="mobile-subgroup">
+            <a 
+              href="#destinations" 
+              className="mobile-nav-link" 
+              onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
+            >
+              DESTINATIONS
+            </a>
+            <div className="mobile-sublinks">
+              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}><img src="/type_weekend.jpg" alt="" className="mobile-thumb-img" /> Weekend Trips</a>
+              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}><img src="/type_expedition.jpg" alt="" className="mobile-thumb-img" /> Long Expedition</a>
+              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}><img src="/type_biketrip.jpg" alt="" className="mobile-thumb-img" /> Bike Trips</a>
+              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}><img src="/type_offbeaten.jpg" alt="" className="mobile-thumb-img" /> Off Beaten Places</a>
+              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}><img src="/type_private.jpg" alt="" className="mobile-thumb-img" /> Private Trips</a>
+            </div>
+          </div>
+
+          <a 
+            href="#tours" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'tours')}
+          >
+            TOURS
+          </a>
+          <a 
+            href="#stories" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'home', 'stories')}
+          >
+            STORIES
+          </a>
+          <a 
+            href="#planner" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'home', 'planner')}
+          >
+            CONTACT US
+          </a>
         </div>
         <div>
-          <a href="#planner" className="btn btn-primary" style={{ width: '100%' }} onClick={closeMenu}>
+          <a 
+            href="#planner" 
+            className="btn btn-primary" 
+            style={{ width: '100%' }} 
+            onClick={(e) => handleNavClick(e, 'home', 'planner')}
+          >
             PLAN YOUR EXPEDITION
           </a>
           <p className="text-meta" style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>

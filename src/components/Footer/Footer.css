@@ -48,17 +48,21 @@
   font-size: clamp(3rem, 7.5vw, 6rem);
   line-height: 0.92;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
+  color: #1A1A18;
   text-transform: uppercase;
   margin: 0;
+}
+
+.footer-headline-yellow {
+  color: #E6A817;
 }
 
 .btn-footer-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #FAF8F5; /* Off-white background */
-  color: #20211D; /* Dark text */
+  background-color: #1A1A18;
+  color: #E6A817;
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 700;
@@ -67,15 +71,15 @@
   width: 140px;
   height: 42px;
   border-radius: 999px; /* Rounded pill button */
-  border: 1px solid #FAF8F5;
+  border: 1px solid #1A1A18;
   transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   text-decoration: none;
 }
 
 .btn-footer-cta:hover {
-  background-color: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: #FFFFFF;
+  background-color: #E6A817;
+  border-color: #E6A817;
+  color: #1A1A18;
   transform: translateY(-2px);
 }
 
@@ -83,7 +87,7 @@
 .footer-divider-line {
   width: 100%;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(26, 26, 24, 0.25);
   margin: 2.5rem 0;
 }
 
@@ -105,8 +109,8 @@
   font-family: var(--font-body);
   font-size: 0.75rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 500;
+  color: #2D2D28;
+  font-weight: 600;
   margin-bottom: 1.25rem;
   max-width: 500px;
 }
@@ -122,24 +126,24 @@
 .footer-contact-item {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #FFFFFF;
-  font-weight: 500;
+  color: #2D2D28;
+  font-weight: 600;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .footer-contact-item:hover {
-  color: var(--accent-primary);
+  color: #E6A817;
 }
 
 .contact-prefix {
-  color: var(--accent-primary);
+  color: #E6A817;
   font-weight: 700;
   margin-right: 0.25rem;
 }
 
 .contact-divider {
-  color: rgba(255, 255, 255, 0.4);
+  color: #E6A817;
   font-size: 0.75rem;
 }
 
@@ -147,18 +151,18 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #2D2D28;
 }
 
 .social-icon-link {
-  color: #FFFFFF;
+  color: #1A1A18;
   transition: color var(--transition-fast), transform var(--transition-fast);
   display: flex;
   align-items: center;
 }
 
 .social-icon-link:hover {
-  color: var(--accent-primary);
+  color: #E6A817;
   transform: translateY(-1px);
 }
 
@@ -168,8 +172,8 @@
 }
 
 .social-separator {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
+  color: #E6A817;
+  font-weight: 600;
 }
 
 /* Bottom Legal & Member Area */
@@ -189,23 +193,23 @@
   gap: 0.75rem;
   font-family: var(--font-body);
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #2D2D28;
 }
 
 .footer-legal-links a {
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 500;
+  color: #2D2D28;
+  font-weight: 600;
   transition: color var(--transition-fast);
   text-decoration: none;
 }
 
 .footer-legal-links a:hover {
-  color: var(--accent-primary);
+  color: #E6A817;
 }
 
 .footer-waiver-link {
-  color: var(--accent-primary) !important;
-  font-weight: 600 !important;
+  color: #E6A817 !important;
+  font-weight: 700 !important;
 }
 
 .footer-waiver-link:hover {
@@ -213,7 +217,8 @@
 }
 
 .legal-separator {
-  color: rgba(255, 255, 255, 0.5);
+  color: #E6A817;
+  font-weight: 600;
 }
 
 .footer-member-badge {

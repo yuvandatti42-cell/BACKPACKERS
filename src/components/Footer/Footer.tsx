@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
         {/* Top Half: Call to Action */}
         <div className="footer-cta-section">
           <h2 className="footer-cta-headline">
-            LET'S START AN ADVENTURE
+            LET'S START AN <span className="footer-headline-yellow">ADVENTURE</span>
           </h2>
           <a href="#planner" className="btn-footer-cta">
             CONTACT US
