@@ -66,7 +66,7 @@ export const OurStory: React.FC = () => {
 
           {/* Understated Paragraph Copy */}
           <p className="story-body-paragraph">
-            "We craft authentic road expeditions and offbeat journeys that reflect and fuel our passion for experiencing the world on two wheels and four. Designed with high integrity, expert local scout guides, and true immersion in every destination."
+            Backpackers Destinations was born from a simple belief: the best trips aren't planned to perfection, they're built on the road, with people who were strangers an hour ago. From the hills of South India to the highs of Ladakh, we're just getting started.
           </p>
 
         </div>
