@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
-import { ToursPage } from './pages/ToursPage';
 import './styles/variables.css';
 import './styles/base.css';
 import './styles/layout.css';
@@ -11,9 +10,6 @@ export const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
     const hash = window.location.hash.replace('#', '');
     const pathname = window.location.pathname;
-    if (pathname === '/tours' || hash === 'tours') {
-      return 'tours';
-    }
     if (pathname === '/destinations' || hash === 'destinations') {
       return 'destinations';
     }
@@ -26,9 +22,7 @@ export const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       const pathname = window.location.pathname;
-      if (pathname === '/tours' || hash === 'tours') {
-        setCurrentRoute('tours');
-      } else if (pathname === '/destinations' || hash === 'destinations') {
+      if (pathname === '/destinations' || hash === 'destinations') {
         setCurrentRoute('destinations');
       } else {
         setCurrentRoute('home');
@@ -50,11 +44,7 @@ export const App: React.FC = () => {
       setActiveFilter('all');
     }
 
-    if (route === 'tours') {
-      setCurrentRoute('tours');
-      window.location.hash = 'tours';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (route === 'destinations') {
+    if (route === 'destinations') {
       setCurrentRoute('destinations');
       window.location.hash = 'destinations';
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,10 +67,6 @@ export const App: React.FC = () => {
       }
     }
   };
-
-  if (currentRoute === 'tours') {
-    return <ToursPage onNavigate={navigateTo} />;
-  }
 
   if (currentRoute === 'destinations') {
     return <DestinationsPage onNavigate={navigateTo} initialFilter={activeFilter} />;

@@ -4,34 +4,42 @@ export const CATEGORIES_DATA: TripCategory[] = [
   {
     id: 'ladakh',
     number: '01',
-    title: 'LADAKH',
-    description: 'High altitude mountain passes, remote valley crossings, and cold desert tracks across the Himalayas.',
+    title: 'LADAKH TRIPS',
+    description: 'High altitude mountain passes, Khardung La, Zanskar valley crossings, and cold desert tracks across the Himalayas.',
     image: '/ldk.jpg',
-    alt: 'Expedition trekker with hat and walking poles looking at colossal Himalayan snow peaks in Ladakh',
+    alt: 'Expedition trekker looking at colossal Himalayan snow peaks in Ladakh',
     isLead: true
   },
   {
-    id: 'nepal',
+    id: 'south-india',
     number: '02',
-    title: 'NEPAL',
-    description: 'Riding under the shadows of 8,000m peaks, navigating rough valley dirt roads and deep gorges.',
-    image: '/nep.jpg',
-    alt: 'Golden Buddhist monastery with snow-capped Himalayan peaks in Nepal'
+    title: 'SOUTH INDIA',
+    description: 'Misty Western Ghats tea plantations, 36 hairpin mountain curves, rainforest ridges, and coastal roads.',
+    image: '/ke.jpg',
+    alt: 'Lush green tea garden switchback roads in South India'
   },
   {
-    id: 'kerala',
+    id: 'north-india',
     number: '03',
-    title: 'KERALA',
-    description: 'Misty tea plantations, wet rainforest hairpins, and scenic coastal asphalt stretches.',
-    image: '/ke.jpg',
-    alt: 'Lush green tea garden switchback roads in Kerala'
+    title: 'NORTH INDIA',
+    description: 'Cliffside dirt routes through Spiti Valley, Kinnaur, Uttarakhand mountain ridges, and Atal pass circuits.',
+    image: '/tour_spiti.jpg',
+    alt: 'High altitude desert mountain valley in Spiti, North India'
+  },
+  {
+    id: 'north-east',
+    number: '04',
+    title: 'NORTH EAST',
+    description: 'Cloud-draped cliff roads, living root bridge canyons, Meghalaya waterfalls, and Tawang frontiers.',
+    image: '/ostt.jpg',
+    alt: 'Misty cloud cliffs and canyons in North East India'
   },
   {
     id: 'international',
-    number: '04',
+    number: '05',
     title: 'INTERNATIONAL',
-    description: 'Cross-border overland expeditions designed for independent riders and long-distance touring.',
-    image: '/in.jpg',
-    alt: 'Winding asphalt highway surrounded by tropical forests'
+    description: 'Cross-border overlands into Nepal’s Mustang valley, Bhutan’s Dragon Kingdom, and pristine international passes.',
+    image: '/nep.jpg',
+    alt: 'Golden Buddhist monastery with snow-capped peaks in Nepal'
   }
 ];

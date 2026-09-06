@@ -2,14 +2,22 @@ export interface ExpeditionItem {
   id: string;
   number: string;
   destination: string;
+  regionCategory: 'ladakh' | 'south-india' | 'north-india' | 'north-east' | 'international';
+  regionLabel: string;
   title: string;
+  category?: string;
   verticalLabel: string;
   difficulty: string;
   duration: string;
-  distance?: string; // Optional since Bhutan doesn't specify distance
+  distance?: string;
   image: string;
   alt: string;
-  frameColor: string; // Muted frame colors
+  frameColor: string;
+  description?: string;
+  highlights?: string[];
+  maxAltitude?: string;
+  bestSeason?: string;
+  price?: string;
 }
 
 export const EXPEDITIONS_DATA: ExpeditionItem[] = [
@@ -17,64 +25,210 @@ export const EXPEDITIONS_DATA: ExpeditionItem[] = [
     id: 'tour-ladakh',
     number: '01',
     destination: 'LADAKH',
+    regionCategory: 'ladakh',
+    regionLabel: 'LADAKH TRIPS',
     title: 'HIGH ALTITUDE ROAD EXPEDITION',
-    verticalLabel: 'LADAKH | MTB',
+    category: 'long-expedition',
+    verticalLabel: 'LADAKH | OVERLAND',
     difficulty: 'ADVANCED',
     duration: '8 DAYS / 7 NIGHTS',
     distance: '1,200 KM',
+    maxAltitude: '5,359 m (Khardung La)',
+    bestSeason: 'Jun - Sep',
+    price: '₹48,500',
     image: '/ladakh.jpg',
     alt: 'Expedition riders crossing Leh-Manali Pass in Ladakh',
-    frameColor: '#768C9E' // Muted dusty blue
+    frameColor: '#768C9E',
+    description: 'Traverse the highest motorable passes in the world across desolate cold desert landscapes, ancient monasteries, and turquoise alpine lakes.',
+    highlights: ['Khardung La & Chang La Passes', 'Pangong Tso & Nubra Valley', 'Himalayan Ridge Traverses']
   },
   {
-    id: 'tour-nepal',
+    id: 'tour-zanskar',
     number: '02',
-    destination: 'NEPAL',
-    title: 'HIMALAYAN FRONTIERS',
-    verticalLabel: 'NEPAL | MTB',
-    difficulty: 'INTERMEDIATE',
-    duration: '6 DAYS / 5 NIGHTS',
-    distance: '850 KM',
-    image: '/nep.jpg',
-    alt: 'Riders climbing mountainous dirt corridor trails in Nepal',
-    frameColor: '#BC5F44' // Muted terracotta
+    destination: 'ZANSKAR',
+    regionCategory: 'ladakh',
+    regionLabel: 'LADAKH TRIPS',
+    title: 'THE HIDDEN ZANSKAR GORGE',
+    category: 'off-beaten',
+    verticalLabel: 'ZANSKAR | ENDURO',
+    difficulty: 'EXPERT',
+    duration: '10 DAYS / 9 NIGHTS',
+    distance: '1,400 KM',
+    maxAltitude: '5,090 m (Shinku La)',
+    bestSeason: 'Jul - Sep',
+    price: '₹56,000',
+    image: '/pi2.jpg',
+    alt: 'Deep Zanskar gorge and rocky river crossings',
+    frameColor: '#8C5A76',
+    description: 'Off-grid backcountry trail expedition through the newly carved Shinku La pass into the remote heartland of Zanskar.',
+    highlights: ['Shinku La Glacier Crossing', 'Gonbo Rangjon Monolith', 'Phuktal Cave Monastery']
   },
   {
     id: 'tour-kerala',
     number: '03',
-    destination: 'KERALA',
-    title: 'COASTAL ESCAPE',
+    destination: 'SOUTH INDIA',
+    regionCategory: 'south-india',
+    regionLabel: 'SOUTH INDIA',
+    title: 'WESTERN GHATS & TEA RIDGE',
+    category: 'weekend',
     verticalLabel: 'KERALA | ROAD',
     difficulty: 'BEGINNER',
     duration: '4 DAYS / 3 NIGHTS',
     distance: '520 KM',
+    maxAltitude: '1,600 m (Munnar)',
+    bestSeason: 'Sep - Mar',
+    price: '₹24,500',
     image: '/ke.jpg',
     alt: 'Coastal highways and misty plantations in Kerala',
-    frameColor: '#7B8C78' // Muted sage green
+    frameColor: '#7B8C78',
+    description: 'Glide through misty tea plantations in Munnar down to coastal palm-lined highways and backwater lagoons.',
+    highlights: ['Munnar Tea Estate Passes', 'Malabar Coastline Highway', 'Silent Valley Reserve']
+  },
+  {
+    id: 'tour-karnataka',
+    number: '04',
+    destination: 'SOUTH INDIA',
+    regionCategory: 'south-india',
+    regionLabel: 'SOUTH INDIA',
+    title: 'HAMPI & COORG TRAVERSE',
+    category: 'bike-trips',
+    verticalLabel: 'KARNATAKA | TRAVERSE',
+    difficulty: 'INTERMEDIATE',
+    duration: '5 DAYS / 4 NIGHTS',
+    distance: '680 KM',
+    maxAltitude: '1,929 m (Mullayanagiri)',
+    bestSeason: 'Oct - Mar',
+    price: '₹27,500',
+    image: '/dest_karnataka.jpg',
+    alt: 'Historical stone boulders and lush Ghats in Karnataka',
+    frameColor: '#8C5A48',
+    description: 'Ride through ancient boulder ruins of Hampi into dense coffee plantations and cloud forests of Coorg and Chikmagalur.',
+    highlights: ['Hampi UNESCO Heritage Trail', 'Chikmagalur Coffee Ridge', 'Coorg Rainforest Canopy']
   },
   {
     id: 'tour-spiti',
-    number: '04',
-    destination: 'SPITI',
-    title: 'DESERT MOUNTAIN ROADS',
+    number: '05',
+    destination: 'NORTH INDIA',
+    regionCategory: 'north-india',
+    regionLabel: 'NORTH INDIA',
+    title: 'DESERT MOUNTAIN CIRCUIT',
+    category: 'long-expedition',
     verticalLabel: 'SPITI | MTB',
     difficulty: 'ADVANCED',
     duration: '7 DAYS / 6 NIGHTS',
     distance: '900 KM',
+    maxAltitude: '4,590 m (Kunzum Pass)',
+    bestSeason: 'Jun - Oct',
+    price: '₹39,000',
     image: '/tour_spiti.jpg',
     alt: 'Barren peaks and dry riverbed roads in Spiti valley',
-    frameColor: '#C29B53' // Muted ochre
+    frameColor: '#C29B53',
+    description: 'An unscripted overland journey into the middle land between Tibet and India featuring cliffside dirt tracks and 1000-year-old monasteries.',
+    highlights: ['Key Monastery & Chandratal Lake', 'Kunzum & Atal Tunnel Routes', 'Hikkim Highest Post Office']
+  },
+  {
+    id: 'tour-uttarakhand',
+    number: '06',
+    destination: 'NORTH INDIA',
+    regionCategory: 'north-india',
+    regionLabel: 'NORTH INDIA',
+    title: 'GARHWAL HIMALAYAN RIDGE',
+    category: 'bike-trips',
+    verticalLabel: 'UTTARAKHAND | MTB',
+    difficulty: 'INTERMEDIATE',
+    duration: '6 DAYS / 5 NIGHTS',
+    distance: '780 KM',
+    maxAltitude: '3,480 m (Auli Ridge)',
+    bestSeason: 'Apr - Jun / Sep - Nov',
+    price: '₹34,000',
+    image: '/pic.jpg',
+    alt: 'Alpine mountain valleys and ridges in Uttarakhand',
+    frameColor: '#3A5C6D',
+    description: 'Explore high alpine Garhwal switchbacks, pine forest trails, and views of Nanda Devi and Trishul peaks.',
+    highlights: ['Auli Alpine Ridge Run', 'Chopta Tungnath Trail', 'Rishikesh Canyon Gateway']
+  },
+  {
+    id: 'tour-meghalaya',
+    number: '07',
+    destination: 'NORTH EAST',
+    regionCategory: 'north-east',
+    regionLabel: 'NORTH EAST',
+    title: 'ABODE OF CLOUDS',
+    category: 'weekend',
+    verticalLabel: 'MEGHALAYA | ENDURO',
+    difficulty: 'INTERMEDIATE',
+    duration: '5 DAYS / 4 NIGHTS',
+    distance: '650 KM',
+    maxAltitude: '1,960 m (Shillong Peak)',
+    bestSeason: 'Oct - Apr',
+    price: '₹28,000',
+    image: '/ostt.jpg',
+    alt: 'Misty green cliffs and waterfall canyons in Meghalaya',
+    frameColor: '#4E7063',
+    description: 'Wind through cloud-draped cliff roads, turquoise river canyons, and ancient living root bridge rainforest corridors.',
+    highlights: ['Cherrapunji Waterfalls', 'Dawki Crystal Clear River', 'Nohkalikai Falls Overlook']
+  },
+  {
+    id: 'tour-arunachal',
+    number: '08',
+    destination: 'NORTH EAST',
+    regionCategory: 'north-east',
+    regionLabel: 'NORTH EAST',
+    title: 'TAWANG HIGH FRONTIER',
+    category: 'off-beaten',
+    verticalLabel: 'ARUNACHAL | TRAVERSE',
+    difficulty: 'EXPERT',
+    duration: '8 DAYS / 7 NIGHTS',
+    distance: '950 KM',
+    maxAltitude: '4,170 m (Sela Pass)',
+    bestSeason: 'Mar - May / Oct - Nov',
+    price: '₹44,000',
+    image: '/ost.jpg',
+    alt: 'Snowy high pass and monastery in Tawang, Arunachal Pradesh',
+    frameColor: '#5C5468',
+    description: 'Traverse Sela Pass into the untouched high altitude frontier of Tawang, home to the second largest Buddhist monastery in the world.',
+    highlights: ['Sela Pass & Frozen Lakes', 'Tawang Monastery Citadel', 'Dirang Valley Pine Trails']
+  },
+  {
+    id: 'tour-nepal',
+    number: '09',
+    destination: 'INTERNATIONAL',
+    regionCategory: 'international',
+    regionLabel: 'INTERNATIONAL',
+    title: 'MUSTANG DIRT CORRIDOR',
+    category: 'bike-trips',
+    verticalLabel: 'NEPAL | OVERLAND',
+    difficulty: 'INTERMEDIATE',
+    duration: '6 DAYS / 5 NIGHTS',
+    distance: '850 KM',
+    maxAltitude: '3,800 m (Muktinath)',
+    bestSeason: 'Oct - Apr',
+    price: '₹42,000',
+    image: '/nep.jpg',
+    alt: 'Riders climbing mountainous dirt corridor trails in Nepal',
+    frameColor: '#BC5F44',
+    description: 'Rugged dirt trails winding through the deep Kali Gandaki gorge beneath the towering peaks of Annapurna and Dhaulagiri.',
+    highlights: ['Annapurna Circuit Corridors', 'Mustang Kingdom Trails', 'Traditional Sherpa Villages']
   },
   {
     id: 'tour-bhutan',
-    number: '05',
-    destination: 'BHUTAN',
-    title: 'MOUNTAIN KINGDOM',
-    verticalLabel: 'BHUTAN | MTB',
+    number: '10',
+    destination: 'INTERNATIONAL',
+    regionCategory: 'international',
+    regionLabel: 'INTERNATIONAL',
+    title: 'THUNDER DRAGON KINGDOM',
+    category: 'off-beaten',
+    verticalLabel: 'BHUTAN | OVERLAND',
     difficulty: 'INTERMEDIATE',
     duration: '9 DAYS / 8 NIGHTS',
+    distance: '1,100 KM',
+    maxAltitude: '3,988 m (Chele La)',
+    bestSeason: 'Mar - May / Sep - Nov',
+    price: '₹68,000',
     image: '/tour_bhutan.jpg',
     alt: 'Scenic valley passes and monasteries in Bhutan',
-    frameColor: '#4A8280' // Muted teal
+    frameColor: '#4A8280',
+    description: 'Explore the mystical Himalayan Last Shangri-La with breathtaking fortress dzongs, pristine pine forests, and high mountain passes.',
+    highlights: ['Tiger’s Nest Monastery Hike', 'Dochula & Chele La Passes', 'Punakha Suspension Bridge']
   }
 ];

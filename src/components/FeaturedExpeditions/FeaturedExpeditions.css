@@ -41,6 +41,13 @@
   display: block;
 }
 
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
 .expeditions-lead-desc {
   font-family: var(--font-body);
   font-size: var(--text-lg);
@@ -48,9 +55,88 @@
   color: var(--text-secondary);
   max-width: 440px;
   margin: 0;
+  text-align: right;
 }
 
-/* Horizontal Scroll Marquee Rail */
+.header-carousel-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-header-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.15rem;
+  background-color: #FAF8F5;
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-header-arrow:hover {
+  background-color: var(--text-primary);
+  color: var(--text-inverted);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-header-arrow:active {
+  transform: translateY(0);
+}
+
+/* Horizontal Carousel Rail & Floating Side Buttons */
+.carousel-rail-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-side-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 25;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FAF8F5;
+  color: #121212;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-side-prev {
+  left: clamp(0.75rem, 2.5vw, 2.25rem);
+}
+
+.carousel-side-next {
+  right: clamp(0.75rem, 2.5vw, 2.25rem);
+}
+
+.carousel-side-btn:hover {
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+  border-color: var(--accent-primary);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.carousel-side-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
 .expeditions-rail-wrap {
   width: 100%;
   position: relative;
@@ -65,34 +151,13 @@
   cursor: grabbing;
 }
 
-/* Pause animation on desktop hover */
-@media (hover: hover) {
-  .expeditions-rail-wrap:hover .expeditions-marquee-track,
-  .expeditions-rail-wrap:hover .controls-progress-bar {
-    animation-play-state: paused;
-  }
-}
-
-.expeditions-nudge-track {
-  width: max-content;
-  will-change: transform;
-}
-
-.expeditions-marquee-track {
+.expeditions-carousel-track {
   display: flex;
   gap: 2rem;
   width: max-content;
   will-change: transform;
-  animation: marquee-scroll 35s linear infinite;
-}
-
-@keyframes marquee-scroll {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+  padding-left: var(--gutter, 1.5rem);
+  padding-right: var(--gutter, 1.5rem);
 }
 
 /* Card Wrapper */
@@ -274,18 +339,16 @@
 /* Navigation Progress Bar styling */
 .expeditions-controls-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: var(--space-md); /* Squeezed margin above controls bar */
-  border-top: 1px solid var(--border-light);
-  padding-top: 1.25rem; /* Squeezed padding */
-  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  padding-top: 1.25rem;
+  width: 100%;
 }
 
 .controls-progress-track {
-  flex-grow: 1;
-  max-width: 65%;
-  height: 1px;
+  width: 100%;
+  max-width: 100%;
+  height: 2px;
   background-color: var(--border-medium);
   position: relative;
   overflow: hidden;
@@ -295,66 +358,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 1px;
+  height: 100%;
   background-color: var(--accent-primary);
   will-change: width;
-  animation: marquee-progress 35s linear infinite;
-}
-
-@keyframes marquee-progress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.controls-nav-group {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.controls-counter {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  letter-spacing: 0.05em;
-  color: var(--text-primary);
-}
-
-.counter-divider {
-  color: var(--border-medium);
-  font-size: 1rem;
-}
-
-.controls-arrows {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.btn-control-arrow {
-  background: none;
-  border: none;
-  font-size: 1.35rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 0.35rem 0.5rem;
-  transition: color var(--transition-fast), transform var(--transition-fast);
-}
-
-.btn-control-arrow:hover {
-  color: var(--accent-primary);
-}
-
-.btn-control-arrow:active {
-  transform: scale(0.92);
-}
-
-.arrow-separator {
-  color: var(--border-light);
-  font-size: 0.85rem;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reduced Motion preference */
@@ -395,7 +402,7 @@
     height: 500px; /* Keep it tall on mobile too */
   }
 
-  .expeditions-marquee-track {
+  .expeditions-carousel-track {
     gap: 1.5rem;
   }
 

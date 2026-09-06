@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ScrollProgress } from '../components/ScrollProgress/ScrollProgress';
 import { SplashScreen } from '../components/SplashScreen/SplashScreen';
 import { Header } from '../components/Header/Header';
 import { HeroSection } from '../components/HeroSection/HeroSection';
@@ -21,7 +20,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
   return (
     <div className={`app-wrapper ${isReady ? 'is-loaded' : ''}`}>
-      <ScrollProgress />
       <SplashScreen onComplete={() => setIsReady(true)} />
       <Header onNavigate={onNavigate} currentRoute="home" />
       <main id="main-content">

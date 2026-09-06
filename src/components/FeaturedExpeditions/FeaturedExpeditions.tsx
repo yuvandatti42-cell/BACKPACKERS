@@ -2,114 +2,138 @@ import React, { useRef, useState, useEffect } from 'react';
 import { EXPEDITIONS_DATA } from '../../data/expeditionsData';
 import './FeaturedExpeditions.css';
 
-// 4 sets of 5 items = 20 cards total in infinite marquee
-const DUPLICATION_FACTOR = 4;
-const MARQUEE_EXPEDITIONS = Array.from({ length: DUPLICATION_FACTOR }, () => EXPEDITIONS_DATA).flat();
+const REPEAT_COUNT = 5;
+const INFINITE_EXPEDITIONS = Array.from({ length: REPEAT_COUNT }, () => EXPEDITIONS_DATA).flat();
+const TOTAL_ITEMS = EXPEDITIONS_DATA.length;
+const INITIAL_INDEX = TOTAL_ITEMS * 2; // Start in middle set
 
 export const FeaturedExpeditions: React.FC = () => {
-  const railWrapRef = useRef<HTMLDivElement>(null);
-  const activeIndexRef = useRef<number>(0);
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [manualOffset, setManualOffset] = useState<number>(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(INITIAL_INDEX);
+  const [stepWidth, setStepWidth] = useState<number>(322);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const dragStartRef = useRef<{ startX: number; initialOffset: number }>({ startX: 0, initialOffset: 0 });
+  const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState<number>(0);
+  const [disableTransition, setDisableTransition] = useState<boolean>(false);
 
-  // Update active index based on card nearest to container center
+  // Measure dynamic card step width (card width + gap)
   useEffect(() => {
-    const container = railWrapRef.current;
-    if (!container) return;
-
-    let animationFrameId: number;
-
-    const updateActiveIndex = () => {
-      const cardElements = container.querySelectorAll('.expedition-card-wrapper');
-      if (!cardElements || cardElements.length === 0) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      let minDistance = Infinity;
-      let closestCardIndex = 0;
-
-      cardElements.forEach((el, idx) => {
-        const rect = el.getBoundingClientRect();
-        const cardCenter = rect.left + rect.width / 2;
-        const distance = Math.abs(cardCenter - containerCenter);
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestCardIndex = idx;
+    const updateStepWidth = () => {
+      if (trackRef.current) {
+        const card = trackRef.current.querySelector('.expedition-card-wrapper') as HTMLElement;
+        if (card) {
+          const style = window.getComputedStyle(trackRef.current);
+          const gap = parseFloat(style.gap || '32');
+          setStepWidth(card.offsetWidth + gap);
         }
-      });
-
-      const normalizedIndex = closestCardIndex % EXPEDITIONS_DATA.length;
-      if (normalizedIndex !== activeIndexRef.current) {
-        activeIndexRef.current = normalizedIndex;
-        setActiveIndex(normalizedIndex);
       }
     };
 
-    const loop = () => {
-      updateActiveIndex();
-      animationFrameId = requestAnimationFrame(loop);
-    };
-
-    animationFrameId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(animationFrameId);
+    updateStepWidth();
+    window.addEventListener('resize', updateStepWidth);
+    return () => window.removeEventListener('resize', updateStepWidth);
   }, []);
 
+  // Seamless loop reset when activeIndex reaches boundary zones
+  useEffect(() => {
+    if (activeIndex >= TOTAL_ITEMS * 3.5 || activeIndex <= TOTAL_ITEMS * 0.5) {
+      const timer = setTimeout(() => {
+        setDisableTransition(true);
+        const normalized = INITIAL_INDEX + (((activeIndex % TOTAL_ITEMS) + TOTAL_ITEMS) % TOTAL_ITEMS);
+        setActiveIndex(normalized);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setDisableTransition(false);
+          });
+        });
+      }, 520);
+      return () => clearTimeout(timer);
+    }
+  }, [activeIndex]);
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setDisableTransition(false);
+    setActiveIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setDisableTransition(false);
+    setActiveIndex((prev) => prev - 1);
+  };
+
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setDisableTransition(false);
     setIsDragging(true);
-    dragStartRef.current = {
-      startX: e.pageX,
-      initialOffset: manualOffset
-    };
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
+    setDragStartX(e.clientX);
+    setDragOffset(0);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-    const deltaX = e.pageX - dragStartRef.current.startX;
-    setManualOffset(dragStartRef.current.initialOffset + deltaX);
+    if (!isDragging || dragStartX === null) return;
+    setDragOffset(e.clientX - dragStartX);
   };
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches.length === 1) {
-      setIsDragging(true);
-      dragStartRef.current = {
-        startX: e.touches[0].pageX,
-        initialOffset: manualOffset
-      };
+  const handleMouseUp = () => {
+    if (isDragging) {
+      if (dragOffset < -50) {
+        handleNext();
+      } else if (dragOffset > 50) {
+        handlePrev();
+      } else {
+        setDragOffset(0);
+      }
+      setIsDragging(false);
+      setDragStartX(null);
     }
   };
 
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setDragOffset(0);
+      setIsDragging(false);
+      setDragStartX(null);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setDisableTransition(false);
+    setIsDragging(true);
+    setDragStartX(e.touches[0].clientX);
+    setDragOffset(0);
+  };
+
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging || e.touches.length !== 1) return;
-    const deltaX = e.touches[0].pageX - dragStartRef.current.startX;
-    setManualOffset(dragStartRef.current.initialOffset + deltaX);
+    if (!isDragging || dragStartX === null) return;
+    setDragOffset(e.touches[0].clientX - dragStartX);
   };
 
   const handleTouchEnd = () => {
-    setIsDragging(false);
+    if (isDragging) {
+      if (dragOffset < -40) {
+        handleNext();
+      } else if (dragOffset > 40) {
+        handlePrev();
+      } else {
+        setDragOffset(0);
+      }
+      setIsDragging(false);
+      setDragStartX(null);
+    }
   };
 
-  const scrollNav = (direction: 'prev' | 'next') => {
-    const cardWidthWithGap = 290 + 32; // 322px
-    setManualOffset((prev) => (direction === 'next' ? prev - cardWidthWithGap : prev + cardWidthWithGap));
-  };
+  const baseOffset = -activeIndex * stepWidth;
+  const currentTransform = isDragging ? baseOffset + dragOffset : baseOffset;
+  const normalizedIndex = ((activeIndex % TOTAL_ITEMS) + TOTAL_ITEMS) % TOTAL_ITEMS;
+  const progressPercent = ((normalizedIndex + 1) / TOTAL_ITEMS) * 100;
 
   return (
     <section id="featured-tours" className="featured-expeditions-section" aria-labelledby="featured-tours-heading">
       <div className="container">
         
-        {/* Spacious Header Layout */}
+        {/* Header Layout */}
         <div className="expeditions-header">
           <div className="header-left">
             <span className="text-meta heading-eyebrow">+ EXPLORE OUR ADVENTURES</span>
@@ -122,129 +146,150 @@ export const FeaturedExpeditions: React.FC = () => {
             <p className="expeditions-lead-desc">
               "Take the first step towards your next life-affirming adventure."
             </p>
+
+            <div className="header-carousel-buttons">
+              <button onClick={handlePrev} className="btn-header-arrow" aria-label="Previous Tour">
+                &larr; PREV
+              </button>
+              <button onClick={handleNext} className="btn-header-arrow" aria-label="Next Tour">
+                NEXT &rarr;
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
 
-      {/* Gallery Rail Marquee */}
-      <div 
-        className={`expeditions-rail-wrap ${isDragging ? 'is-dragging' : ''}`}
-        ref={railWrapRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div 
-          className="expeditions-nudge-track" 
-          style={{ 
-            transform: `translate3d(${manualOffset}px, 0, 0)`,
-            transition: isDragging ? 'none' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
+      {/* Carousel Rail Container */}
+      <div className="carousel-rail-container">
+        {/* Left Floating Side Button */}
+        <button 
+          className="carousel-side-btn carousel-side-prev"
+          onClick={handlePrev}
+          aria-label="Previous Tour"
+          title="Previous Tour"
         >
-          <div className="expeditions-marquee-track">
-            {MARQUEE_EXPEDITIONS.map((exp, idx) => (
-              <div key={`${exp.id}-${idx}`} className="expedition-card-wrapper">
-                <article className="expedition-card">
-                  
-                  {/* Outer Colored Frame Container (approx 12-18px padding, dynamic bgColor) */}
-                  <div className="poster-frame" style={{ backgroundColor: exp.frameColor }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+
+        {/* Right Floating Side Button */}
+        <button 
+          className="carousel-side-btn carousel-side-next"
+          onClick={handleNext}
+          aria-label="Next Tour"
+          title="Next Tour"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+
+        {/* Carousel Rail Track */}
+        <div 
+          className={`expeditions-rail-wrap ${isDragging ? 'is-dragging' : ''}`}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div 
+            ref={trackRef}
+            className="expeditions-carousel-track"
+            style={{ 
+              transform: `translate3d(${currentTransform}px, 0, 0)`,
+              transition: (isDragging || disableTransition) ? 'none' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+          >
+            {INFINITE_EXPEDITIONS.map((exp, idx) => {
+              const isCardActive = idx === activeIndex;
+              return (
+                <div 
+                  key={`${exp.id}-${idx}`} 
+                  className={`expedition-card-wrapper ${isCardActive ? 'is-active' : ''}`}
+                  onClick={() => {
+                    setDisableTransition(false);
+                    setActiveIndex(idx);
+                  }}
+                >
+                  <article className="expedition-card">
                     
-                    {/* Inner Photograph Area */}
-                    <div className="poster-inner-media">
-                      <img 
-                        src={exp.image} 
-                        alt={exp.alt} 
-                        className="card-img" 
-                        draggable="false"
-                        loading="lazy"
-                      />
-                      <div className="card-media-overlay" />
+                    {/* Outer Colored Frame Container */}
+                    <div className="poster-frame" style={{ backgroundColor: exp.frameColor }}>
                       
-                      {/* Large Stacked White Display Typography Inside Image */}
-                      <h3 className="poster-title-overlay">
-                        {exp.title.split(' ').map((word, wIdx) => (
-                          <span key={wIdx} className="title-word">{word}</span>
-                        ))}
-                      </h3>
+                      {/* Inner Photograph Area */}
+                      <div className="poster-inner-media">
+                        <img 
+                          src={exp.image} 
+                          alt={exp.alt} 
+                          className="card-img" 
+                          draggable="false"
+                          loading="lazy"
+                        />
+                        <div className="card-media-overlay" />
+                        
+                        {/* Display Typography Overlay */}
+                        <h3 className="poster-title-overlay">
+                          {exp.title.split(' ').map((word, wIdx) => (
+                            <span key={wIdx} className="title-word">{word}</span>
+                          ))}
+                        </h3>
 
-                      {/* Hover action overlay indicator */}
-                      <span className="hover-explore-indicator">VIEW EXPEDITION &rarr;</span>
+                        {/* Hover indicator */}
+                        <span className="hover-explore-indicator">VIEW EXPEDITION &rarr;</span>
+                      </div>
+
+                      {/* Vertical Typography Label */}
+                      <div className="vertical-label">
+                        {exp.verticalLabel}
+                      </div>
+
                     </div>
 
-                    {/* Vertical Typography Label Along the Right Side of Colored Frame */}
-                    <div className="vertical-label">
-                      {exp.verticalLabel}
+                    {/* Metadata Below Image */}
+                    <div className="card-meta-below">
+                      <span className="card-dest-label">{exp.regionLabel}</span>
+                      
+                      <div className="card-details-row">
+                        <span className="difficulty-tag">+ {exp.difficulty}</span>
+                        <span className="meta-dot">&bull;</span>
+                        <span className="duration-tag">{exp.duration}</span>
+                        {exp.distance && (
+                          <>
+                            <span className="meta-dot">&bull;</span>
+                            <span className="distance-tag">{exp.distance}</span>
+                          </>
+                        )}
+                      </div>
+
+                      <hr className="card-divider" />
                     </div>
 
-                  </div>
-
-                  {/* Destination & Metadata Below the Image */}
-                  <div className="card-meta-below">
-                    <span className="card-dest-label">{exp.destination}</span>
-                    
-                    <div className="card-details-row">
-                      <span className="difficulty-tag">+ {exp.difficulty}</span>
-                      <span className="meta-dot">&bull;</span>
-                      <span className="duration-tag">{exp.duration}</span>
-                      {exp.distance && (
-                        <>
-                          <span className="meta-dot">&bull;</span>
-                          <span className="distance-tag">{exp.distance}</span>
-                        </>
-                      )}
-                    </div>
-
-                    {/* Clean dividing rule */}
-                    <hr className="card-divider" />
-                  </div>
-
-                </article>
-              </div>
-            ))}
+                  </article>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
       <div className="container">
-        {/* Navigation & Progress Bar */}
+        {/* Progress Bar Line */}
         <div className="expeditions-controls-bar">
-          
           <div className="controls-progress-track">
-            <div className="controls-progress-bar" />
+            <div 
+              className="controls-progress-bar" 
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
-
-          <div className="controls-nav-group">
-            <span className="controls-counter">
-              0{activeIndex + 1} <span className="counter-divider">/</span> 05
-            </span>
-
-            <div className="controls-arrows">
-              <button 
-                onClick={() => scrollNav('prev')} 
-                className="btn-control-arrow" 
-                aria-label="Previous Tour"
-              >
-                &larr;
-              </button>
-              <span className="arrow-separator">|</span>
-              <button 
-                onClick={() => scrollNav('next')} 
-                className="btn-control-arrow" 
-                aria-label="Next Tour"
-              >
-                &rarr;
-              </button>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
   );
 };
 
+export default FeaturedExpeditions;

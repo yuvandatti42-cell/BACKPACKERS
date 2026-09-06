@@ -10,33 +10,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
-  
-  const [isNotHome, setIsNotHome] = useState<boolean>(() => {
-    if (currentRoute) return currentRoute !== 'home';
-    const hash = window.location.hash.replace('#', '');
-    const pathname = window.location.pathname;
-    return hash === 'destinations' || hash === 'tours' || pathname === '/destinations' || pathname === '/tours';
-  });
 
-  useEffect(() => {
-    const checkRoute = () => {
-      if (currentRoute) {
-        setIsNotHome(currentRoute !== 'home');
-      } else {
-        const hash = window.location.hash.replace('#', '');
-        const pathname = window.location.pathname;
-        setIsNotHome(hash === 'destinations' || hash === 'tours' || pathname === '/destinations' || pathname === '/tours');
-      }
-    };
-
-    checkRoute();
-    window.addEventListener('hashchange', checkRoute);
-    window.addEventListener('popstate', checkRoute);
-    return () => {
-      window.removeEventListener('hashchange', checkRoute);
-      window.removeEventListener('popstate', checkRoute);
-    };
-  }, [currentRoute]);
+  const isNotHome = currentRoute === 'destinations' || window.location.hash === '#destinations';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,18 +57,17 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
     if (onNavigate) {
       onNavigate(route, sectionId, categoryFilter);
     } else {
-      if (route === 'tours') {
-        window.location.hash = 'tours';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (route === 'destinations') {
+      if (route === 'destinations') {
         window.location.hash = 'destinations';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        if (window.location.hash === '#destinations') {
-          window.location.hash = sectionId ? sectionId : 'hero';
-        } else if (sectionId) {
-          const el = document.getElementById(sectionId);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        const targetSection = sectionId ? sectionId : 'hero';
+        window.location.hash = targetSection;
+        const el = document.getElementById(targetSection);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }
     }
@@ -101,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
 
   return (
     <>
-      <header className={`site-header ${isScrolled ? 'nav-scrolled' : ''}`} role="banner">
+      <header className={`site-header ${(isScrolled || isNotHome) ? 'nav-scrolled' : ''}`} role="banner">
         <div className="container nav-container">
           
           {/* Left Column: Symmetrical Navigation with Hover Dropdown */}
@@ -207,9 +181,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             </div>
 
             <a 
-              href="#tours" 
+              href="#featured-tours" 
               className="nav-link"
-              onClick={(e) => handleNavClick(e, 'tours')}
+              onClick={(e) => handleNavClick(e, 'home', 'featured-tours')}
             >
               TOURS
             </a>
@@ -305,9 +279,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
           </div>
 
           <a 
-            href="#tours" 
+            href="#featured-tours" 
             className="mobile-nav-link" 
-            onClick={(e) => handleNavClick(e, 'tours')}
+            onClick={(e) => handleNavClick(e, 'home', 'featured-tours')}
           >
             TOURS
           </a>

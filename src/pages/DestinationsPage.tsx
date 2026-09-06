@@ -275,8 +275,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
     ? DESTINATION_CORRIDORS
     : DESTINATION_CORRIDORS.filter(c => c.tripTypes.includes(selectedFilter as TripTypeCategory));
 
-  const activeCorridor = DESTINATION_CORRIDORS.find(c => c.id === activeCorridorId) || DESTINATION_CORRIDORS[0];
-
   const handleBookInquiry = (_destinationName?: string) => {
     if (onNavigate) {
       onNavigate('home', 'planner');
@@ -290,42 +288,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
       <Header onNavigate={onNavigate} currentRoute="destinations" />
 
       <main className="destinations-page-main">
-        {/* Page Hero Header */}
-        <section className="dest-hero-section">
-          <div className="container">
-            <div className="dest-hero-content">
-              <div className="dest-eyebrow-row">
-                <span className="text-meta">+ DESTINATIONS &amp; TRIP TYPES</span>
-                <span className="dest-badge-pill">CATALOG 2026/27</span>
-              </div>
-              <h1 className="dest-hero-title">
-                EXPLORE OUR <span className="text-accent">DESTINATION CORRIDORS</span>
-              </h1>
-              <p className="dest-hero-lead">
-                Whether you’re seeking a fast weekend mountain escape, a 14-day high altitude overland expedition, bike-focused traverses, uncharted off-beaten places, or a private bespoke squad run — explore our scouted travel styles.
-              </p>
-
-              {/* Key Quick Stats */}
-              <div className="dest-hero-stats">
-                <div className="hero-stat-item">
-                  <span className="stat-value">05</span>
-                  <span className="stat-label">Trip Styles</span>
-                </div>
-                <span className="stat-divider">•</span>
-                <div className="hero-stat-item">
-                  <span className="stat-value">17,582 FT</span>
-                  <span className="stat-label">Max Altitude</span>
-                </div>
-                <span className="stat-divider">•</span>
-                <div className="hero-stat-item">
-                  <span className="stat-value">100%</span>
-                  <span className="stat-label">Scouted Routes</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 5 FEATURED TRIP TYPES SHOWCASE GRID */}
         <section className="dest-trip-types-section">
           <div className="container">
@@ -365,6 +327,42 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Page Hero / Catalog Header */}
+        <section className="dest-hero-section">
+          <div className="container">
+            <div className="dest-hero-content">
+              <div className="dest-eyebrow-row">
+                <span className="text-meta">+ DESTINATIONS &amp; TRIP TYPES</span>
+                <span className="dest-badge-pill">CATALOG 2026/27</span>
+              </div>
+              <h1 className="dest-hero-title">
+                EXPLORE OUR <span className="text-accent">DESTINATION CORRIDORS</span>
+              </h1>
+              <p className="dest-hero-lead">
+                Whether you’re seeking a fast weekend mountain escape, a 14-day high altitude overland expedition, bike-focused traverses, uncharted off-beaten places, or a private bespoke squad run — explore our scouted travel styles.
+              </p>
+
+              {/* Key Quick Stats */}
+              <div className="dest-hero-stats">
+                <div className="hero-stat-item">
+                  <span className="stat-value">05</span>
+                  <span className="stat-label">Trip Styles</span>
+                </div>
+                <span className="stat-divider">•</span>
+                <div className="hero-stat-item">
+                  <span className="stat-value">17,582 FT</span>
+                  <span className="stat-label">Max Altitude</span>
+                </div>
+                <span className="stat-divider">•</span>
+                <div className="hero-stat-item">
+                  <span className="stat-value">100%</span>
+                  <span className="stat-label">Scouted Routes</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -474,71 +472,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
           </div>
         </section>
 
-        {/* Detailed Interactive Spotlight */}
-        <section className="dest-spotlight-section">
-          <div className="container">
-            <div className="spotlight-header">
-              <span className="text-meta">+ CORRIDOR DEEP DIVE</span>
-              <h2 className="spotlight-headline">
-                FEATURED ROUTE SPECIFICATIONS: <span className="text-accent">{activeCorridor.region}</span>
-              </h2>
-            </div>
 
-            <div className="spotlight-split-grid">
-              <div className="spotlight-media-col">
-                <div className="spotlight-image-frame" style={{ backgroundColor: activeCorridor.frameColor }}>
-                  <img src={activeCorridor.image} alt={activeCorridor.title} className="spotlight-img" />
-                  <div className="spotlight-badge">{activeCorridor.region} // SPEC SHEET</div>
-                </div>
-              </div>
-
-              <div className="spotlight-details-col">
-                <span className="spotlight-sub">{activeCorridor.subtitle}</span>
-                <h3 className="spotlight-title">{activeCorridor.title}</h3>
-
-                <div className="spotlight-metrics-grid">
-                  <div className="metric-card">
-                    <span className="metric-num">{activeCorridor.elevation}</span>
-                    <span className="metric-name">Peak Altitude</span>
-                  </div>
-                  <div className="metric-card">
-                    <span className="metric-num">{activeCorridor.distance}</span>
-                    <span className="metric-name">Distance</span>
-                  </div>
-                  <div className="metric-card">
-                    <span className="metric-num">{activeCorridor.squadSize}</span>
-                    <span className="metric-name">Squad Size</span>
-                  </div>
-                  <div className="metric-card">
-                    <span className="metric-num">{activeCorridor.difficulty}</span>
-                    <span className="metric-name">Grade</span>
-                  </div>
-                </div>
-
-                <div className="spotlight-highlights-block">
-                  <h4 className="highlights-title">KEY EXPEDITION HIGHLIGHTS</h4>
-                  <ul className="highlights-list">
-                    {activeCorridor.highlights.map((h, i) => (
-                      <li key={i}>
-                        <span className="bullet-dash">—</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="spotlight-action-row">
-                  <button 
-                    className="btn btn-mission-primary"
-                    onClick={() => handleBookInquiry(activeCorridor.region)}
-                  >
-                    PLAN INQUIRY FOR {activeCorridor.region} &rarr;
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Bottom Contact Banner CTA */}
         <section className="dest-cta-banner">

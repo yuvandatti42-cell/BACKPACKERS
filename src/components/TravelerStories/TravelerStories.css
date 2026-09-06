@@ -74,6 +74,7 @@
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
+  opacity: 0.35;
 }
 
 .stories-topo-svg {
@@ -180,7 +181,7 @@
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
   line-height: 0.95;
   letter-spacing: -0.015em;
-  color: var(--text-primary);
+  color: #111111;
   text-transform: uppercase;
   margin-bottom: 2rem;
 }
@@ -195,8 +196,9 @@
 .testimonial-para {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.35vw, 1.125rem);
-  color: var(--text-secondary);
-  line-height: 1.7;
+  color: #111111;
+  font-weight: 500;
+  line-height: 1.75;
   margin-bottom: 0;
 }
 
@@ -210,9 +212,9 @@
 .reviewer-identity {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.1em;
-  color: var(--text-primary);
+  color: #111111;
   text-transform: uppercase;
 }
 

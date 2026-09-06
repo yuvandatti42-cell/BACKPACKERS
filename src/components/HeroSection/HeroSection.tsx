@@ -11,10 +11,6 @@ export const HeroSection: React.FC = () => {
           
           {/* Lower-Left Headline Block */}
           <div className="hero-content-wrap">
-            <span className="hero-eyebrow-text animate-fade-in" style={{ animationDelay: '100ms' }}>
-              + MTB ADVENTURE
-            </span>
-            
             <h1 id="hero-heading" className="hero-display-headline">
               <span className="hero-headline-line animate-slide-up" style={{ animationDelay: '200ms' }}>
                 ESCAPE
@@ -26,14 +22,6 @@ export const HeroSection: React.FC = () => {
                 EXPERIENCE
               </span>
             </h1>
-          </div>
-
-          {/* Lower-Right Rectangular CTA */}
-          <div className="hero-action-panel animate-fade-in" style={{ animationDelay: '700ms' }}>
-            <a href="#mission" className="btn btn-editorial-rect">
-              <span>EXPLORE THE UNSEEN. RIDE THE ALPS</span>
-              <span className="btn-icon-arrow" aria-hidden="true">&rarr;</span>
-            </a>
           </div>
 
         </div>
