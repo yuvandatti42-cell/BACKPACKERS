@@ -61,16 +61,15 @@ export const OurStory: React.FC = () => {
 
           {/* Bold Display Headline with Line Breaks */}
           <h2 id="story-heading" className="story-display-heading">
-            <span className="heading-line">HTA ADVENTURES WAS BORN</span>
-            <span className="heading-line">OUT OF A PASSION FOR</span>
-            <span className="heading-line">MOUNTAIN BIKE TRAVEL AND</span>
-            <span className="heading-line text-accent">A DESIRE TO DO THINGS</span>
-            <span className="heading-line">BETTER.</span>
+            <span className="heading-line">BACKPACKERS DESTINATIONS</span>
+            <span className="heading-line">WAS BORN OUT OF A PASSION FOR</span>
+            <span className="heading-line text-accent">OFFBEAT TRAVEL AND A DESIRE TO BRING</span>
+            <span className="heading-line">STRANGERS TOGETHER AS FRIENDS.</span>
           </h2>
 
           {/* Understated Paragraph Copy */}
           <p className="story-body-paragraph">
-            "We wanted to craft our own mountain bike tours that reflected and fuelled our passion for experiencing the world on two wheels. Importantly, this meant they had to be designed with a high level of integrity, local guides and a true understanding of the culture of each destination."
+            "We craft authentic road expeditions and offbeat journeys that reflect and fuel our passion for experiencing the world on two wheels and four. Designed with high integrity, expert local scout guides, and true immersion in every destination."
           </p>
 
         </div>

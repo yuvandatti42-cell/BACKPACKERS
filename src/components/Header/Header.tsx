@@ -92,93 +92,103 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
               </a>
             )}
 
-            <div 
-              className="nav-dropdown-wrapper"
-              onMouseEnter={() => setIsDropdownHovered(true)}
-              onMouseLeave={() => setIsDropdownHovered(false)}
-            >
+            {isNotHome ? (
               <a 
                 href="#destinations" 
-                className="nav-link nav-dropdown-trigger"
+                className="nav-link"
                 onClick={(e) => handleNavClick(e, 'destinations')}
               >
-                DESTINATIONS <span className="dropdown-caret">▾</span>
+                DESTINATIONS
               </a>
-
-              {/* Hover Dropdown Menu */}
-              <div className={`nav-dropdown-menu ${isDropdownHovered ? 'is-visible' : ''}`}>
-                <div className="dropdown-header-tag">+ EXPLORE BY TRIP TYPE</div>
-                
+            ) : (
+              <div 
+                className="nav-dropdown-wrapper"
+                onMouseEnter={() => setIsDropdownHovered(true)}
+                onMouseLeave={() => setIsDropdownHovered(false)}
+              >
                 <a 
                   href="#destinations" 
-                  className="dropdown-item-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
+                  className="nav-link nav-dropdown-trigger"
+                  onClick={(e) => handleNavClick(e, 'destinations')}
                 >
-                  <img src="/type_weekend.jpg" alt="" className="dropdown-thumb-img" />
-                  <div className="dropdown-item-text">
-                    <span className="item-title">Weekend Trips</span>
-                    <span className="item-sub">Quick 2–3 Day Escapes</span>
-                  </div>
+                  DESTINATIONS <span className="dropdown-caret">▾</span>
                 </a>
 
-                <a 
-                  href="#destinations" 
-                  className="dropdown-item-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
-                >
-                  <img src="/type_expedition.jpg" alt="" className="dropdown-thumb-img" />
-                  <div className="dropdown-item-text">
-                    <span className="item-title">Long Expedition</span>
-                    <span className="item-sub">6–14 Day Overlands</span>
-                  </div>
-                </a>
+                {/* Hover Dropdown Menu */}
+                <div className={`nav-dropdown-menu ${isDropdownHovered ? 'is-visible' : ''}`}>
+                  <div className="dropdown-header-tag">+ EXPLORE BY TRIP TYPE</div>
+                  
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-item-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
+                  >
+                    <img src="/type_weekend.jpg" alt="" className="dropdown-thumb-img" />
+                    <div className="dropdown-item-text">
+                      <span className="item-title">Weekend Trips</span>
+                      <span className="item-sub">Quick 2–3 Day Escapes</span>
+                    </div>
+                  </a>
 
-                <a 
-                  href="#destinations" 
-                  className="dropdown-item-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
-                >
-                  <img src="/type_biketrip.jpg" alt="" className="dropdown-thumb-img" />
-                  <div className="dropdown-item-text">
-                    <span className="item-title">Bike Trips</span>
-                    <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
-                  </div>
-                </a>
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-item-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
+                  >
+                    <img src="/type_expedition.jpg" alt="" className="dropdown-thumb-img" />
+                    <div className="dropdown-item-text">
+                      <span className="item-title">Long Expedition</span>
+                      <span className="item-sub">6–14 Day Overlands</span>
+                    </div>
+                  </a>
 
-                <a 
-                  href="#destinations" 
-                  className="dropdown-item-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
-                >
-                  <img src="/type_offbeaten.jpg" alt="" className="dropdown-thumb-img" />
-                  <div className="dropdown-item-text">
-                    <span className="item-title">Off Beaten Places</span>
-                    <span className="item-sub">Raw Backcountry Routes</span>
-                  </div>
-                </a>
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-item-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
+                  >
+                    <img src="/type_biketrip.jpg" alt="" className="dropdown-thumb-img" />
+                    <div className="dropdown-item-text">
+                      <span className="item-title">Bike Trips</span>
+                      <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
+                    </div>
+                  </a>
 
-                <a 
-                  href="#destinations" 
-                  className="dropdown-item-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}
-                >
-                  <img src="/type_private.jpg" alt="" className="dropdown-thumb-img" />
-                  <div className="dropdown-item-text">
-                    <span className="item-title">Private Trips</span>
-                    <span className="item-sub">Bespoke Custom Squads</span>
-                  </div>
-                </a>
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-item-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
+                  >
+                    <img src="/type_offbeaten.jpg" alt="" className="dropdown-thumb-img" />
+                    <div className="dropdown-item-text">
+                      <span className="item-title">Off Beaten Places</span>
+                      <span className="item-sub">Raw Backcountry Routes</span>
+                    </div>
+                  </a>
 
-                <a 
-                  href="#destinations" 
-                  className="dropdown-footer-link"
-                  onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
-                >
-                  <span>VIEW ALL DESTINATIONS</span>
-                  <span>&rarr;</span>
-                </a>
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-item-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}
+                  >
+                    <img src="/type_private.jpg" alt="" className="dropdown-thumb-img" />
+                    <div className="dropdown-item-text">
+                      <span className="item-title">Private Trips</span>
+                      <span className="item-sub">Bespoke Custom Squads</span>
+                    </div>
+                  </a>
+
+                  <a 
+                    href="#destinations" 
+                    className="dropdown-footer-link"
+                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
+                  >
+                    <span>VIEW ALL DESTINATIONS</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
 
             <a 
               href="#featured-tours" 

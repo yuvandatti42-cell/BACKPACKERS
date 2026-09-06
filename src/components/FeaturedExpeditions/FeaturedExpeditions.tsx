@@ -146,15 +146,6 @@ export const FeaturedExpeditions: React.FC = () => {
             <p className="expeditions-lead-desc">
               "Take the first step towards your next life-affirming adventure."
             </p>
-
-            <div className="header-carousel-buttons">
-              <button onClick={handlePrev} className="btn-header-arrow" aria-label="Previous Tour">
-                &larr; PREV
-              </button>
-              <button onClick={handleNext} className="btn-header-arrow" aria-label="Next Tour">
-                NEXT &rarr;
-              </button>
-            </div>
           </div>
         </div>
 
