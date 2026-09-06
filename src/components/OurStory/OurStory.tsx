@@ -59,12 +59,9 @@ export const OurStory: React.FC = () => {
           {/* Eyebrow label */}
           <span className="story-eyebrow">+ OUR STORY</span>
 
-          {/* Bold Display Headline with Line Breaks */}
+          {/* Display Headline */}
           <h2 id="story-heading" className="story-display-heading">
-            <span className="heading-line">BACKPACKERS DESTINATIONS</span>
-            <span className="heading-line">WAS BORN OUT OF A PASSION FOR</span>
-            <span className="heading-line text-accent">OFFBEAT TRAVEL AND A DESIRE TO BRING</span>
-            <span className="heading-line">STRANGERS TOGETHER AS FRIENDS.</span>
+            BACKPACKERS DESTINATIONS WAS BORN OUT OF A PASSION FOR <span className="text-accent">OFFBEAT TRAVEL</span> AND A DESIRE TO BRING STRANGERS TOGETHER AS FRIENDS.
           </h2>
 
           {/* Understated Paragraph Copy */}
