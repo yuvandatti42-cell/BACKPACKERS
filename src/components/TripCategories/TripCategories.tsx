@@ -29,7 +29,6 @@ export const TripCategories: React.FC = () => {
               </div>
             </div>
           </div>
-          <span className="text-meta header-corridor-meta">SELECT A CORRIDOR</span>
         </div>
 
         {/* Editorial Interactive Layout */}
