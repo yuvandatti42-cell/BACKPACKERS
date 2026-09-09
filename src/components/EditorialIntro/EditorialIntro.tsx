@@ -15,7 +15,14 @@ export const EditorialIntro: React.FC = () => {
               loading="lazy"
               decoding="async"
             />
-            {/* Image banner without text overlay */}
+            <div className="panorama-overlay">
+              <h2 id="mission-heading" className="panorama-heading">
+                <span className="panorama-heading-line">WHERE</span>
+                <span className="panorama-heading-line">WILL THE</span>
+                <span className="panorama-heading-line">ROAD TAKE</span>
+                <span className="panorama-heading-line highlight">YOU?</span>
+              </h2>
+            </div>
           </div>
         </div>
 
