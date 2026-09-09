@@ -466,7 +466,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                               handleBookInquiry(item.region);
                             }}
                           >
-                            INQUIRE &rarr;
+                            INQUIRE THIS ROUTE &rarr;
                           </button>
                           <a 
                             href={`https://wa.me/917207681067?text=Hi%2C%20I%20want%20to%20see%20details%20and%20catalog%20for%20${encodeURIComponent(item.title)}`}
