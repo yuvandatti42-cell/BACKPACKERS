@@ -31,8 +31,8 @@ export const TRIPS_DATA: Trip[] = [
     terrain: 'Plateaus & Forest Trails',
     format: 'Bike & Drive',
     description: 'Connecting the boulder valleys of Hampi with the dense coffee estate roads of Chikmagalur and Coorg.',
-    image: '/dest_karnataka.jpg',
-    alt: 'Historic boulder landscape of Hampi, Karnataka'
+    image: '/sty.jpeg',
+    alt: 'Traveller with arms outstretched at mountain valley pass'
   },
   {
     id: 'tamil-nadu-passes',

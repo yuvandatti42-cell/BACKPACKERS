@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
                   >
-                    <img src="/type_weekend.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/wkndtp.jpeg" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Weekend Trips</span>
                       <span className="item-sub">Quick 2–3 Day Escapes</span>
@@ -135,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
                   >
-                    <img src="/type_expedition.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/long.jpg" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Long Expedition</span>
                       <span className="item-sub">6–14 Day Overlands</span>
@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
                   >
-                    <img src="/type_biketrip.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/bike.jpg" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Bike Trips</span>
                       <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
@@ -159,7 +159,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
                   >
-                    <img src="/type_offbeaten.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/off.jpg" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Off Beaten Places</span>
                       <span className="item-sub">Raw Backcountry Routes</span>
@@ -171,7 +171,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}
                   >
-                    <img src="/type_private.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/priv.jpg" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Private Trips</span>
                       <span className="item-sub">Bespoke Custom Squads</span>
@@ -270,24 +270,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
           >
             HOME
           </a>
-
-          <div className="mobile-subgroup">
-            <a 
-              href="#destinations" 
-              className="mobile-nav-link" 
-              onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
-            >
-              DESTINATIONS
-            </a>
-            <div className="mobile-sublinks">
-              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}><img src="/type_weekend.jpg" alt="" className="mobile-thumb-img" /> Weekend Trips</a>
-              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}><img src="/type_expedition.jpg" alt="" className="mobile-thumb-img" /> Long Expedition</a>
-              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}><img src="/type_biketrip.jpg" alt="" className="mobile-thumb-img" /> Bike Trips</a>
-              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}><img src="/type_offbeaten.jpg" alt="" className="mobile-thumb-img" /> Off Beaten Places</a>
-              <a href="#destinations" onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}><img src="/type_private.jpg" alt="" className="mobile-thumb-img" /> Private Trips</a>
-            </div>
-          </div>
-
+          <a 
+            href="#destinations" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
+          >
+            DESTINATIONS
+          </a>
           <a 
             href="#featured-tours" 
             className="mobile-nav-link" 

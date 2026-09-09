@@ -1,170 +1,127 @@
 /* ==========================================================================
-   CHIBI BIKER TRAVELLER — CUTE & LIVELY WALKING ANIMATIONS
+   MINI MILITIA MASCOT ON MOTORBIKE — VECTOR SVG ANIMATIONS
    ========================================================================== */
 
-.traveller-chibi-svg {
+.traveller-bike-svg {
   display: block;
   user-select: none;
   pointer-events: none;
   overflow: visible;
 }
 
+/* Engine Vibration & Suspension Movement */
+.traveller-bike-svg.is-riding .bike-assembly {
+  animation: bikeRideVibration 0.25s linear infinite alternate;
+  transform-origin: 50px 66px;
+}
+
+/* Wheel Rim & Spokes Rotation */
+.traveller-bike-svg.is-riding .wheel-rear .wheel-spokes {
+  animation: wheelRotate 0.35s linear infinite;
+  transform-origin: 26px 66px;
+}
+
+.traveller-bike-svg.is-riding .wheel-front .wheel-spokes {
+  animation: wheelRotate 0.35s linear infinite;
+  transform-origin: 76px 66px;
+}
+
+/* Jetpack Thruster Flame Pulse */
+.traveller-bike-svg.is-riding .jet-flame {
+  animation: jetFlameFlicker 0.15s ease-in-out infinite alternate;
+  transform-origin: 24px 46px;
+}
+
+/* Dust Particles Drifting Rearward */
+.traveller-bike-svg.is-riding .dust-particle.p1 {
+  animation: dustDrift 0.4s linear infinite;
+}
+.traveller-bike-svg.is-riding .dust-particle.p2 {
+  animation: dustDrift 0.5s linear infinite 0.1s;
+}
+.traveller-bike-svg.is-riding .dust-particle.p3 {
+  animation: dustDrift 0.6s linear infinite 0.2s;
+}
+
+/* Exhaust Smoke Floating & Fading */
+.traveller-bike-svg.is-riding .smoke-puff.s1 {
+  animation: smokePuff 0.6s ease-out infinite;
+}
+.traveller-bike-svg.is-riding .smoke-puff.s2 {
+  animation: smokePuff 0.6s ease-out infinite 0.2s;
+}
+.traveller-bike-svg.is-riding .smoke-puff.s3 {
+  animation: smokePuff 0.6s ease-out infinite 0.4s;
+}
+
 /* ==========================================================================
-   CUTE LIVELY WALK CYCLE ANIMATIONS
+   KEYFRAME DEFINITIONS
    ========================================================================== */
 
-/* Torso & Big Helmet cute rhythmic bouncy stride */
-.traveller-chibi-svg.is-walking .chibi-torso-group {
-  animation: chibiCuteBob 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-  transform-origin: 32px 58px;
-}
-
-/* Big Helmet subtle cute tilt/nod */
-.traveller-chibi-svg.is-walking .chibi-helmet {
-  animation: chibiHelmetNod 0.5s ease-in-out infinite alternate;
-  transform-origin: 38px 30px;
-}
-
-/* Cute Backpack jiggle with steps */
-.traveller-chibi-svg.is-walking .chibi-backpack {
-  animation: chibiPackJiggle 0.5s ease-in-out infinite alternate;
-  transform-origin: 22px 50px;
-}
-
-/* Near (Right) Leg: energetic, determined step */
-.traveller-chibi-svg.is-walking .chibi-leg-front {
-  transform-origin: 29px 56px;
-  animation: chibiLegFront 1.0s ease-in-out infinite;
-}
-
-/* Far (Left) Leg: complementary lively stride */
-.traveller-chibi-svg.is-walking .chibi-leg-back {
-  transform-origin: 25px 56px;
-  animation: chibiLegBack 1.0s ease-in-out infinite;
-}
-
-/* Near (Right) Arm: cute cheerful arm swing */
-.traveller-chibi-svg.is-walking .chibi-arm-front {
-  transform-origin: 32px 41px;
-  animation: chibiArmFront 1.0s ease-in-out infinite;
-}
-
-/* Far (Left) Arm: counter swing */
-.traveller-chibi-svg.is-walking .chibi-arm-back {
-  transform-origin: 25px 40px;
-  animation: chibiArmBack 1.0s ease-in-out infinite;
-}
-
-/* ==========================================================================
-   LIVELY KEYFRAMES
-   ========================================================================== */
-
-/* Bouncy Torso bob up and down with walking cadence */
-@keyframes chibiCuteBob {
+/* Engine vibration up and down */
+@keyframes bikeRideVibration {
   0% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-3.5px) rotate(1.2deg);
+    transform: translateY(-1.2px) rotate(0.4deg);
   }
   100% {
-    transform: translateY(0.5px) rotate(-0.5deg);
+    transform: translateY(0.8px) rotate(-0.3deg);
   }
 }
 
-/* Big Helmet cute nodding */
-@keyframes chibiHelmetNod {
-  0% {
-    transform: rotate(-1.5deg);
+/* 360 degree wheel spinning */
+@keyframes wheelRotate {
+  from {
+    transform: rotate(0deg);
   }
-  100% {
-    transform: rotate(2deg);
-  }
-}
-
-/* Backpack jiggle */
-@keyframes chibiPackJiggle {
-  0% {
-    transform: translateY(0px) rotate(-1deg);
-  }
-  100% {
-    transform: translateY(-2.5px) rotate(2deg);
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* Front Leg energetic kick and step */
-@keyframes chibiLegFront {
+/* Jetpack thruster flame flickering */
+@keyframes jetFlameFlicker {
   0% {
-    transform: rotate(-22deg); /* Heel strike forward */
-  }
-  25% {
-    transform: rotate(-5deg);  /* Mid support */
-  }
-  50% {
-    transform: rotate(20deg);   /* Push off rear */
-  }
-  75% {
-    transform: rotate(8deg);   /* Knee bends swinging forward */
+    transform: scale(0.9) opacity(0.8);
   }
   100% {
-    transform: rotate(-22deg);
+    transform: scale(1.2) opacity(1);
   }
 }
 
-/* Back Leg complementary step */
-@keyframes chibiLegBack {
+/* Tire dust particles drift back and fade out */
+@keyframes dustDrift {
   0% {
-    transform: rotate(20deg);   /* Pushing off rear */
-  }
-  25% {
-    transform: rotate(8deg);   /* Knee swinging forward */
-  }
-  50% {
-    transform: rotate(-22deg); /* Heel strike forward */
-  }
-  75% {
-    transform: rotate(-5deg);  /* Mid support */
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
   }
   100% {
-    transform: rotate(20deg);
+    transform: translate(-15px, -6px) scale(1.6);
+    opacity: 0;
   }
 }
 
-/* Front Arm cheerful swing */
-@keyframes chibiArmFront {
+/* Exhaust smoke puffs expanding and floating back */
+@keyframes smokePuff {
   0% {
-    transform: rotate(18deg);
-  }
-  50% {
-    transform: rotate(-18deg);
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0.6;
   }
   100% {
-    transform: rotate(18deg);
-  }
-}
-
-/* Back Arm counter swing */
-@keyframes chibiArmBack {
-  0% {
-    transform: rotate(-18deg);
-  }
-  50% {
-    transform: rotate(18deg);
-  }
-  100% {
-    transform: rotate(-18deg);
+    transform: translate(-18px, -10px) scale(2.2);
+    opacity: 0;
   }
 }
 
 /* Accessibility: Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .traveller-chibi-svg.is-walking .chibi-torso-group,
-  .traveller-chibi-svg.is-walking .chibi-helmet,
-  .traveller-chibi-svg.is-walking .chibi-backpack,
-  .traveller-chibi-svg.is-walking .chibi-leg-front,
-  .traveller-chibi-svg.is-walking .chibi-leg-back,
-  .traveller-chibi-svg.is-walking .chibi-arm-front,
-  .traveller-chibi-svg.is-walking .chibi-arm-back {
+  .traveller-bike-svg.is-riding .bike-assembly,
+  .traveller-bike-svg.is-riding .wheel-spokes,
+  .traveller-bike-svg.is-riding .jet-flame,
+  .traveller-bike-svg.is-riding .dust-particle,
+  .traveller-bike-svg.is-riding .smoke-puff {
     animation: none !important;
   }
 }

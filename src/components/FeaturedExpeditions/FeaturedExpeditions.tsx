@@ -1,14 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { EXPEDITIONS_DATA } from '../../data/expeditionsData';
 import './FeaturedExpeditions.css';
 
-const REPEAT_COUNT = 5;
+const REPEAT_COUNT = 3;
 const INFINITE_EXPEDITIONS = Array.from({ length: REPEAT_COUNT }, () => EXPEDITIONS_DATA).flat();
 const TOTAL_ITEMS = EXPEDITIONS_DATA.length;
-const INITIAL_INDEX = TOTAL_ITEMS * 2; // Start in middle set
+const INITIAL_INDEX = TOTAL_ITEMS; // Start in middle set
 
 export const FeaturedExpeditions: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const animFrameRef = useRef<number | null>(null);
+
   const [activeIndex, setActiveIndex] = useState<number>(INITIAL_INDEX);
   const [stepWidth, setStepWidth] = useState<number>(322);
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -30,13 +32,13 @@ export const FeaturedExpeditions: React.FC = () => {
     };
 
     updateStepWidth();
-    window.addEventListener('resize', updateStepWidth);
+    window.addEventListener('resize', updateStepWidth, { passive: true });
     return () => window.removeEventListener('resize', updateStepWidth);
   }, []);
 
   // Seamless loop reset when activeIndex reaches boundary zones
   useEffect(() => {
-    if (activeIndex >= TOTAL_ITEMS * 3.5 || activeIndex <= TOTAL_ITEMS * 0.5) {
+    if (activeIndex >= TOTAL_ITEMS * 2.2 || activeIndex <= TOTAL_ITEMS * 0.2) {
       const timer = setTimeout(() => {
         setDisableTransition(true);
         const normalized = INITIAL_INDEX + (((activeIndex % TOTAL_ITEMS) + TOTAL_ITEMS) % TOTAL_ITEMS);
@@ -52,17 +54,17 @@ export const FeaturedExpeditions: React.FC = () => {
     }
   }, [activeIndex]);
 
-  const handleNext = (e?: React.MouseEvent) => {
+  const handleNext = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setDisableTransition(false);
     setActiveIndex((prev) => prev + 1);
-  };
+  }, []);
 
-  const handlePrev = (e?: React.MouseEvent) => {
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setDisableTransition(false);
     setActiveIndex((prev) => prev - 1);
-  };
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setDisableTransition(false);
@@ -73,14 +75,20 @@ export const FeaturedExpeditions: React.FC = () => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || dragStartX === null) return;
-    setDragOffset(e.clientX - dragStartX);
+    const currentX = e.clientX;
+    if (animFrameRef.current !== null) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    animFrameRef.current = requestAnimationFrame(() => {
+      setDragOffset(currentX - dragStartX);
+    });
   };
 
   const handleMouseUp = () => {
     if (isDragging) {
-      if (dragOffset < -50) {
+      if (dragOffset < -40) {
         handleNext();
-      } else if (dragOffset > 50) {
+      } else if (dragOffset > 40) {
         handlePrev();
       } else {
         setDragOffset(0);
@@ -107,14 +115,20 @@ export const FeaturedExpeditions: React.FC = () => {
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || dragStartX === null) return;
-    setDragOffset(e.touches[0].clientX - dragStartX);
+    const currentX = e.touches[0].clientX;
+    if (animFrameRef.current !== null) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    animFrameRef.current = requestAnimationFrame(() => {
+      setDragOffset(currentX - dragStartX);
+    });
   };
 
   const handleTouchEnd = () => {
     if (isDragging) {
-      if (dragOffset < -40) {
+      if (dragOffset < -35) {
         handleNext();
-      } else if (dragOffset > 40) {
+      } else if (dragOffset > 35) {
         handlePrev();
       } else {
         setDragOffset(0);
@@ -193,7 +207,7 @@ export const FeaturedExpeditions: React.FC = () => {
             className="expeditions-carousel-track"
             style={{ 
               transform: `translate3d(${currentTransform}px, 0, 0)`,
-              transition: (isDragging || disableTransition) ? 'none' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+              transition: (isDragging || disableTransition) ? 'none' : 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             {INFINITE_EXPEDITIONS.map((exp, idx) => {
@@ -218,8 +232,10 @@ export const FeaturedExpeditions: React.FC = () => {
                           src={exp.image} 
                           alt={exp.alt} 
                           className="card-img" 
+                          style={exp.objectPosition ? { objectPosition: exp.objectPosition } : undefined}
                           draggable="false"
                           loading="lazy"
+                          decoding="async"
                         />
                         <div className="card-media-overlay" />
                         

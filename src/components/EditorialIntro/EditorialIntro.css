@@ -6,8 +6,9 @@
 .editorial-mission-section {
   background-color: #1F1F1D;
   color: #F5F4EF;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
@@ -15,7 +16,7 @@
 
 /* Wide Landscape Feature Banner (pi2.jpg) */
 .mission-panorama-card {
-  margin-top: 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -293,9 +294,7 @@
 
 .panorama-image-wrap img {
   width: 100%;
-  aspect-ratio: 16 / 7; /* Cinematic wide landscape */
-  object-fit: cover;
-  object-position: center center;
+  height: auto;
   display: block;
   border: none;
   border-radius: 0;
@@ -314,7 +313,7 @@
   background: linear-gradient(to top, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.35) 65%, transparent 100%);
   padding: 1.35rem 1.5rem 1.15rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
   z-index: 2;
 }

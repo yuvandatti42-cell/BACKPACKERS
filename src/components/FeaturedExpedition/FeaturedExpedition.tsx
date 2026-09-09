@@ -51,12 +51,7 @@ export const FeaturedExpedition: React.FC = () => {
             </div>
           </div>
 
-          <div className="expedition-cta">
-            <a href="#planner" className="btn btn-white btn-expedition">
-              <span>BOOK THIS RUN</span>
-              <span className="btn-icon-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+
         </div>
 
       </div>

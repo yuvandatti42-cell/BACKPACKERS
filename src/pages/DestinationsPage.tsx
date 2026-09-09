@@ -23,8 +23,8 @@ export const TRIP_TYPES: TripTypeInfo[] = [
     title: 'WEEKEND TRIPS',
     subtitle: 'Quick 2–3 Day Escapes',
     badgeText: 'SHORT & INTENSE',
-    image: '/type_weekend.jpg',
-    description: 'Fast-paced mountain ridge runs, rainforest switchback loops, and coastal getaways designed for riders with limited time.',
+    image: '/wkndtp.jpeg',
+    description: 'Fast-paced mountain ridge runs and coastal getaways designed for tight schedules.',
     durationRange: '2 — 3 DAYS'
   },
   {
@@ -32,8 +32,8 @@ export const TRIP_TYPES: TripTypeInfo[] = [
     title: 'LONG EXPEDITION',
     subtitle: '6–14 Day Deep Overlands',
     badgeText: 'FULL TRANSIT',
-    image: '/type_expedition.jpg',
-    description: 'Multi-day endurance runs crossing 17,000+ ft passes, cold desert plateaus, and trans-continental mountain frontiers.',
+    image: '/long.jpg',
+    description: 'Multi-day endurance runs crossing 17,000+ ft passes and cold desert plateaus.',
     durationRange: '6 — 14 DAYS'
   },
   {
@@ -41,8 +41,8 @@ export const TRIP_TYPES: TripTypeInfo[] = [
     title: 'BIKE TRIPS',
     subtitle: 'Motorcycle & MTB Traverses',
     badgeText: 'TWO-WHEEL FREEDOM',
-    image: '/type_biketrip.jpg',
-    description: 'Scouted two-wheeler routes with dedicated mechanic support, backup luggage trucks, and satellite communications.',
+    image: '/bike.jpg',
+    description: 'Scouted two-wheeler routes backed by dedicated support trucks and satellite comms.',
     durationRange: '3 — 10 DAYS'
   },
   {
@@ -50,18 +50,18 @@ export const TRIP_TYPES: TripTypeInfo[] = [
     title: 'OFF BEATEN PLACES',
     subtitle: 'Raw Backcountry Routes',
     badgeText: '100% UNSCRIPTED',
-    image: '/type_offbeaten.jpg',
-    description: 'Untouched valley trails, cliffside monasteries, river nullah crossings, and wild lake camping far from tourist buses.',
+    image: '/off.jpg',
+    description: 'Untouched valley trails, cliffside monasteries, and wild backcountry camping.',
     durationRange: '4 — 12 DAYS'
   },
   {
     id: 'private',
     title: 'PRIVATE TRIPS',
     subtitle: 'Bespoke Custom Squads',
-    badgeText: 'TAILORED LOGISTICS',
-    image: '/type_private.jpg',
-    description: 'Exclusive private group runs tailored to your exact schedule, vehicle preferences, squad size, and difficulty level.',
-    durationRange: 'CUSTOM RUNS'
+    badgeText: 'BESPOKE SQUAD',
+    image: '/priv.jpg',
+    description: 'Exclusive private group runs tailored to your exact schedule, squad size, and route preference.',
+    durationRange: 'CUSTOM DATES'
   }
 ];
 
@@ -87,56 +87,8 @@ export interface CorridorDetail {
 
 export const DESTINATION_CORRIDORS: CorridorDetail[] = [
   {
-    id: 'ladakh',
-    number: '01',
-    region: 'LADAKH',
-    title: 'TRANS-HIMALAYAN HIGH PASSES',
-    subtitle: 'Khardung La • Chang La • Zanskar Valley Corridor',
-    tripTypes: ['long-expedition', 'bike-trips', 'off-beaten'],
-    elevation: '17,582 FT / 5,359 M',
-    difficulty: 'ADVANCED',
-    duration: '8 DAYS / 7 NIGHTS',
-    distance: '1,200 KM',
-    bestSeason: 'JUNE — SEPTEMBER',
-    squadSize: '6 - 10 RIDERS',
-    terrain: 'Glacial Scree, High Passes & Dry Alpine Valleys',
-    highlights: [
-      'Scale 3 of the world’s highest motorable mountain passes',
-      'Traverse barren cold desert plateau of More Plains',
-      'Wild camping beside remote high-altitude salt lakes',
-      'Navigating deep river crossings in Nubra & Shyok Valleys'
-    ],
-    description: 'A legendary overland expedition through the roof of India. Negotiate razor-thin mountain passes, navigate boulder-strewn glacial rivers, and ride along the surreal high-altitude lakes of Ladakh.',
-    image: '/ladakh.jpg',
-    frameColor: '#768C9E'
-  },
-  {
-    id: 'nepal',
-    number: '02',
-    region: 'NEPAL',
-    title: 'MUSTANG DIRT CORRIDOR & FRONTIERS',
-    subtitle: 'Annapurna Circuit • Muktinath • Jomsom Trail',
-    tripTypes: ['long-expedition', 'off-beaten', 'bike-trips'],
-    elevation: '14,100 FT / 4,300 M',
-    difficulty: 'INTERMEDIATE',
-    duration: '6 DAYS / 5 NIGHTS',
-    distance: '850 KM',
-    bestSeason: 'OCTOBER — MAY',
-    squadSize: '4 - 8 RIDERS',
-    terrain: 'Deep Canyon Tracks, Suspension Bridges & Cliff Trails',
-    highlights: [
-      'Riding beneath 8,000m giant peaks of Dhaulagiri & Annapurna',
-      'Cross the famous suspension bridges of Kali Gandaki gorge',
-      'Explore ancient Tibetan Buddhist monasteries & cliff caves',
-      'Raw Himalayan dirt tracks through Mustang forbidden valley'
-    ],
-    description: 'An unscripted journey into the rain-shadow territory of Upper Mustang. Ride along cliff-carved trails through the deepest gorge on Earth under giant Himalayan summits.',
-    image: '/nep.jpg',
-    frameColor: '#BC5F44'
-  },
-  {
     id: 'kerala-weekend',
-    number: '03',
+    number: '01',
     region: 'WESTERN GHATS',
     title: 'MISTY GHATS WEEKEND ESCAPE',
     subtitle: 'Munnar Ridge • 36 Hairpin Curves • Tea Plantations',
@@ -160,7 +112,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
   },
   {
     id: 'spiti',
-    number: '04',
+    number: '02',
     region: 'SPITI VALLEY',
     title: 'DESERT MOUNTAIN CIRCUIT',
     subtitle: 'Kunzum Pass • Kaza • Chandratal Moon Lake',
@@ -184,7 +136,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
   },
   {
     id: 'zanskar-offbeaten',
-    number: '05',
+    number: '03',
     region: 'ZANSKAR',
     title: 'UNCHARTED ZANSKAR CANYON TRAIL',
     subtitle: 'Shinku La • Phugtal Cave Monastery • Padum Run',
@@ -208,7 +160,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
   },
   {
     id: 'bhutan',
-    number: '06',
+    number: '04',
     region: 'BHUTAN',
     title: 'LAST THUNDER DRAGON KINGDOM',
     subtitle: 'Dochula Pass • Paro Taktsang • Punakha Valley',
@@ -232,7 +184,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
   },
   {
     id: 'private-custom-run',
-    number: '07',
+    number: '05',
     region: 'PRIVATE RUNS',
     title: 'CUSTOM TAILORED OVERLAND SQUADRON',
     subtitle: 'Bespoke Route Scouting • Private Support Truck & Escort',
@@ -263,7 +215,7 @@ interface DestinationsPageProps {
 
 export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, initialFilter = 'all' }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
-  const [activeCorridorId, setActiveCorridorId] = useState<string>('ladakh');
+  const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala-weekend');
 
   React.useEffect(() => {
     if (initialFilter) {
@@ -300,16 +252,17 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
             <div className="trip-types-grid">
               {TRIP_TYPES.map((type) => {
                 const isActive = selectedFilter === type.id;
+                const isFeatured = type.id === 'private';
                 return (
                   <div 
                     key={type.id}
-                    className={`trip-type-card ${isActive ? 'is-active' : ''}`}
+                    className={`trip-type-card ${isActive ? 'is-active' : ''} ${isFeatured ? 'is-featured' : ''}`}
                     onClick={() => setSelectedFilter(type.id)}
                   >
+                    {isFeatured && <span className="featured-ribbon-tag">BESPOKE</span>}
                     <div className="type-card-media-wrap">
                       <img src={type.image} alt={type.title} className="type-card-img" />
                       <div className="type-card-overlay" />
-                      <span className="type-badge">{type.badgeText}</span>
                     </div>
 
                     <div className="type-card-content">
@@ -367,6 +320,61 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
           </div>
         </section>
 
+        {/* DEDICATED WHATSAPP CATALOG HIGHLIGHT BANNER */}
+        <section className="dest-wa-catalog-banner">
+          <div className="container">
+            <div className="wa-catalog-card">
+              <div className="wa-card-left">
+                <div className="wa-badge-row">
+                  <span className="wa-status-dot" />
+                  <span className="text-meta">+ OFFICIAL WHATSAPP CATALOG</span>
+                  <span className="wa-verified-pill">VERIFIED STORE DESK</span>
+                </div>
+                <h2 className="wa-catalog-title">
+                  EXPLORE ALL ITINERARIES ON <span className="wa-brand-accent">WHATSAPP</span>
+                </h2>
+
+                
+                <div className="wa-features-pills">
+                  <span className="wa-feature-tag">⚡ Direct PDF Downloads</span>
+                  <span className="wa-feature-tag">🗺️ Day-wise Route Map</span>
+                  <span className="wa-feature-tag">💬 24/7 Scout Support</span>
+                  <span className="wa-feature-tag">🏷️ Live Season Pricing</span>
+                </div>
+              </div>
+
+              <div className="wa-card-right">
+                <div className="wa-action-box">
+                  <div className="wa-number-badge">
+                    <span className="wa-number-label">WHATSAPP DESK</span>
+                    <span className="wa-catalog-number">+91 72076 81067</span>
+                  </div>
+                  <a 
+                    href="https://wa.me/c/917207681067" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-wa-primary"
+                  >
+                    <svg className="wa-icon-lg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.337a9.96 9.96 0 004.779 1.217h.005c5.506 0 9.989-4.478 9.99-9.984A9.97 9.97 0 0012.012 2zm.005 16.273h-.004a8.27 8.27 0 01-4.218-1.155l-.302-.18-3.13.814-3.076-.197a8.27 8.27 0 01-1.267-4.491c.002-4.57 3.716-8.28 8.291-8.28a8.25 8.25 0 015.86 2.427 8.23 8.23 0 012.424 5.856c-.002 4.57-3.717 8.28-8.291 8.28zm4.542-6.2c-.249-.125-1.472-.726-1.7-.809-.229-.083-.396-.125-.562.125-.166.249-.645.809-.79.975-.146.166-.291.187-.54.062s-1.053-.388-2.006-1.238c-.742-.662-1.243-1.48-1.389-1.73-.146-.249-.015-.384.11-.508.112-.112.249-.291.374-.437.125-.146.166-.249.249-.415.083-.166.042-.312-.021-.437-.062-.125-.562-1.352-.77-1.851-.202-.486-.408-.42-.562-.428l-.479-.009c-.166 0-.437.062-.666.312s-.874.853-.874 2.08.895 2.41 1.02 2.577c.125.166 1.761 2.689 4.267 3.771.596.257 1.061.411 1.424.526.598.19 1.142.163 1.572.099.48-.071 1.472-.602 1.68-1.184.208-.582.208-1.08.146-1.184-.062-.104-.229-.166-.479-.291z"/>
+                    </svg>
+                    <span>OPEN WHATSAPP CATALOG &rarr;</span>
+                  </a>
+
+                  <a 
+                    href="https://wa.me/917207681067?text=Hi%20Backpackers%20Destinations%2C%20I%20want%20to%20inquire%20about%20your%20trips" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-wa-secondary"
+                  >
+                    <span>CHAT WITH SCOUT DESK</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Category Filter Tabs */}
         <section className="dest-filter-section">
           <div className="container">
@@ -384,7 +392,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                   className={`filter-btn ${selectedFilter === t.id ? 'is-active' : ''}`}
                   onClick={() => setSelectedFilter(t.id)}
                 >
-                  <img src={t.image} alt="" className="filter-thumb-img" />
                   <span>{t.title}</span>
                 </button>
               ))}
@@ -410,60 +417,73 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                   onClick={() => setActiveCorridorId(item.id)}
                 >
                   <div className="dest-card-frame" style={{ backgroundColor: item.frameColor }}>
-                    <div className="dest-card-img-wrap">
-                      <img src={item.image} alt={item.title} className="dest-card-img" loading="lazy" />
-                      <div className="dest-card-overlay" />
-                      <span className="dest-card-number">#{item.number}</span>
-                      <span className="dest-card-region">{item.region}</span>
-                    </div>
-                  </div>
-
-                  <div className="dest-card-body">
-                    <div className="dest-card-meta-top">
-                      <span className="dest-diff-tag">+ {item.difficulty}</span>
-                      <span className="meta-dot">•</span>
-                      <span className="dest-duration">{item.duration}</span>
-                    </div>
-
-                    <h3 className="dest-card-title">{item.title}</h3>
-                    <p className="dest-card-subtitle">{item.subtitle}</p>
-
-                    {/* Trip Type Badges Pill Row */}
-                    <div className="dest-type-pills-row">
-                      {item.tripTypes.map(tId => {
-                        const tObj = TRIP_TYPES.find(t => t.id === tId);
-                        return tObj ? (
-                          <span key={tId} className="type-pill-tag">
-                            <img src={tObj.image} alt="" className="pill-thumb-img" />
-                            <span>{tObj.title}</span>
-                          </span>
-                        ) : null;
-                      })}
-                    </div>
-
-                    <div className="dest-card-specs-row">
-                      <div className="spec-box">
-                        <span className="spec-label">ALTITUDE</span>
-                        <span className="spec-val">{item.elevation}</span>
+                    <div className="dest-card-inner-canvas">
+                      <div className="dest-card-img-wrap">
+                        <img src={item.image} alt={item.title} className="dest-card-img" loading="lazy" decoding="async" />
+                        <div className="dest-card-overlay" />
+                        <span className="dest-card-number">#{item.number}</span>
+                        <span className="dest-card-region">{item.region}</span>
                       </div>
-                      <div className="spec-box">
-                        <span className="spec-label">SEASON</span>
-                        <span className="spec-val">{item.bestSeason}</span>
+
+                      <div className="dest-card-body">
+                        <div className="dest-card-meta-top">
+                          <span className="dest-diff-tag">+ {item.difficulty}</span>
+                          <span className="meta-dot">•</span>
+                          <span className="dest-duration">{item.duration}</span>
+                        </div>
+
+                        <h3 className="dest-card-title">{item.title}</h3>
+                        <p className="dest-card-subtitle">{item.subtitle}</p>
+
+                        {/* Trip Type Badges Pill Row */}
+                        <div className="dest-type-pills-row">
+                          {item.tripTypes.map(tId => {
+                            const tObj = TRIP_TYPES.find(t => t.id === tId);
+                            return tObj ? (
+                              <span key={tId} className="type-pill-tag">
+                                <span>{tObj.title}</span>
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
+
+                        <div className="dest-card-specs-row">
+                          <div className="spec-box">
+                            <span className="spec-label">ALTITUDE</span>
+                            <span className="spec-val">{item.elevation}</span>
+                          </div>
+                          <div className="spec-box">
+                            <span className="spec-label">SEASON</span>
+                            <span className="spec-val">{item.bestSeason}</span>
+                          </div>
+                        </div>
+
+                        <div className="dest-card-actions">
+                          <button 
+                            className="btn btn-dest-inquire"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleBookInquiry(item.region);
+                            }}
+                          >
+                            INQUIRE &rarr;
+                          </button>
+                          <a 
+                            href={`https://wa.me/917207681067?text=Hi%2C%20I%20want%20to%20see%20details%20and%20catalog%20for%20${encodeURIComponent(item.title)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-wa-card"
+                            onClick={(e) => e.stopPropagation()}
+                            title="View on WhatsApp Catalog"
+                          >
+                            <svg className="wa-icon-sm" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.337a9.96 9.96 0 004.779 1.217h.005c5.506 0 9.989-4.478 9.99-9.984A9.97 9.97 0 0012.012 2zm.005 16.273h-.004a8.27 8.27 0 01-4.218-1.155l-.302-.18-3.13.814-3.076-.197a8.27 8.27 0 01-1.267-4.491c.002-4.57 3.716-8.28 8.291-8.28a8.25 8.25 0 015.86 2.427 8.23 8.23 0 012.424 5.856c-.002 4.57-3.717 8.28-8.291 8.28zm4.542-6.2c-.249-.125-1.472-.726-1.7-.809-.229-.083-.396-.125-.562.125-.166.249-.645.809-.79.975-.146.166-.291.187-.54.062s-1.053-.388-2.006-1.238c-.742-.662-1.243-1.48-1.389-1.73-.146-.249-.015-.384.11-.508.112-.112.249-.291.374-.437.125-.146.166-.249.249-.415.083-.166.042-.312-.021-.437-.062-.125-.562-1.352-.77-1.851-.202-.486-.408-.42-.562-.428l-.479-.009c-.166 0-.437.062-.666.312s-.874.853-.874 2.08.895 2.41 1.02 2.577c.125.166 1.761 2.689 4.267 3.771.596.257 1.061.411 1.424.526.598.19 1.142.163 1.572.099.48-.071 1.472-.602 1.68-1.184.208-.582.208-1.08.146-1.184-.062-.104-.229-.166-.479-.291z"/>
+                            </svg>
+                            <span>CATALOG</span>
+                            <span className="btn-external-arrow" aria-hidden="true">↗</span>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-
-                    <p className="dest-card-desc">{item.description}</p>
-
-                    <div className="dest-card-actions">
-                      <button 
-                        className="btn btn-dest-inquire"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleBookInquiry(item.region);
-                        }}
-                      >
-                        INQUIRE THIS ROUTE &rarr;
-                      </button>
                     </div>
                   </div>
                 </article>
@@ -471,32 +491,27 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
             </div>
           </div>
         </section>
-
-
-
-        {/* Bottom Contact Banner CTA */}
-        <section className="dest-cta-banner">
-          <div className="container">
-            <div className="dest-cta-card">
-              <div className="cta-left">
-                <span className="text-meta cta-eyebrow">+ PRIVATE &amp; CUSTOM EXPEDITIONS</span>
-                <h2 className="cta-title">PLAN YOUR PRIVATE SQUADRON RUN</h2>
-                <p className="cta-desc">
-                  Looking for a Private Trip or specialized Bike Run? Our scouting desk handles custom route clearances, private mechanic escorts, and bespoke expedition logistics.
-                </p>
-              </div>
-              <div className="cta-right">
-                <button 
-                  className="btn btn-primary cta-btn"
-                  onClick={() => handleBookInquiry('Custom')}
-                >
-                  CONTACT SCOUTING DESK &rarr;
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
+
+      {/* Floating WhatsApp Quick Access Button */}
+      <a 
+        href="https://wa.me/c/917207681067" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="wa-floating-badge"
+        aria-label="View WhatsApp Catalog"
+        title="View WhatsApp Catalog"
+      >
+        <div className="wa-float-icon-wrap">
+          <svg className="wa-icon-float" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.337a9.96 9.96 0 004.779 1.217h.005c5.506 0 9.989-4.478 9.99-9.984A9.97 9.97 0 0012.012 2zm.005 16.273h-.004a8.27 8.27 0 01-4.218-1.155l-.302-.18-3.13.814-3.076-.197a8.27 8.27 0 01-1.267-4.491c.002-4.57 3.716-8.28 8.291-8.28a8.25 8.25 0 015.86 2.427 8.23 8.23 0 012.424 5.856c-.002 4.57-3.717 8.28-8.291 8.28zm4.542-6.2c-.249-.125-1.472-.726-1.7-.809-.229-.083-.396-.125-.562.125-.166.249-.645.809-.79.975-.146.166-.291.187-.54.062s-1.053-.388-2.006-1.238c-.742-.662-1.243-1.48-1.389-1.73-.146-.249-.015-.384.11-.508.112-.112.249-.291.374-.437.125-.146.166-.249.249-.415.083-.166.042-.312-.021-.437-.062-.125-.562-1.352-.77-1.851-.202-.486-.408-.42-.562-.428l-.479-.009c-.166 0-.437.062-.666.312s-.874.853-.874 2.08.895 2.41 1.02 2.577c.125.166 1.761 2.689 4.267 3.771.596.257 1.061.411 1.424.526.598.19 1.142.163 1.572.099.48-.071 1.472-.602 1.68-1.184.208-.582.208-1.08.146-1.184-.062-.104-.229-.166-.479-.291z"/>
+          </svg>
+        </div>
+        <div className="wa-float-text">
+          <span className="wa-float-title">WHATSAPP CATALOG</span>
+          <span className="wa-float-sub">Browse Live Itineraries</span>
+        </div>
+      </a>
 
       <Footer />
     </div>

@@ -23,7 +23,7 @@ export const CATEGORIES_DATA: TripCategory[] = [
     number: '03',
     title: 'NORTH INDIA',
     description: 'Cliffside dirt routes through Spiti Valley, Kinnaur, Uttarakhand mountain ridges, and Atal pass circuits.',
-    image: '/tour_spiti.jpg',
+    image: '/north.jpeg',
     alt: 'High altitude desert mountain valley in Spiti, North India'
   },
   {

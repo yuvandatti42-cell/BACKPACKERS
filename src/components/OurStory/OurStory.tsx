@@ -40,14 +40,14 @@ export const OurStory: React.FC = () => {
         {/* Left Side: Asymmetrical Image Collage */}
         <div className="story-media-collage">
           <img 
-            src="/ost.jpg" 
-            alt="Backpackers Destinations Our Story expedition overview" 
+            src="/bpk.jpeg" 
+            alt="Backpackers Destinations adventure motorcyclist in Himalayan valley" 
             className="story-collage-img main-img"
             loading="lazy"
           />
           <img 
             src="/ostt.jpg" 
-            alt="Overland touring rider pausing on scenic mountain trail" 
+            alt="Overland adventure motorcyclist navigating desert terrain" 
             className="story-collage-img secondary-img"
             loading="lazy"
           />

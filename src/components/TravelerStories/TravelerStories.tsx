@@ -131,124 +131,163 @@ export const TravelerStories: React.FC = () => {
       ref={sectionRef}
       className={`traveler-stories-editorial ${isInView ? 'is-in-view' : ''}`} 
       aria-labelledby="stories-heading"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
-      {/* ====================================================================
-          ATMOSPHERIC LAYERS: TACTILE PAPER GRAIN & SLOW MOVING AMBIENT LIGHT
-          ==================================================================== */}
-      <div className="stories-paper-texture" aria-hidden="true" />
-      <div className="stories-ambient-light" aria-hidden="true" />
+      {/* DESKTOP VIEW: Rich Editorial Layout */}
+      <div className="desktop-only-stories">
+        <div className="stories-paper-texture" aria-hidden="true" />
+        <div className="stories-ambient-light" aria-hidden="true" />
+        <StoriesBackgroundMap isRevealed={isInView} />
 
-      {/* ====================================================================
-          TOPOGRAPHIC MAP & FAINT HIMALAYAN MOUNTAIN SILHOUETTES BACKGROUND
-          ==================================================================== */}
-      <StoriesBackgroundMap isRevealed={isInView} />
+        <div className="container stories-container">
+          <div className="testimonial-header">
+            <div className="testimonial-header-left">
+              <span className="text-meta">CLIENT REVIEWS</span>
+              <span className="plus-indicator">+</span>
+            </div>
+          </div>
 
-      <div className="container stories-container">
-        
-        {/* Section Header */}
-        <div className="testimonial-header">
-          <div className="testimonial-header-left">
-            <span className="text-meta">CLIENT REVIEWS</span>
-            <span className="plus-indicator">+</span>
+          <div className="testimonial-grid">
+            <div className="testimonial-content-col">
+              <div className="accent-bars-wrap">
+                {REVIEWS_DATA.map((_, idx) => (
+                  <span 
+                    key={idx} 
+                    onClick={() => {
+                      setIsTransitioning(true);
+                      setTrackIndex(idx);
+                    }}
+                    className={`bar-indicator ${activeIndex === idx ? 'bar-active' : ''}`}
+                    style={{ cursor: 'pointer' }}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <h2 id="stories-heading" className="testimonial-display-title">
+                {activeReview.title}
+              </h2>
+
+              <div className="testimonial-body-text">
+                {activeReview.paragraphs.map((para, pIdx) => (
+                  <p key={pIdx} className="testimonial-para">
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              <div className="testimonial-reviewer-row">
+                <span className="reviewer-identity">{activeReview.reviewer}</span>
+                <div className="reviewer-stars" aria-label={`${activeReview.rating} star rating`}>
+                  {Array.from({ length: activeReview.rating }).map((_, sIdx) => (
+                    <span key={sIdx} className="star-char">★</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-visual-col">
+              <div 
+                className="testimonial-image-wrapper"
+                onMouseMove={handleMouseMove}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div 
+                  className="testimonial-slider-track"
+                  style={{
+                    transform: `translateX(-${trackIndex * 100}%)`,
+                    transition: isTransitioning ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+                  }}
+                >
+                  {LOOPED_REVIEWS.map((review, idx) => (
+                    <div key={`${review.id}-${idx}`} className="slider-slide-item">
+                      <img 
+                        src={review.image} 
+                        alt={`Photo of ${review.reviewer}`} 
+                        className="testimonial-photo"
+                        style={{ 
+                          objectPosition: review.imagePosition || 'center bottom',
+                          transform: (isImageHovered && activeIndex === (idx % totalReviews))
+                            ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
+                            : 'scale(1) translate3d(0, 0, 0)',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Testimonial Slider Grid */}
-        <div className="testimonial-grid">
-          
-          {/* Left Column: Review Content */}
-          <div className="testimonial-content-col">
-            <div className="accent-bars-wrap">
+        <div className="stories-trail-footer-lane" aria-hidden="true">
+          <div className="stories-trail-faint-line" />
+          <div className={`stories-traveller-carrier ${isInView ? 'is-active' : ''}`}>
+            <TravellerCharacterSVG isMoving={isInView} />
+          </div>
+        </div>
+      </div>
+
+      {/* MOBILE VIEW: Clean Minimal Review Section */}
+      <div 
+        className="mobile-only-stories"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="container">
+          <div className="minimal-stories-header">
+            <span className="text-meta">+ RIDER REVIEWS</span>
+            <h2 className="minimal-stories-title">
+              WHAT OUR TRAVELLERS SAY
+            </h2>
+          </div>
+
+          <div className="minimal-reviews-mobile-card">
+            <div className="review-card-header">
+              <div className="review-avatar-wrap">
+                <img src={activeReview.image} alt={activeReview.reviewer} className="review-avatar-img" />
+              </div>
+              <div className="review-meta-info">
+                <h3 className="review-title-text">{activeReview.title}</h3>
+                <div className="review-stars-row" aria-label={`${activeReview.rating} star rating`}>
+                  {'★'.repeat(activeReview.rating)}
+                </div>
+              </div>
+            </div>
+
+            <p className="review-quote-text">
+              "{activeReview.paragraphs[0]}"
+            </p>
+
+            <div className="review-footer-row">
+              <span className="reviewer-name-tag">{activeReview.reviewer}</span>
+              <span className="review-number-tag">#{activeReview.number}</span>
+            </div>
+          </div>
+
+          <div className="minimal-reviews-nav">
+            <button className="minimal-nav-btn" onClick={handlePrev} aria-label="Previous review">
+              &larr; PREV
+            </button>
+            <div className="minimal-dots-wrap">
               {REVIEWS_DATA.map((_, idx) => (
                 <span 
                   key={idx} 
+                  className={`minimal-dot ${activeIndex === idx ? 'is-active' : ''}`}
                   onClick={() => {
                     setIsTransitioning(true);
                     setTrackIndex(idx);
                   }}
-                  className={`bar-indicator ${activeIndex === idx ? 'bar-active' : ''}`}
-                  style={{ cursor: 'pointer' }}
-                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
-
-            <h2 id="stories-heading" className="testimonial-display-title">
-              {activeReview.title}
-            </h2>
-
-            <div className="testimonial-body-text">
-              {activeReview.paragraphs.map((para, pIdx) => (
-                <p key={pIdx} className="testimonial-para">
-                  {para}
-                </p>
-              ))}
-            </div>
-
-            <div className="testimonial-reviewer-row">
-              <span className="reviewer-identity">{activeReview.reviewer}</span>
-              <div className="reviewer-stars" aria-label={`${activeReview.rating} star rating`}>
-                {Array.from({ length: activeReview.rating }).map((_, sIdx) => (
-                  <span key={sIdx} className="star-char">★</span>
-                ))}
-              </div>
-            </div>
+            <button className="minimal-nav-btn" onClick={handleNext} aria-label="Next review">
+              NEXT &rarr;
+            </button>
           </div>
-
-          {/* Right Column: Image with Smooth Sliding Track & Tactile Depth */}
-          <div className="testimonial-visual-col">
-            
-            <div 
-              className="testimonial-image-wrapper"
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div 
-                className="testimonial-slider-track"
-                style={{
-                  transform: `translateX(-${trackIndex * 100}%)`,
-                  transition: isTransitioning ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
-                }}
-              >
-                {LOOPED_REVIEWS.map((review, idx) => (
-                  <div key={`${review.id}-${idx}`} className="slider-slide-item">
-                    <img 
-                      src={review.image} 
-                      alt={`Photo of ${review.reviewer}`} 
-                      className="testimonial-photo"
-                      style={{ 
-                        objectPosition: review.imagePosition || 'center bottom',
-                        transform: (isImageHovered && activeIndex === (idx % totalReviews))
-                          ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
-                          : 'scale(1) translate3d(0, 0, 0)',
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* ====================================================================
-          LOWER PORTION: SMALL RECURRING CHIBI TRAVELLER FOLLOWING ROUTE LINE
-          ==================================================================== */}
-      <div className="stories-trail-footer-lane" aria-hidden="true">
-        <div className="stories-trail-faint-line" />
-        <div className={`stories-traveller-carrier ${isInView ? 'is-active' : ''}`}>
-          <TravellerCharacterSVG isMoving={isInView} />
         </div>
       </div>
-
     </section>
   );
 };

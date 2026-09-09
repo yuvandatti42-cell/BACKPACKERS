@@ -18,6 +18,7 @@ export interface ExpeditionItem {
   maxAltitude?: string;
   bestSeason?: string;
   price?: string;
+  objectPosition?: string;
 }
 
 export const EXPEDITIONS_DATA: ExpeditionItem[] = [
@@ -99,9 +100,10 @@ export const EXPEDITIONS_DATA: ExpeditionItem[] = [
     maxAltitude: '1,929 m (Mullayanagiri)',
     bestSeason: 'Oct - Mar',
     price: '₹27,500',
-    image: '/dest_karnataka.jpg',
-    alt: 'Historical stone boulders and lush Ghats in Karnataka',
+    image: '/sty.jpeg',
+    alt: 'Traveller with arms outstretched overlooking valley in Hampi & Coorg traverse',
     frameColor: '#8C5A48',
+    objectPosition: 'center 60%',
     description: 'Ride through ancient boulder ruins of Hampi into dense coffee plantations and cloud forests of Coorg and Chikmagalur.',
     highlights: ['Hampi UNESCO Heritage Trail', 'Chikmagalur Coffee Ridge', 'Coorg Rainforest Canopy']
   },

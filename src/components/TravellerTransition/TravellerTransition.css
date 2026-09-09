@@ -82,7 +82,8 @@
 }
 
 /* Character SVG styling */
-.traveller-character-svg {
+.traveller-character-svg,
+.traveller-bike-svg {
   height: 48px; /* Small human scale */
   width: auto;
   display: block;

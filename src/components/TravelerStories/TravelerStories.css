@@ -1,22 +1,32 @@
 /* ==========================================================================
    BACKPACKERS DESTINATIONS — TRAVEL STORIES (TESTIMONIALS) SECTION
-   "AN UNFORGETTABLE RIDE" — ENHANCED EDITORIAL TRAVEL JOURNAL AESTHETIC
+   Desktop: Rich Editorial Journal Aesthetic
+   Mobile: Clean Minimal Basic Reviews Card Layout
    ========================================================================== */
 
 .traveler-stories-editorial {
   position: relative;
   background-color: var(--bg-secondary);
-  padding-top: var(--space-3xl);
-  padding-bottom: calc(var(--space-3xl) + 1rem); /* Extra bottom breathing room for footer trail */
   border-bottom: 1px solid var(--border-light);
-  overflow: hidden; /* Guarantee zero horizontal page scrolling */
+  overflow: hidden;
+}
+
+/* Visibility Control */
+.desktop-only-stories {
+  display: block;
+  position: relative;
+  padding-top: var(--space-3xl);
+  padding-bottom: calc(var(--space-3xl) + 1rem);
+}
+
+.mobile-only-stories {
+  display: none;
 }
 
 /* ==========================================================================
-   1. ATMOSPHERIC BACKGROUND LAYERS: PAPER GRAIN & GENTLE AMBIENT LIGHT
+   DESKTOP EDITORIAL STYLES
    ========================================================================== */
 
-/* Tactile film grain / cotton-rag journal paper texture overlay */
 .stories-paper-texture {
   position: absolute;
   inset: 0;
@@ -29,7 +39,6 @@
   z-index: 1;
 }
 
-/* Very slow, subtle shifting ambient light and shadow texture */
 .stories-ambient-light {
   position: absolute;
   inset: 0;
@@ -48,23 +57,10 @@
 }
 
 @keyframes ambientJournalLight {
-  0% {
-    transform: scale(1) translate(0, 0);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.08) translate(3%, 2%);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(0.95) translate(-2%, 3%);
-    opacity: 0.55;
-  }
+  0% { transform: scale(1) translate(0, 0); opacity: 0.55; }
+  50% { transform: scale(1.08) translate(3%, 2%); opacity: 0.7; }
+  100% { transform: scale(0.95) translate(-2%, 3%); opacity: 0.55; }
 }
-
-/* ==========================================================================
-   2. TOPOGRAPHIC & EXPEDITION ROUTE MAP BACKGROUND
-   ========================================================================== */
 
 .stories-bg-map-wrap {
   position: absolute;
@@ -84,7 +80,6 @@
   display: block;
 }
 
-/* Winding Expedition Route Line Drawing Animation */
 .stories-bg-map-wrap .route-draw-path {
   stroke-dasharray: 1800;
   stroke-dashoffset: 1800;
@@ -95,7 +90,6 @@
   stroke-dashoffset: 0;
 }
 
-/* Mountain contours and waypoint markers gradual appearance */
 .stories-bg-map-wrap .topo-mountain-contours,
 .stories-bg-map-wrap .topo-contour-curves,
 .stories-bg-map-wrap .topo-waypoints {
@@ -109,17 +103,11 @@
   opacity: 1;
 }
 
-/* Main Container Lifted Above Atmospheric Layers */
 .stories-container {
   position: relative;
   z-index: 2;
 }
 
-/* ==========================================================================
-   3. EXISTING CONTENT & LAYOUT STYLES (100% PRESERVED PROPORTIONS & TYPO)
-   ========================================================================== */
-
-/* Header style with a plus sign */
 .testimonial-header {
   display: flex;
   justify-content: space-between;
@@ -143,16 +131,14 @@
   margin-top: 0.25rem;
 }
 
-/* Testimonial layout grid */
 .testimonial-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-3xl);
-  align-items: stretch;
+  align-items: center;
   margin-top: var(--space-lg);
 }
 
-/* Left panel style */
 .testimonial-content-col {
   display: flex;
   flex-direction: column;
@@ -225,18 +211,25 @@
   font-size: 0.875rem;
 }
 
-/* Visual Column */
 .testimonial-visual-col {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .testimonial-image-wrapper {
   position: relative;
   width: 100%;
-  height: 520px;
+  max-width: 420px;
+  height: 380px;
   overflow: hidden;
   background-color: var(--bg-tertiary);
   cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
 }
 
 .testimonial-slider-track {
@@ -255,7 +248,6 @@
   position: relative;
 }
 
-/* Interactive Photograph with Smooth Subtle Hover Scale & Cursor Depth */
 .testimonial-photo {
   width: 100%;
   height: 100%;
@@ -268,60 +260,8 @@
 }
 
 .testimonial-image-wrapper:hover .testimonial-photo {
-  /* Subtle tactile photo depth */
   filter: brightness(1.015);
 }
-
-.testimonial-slider-nav {
-  display: none !important;
-}
-
-.nav-arrow-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  transition: color var(--transition-fast), transform var(--transition-fast);
-  line-height: 1;
-}
-
-.nav-arrow-btn:hover {
-  color: var(--accent-primary);
-}
-
-.nav-arrow-btn:active {
-  transform: scale(0.9);
-}
-
-.nav-counter-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.current-num {
-  color: var(--text-primary);
-}
-
-.counter-slash {
-  color: var(--border-medium);
-  font-size: 0.55rem;
-}
-
-.total-num {
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   4. LOWER PORTION: SMALL RECURRING CHIBI TRAVELLER FOLLOWING ROUTE LINE
-   ========================================================================== */
 
 .stories-trail-footer-lane {
   position: absolute;
@@ -333,58 +273,22 @@
   z-index: 3;
   pointer-events: none;
   user-select: none;
-
-  /* Dissolve softly at the screen edges */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-/* Faint Expedition Route Line across bottom */
 .stories-trail-faint-line {
   position: absolute;
   bottom: 8px;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(200, 90, 50, 0.22) 20%,
-    rgba(230, 168, 23, 0.22) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, rgba(200, 90, 50, 0.22) 20%, rgba(230, 168, 23, 0.22) 75%, transparent 100%);
 }
 
-.stories-trail-faint-line::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(28, 28, 28, 0.12) 0,
-    rgba(28, 28, 28, 0.12) 5px,
-    transparent 5px,
-    transparent 18px
-  );
-  opacity: 0.7;
-}
-
-/* Moving carrier for the small chibi traveller */
 .stories-traveller-carrier {
   position: absolute;
-  bottom: 8px; /* Stepping cleanly along the faint route line */
+  bottom: 8px;
   left: 0;
   height: 42px;
   display: flex;
@@ -397,118 +301,181 @@
   animation: storiesTravellerTraverse 26s linear infinite;
 }
 
-/* Small, subtle scale matching the expedition map */
-.stories-traveller-carrier .traveller-chibi-svg {
-  height: 40px; /* Small, understated travel companion */
+.stories-traveller-carrier .traveller-chibi-svg,
+.stories-traveller-carrier .traveller-bike-svg {
+  height: 40px;
   width: auto;
   display: block;
   filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.16));
 }
 
 @keyframes storiesTravellerTraverse {
-  0% {
-    transform: translateX(-60px);
-    opacity: 0;
-  }
-  2% {
-    opacity: 1;
-  }
-  96% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(calc(100vw + 60px));
-    opacity: 0;
-  }
+  0% { transform: translateX(-60px); opacity: 0; }
+  2% { opacity: 1; }
+  96% { opacity: 1; }
+  100% { transform: translateX(calc(100vw + 60px)); opacity: 0; }
 }
 
 /* ==========================================================================
-   5. RESPONSIVE COLLAPSING & MOBILE OPTIMIZATIONS
+   MOBILE MINIMAL BASIC REVIEWS STYLES
    ========================================================================== */
 
-@media (max-width: 992px) {
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-
-  .testimonial-content-col {
-    padding-right: 0;
-    order: 2;
-  }
-
-  .testimonial-visual-col {
-    order: 1;
-  }
-
-  .testimonial-image-wrapper {
-    height: 400px;
-  }
-
-  .testimonial-slider-nav {
-    height: 150px;
-    width: 50px;
-    padding: 1rem 0;
-  }
-
-  /* Subdue background lines slightly on tablet */
-  .stories-bg-map-wrap {
-    opacity: 0.75;
-  }
-
-  .stories-traveller-carrier.is-active {
-    animation-duration: 20s;
-  }
+.minimal-stories-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-@media (max-width: 600px) {
-  .stories-paper-texture {
-    opacity: 0.6;
-  }
-
-  /* Keep background clean and uncluttered on mobile */
-  .stories-bg-map-wrap {
-    opacity: 0.5;
-  }
-
-  .stories-trail-footer-lane {
-    height: 42px;
-  }
-
-  .stories-traveller-carrier {
-    height: 34px;
-    bottom: 5px;
-    animation-duration: 16s;
-  }
-
-  .stories-trail-faint-line {
-    bottom: 5px;
-  }
-
-  .stories-traveller-carrier .traveller-chibi-svg {
-    height: 32px;
-  }
+.minimal-stories-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
 }
 
-/* Accessibility: Prefers Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .stories-ambient-light {
-    animation: none !important;
+.minimal-reviews-mobile-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  padding: 1.25rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.review-avatar-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--accent-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.review-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.review-title-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.1;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.review-stars-row {
+  color: var(--accent-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.review-quote-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.review-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.reviewer-name-tag {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.review-number-tag {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.minimal-reviews-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+}
+
+.minimal-nav-btn {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.minimal-nav-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--text-inverted);
+}
+
+.minimal-dots-wrap {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.minimal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.minimal-dot.is-active {
+  background-color: var(--text-primary);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (DESKTOP VS MOBILE TOGGLE)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .desktop-only-stories {
+    display: none !important;
   }
 
-  .stories-bg-map-wrap .route-draw-path {
-    transition: none !important;
-    stroke-dashoffset: 0 !important;
-  }
-
-  .stories-traveller-carrier.is-active {
-    animation: none !important;
-    left: 25%;
-    transform: translateX(0) !important;
-  }
-
-  .testimonial-photo {
-    transition: none !important;
-    transform: none !important;
+  .mobile-only-stories {
+    display: block !important;
+    padding: 2.25rem 0;
   }
 }
