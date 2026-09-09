@@ -15,9 +15,7 @@ export const EditorialIntro: React.FC = () => {
               loading="lazy"
               decoding="async"
             />
-            <div className="panorama-overlay">
-              <span className="panorama-location">TRANS-HIMALAYAN CORRIDOR</span>
-            </div>
+            {/* Image banner without text overlay */}
           </div>
         </div>
 
