@@ -17,36 +17,149 @@
   align-items: start;
 }
 
-.planner-headline-panel {
+.planner-map-panel {
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
 }
 
-.planner-eyebrow {
-  color: var(--accent-primary);
-  font-weight: 700;
+.map-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.planner-display-headline {
+.map-panel-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 0.92;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   letter-spacing: -0.01em;
   color: var(--text-primary);
+  margin: 0;
   text-transform: uppercase;
-  margin: 2rem 0;
 }
 
-.display-word {
-  display: block;
+.map-frame-wrapper {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  border-radius: var(--radius-sm, 4px);
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-secondary, #1A1A18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-.planner-aside-text {
+.google-map-iframe {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(85%) invert(92%) hue-rotate(180deg) contrast(1.1);
+  transition: filter var(--transition-normal);
+}
+
+.map-frame-wrapper:hover .google-map-iframe {
+  filter: grayscale(20%) invert(0%) hue-rotate(0deg) contrast(1);
+}
+
+.map-overlay-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: 1.7;
-  color: var(--text-secondary);
-  max-width: 440px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.35rem 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.map-live-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #22C55E;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22C55E;
+}
+
+.map-details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.35rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm, 4px);
+}
+
+.map-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.detail-meta {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+
+.detail-val {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.detail-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.detail-link:hover {
+  color: var(--accent-primary);
+}
+
+.btn-directions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  padding: 0.65rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.btn-directions:hover {
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
 }
 
 /* PDF Waiver Download Box */

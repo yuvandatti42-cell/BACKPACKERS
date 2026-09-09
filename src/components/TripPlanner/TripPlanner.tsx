@@ -214,18 +214,54 @@ export const TripPlanner: React.FC = () => {
             </form>
           </div>
 
-          {/* Right Column: Large Dramatic Heading */}
-          <div className="planner-headline-panel">
-            <span className="text-meta planner-eyebrow">ROUTE INQUIRY</span>
-            <h2 id="planner-heading" className="planner-display-headline">
-              <span className="display-word">WHERE</span>
-              <span className="display-word">WILL THE</span>
-              <span className="display-word text-accent">ROAD TAKE</span>
-              <span className="display-word">YOU?</span>
-            </h2>
-            <p className="planner-aside-text">
-              Tell us where you want to travel. Our scouting desk reviews each inquiry individually to provide tailored route configurations and logs.
-            </p>
+          {/* Right Column: Office Basecamp Map & Details Panel */}
+          <div className="planner-map-panel">
+            <div className="map-panel-header">
+              <span className="text-meta planner-eyebrow">+ BASECAMP &amp; SCOUTING DESK</span>
+              <h3 className="map-panel-title">EXPEDITION HQ</h3>
+            </div>
+
+            <div className="map-frame-wrapper">
+              <iframe
+                title="Backpackers Destinations Headquarters Map"
+                src="https://maps.google.com/maps?q=Bangalore%2C%20Karnataka%2C%20India&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="google-map-iframe"
+              />
+              <div className="map-overlay-badge">
+                <span className="map-live-dot"></span>
+                <span>LIVE BASECAMP RADAR</span>
+              </div>
+            </div>
+
+            <div className="map-details-card">
+              <div className="map-detail-item">
+                <span className="detail-meta">REGISTERED OFFICE</span>
+                <span className="detail-val">Desk 04, Bangalore Corridor, Karnataka, India</span>
+              </div>
+              <div className="map-detail-item">
+                <span className="detail-meta">SCOUTING HOTLINE</span>
+                <a href="tel:7207681067" className="detail-link">+91 72076 81067</a>
+              </div>
+              <div className="map-detail-item">
+                <span className="detail-meta">DISPATCH EMAIL</span>
+                <a href="mailto:contact@backpackersdestinations.com" className="detail-link">contact@backpackersdestinations.com</a>
+              </div>
+              
+              <a 
+                href="https://maps.google.com/?q=Bangalore%2C+Karnataka%2C+India" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-directions"
+              >
+                OPEN IN GOOGLE MAPS &nearr;
+              </a>
+            </div>
           </div>
 
         </div>
