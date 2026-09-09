@@ -239,29 +239,14 @@ export const TripPlanner: React.FC = () => {
               </div>
             </div>
 
-            <div className="map-details-card">
-              <div className="map-detail-item">
-                <span className="detail-meta">REGISTERED OFFICE</span>
-                <span className="detail-val">Desk 04, Bangalore Corridor, Karnataka, India</span>
-              </div>
-              <div className="map-detail-item">
-                <span className="detail-meta">SCOUTING HOTLINE</span>
-                <a href="tel:7207681067" className="detail-link">+91 72076 81067</a>
-              </div>
-              <div className="map-detail-item">
-                <span className="detail-meta">DISPATCH EMAIL</span>
-                <a href="mailto:contact@backpackersdestinations.com" className="detail-link">contact@backpackersdestinations.com</a>
-              </div>
-              
-              <a 
-                href="https://maps.google.com/?q=Bangalore%2C+Karnataka%2C+India" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-directions"
-              >
-                OPEN IN GOOGLE MAPS &nearr;
-              </a>
-            </div>
+            <a 
+              href="https://maps.google.com/?q=Bangalore%2C+Karnataka%2C+India" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-directions"
+            >
+              OPEN IN GOOGLE MAPS &nearr;
+            </a>
           </div>
 
         </div>
