@@ -233,10 +233,6 @@ export const TripPlanner: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="google-map-iframe"
               />
-              <div className="map-overlay-badge">
-                <span className="map-live-dot"></span>
-                <span>LIVE BASECAMP RADAR</span>
-              </div>
             </div>
 
             <a 
