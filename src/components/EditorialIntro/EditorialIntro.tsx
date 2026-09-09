@@ -16,10 +16,6 @@ export const EditorialIntro: React.FC = () => {
               decoding="async"
             />
             <div className="panorama-overlay">
-              <div className="panorama-info">
-                <span className="panorama-tag">EXPEDITION 02 // MOTORCYCLE OVERLAND</span>
-                <h3 id="mission-heading" className="panorama-title">LADAKH HIGH RIDGE ODYSSEY — 17,582 FT</h3>
-              </div>
               <span className="panorama-location">TRANS-HIMALAYAN CORRIDOR</span>
             </div>
           </div>

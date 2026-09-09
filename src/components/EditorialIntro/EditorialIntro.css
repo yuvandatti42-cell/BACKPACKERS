@@ -314,7 +314,7 @@
   background: linear-gradient(to top, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.35) 65%, transparent 100%);
   padding: 1.35rem 1.5rem 1.15rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
   z-index: 2;
 }
