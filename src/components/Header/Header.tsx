@@ -189,14 +189,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                 </div>
               </div>
             )}
-
-            <a 
-              href="#featured-tours" 
-              className="nav-link"
-              onClick={(e) => handleNavClick(e, 'home', 'featured-tours')}
-            >
-              TOURS
-            </a>
           </div>
 
           {/* Centered Brand Logo */}
@@ -224,12 +216,22 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
           {/* Right Column: Symmetrical Navigation & Action buttons */}
           <div className="nav-col-right">
             <a 
-              href="#stories" 
-              className="nav-link"
-              onClick={(e) => handleNavClick(e, 'home', 'stories')}
+              href="https://gearstation.co" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="gear-station-link"
+              title="Gear Station — Get Your Gear"
             >
-              STORIES
+              <div className="gear-station-logo-wrap">
+                <img 
+                  src="/gearlogo.jpeg" 
+                  alt="Gear Station Logo" 
+                  className="gear-station-logo-img" 
+                />
+              </div>
+              <span className="gear-station-text">GET YOUR GEAR</span>
             </a>
+            <div className="nav-vertical-divider" aria-hidden="true" />
             <a 
               href="#planner" 
               className="btn btn-contact-header"
@@ -278,18 +280,21 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             DESTINATIONS
           </a>
           <a 
-            href="#featured-tours" 
-            className="mobile-nav-link" 
-            onClick={(e) => handleNavClick(e, 'home', 'featured-tours')}
+            href="https://gearstation.co" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mobile-gear-station-link"
+            onClick={closeMenu}
           >
-            TOURS
-          </a>
-          <a 
-            href="#stories" 
-            className="mobile-nav-link" 
-            onClick={(e) => handleNavClick(e, 'home', 'stories')}
-          >
-            STORIES
+            <div className="gear-station-logo-wrap">
+              <img 
+                src="/gearlogo.jpeg" 
+                alt="Gear Station Logo" 
+                className="gear-station-logo-img" 
+              />
+            </div>
+            <span className="mobile-gear-station-text">GET YOUR GEAR</span>
+            <span className="mobile-ext-icon">&nearr;</span>
           </a>
           <a 
             href="#planner" 

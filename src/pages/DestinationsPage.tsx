@@ -320,60 +320,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
           </div>
         </section>
 
-        {/* DEDICATED WHATSAPP CATALOG HIGHLIGHT BANNER */}
-        <section className="dest-wa-catalog-banner">
-          <div className="container">
-            <div className="wa-catalog-card">
-              <div className="wa-card-left">
-                <div className="wa-badge-row">
-                  <span className="wa-status-dot" />
-                  <span className="text-meta">+ OFFICIAL WHATSAPP CATALOG</span>
-                  <span className="wa-verified-pill">VERIFIED STORE DESK</span>
-                </div>
-                <h2 className="wa-catalog-title">
-                  EXPLORE ALL ITINERARIES ON <span className="wa-brand-accent">WHATSAPP</span>
-                </h2>
 
-                
-                <div className="wa-features-pills">
-                  <span className="wa-feature-tag">⚡ Direct PDF Downloads</span>
-                  <span className="wa-feature-tag">🗺️ Day-wise Route Map</span>
-                  <span className="wa-feature-tag">💬 24/7 Scout Support</span>
-                  <span className="wa-feature-tag">🏷️ Live Season Pricing</span>
-                </div>
-              </div>
-
-              <div className="wa-card-right">
-                <div className="wa-action-box">
-                  <div className="wa-number-badge">
-                    <span className="wa-number-label">WHATSAPP DESK</span>
-                    <span className="wa-catalog-number">+91 72076 81067</span>
-                  </div>
-                  <a 
-                    href="https://wa.me/c/917207681067" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-wa-primary"
-                  >
-                    <svg className="wa-icon-lg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.337a9.96 9.96 0 004.779 1.217h.005c5.506 0 9.989-4.478 9.99-9.984A9.97 9.97 0 0012.012 2zm.005 16.273h-.004a8.27 8.27 0 01-4.218-1.155l-.302-.18-3.13.814-3.076-.197a8.27 8.27 0 01-1.267-4.491c.002-4.57 3.716-8.28 8.291-8.28a8.25 8.25 0 015.86 2.427 8.23 8.23 0 012.424 5.856c-.002 4.57-3.717 8.28-8.291 8.28zm4.542-6.2c-.249-.125-1.472-.726-1.7-.809-.229-.083-.396-.125-.562.125-.166.249-.645.809-.79.975-.146.166-.291.187-.54.062s-1.053-.388-2.006-1.238c-.742-.662-1.243-1.48-1.389-1.73-.146-.249-.015-.384.11-.508.112-.112.249-.291.374-.437.125-.146.166-.249.249-.415.083-.166.042-.312-.021-.437-.062-.125-.562-1.352-.77-1.851-.202-.486-.408-.42-.562-.428l-.479-.009c-.166 0-.437.062-.666.312s-.874.853-.874 2.08.895 2.41 1.02 2.577c.125.166 1.761 2.689 4.267 3.771.596.257 1.061.411 1.424.526.598.19 1.142.163 1.572.099.48-.071 1.472-.602 1.68-1.184.208-.582.208-1.08.146-1.184-.062-.104-.229-.166-.479-.291z"/>
-                    </svg>
-                    <span>OPEN WHATSAPP CATALOG &rarr;</span>
-                  </a>
-
-                  <a 
-                    href="https://wa.me/917207681067?text=Hi%20Backpackers%20Destinations%2C%20I%20want%20to%20inquire%20about%20your%20trips" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn-wa-secondary"
-                  >
-                    <span>CHAT WITH SCOUT DESK</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Category Filter Tabs */}
         <section className="dest-filter-section">
