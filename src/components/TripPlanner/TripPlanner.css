@@ -39,6 +39,14 @@
   text-transform: uppercase;
 }
 
+.map-address-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
 .map-frame-wrapper {
   position: relative;
   width: 100%;

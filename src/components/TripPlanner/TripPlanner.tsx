@@ -224,12 +224,15 @@ export const TripPlanner: React.FC = () => {
             <div className="map-panel-header">
               <span className="text-meta planner-eyebrow">BASECAMP &amp; SCOUTING DESK</span>
               <h3 className="map-panel-title">EXPEDITION HQ</h3>
+              <p className="map-address-text">
+                📍 5-4-97, Bhavani colony, Premavathipet, Rajendranagar, Rangareddy, 500030
+              </p>
             </div>
 
             <div className="map-frame-wrapper">
               <iframe
                 title="Backpackers Destinations Headquarters Map"
-                src="https://maps.google.com/maps?q=Bangalore%2C%20Karnataka%2C%20India&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=5-4-97%2C%20Bhavani%20colony%2C%20Premavathipet%2C%20Rajendranagar%2C%20Rangareddy%2C%20500030&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -241,7 +244,7 @@ export const TripPlanner: React.FC = () => {
             </div>
 
             <a 
-              href="https://maps.google.com/?q=Bangalore%2C+Karnataka%2C+India" 
+              href="https://maps.google.com/?q=5-4-97%2C+Bhavani+colony%2C+Premavathipet%2C+Rajendranagar%2C+Rangareddy%2C+500030" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-directions"
