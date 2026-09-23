@@ -1,0 +1,492 @@
+/* TRIP SEARCH MODAL OVERLAY STYLING */
+.search-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  background: rgba(10, 12, 16, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  overflow-y: auto;
+  animation: fadeInModal 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.search-modal-container {
+  width: 100%;
+  max-width: 900px;
+  background: #14171E;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 40px rgba(229, 57, 53, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: max(20px, 4vh);
+  animation: slideUpModal 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpModal {
+  from { transform: translateY(24px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Modal Header & Search Bar */
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #1B202A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-svg {
+  position: absolute;
+  left: 16px;
+  color: #E53935;
+  pointer-events: none;
+}
+
+.search-input-field {
+  width: 100%;
+  height: 52px;
+  padding: 0 46px 0 50px;
+  background: rgba(10, 12, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input-field:focus {
+  border-color: #E53935;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.25);
+}
+
+.search-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #DDD;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.search-clear-btn:hover {
+  background: #E53935;
+  color: #FFF;
+}
+
+.search-modal-close-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #CCC;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.search-modal-close-btn span {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-modal-close-btn:hover {
+  background: rgba(229, 57, 53, 0.2);
+  border-color: #E53935;
+  color: #FFF;
+}
+
+/* Quick Filter Tags */
+.search-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: #171A22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-tags-label {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.search-tags-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding-bottom: 2px;
+}
+
+.search-tag-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.search-tag-chip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFF;
+}
+
+.search-tag-chip.is-active {
+  background: #E53935;
+  border-color: #E53935;
+  color: #FFF;
+  box-shadow: 0 0 12px rgba(229, 57, 53, 0.4);
+}
+
+/* Results Meta Bar */
+.search-results-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #14171E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-results-meta .text-accent {
+  color: #E53935;
+  font-weight: 700;
+}
+
+.meta-tip {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Results Grid Area */
+.search-results-content {
+  max-height: 540px;
+  overflow-y: auto;
+  padding: 20px 24px 28px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: #E53935 rgba(255, 255, 255, 0.05);
+}
+
+.search-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 18px;
+}
+
+.search-trip-card {
+  display: flex;
+  background: #1B202A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-trip-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(229, 57, 53, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(229, 57, 53, 0.1);
+}
+
+.search-card-media {
+  width: 140px;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.search-trip-card:hover .search-card-img {
+  transform: scale(1.08);
+}
+
+.search-region-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.search-card-info {
+  flex: 1;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.search-card-vertical {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #E53935;
+  letter-spacing: 0.05em;
+}
+
+.search-card-diff {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.search-card-title {
+  font-family: 'Bebas Neue', display;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  margin: 2px 0 6px 0;
+  line-height: 1.1;
+}
+
+.search-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-card-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.spec-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.spec-item.price-tag {
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.search-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.search-hl-chip {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-search-action {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  border: none;
+}
+
+.btn-inquire {
+  background: #E53935;
+  color: #FFF;
+}
+
+.btn-inquire:hover {
+  background: #FF4D4D;
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.35);
+}
+
+.btn-catalog {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-catalog:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFF;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Empty State */
+.search-empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.search-empty-state h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  color: #FFF;
+  margin-bottom: 8px;
+}
+
+.search-empty-state p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+  line-height: 1.5;
+}
+
+.btn-empty-reset {
+  background: #E53935;
+  color: #FFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-empty-reset:hover {
+  background: #FF4D4D;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-modal-backdrop {
+    padding: 12px;
+  }
+
+  .search-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-trip-card {
+    flex-direction: column;
+  }
+
+  .search-card-media {
+    width: 100%;
+    height: 160px;
+  }
+
+  .search-input-field {
+    font-size: 0.92rem;
+    height: 46px;
+    padding-left: 42px;
+  }
+
+  .search-icon-svg {
+    left: 12px;
+  }
+}

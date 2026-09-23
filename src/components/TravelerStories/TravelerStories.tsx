@@ -237,7 +237,7 @@ export const TravelerStories: React.FC = () => {
       >
         <div className="container">
           <div className="minimal-stories-header">
-            <span className="text-meta">+ RIDER REVIEWS</span>
+            <span className="text-meta">RIDER REVIEWS</span>
             <h2 className="minimal-stories-title">
               WHAT OUR TRAVELLERS SAY
             </h2>

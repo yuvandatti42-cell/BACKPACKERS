@@ -57,7 +57,7 @@ export const OurStory: React.FC = () => {
         <div className="story-content-panel">
           
           {/* Eyebrow label */}
-          <span className="story-eyebrow">+ OUR STORY</span>
+          <span className="story-eyebrow">OUR STORY</span>
 
           {/* Display Headline */}
           <h2 id="story-heading" className="story-display-heading">

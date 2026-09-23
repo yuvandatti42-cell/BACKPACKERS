@@ -1,0 +1,777 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap');
+
+/* Modal Wrapper & Overlay */
+.kerala-catalog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: rgba(10, 15, 12, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+  animation: catalogFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes catalogFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.kerala-catalog-container {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  height: 90vh;
+  max-height: 920px;
+  display: flex;
+  flex-direction: column;
+  background: #111B15;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+/* Header Toolbar */
+.kerala-catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #0A120E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 10;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.catalog-toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.catalog-badge-tag {
+  background: #D4A32A;
+  color: #0A120E;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.catalog-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.catalog-tab-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+.catalog-tab-btn:hover,
+.catalog-tab-btn.is-active {
+  background: #D4A32A;
+  color: #0A120E;
+  border-color: #D4A32A;
+}
+
+.catalog-tab-btn.download-btn {
+  background: #2E6B45;
+  color: #FFFFFF;
+  border-color: #3B8457;
+}
+
+.catalog-tab-btn.download-btn:hover {
+  background: #3B8457;
+}
+
+.catalog-tab-btn.link-btn:hover {
+  background: #D4A32A;
+  color: #0A120E;
+}
+
+.catalog-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.catalog-close-btn:hover {
+  background: rgba(235, 87, 87, 0.8);
+}
+
+/* Sub Toolbar for Interactive Mode */
+.kerala-sub-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+  background: #111E17;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sub-toolbar-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #D4A32A;
+}
+
+.sub-toolbar-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sub-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sub-tab-btn:hover,
+.sub-tab-btn.is-active {
+  background: rgba(212, 163, 42, 0.2);
+  color: #D4A32A;
+  border-color: #D4A32A;
+}
+
+/* Scrollable Catalog Body */
+.kerala-catalog-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #0D1611;
+}
+
+/* Canvas Pages View */
+.pdf-canvas-view-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-loading-spinner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+}
+
+.pdf-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(212, 163, 42, 0.2);
+  border-top-color: #D4A32A;
+  border-radius: 50%;
+  animation: pdfSpin 0.8s linear infinite;
+}
+
+@keyframes pdfSpin {
+  to { transform: rotate(360deg); }
+}
+
+.pdf-canvas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 860px;
+}
+
+.pdf-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #18261E;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pdf-page-meta-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #D4A32A;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.pdf-rendered-canvas {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+/* Embedded PDF Iframe View */
+.pdf-embed-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 650px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.pdf-iframe-element {
+  width: 100%;
+  height: 100%;
+  border: none;
+  min-height: 650px;
+}
+
+/* Fallback box if PDF rendering fails */
+.pdf-fallback-box {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+}
+
+.fallback-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-fallback-primary, .btn-fallback-secondary {
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.btn-fallback-primary {
+  background: #D4A32A;
+  color: #0A120E;
+}
+
+.btn-fallback-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+/* PAGE 1: COVER POSTER */
+.kerala-page-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.414; /* A4 aspect ratio */
+  min-height: 680px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 2rem 2rem;
+  background-size: cover;
+  background-position: center;
+  color: #FFFFFF;
+}
+
+.kerala-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 28, 20, 0.65) 0%,
+    rgba(10, 20, 15, 0.25) 40%,
+    rgba(10, 20, 15, 0.45) 70%,
+    rgba(8, 18, 13, 0.92) 100%
+  );
+  z-index: 1;
+}
+
+.kerala-cover-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kerala-cover-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.kerala-cover-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.kerala-cover-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.kerala-cover-logo-brand {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  line-height: 0.9;
+}
+
+.kerala-cover-logo-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.kerala-cover-tagline-top {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+}
+
+/* Main Hero Titles on Cover */
+.kerala-cover-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.kerala-cover-escape {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: -0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.kerala-cover-script-title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(4.8rem, 10vw, 8.5rem);
+  color: #FFFFFF;
+  line-height: 0.95;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.9);
+  margin: 0.2rem 0;
+  font-weight: 700;
+}
+
+.kerala-cover-destinations {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.kerala-cover-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 0.6rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Cover Footer Badges */
+.kerala-cover-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kerala-cover-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  flex: 1;
+}
+
+.kerala-cover-feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.kerala-cover-feature-icon {
+  width: 32px;
+  height: 32px;
+  color: #D4A32A;
+}
+
+.kerala-cover-feature-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.kerala-cover-duration-badge {
+  background: #D4A32A;
+  color: #0A120E;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  transform: rotate(-3deg);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.duration-badge-small {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.duration-badge-large {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+/* PAGE 2: ITINERARY & PRICING CATALOG */
+.kerala-page-details {
+  background: #FAF7F2;
+  color: #12281D;
+  border-radius: 12px;
+  padding: 2.5rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+  font-family: 'Outfit', sans-serif;
+}
+
+.kerala-details-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.kerala-details-brand {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #123627;
+  text-transform: uppercase;
+  border-bottom: 2px solid #D4A32A;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+  width: fit-content;
+}
+
+.kerala-details-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #0F382C;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-top: 0.5rem;
+}
+
+.kerala-details-duration-tag {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #C88D16;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.kerala-details-heading-italic {
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #0F382C;
+  line-height: 1.3;
+}
+
+.kerala-details-desc {
+  font-size: 1.05rem;
+  color: #384E44;
+  line-height: 1.6;
+  max-width: 780px;
+}
+
+/* 3 Stat Cards Row */
+.kerala-stats-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.kerala-stat-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(18, 54, 39, 0.06);
+  border: 1px solid rgba(18, 54, 39, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  color: #C88D16;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-card-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #0F382C;
+  text-transform: uppercase;
+}
+
+/* Green Included Pill */
+.kerala-included-pill {
+  background: #0F382C;
+  color: #FFFFFF;
+  border-radius: 50px;
+  padding: 0.95rem 1.5rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(15, 56, 44, 0.2);
+}
+
+/* Section "A FEELING, NOT JUST A DESTINATION" */
+.kerala-feeling-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kerala-feeling-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  color: #0F382C;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kerala-feeling-text {
+  font-size: 1.05rem;
+  color: #384E44;
+  line-height: 1.5;
+}
+
+.kerala-feeling-tags {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #C88D16;
+  letter-spacing: 0.18em;
+  margin-top: 0.5rem;
+}
+
+/* Footer Banner Card */
+.kerala-details-footer-card {
+  background: #0F382C;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 56, 44, 0.25);
+}
+
+.footer-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-card-heading {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.footer-card-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-card-phone {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 900;
+  color: #D4A32A;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-card-phone:hover {
+  transform: scale(1.04);
+  color: #F0BE42;
+}
+
+/* Print Styles */
+@media print {
+  .kerala-catalog-toolbar, .kerala-sub-toolbar {
+    display: none !important;
+  }
+
+  .kerala-catalog-modal-overlay {
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  .kerala-catalog-container {
+    max-width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+
+  .kerala-catalog-body {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .kerala-page-cover,
+  .kerala-page-details {
+    page-break-after: always;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .kerala-catalog-container {
+    height: 95vh;
+    padding: 0;
+  }
+
+  .kerala-catalog-body {
+    padding: 0.75rem;
+  }
+
+  .pdf-page-wrapper {
+    padding: 0.5rem;
+  }
+
+  .kerala-cover-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .kerala-stats-cards-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .kerala-details-footer-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

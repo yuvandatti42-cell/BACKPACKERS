@@ -651,6 +651,65 @@
   color: #E63946;
 }
 
+/* Header Search Magnifying Glass Icon Button */
+.header-search-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.header-search-icon-btn:hover {
+  background: rgba(229, 57, 53, 0.2);
+  border-color: #E63946;
+  color: #E63946;
+  box-shadow: 0 0 14px rgba(230, 57, 70, 0.35);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.header-search-icon-btn svg {
+  color: #FAF8F5;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.header-search-icon-btn:hover svg {
+  color: #E63946;
+  transform: scale(1.1);
+}
+
+.mobile-search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: rgba(229, 57, 53, 0.12);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  margin: 0.5rem 0 1rem 0;
+  transition: all 0.2s ease;
+}
+
+.mobile-search-trigger:hover {
+  background: rgba(229, 57, 53, 0.25);
+  border-color: #E63946;
+}
+
+
 
 
 

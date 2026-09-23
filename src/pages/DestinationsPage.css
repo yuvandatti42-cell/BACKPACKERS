@@ -12,7 +12,7 @@
 
 .destinations-page-main {
   flex-grow: 1;
-  padding-top: 0;
+  padding-top: 6rem;
 }
 
 /* Page Hero / Catalog Header Section */
@@ -341,13 +341,73 @@
 /* Category Filter Section */
 .dest-filter-section {
   background-color: var(--bg-primary);
-  padding: 1.25rem 0;
+  padding: 1.5rem 0 1.25rem;
   border-bottom: 1px solid var(--border-light);
   position: sticky;
-  top: 4.5rem;
+  top: 5rem;
   z-index: 100;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+.dest-search-inline-wrap {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto 1.25rem auto;
+  display: flex;
+  align-items: center;
+}
+
+.inline-search-icon {
+  position: absolute;
+  left: 1rem;
+  color: #E63946;
+  pointer-events: none;
+}
+
+.dest-inline-search-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 6.5rem 0 3rem;
+  background: rgba(30, 30, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.dest-inline-search-input:focus {
+  border-color: #E63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+  background: rgba(35, 35, 30, 0.95);
+}
+
+.dest-inline-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.85rem;
+}
+
+.dest-inline-clear-btn {
+  position: absolute;
+  right: 0.65rem;
+  background: rgba(230, 57, 70, 0.2);
+  border: 1px solid #E63946;
+  color: #FFF;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dest-inline-clear-btn:hover {
+  background: #E63946;
 }
 
 .filter-bar-wrap {
@@ -409,7 +469,8 @@
 
 .dest-catalog-header {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
 }
 
 .catalog-title {
@@ -675,6 +736,40 @@
   color: var(--text-primary);
 }
 
+.btn-dest-catalog {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background-color: #25D366;
+  border: 1px solid #25D366;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+}
+
+.btn-dest-catalog:hover {
+  background-color: #1EBE57;
+  border-color: #1EBE57;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+
+.btn-external-arrow {
+  font-size: 0.75rem;
+}
+
 /* Spotlight Deep Dive Section */
 .dest-spotlight-section {
   background-color: #1F1F1D;
@@ -914,21 +1009,69 @@
 }
 
 @media (max-width: 768px) {
-  .dest-hero-lead {
-    display: none !important;
+  .destinations-page-wrapper {
+    overflow-x: hidden;
+    overflow-y: visible;
+    touch-action: pan-y;
+  }
+
+  .destinations-page-main {
+    padding-top: 4.5rem;
+    overflow-y: visible;
+    touch-action: pan-y;
+  }
+
+  .dest-filter-section {
+    position: relative;
+    top: auto;
+    z-index: 10;
+    padding: 1rem 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    touch-action: pan-y;
+  }
+
+  .dest-search-inline-wrap {
+    margin-bottom: 0.85rem;
+    padding: 0 0.5rem;
+  }
+
+  .dest-inline-search-input {
+    font-size: 0.85rem;
+    height: 44px;
+  }
+
+  .filter-bar-wrap {
+    justify-content: flex-start;
+    padding: 0.25rem 0.5rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.72rem;
+    touch-action: manipulation;
+  }
+
+  .dest-grid-section {
+    padding: 1.5rem 0 3rem;
+    touch-action: pan-y;
   }
 
   .dest-cards-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    padding: 0 0.25rem;
+    width: 100%;
   }
 
   .dest-card-frame {
-    padding: 8px;
+    padding: 6px;
   }
 
   .dest-card-body {
-    padding: 1.15rem;
+    padding: 1rem;
   }
 
   /* Minimal Mobile Redesign for Trip Classifications Section (+ TRIP CLASSIFICATIONS FIVE WAYS TO TRAVEL WITH US) */
@@ -1465,4 +1608,74 @@
     width: 36px;
     height: 36px;
   }
+}
+
+/* Off Beaten Places Empty Launch State */
+.dest-empty-launch-banner {
+  max-width: 680px;
+  margin: 2.5rem auto;
+  padding: 3rem 2rem;
+  background: rgba(25, 25, 22, 0.85);
+  border: 1px dashed rgba(230, 168, 23, 0.4);
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.launch-badge {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #E6A817;
+  background: rgba(230, 168, 23, 0.12);
+  border: 1px solid rgba(230, 168, 23, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.launch-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.launch-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 540px;
+}
+
+.btn-launch-notify {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  background: #25D366;
+  color: #052E16;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-launch-notify:hover {
+  background: #1EBE5B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
 }

@@ -40,15 +40,5 @@ export const REGIONS_DATA: DestinationRegion[] = [
     description: 'Misty cliff passes, Cherrapunji waterfalls, Dawki crystal rivers, and living root bridge corridors.',
     image: '/ostt.jpg',
     alt: 'Misty green cliffs and waterfall canyons in North East India'
-  },
-  {
-    id: 'international',
-    number: '05',
-    name: 'INTERNATIONAL',
-    title: 'Nepal Mustang Valley & Bhutan Dragon Kingdom',
-    terrain: 'High Himalayan Canyons, Suspension Bridges, Alpine Dzongs',
-    description: 'Cross-border overlands under 8,000m summits, ancient forbidden Mustang trails, and Bhutanese mountain passes.',
-    image: '/nep.jpg',
-    alt: 'Mustang valley trails and Himalayan mountains in Nepal'
   }
 ];

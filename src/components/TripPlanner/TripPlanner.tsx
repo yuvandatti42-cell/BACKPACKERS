@@ -122,10 +122,15 @@ export const TripPlanner: React.FC = () => {
                     required
                   >
                     <option value="" disabled hidden></option>
-                    <option value="Ladakh High Passes">Ladakh High Passes</option>
-                    <option value="Mustang Dirt Corridor">Mustang Dirt Corridor (Nepal)</option>
-                    <option value="Ghats Rainforest Switchbacks">Ghats Rainforest Switchbacks (Kerala)</option>
-                    <option value="Western Ghats Crossing">Western Ghats Crossing</option>
+                    <option value="Kerala God's Own Backcountry">Kerala God's Own Backcountry</option>
+                    <option value="Ladakh Trans-Himalayan Circuit">Ladakh Trans-Himalayan Circuit</option>
+                    <option value="Kodaikanal Misty Pine Trail">Kodaikanal Misty Pine Trail</option>
+                    <option value="Ooty & Coonoor Nilgiri Traverse">Ooty & Coonoor Nilgiri Traverse</option>
+                    <option value="Arunachalam x Pondicherry Crossover">Arunachalam x Pondicherry Crossover</option>
+                    <option value="Gokarna & Dandeli Coastal Jungle">Gokarna & Dandeli Coastal Jungle</option>
+                    <option value="Chikmagalur Coffee Mountain Trail">Chikmagalur Coffee Mountain Trail</option>
+                    <option value="Spiti Valley Desert Circuit">Spiti Valley Desert Circuit</option>
+                    <option value="Bhutan Thunder Dragon Kingdom">Bhutan Thunder Dragon Kingdom</option>
                     <option value="Custom Tailored Run">Custom Tailored Route</option>
                   </select>
                   <label htmlFor="userDestination" className="minimal-label">Selected Run / Corridor *</label>
@@ -217,7 +222,7 @@ export const TripPlanner: React.FC = () => {
           {/* Right Column: Office Basecamp Map & Details Panel */}
           <div className="planner-map-panel">
             <div className="map-panel-header">
-              <span className="text-meta planner-eyebrow">+ BASECAMP &amp; SCOUTING DESK</span>
+              <span className="text-meta planner-eyebrow">BASECAMP &amp; SCOUTING DESK</span>
               <h3 className="map-panel-title">EXPEDITION HQ</h3>
             </div>
 
@@ -241,7 +246,7 @@ export const TripPlanner: React.FC = () => {
               rel="noopener noreferrer" 
               className="btn btn-directions"
             >
-              OPEN IN GOOGLE MAPS &nearr;
+              OPEN IN GOOGLE MAPS ↗
             </a>
           </div>
 

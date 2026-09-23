@@ -144,16 +144,16 @@ export const FeaturedExpeditions: React.FC = () => {
   const progressPercent = ((normalizedIndex + 1) / TOTAL_ITEMS) * 100;
 
   return (
-    <section id="featured-tours" className="featured-expeditions-section" aria-labelledby="featured-tours-heading">
+    <section id="featured-destinations" className="featured-expeditions-section" aria-labelledby="featured-destinations-heading">
       <div className="container">
         
         {/* Header Layout */}
         <div className="expeditions-header">
           <div className="header-left">
-            <span className="text-meta heading-eyebrow">+ EXPLORE OUR ADVENTURES</span>
-            <h2 id="featured-tours-heading" className="expeditions-display-title">
+            <span className="text-meta heading-eyebrow">EXPLORE OUR ADVENTURES</span>
+            <h2 id="featured-destinations-heading" className="expeditions-display-title">
               <span className="title-row">FEATURED</span>
-              <span className="title-row text-accent">TOURS</span>
+              <span className="title-row text-accent">DESTINATIONS</span>
             </h2>
           </div>
           <div className="header-right">
@@ -262,7 +262,7 @@ export const FeaturedExpeditions: React.FC = () => {
                       <span className="card-dest-label">{exp.regionLabel}</span>
                       
                       <div className="card-details-row">
-                        <span className="difficulty-tag">+ {exp.difficulty}</span>
+                        <span className="difficulty-tag">{exp.difficulty}</span>
                         <span className="meta-dot">&bull;</span>
                         <span className="duration-tag">{exp.duration}</span>
                         {exp.distance && (

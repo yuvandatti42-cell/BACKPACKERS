@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TripSearchModal } from '../TripSearchModal/TripSearchModal';
 import './Header.css';
 
 interface HeaderProps {
@@ -10,6 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   const isNotHome = currentRoute === 'destinations' || window.location.hash === '#destinations';
 
@@ -20,6 +22,17 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleGlobalCmdK = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalCmdK);
+    return () => window.removeEventListener('keydown', handleGlobalCmdK);
   }, []);
 
   useEffect(() => {
@@ -116,7 +129,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
 
                 {/* Hover Dropdown Menu */}
                 <div className={`nav-dropdown-menu ${isDropdownHovered ? 'is-visible' : ''}`}>
-                  <div className="dropdown-header-tag">+ EXPLORE BY TRIP TYPE</div>
+                  <div className="dropdown-header-tag">EXPLORE BY TRIP TYPE</div>
                   
                   <a 
                     href="#destinations" 
@@ -166,17 +179,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     </div>
                   </a>
 
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-item-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'private')}
-                  >
-                    <img src="/priv.jpg" alt="" className="dropdown-thumb-img" />
-                    <div className="dropdown-item-text">
-                      <span className="item-title">Private Trips</span>
-                      <span className="item-sub">Bespoke Custom Squads</span>
-                    </div>
-                  </a>
+
 
                   <a 
                     href="#destinations" 
@@ -215,6 +218,18 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
 
           {/* Right Column: Symmetrical Navigation & Action buttons */}
           <div className="nav-col-right">
+            <button 
+              className="header-search-icon-btn"
+              onClick={() => setIsSearchOpen(true)}
+              title="Search Trips (Cmd+K)"
+              aria-label="Search Trips"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <div className="nav-vertical-divider" aria-hidden="true" />
             <a 
               href="https://gearstation.co" 
               target="_blank" 
@@ -265,6 +280,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
         aria-label="Mobile Navigation"
       >
         <div className="mobile-nav-links">
+          <button 
+            className="mobile-search-trigger"
+            onClick={() => {
+              closeMenu();
+              setIsSearchOpen(true);
+            }}
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>SEARCH ALL TRIPS</span>
+          </button>
+
           <a 
             href="#hero" 
             className="mobile-nav-link" 
@@ -294,7 +323,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
               />
             </div>
             <span className="mobile-gear-station-text">GET YOUR GEAR</span>
-            <span className="mobile-ext-icon">&nearr;</span>
+            <span className="mobile-ext-icon">↗</span>
           </a>
           <a 
             href="#planner" 
@@ -318,6 +347,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
           </p>
         </div>
       </div>
+
+      {/* Global Trip Search Modal */}
+      <TripSearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+        onNavigate={onNavigate} 
+      />
     </>
   );
 };

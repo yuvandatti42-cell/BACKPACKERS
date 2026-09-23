@@ -33,13 +33,5 @@ export const CATEGORIES_DATA: TripCategory[] = [
     description: 'Cloud-draped cliff roads, living root bridge canyons, Meghalaya waterfalls, and Tawang frontiers.',
     image: '/ostt.jpg',
     alt: 'Misty cloud cliffs and canyons in North East India'
-  },
-  {
-    id: 'international',
-    number: '05',
-    title: 'INTERNATIONAL',
-    description: 'Cross-border overlands into Nepal’s Mustang valley, Bhutan’s Dragon Kingdom, and pristine international passes.',
-    image: '/nep.jpg',
-    alt: 'Golden Buddhist monastery with snow-capped peaks in Nepal'
   }
 ];

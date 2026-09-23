@@ -2,47 +2,80 @@ import { Trip } from '../types';
 
 export const TRIPS_DATA: Trip[] = [
   {
+    id: 'kerala-backwaters',
+    title: 'KERALA',
+    category: 'EXPEDITION / ESCAPE',
+    region: 'Kerala',
+    terrain: 'Ghats, Rainforest & Backwaters',
+    format: 'Road Journey & Houseboat',
+    description: 'Munnar tea estate switchbacks, Wayanad rainforest canopy, and peaceful Alleppey backwater lagoons.',
+    image: '/dest_kerala.jpg',
+    alt: 'Misty tea plantations and backwaters in Kerala'
+  },
+  {
     id: 'ladakh-circuit',
-    title: 'LADAKH CIRCUIT',
+    title: 'LADAKH',
     category: 'EXPEDITION',
     region: 'Ladakh',
-    terrain: 'Cold Desert & High Passes',
+    terrain: 'Cold Desert & High Motorable Passes',
     format: 'Bike & Overland',
-    description: 'Leh, Nubra Valley, Pangong Tso, and high Himalayan passes. Strict acclimatization schedule and support backup.',
+    description: 'Leh, Khardung La, Nubra Valley, Pangong Tso, and high Himalayan passes with full support crew.',
     image: '/ladakh.jpg',
     alt: 'Barren high mountain pass and road in Ladakh'
   },
   {
-    id: 'western-ghats',
-    title: 'WESTERN GHATS & COAST',
-    category: 'WEEKEND / ESCAPE',
-    region: 'Kerala',
-    terrain: 'Ghats & Backwaters',
-    format: 'Road Journey',
-    description: 'From misty tea slopes in Munnar and Wayanad through dense forest corridors to quiet coastal stops.',
-    image: '/ke.jpg',
-    alt: 'Tea plantations and mountain ridges in Munnar, Kerala'
+    id: 'kodaikanal-ridge',
+    title: 'KODAIKANAL',
+    category: 'WEEKEND / OVERLAND',
+    region: 'Kodaikanal',
+    terrain: 'Dense Pine Forests & Cliff Ridges',
+    format: 'Road & Forest Trails',
+    description: 'Pillar Rocks cliff overlooks, pine forest reserve roads, and secluded Berijam lake trails.',
+    image: '/kodai.jpg',
+    alt: 'Misty pine forest mountain pass in Kodaikanal'
   },
   {
-    id: 'karnataka-ridge',
-    title: 'KARNATAKA RIDGE & RUINS',
-    category: 'OVERLAND',
-    region: 'Karnataka',
-    terrain: 'Plateaus & Forest Trails',
-    format: 'Bike & Drive',
-    description: 'Connecting the boulder valleys of Hampi with the dense coffee estate roads of Chikmagalur and Coorg.',
-    image: '/sty.jpeg',
-    alt: 'Traveller with arms outstretched at mountain valley pass'
+    id: 'ooty-coonoor-traverse',
+    title: 'OOTY / COONOOR',
+    category: 'BIKE TRIP / ESCAPE',
+    region: 'Ooty / Coonoor',
+    terrain: '36 Hairpins & Nilgiri Tea Slopes',
+    format: 'Motorcycle & Overland',
+    description: '36 continuous banking hairpins, Dolphin’s Nose gorge viewpoints, and tea estate heritage runs.',
+    image: '/ooty.jpg',
+    alt: 'Winding mountain hairpin tea garden roads in Ooty and Coonoor'
   },
   {
-    id: 'tamil-nadu-passes',
-    title: 'NILGIRI & VALPARAI PASSES',
-    category: 'BIKE TRIP',
-    region: 'Tamil Nadu',
-    terrain: 'Mountain Hairpins',
-    format: 'Motorcycle Route',
-    description: 'Dozens of continuous hairpin bends, high-altitude Shola forest reserves, and clean mountain roads.',
-    image: '/dest_tamilnadu.jpg',
-    alt: 'Winding mountain hairpin roads in Tamil Nadu'
+    id: 'arunachalam-pondicherry-crossover',
+    title: 'ARUNACHALAM X PONDICHERRY',
+    category: 'OFF BEATEN / PRIVATE',
+    region: 'Arunachalam x Pondicherry',
+    terrain: 'Spiritual Peak & Coromandel Coast',
+    format: 'Road Expedition',
+    description: 'Sacred Arunachala hill loop transitioning into French Quarter architecture and coastal oceanfront promenades.',
+    image: '/pondi.jpg',
+    alt: 'Arunachala mountain peak and Pondicherry coastal promenade'
+  },
+  {
+    id: 'gokarna-dandeli-jungle',
+    title: 'GOKARNA & DANDELI',
+    category: 'OFF BEATEN / ESCAPE',
+    region: 'Gokarna & Dandeli',
+    terrain: 'Cliff Beaches & Kali River Wilderness',
+    format: 'Overland & Rafting Run',
+    description: 'High-octane Kali river rafting in Dandeli rainforests paired with Om Beach cliff sunsets in Gokarna.',
+    image: '/gokarna.jpg',
+    alt: 'Gokarna cliff coast and Dandeli rainforest river landscape'
+  },
+  {
+    id: 'chikmagalur-coffee-trail',
+    title: 'CHIKMAGALUR',
+    category: 'BIKE TRIP / ESCAPE',
+    region: 'Chikmagalur',
+    terrain: 'High Peaks & Coffee Estate Slopes',
+    format: 'Bike & Off-Road Jeep',
+    description: 'Mullayanagiri highest peak summit, Baba Budangiri ridge runs, and hidden waterfall cascades.',
+    image: '/chick.jpg',
+    alt: 'Mullayanagiri peak and coffee estate roads in Chikmagalur'
   }
 ];
