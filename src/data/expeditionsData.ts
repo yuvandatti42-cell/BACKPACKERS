@@ -259,7 +259,7 @@ export const EXPEDITIONS_DATA: ExpeditionItem[] = [
     destination: 'INTERNATIONAL',
     regionCategory: 'international',
     regionLabel: 'INTERNATIONAL',
-    title: 'MUSTANG DIRT CORRIDOR',
+    title: 'NEPAL',
     category: 'bike-trips',
     verticalLabel: 'NEPAL | OVERLAND',
     difficulty: 'INTERMEDIATE',
@@ -273,26 +273,5 @@ export const EXPEDITIONS_DATA: ExpeditionItem[] = [
     frameColor: '#BC5F44',
     description: 'Rugged dirt trails winding through the deep Kali Gandaki gorge beneath the towering peaks of Annapurna and Dhaulagiri.',
     highlights: ['Annapurna Circuit Corridors', 'Mustang Kingdom Trails', 'Traditional Sherpa Villages']
-  },
-  {
-    id: 'tour-bhutan',
-    number: '10',
-    destination: 'INTERNATIONAL',
-    regionCategory: 'international',
-    regionLabel: 'INTERNATIONAL',
-    title: 'THUNDER DRAGON KINGDOM',
-    category: 'off-beaten',
-    verticalLabel: 'BHUTAN | OVERLAND',
-    difficulty: 'INTERMEDIATE',
-    duration: '9 DAYS / 8 NIGHTS',
-    distance: '1,100 KM',
-    maxAltitude: '3,988 m (Chele La)',
-    bestSeason: 'Mar - May / Sep - Nov',
-    price: '₹68,000',
-    image: '/tour_bhutan.jpg',
-    alt: 'Scenic valley passes and monasteries in Bhutan',
-    frameColor: '#4A8280',
-    description: 'Explore the mystical Himalayan Last Shangri-La with breathtaking fortress dzongs, pristine pine forests, and high mountain passes.',
-    highlights: ['Tiger’s Nest Monastery Hike', 'Dochula & Chele La Passes', 'Punakha Suspension Bridge']
   }
 ];

@@ -27,7 +27,7 @@ const ROUTES_DATA: RouteData[] = [
   },
   {
     id: 'nepal',
-    name: 'Mustang Dirt Corridor',
+    name: 'Nepal',
     startPoint: 'Kathmandu',
     endPoint: 'Lo Manthang',
     distance: '850 KM',
