@@ -256,18 +256,32 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             </a>
           </div>
 
-          {/* Mobile hamburger menu toggle */}
-          <button 
-            className={`nav-toggle ${isMobileMenuOpen ? 'is-active' : ''}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-nav-drawer"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          {/* Mobile Header Actions (Glass Search Button + Hamburger Toggle) */}
+          <div className="mobile-header-actions">
+            <button 
+              className="mobile-glass-search-btn"
+              onClick={() => setIsSearchOpen(true)}
+              title="Search Trips"
+              aria-label="Search Trips"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+
+            <button 
+              className={`nav-toggle ${isMobileMenuOpen ? 'is-active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
       </header>
 

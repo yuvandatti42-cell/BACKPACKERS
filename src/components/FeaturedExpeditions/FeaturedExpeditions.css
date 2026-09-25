@@ -406,6 +406,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .expeditions-lead-desc {
+    display: none !important;
+  }
+}
+
 @media (max-width: 580px) {
   .expedition-card-wrapper {
     flex: 0 0 260px;

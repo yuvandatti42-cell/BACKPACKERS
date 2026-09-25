@@ -227,6 +227,23 @@ export const TripPlanner: React.FC = () => {
               <p className="map-address-text">
                 📍 5-4-97, Bhavani colony, Premavathipet, Rajendranagar, Rangareddy, 500030
               </p>
+              <div className="map-contact-pills">
+                <a href="tel:7207681067" className="map-contact-pill" title="Call Us">
+                  <span className="pill-icon">📞</span> +91 72076 81067
+                </a>
+                <a href="mailto:contact@backpackersdestinations.com" className="map-contact-pill" title="Email Us">
+                  <span className="pill-icon">✉️</span> contact@backpackersdestinations.com
+                </a>
+                <a 
+                  href="https://wa.me/917207681067?text=Hi%20Backpackers%20Destinations%2C%20I%20have%20an%20expedition%20query!" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="map-contact-pill pill-whatsapp"
+                  title="WhatsApp Us"
+                >
+                  <span className="pill-icon">💬</span> WhatsApp
+                </a>
+              </div>
             </div>
 
             <div className="map-frame-wrapper">

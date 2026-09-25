@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import { KeralaCatalogModal } from '../components/KeralaCatalogModal/KeralaCatalogModal';
-import { OotyCatalogModal } from '../components/OotyCatalogModal/OotyCatalogModal';
 import './DestinationsPage.css';
 
 
@@ -330,8 +328,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala-weekend');
-  const [isKeralaCatalogOpen, setIsKeralaCatalogOpen] = useState<boolean>(false);
-  const [isOotyCatalogOpen, setIsOotyCatalogOpen] = useState<boolean>(false);
 
   React.useEffect(() => {
     if (initialFilter) {
@@ -418,7 +414,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
         <section className="dest-grid-section">
           <div className="container">
             <div className="dest-catalog-header">
-              <span className="text-meta">CATALOG RESULTS</span>
+              <span className="text-meta">DESTINATIONS</span>
               <h2 className="catalog-title">
                 SHOWING: <span className="text-accent">{selectedFilter.toUpperCase()}</span>
               </h2>
@@ -489,47 +485,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                               <span className="spec-val">{item.bestSeason}</span>
                             </div>
                           </div>
-
-                          <div className="dest-card-actions" style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
-                            {item.id === 'kerala' ? (
-                              <button 
-                                className="btn btn-dest-catalog"
-                                style={{ width: '100%', backgroundColor: '#D4A32A', color: '#0F382C', fontWeight: 800 }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setIsKeralaCatalogOpen(true);
-                                }}
-                                title="View Official 2-Page Kerala Catalog"
-                              >
-                                <span>📖 VIEW KERALA CATALOG BROCHURE</span>
-                              </button>
-                            ) : item.id === 'ooty-coonoor' ? (
-                              <button 
-                                className="btn btn-dest-catalog"
-                                style={{ width: '100%', backgroundColor: '#D4A32A', color: '#0F382C', fontWeight: 800 }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setIsOotyCatalogOpen(true);
-                                }}
-                                title="View Official 3-Page Ooty & Coonoor Catalog"
-                              >
-                                <span>📖 VIEW OOTY CATALOG BROCHURE</span>
-                              </button>
-                            ) : (
-                              <a 
-                                href={`https://wa.me/917207681067?text=Hi%20Backpackers%20Destinations%2C%20please%20send%20me%20the%20official%20catalog%20and%20itinerary%20for%20${encodeURIComponent(item.title)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn btn-dest-catalog"
-                                style={{ width: '100%' }}
-                                onClick={(e) => e.stopPropagation()}
-                                title="Get Official Catalog on WhatsApp"
-                              >
-                                <span>GET CATALOGUE</span>
-                                <span className="btn-external-arrow" aria-hidden="true">↗</span>
-                              </a>
-                            )}
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -544,8 +499,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
       </main>
 
       <Footer />
-      <KeralaCatalogModal isOpen={isKeralaCatalogOpen} onClose={() => setIsKeralaCatalogOpen(false)} />
-      <OotyCatalogModal isOpen={isOotyCatalogOpen} onClose={() => setIsOotyCatalogOpen(false)} />
     </div>
   );
 };

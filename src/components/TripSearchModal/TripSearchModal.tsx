@@ -216,7 +216,7 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({ isOpen, onClos
                         className="btn-search-action btn-catalog" 
                         onClick={() => handleSelectTrip(trip, 'catalog')}
                       >
-                        VIEW IN CATALOG ↗
+                        EXPLORE ROUTE ↗
                       </button>
                     </div>
                   </div>

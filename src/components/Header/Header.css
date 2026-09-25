@@ -709,6 +709,61 @@
   border-color: #E63946;
 }
 
+/* ==========================================================================
+   MOBILE HEADER ACTIONS & GLASS SEARCH BUTTON (POSITIONED NEXT TO HAMBURGER)
+   ========================================================================== */
+
+.mobile-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  z-index: 1001;
+}
+
+/* Premium Glassmorphism Magnifying Glass Search Button */
+.mobile-glass-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.mobile-glass-search-btn:hover,
+.mobile-glass-search-btn:active {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.mobile-glass-search-btn svg {
+  color: #FFFFFF;
+  transition: transform 0.2s ease;
+}
+
+.mobile-glass-search-btn:hover svg {
+  transform: scale(1.15);
+}
+
+/* Hide mobile-glass-search-btn on Desktop views where nav-col-right is visible */
+@media (min-width: 901px) {
+  .mobile-glass-search-btn {
+    display: none;
+  }
+}
+
+
 
 
 
