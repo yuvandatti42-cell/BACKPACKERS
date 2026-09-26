@@ -160,72 +160,12 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
     }
   };
 
-  // Derive region hero metrics
-  const totalTripsCount = rawTrips.length;
-  const maxAltitudeStr = rawTrips.find(t => t.elevation && t.elevation !== 'N/A')?.elevation || '17,582 FT / 5,359 M';
-  const bestSeasonStr = currentCategory.id === 'ladakh' ? 'JUNE — SEPTEMBER' : currentCategory.id === 'south-india' ? 'SEPTEMBER — MAY' : currentCategory.id === 'north-india' ? 'JUNE — OCTOBER' : 'OCTOBER — APRIL';
-
   return (
     <div className="region-explore-wrapper">
       <Header onNavigate={onNavigate} currentRoute={`region:${activeRegionId}`} />
 
       <main className="region-explore-main">
         
-        {/* Dynamic Cinematic Hero Section */}
-        <section className="region-hero-section">
-          <div 
-            className="region-hero-bg" 
-            style={{ backgroundImage: `url(${currentCategory.image})` }}
-          >
-            <div className="region-hero-overlay" />
-          </div>
-
-          <div className="container region-hero-container">
-            
-            {/* Breadcrumb Navigation */}
-            <div className="region-breadcrumb">
-              <button onClick={() => onNavigate ? onNavigate('home') : window.location.hash = 'hero'} className="bc-link">
-                HOME
-              </button>
-              <span className="bc-sep">/</span>
-              <button onClick={() => onNavigate ? onNavigate('home', 'destinations-section') : window.location.hash = 'destinations-section'} className="bc-link">
-                ROUTE EXPLORATION
-              </button>
-              <span className="bc-sep">/</span>
-              <span className="bc-current">{currentCategory.title}</span>
-            </div>
-
-            <div className="region-hero-badge">
-              <span className="region-num">CORRIDOR #{currentCategory.number}</span>
-              <span className="live-dot" />
-              <span className="status-text">OFFICIAL EXPLORATION PAGE</span>
-            </div>
-
-            <h1 className="region-hero-title">{currentCategory.title}</h1>
-            <p className="region-hero-desc">{currentCategory.description}</p>
-
-            {/* Region Key Stats Bar */}
-            <div className="region-stats-grid">
-              <div className="region-stat-box">
-                <span className="stat-label">EXPLORATION ROUTES</span>
-                <span className="stat-val">{totalTripsCount} EXPEDITIONS</span>
-              </div>
-              <div className="region-stat-box">
-                <span className="stat-label">MAX ELEVATION</span>
-                <span className="stat-val">{maxAltitudeStr}</span>
-              </div>
-              <div className="region-stat-box">
-                <span className="stat-label">BEST SEASON</span>
-                <span className="stat-val">{bestSeasonStr}</span>
-              </div>
-              <div className="region-stat-box">
-                <span className="stat-label">SUPPORT TEAM</span>
-                <span className="stat-val">FULL SCOUT & SATELLITE</span>
-              </div>
-            </div>
-
-          </div>
-        </section>
 
         {/* Filter & Live Search Toolbar */}
         <section className="region-filter-toolbar">
