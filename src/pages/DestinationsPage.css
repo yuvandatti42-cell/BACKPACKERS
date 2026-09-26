@@ -611,6 +611,14 @@
   color: var(--text-muted);
 }
 
+.dest-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+}
+
 .dest-card-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -620,6 +628,38 @@
   margin: 0;
   text-transform: uppercase;
   word-break: break-word;
+  flex: 1;
+}
+
+.dest-card-price-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: rgba(200, 90, 50, 0.08);
+  border: 1px solid rgba(200, 90, 50, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+  text-align: right;
+  line-height: 1;
+}
+
+.dest-card-price-tag .price-tag-label {
+  font-family: var(--font-body);
+  font-size: 0.525rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.dest-card-price-tag .price-tag-val {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: #C85A32;
+  font-weight: 700;
 }
 
 .dest-card-subtitle {

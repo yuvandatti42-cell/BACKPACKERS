@@ -62,6 +62,7 @@ export interface CorridorDetail {
   region: string;
   title: string;
   subtitle: string;
+  startingPrice: string;
   tripTypes: TripTypeCategory[];
   elevation: string;
   difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPEDITION';
@@ -83,6 +84,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'KERALA',
     title: 'KERALA',
     subtitle: 'Munnar Tea Hills • Wayanad Rainforest • Alleppey Backwaters',
+    startingPrice: '₹5,999',
     tripTypes: ['weekend', 'long-expedition'],
     elevation: '8,800 FT / 2,695 M',
     difficulty: 'BEGINNER',
@@ -107,6 +109,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'LADAKH',
     title: 'LADAKH',
     subtitle: 'Khardung La Pass • Pangong Tso • Nubra Valley',
+    startingPrice: '₹28,999',
     tripTypes: ['bike-trips', 'long-expedition'],
     elevation: '17,582 FT / 5,359 M',
     difficulty: 'EXPEDITION',
@@ -131,6 +134,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'KODAIKANAL',
     title: 'KODAIKANAL',
     subtitle: 'Pillar Rocks • Berijam Lake Forest • Pine Reserve',
+    startingPrice: '₹7,499',
     tripTypes: ['weekend'],
     elevation: '7,000 FT / 2,133 M',
     difficulty: 'INTERMEDIATE',
@@ -155,6 +159,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'OOTY / COONOOR',
     title: 'OOTY / COONOOR',
     subtitle: '36 Hairpin Bend Corridor • Nilgiri Tea Hills • Heritage Ridge',
+    startingPrice: '₹6,999',
     tripTypes: ['weekend'],
     elevation: '7,350 FT / 2,240 M',
     difficulty: 'INTERMEDIATE',
@@ -179,6 +184,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'ARUNACHALAM X PONDICHERRY',
     title: 'ARUNACHALAM X PONDICHERRY',
     subtitle: 'Spiritual Peak Circuit • French Quarter • Coromandel Coast',
+    startingPrice: '₹7,499',
     tripTypes: ['weekend'],
     elevation: '2,668 FT / 813 M',
     difficulty: 'BEGINNER',
@@ -203,6 +209,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'GOKARNA & DANDELI',
     title: 'GOKARNA AND DANDELI',
     subtitle: 'Om Beach Cliff Trek • Kali River Rafting • Rainforest Canopy',
+    startingPrice: '₹5,999',
     tripTypes: ['weekend'],
     elevation: '1,800 FT / 550 M',
     difficulty: 'INTERMEDIATE',
@@ -227,6 +234,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'CHIKMAGALUR',
     title: 'CHIKMAGALUR',
     subtitle: 'Mullayanagiri Peak • Baba Budangiri • Hebbe Waterfalls',
+    startingPrice: '₹5,999',
     tripTypes: [],
     elevation: '6,317 FT / 1,930 M',
     difficulty: 'INTERMEDIATE',
@@ -251,6 +259,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'SPITI VALLEY',
     title: 'DESERT MOUNTAIN CIRCUIT',
     subtitle: 'Kunzum Pass • Kaza • Chandratal Moon Lake',
+    startingPrice: '₹28,999',
     tripTypes: ['bike-trips'],
     elevation: '15,059 FT / 4,590 M',
     difficulty: 'EXPEDITION',
@@ -412,7 +421,13 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                             <span className="dest-duration">{item.duration}</span>
                           </div>
 
-                          <h3 className="dest-card-title">{item.title}</h3>
+                          <div className="dest-card-title-row">
+                            <h3 className="dest-card-title">{item.title}</h3>
+                            <div className="dest-card-price-tag">
+                              <span className="price-tag-label">STARTING PRICE</span>
+                              <span className="price-tag-val">{item.startingPrice}</span>
+                            </div>
+                          </div>
                           <p className="dest-card-subtitle">{item.subtitle}</p>
 
                           {/* Trip Type Badges Pill Row */}
