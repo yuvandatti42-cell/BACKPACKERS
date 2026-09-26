@@ -171,12 +171,16 @@
 }
 
 .dest-row-indicator {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--text-muted);
-  opacity: 0;
-  transform: translateX(-10px);
+  opacity: 0.5;
+  transform: translateX(0);
   transition: all var(--transition-normal);
-  line-height: 1.1;
+  line-height: 1;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Active Row Hover States */
@@ -201,8 +205,15 @@
 
 .dest-list-row.is-active .dest-row-indicator {
   opacity: 1;
-  transform: translateX(0);
-  color: var(--accent-primary);
+  transform: translateX(2px);
+  color: #C85A32;
+  background-color: rgba(200, 90, 50, 0.1);
+}
+
+.dest-row-indicator:hover {
+  opacity: 1;
+  color: #E6A817;
+  background-color: rgba(230, 168, 23, 0.15);
 }
 
 /* Right side visual panel */
@@ -336,11 +347,16 @@
   font-weight: 700;
   text-transform: uppercase;
   transition: all var(--transition-fast);
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  margin-left: -0.6rem;
+  border-radius: 4px;
+  user-select: none;
 }
 
-.dest-list-row:hover .dest-row-action-btn {
-  transform: translateX(4px);
+.dest-row-action-btn:hover {
   color: #E6A817;
+  background-color: rgba(230, 168, 23, 0.1);
 }
 
 /* Visual Panel Hover Badge */
@@ -413,8 +429,19 @@
 }
 
 @media (max-width: 600px) {
-  .dest-row-desc {
-    display: none !important;
+  .dest-row-title {
+    font-size: 1.65rem;
+  }
+
+  .dest-list-row {
+    grid-template-columns: 35px 1fr auto;
+    padding: 1.25rem 0;
+  }
+
+  .dest-row-desc.is-visible {
+    display: block;
+    font-size: 0.825rem;
+    line-height: 1.5;
   }
 
   .destinations-title-wrap {

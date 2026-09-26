@@ -55,17 +55,17 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                   key={dest.id}
                   className={`dest-list-row ${isActive ? 'is-active' : ''}`}
                   onMouseEnter={() => setActiveIndex(index)}
-                  onClick={() => handleSelectCategory(dest.id)}
+                  onClick={() => setActiveIndex(index)}
                   tabIndex={0}
                   onFocus={() => setActiveIndex(index)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      handleSelectCategory(dest.id);
+                      setActiveIndex(index);
                     }
                   }}
                   role="button"
-                  aria-label={`Explore ${dest.title}`}
+                  aria-label={`Select ${dest.title}`}
                 >
                   <div className="dest-row-number">{dest.number}</div>
                   <div className="dest-row-content">
@@ -74,12 +74,47 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                       {dest.description}
                     </p>
                     {isActive && (
-                      <span className="dest-row-action-btn">
+                      <span 
+                        className="dest-row-action-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectCategory(dest.id);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            handleSelectCategory(dest.id);
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Explore ${dest.title} trips`}
+                      >
                         EXPLORE {dest.title} TRIPS &rarr;
                       </span>
                     )}
                   </div>
-                  <span className="dest-row-indicator" title={`Explore ${dest.title}`}>&rarr;</span>
+                  <span 
+                    className="dest-row-indicator" 
+                    title={`Explore ${dest.title}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectCategory(dest.id);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        handleSelectCategory(dest.id);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Explore ${dest.title}`}
+                  >
+                    &rarr;
+                  </span>
                 </div>
               );
             })}
