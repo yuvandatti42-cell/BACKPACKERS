@@ -231,7 +231,12 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
             ) : (
               <div className="region-trips-grid">
                 {filteredTrips.map((trip) => (
-                  <article key={trip.id} className="region-trip-card">
+                  <article 
+                    key={trip.id} 
+                    className="region-trip-card"
+                    onClick={() => handleOpenTripDetails(trip)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     
                     {/* Poster Frame */}
                     <div className="region-card-poster" style={{ backgroundColor: trip.frameColor }}>
@@ -264,26 +269,6 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                       <p className="trip-card-desc">{trip.description}</p>
 
 
-                      {/* Card Action Buttons */}
-                      <div className="trip-card-actions">
-                        <a 
-                          href={`https://wa.me/917207681067?text=${encodeURIComponent(`Hi Backpackers Destinations! I would like to inquire about the ${trip.title} (${trip.duration}) route in ${currentCategory.title}.`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-card-whatsapp"
-                        >
-                          <span>BOOK VIA WHATSAPP</span>
-                          <span className="btn-icon">&rarr;</span>
-                        </a>
-
-                        <button 
-                          className="btn-card-details"
-                          onClick={() => handleOpenTripDetails(trip)}
-                        >
-                          <span>EXPLORE ITINERARY &amp; CATALOG</span>
-                          <span className="btn-icon">↗</span>
-                        </button>
-                      </div>
 
                     </div>
 
