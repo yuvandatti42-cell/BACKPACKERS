@@ -184,10 +184,11 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.3em;
-  color: #E6A817 !important; /* Bright warm gold accent for ultimate pop */
+  color: #FFFFFF !important; /* Pure crisp white text */
   text-transform: uppercase;
   margin-top: 3px;
   line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Pill Contact button */
