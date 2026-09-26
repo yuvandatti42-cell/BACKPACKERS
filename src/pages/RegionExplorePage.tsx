@@ -263,38 +263,6 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                       
                       <p className="trip-card-desc">{trip.description}</p>
 
-                      {/* Specs Row */}
-                      <div className="trip-specs-strip">
-                        <div className="spec-item">
-                          <span className="label">ALTITUDE</span>
-                          <span className="val">{trip.elevation}</span>
-                        </div>
-                        <div className="spec-item">
-                          <span className="label">BEST SEASON</span>
-                          <span className="val">{trip.bestSeason}</span>
-                        </div>
-                        {trip.price && (
-                          <div className="spec-item price-item">
-                            <span className="label">PACKAGE PRICE</span>
-                            <span className="val price-val">{trip.price}</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Highlights */}
-                      {trip.highlights.length > 0 && (
-                        <div className="trip-highlights-box">
-                          <span className="hl-header">EXPEDITION HIGHLIGHTS:</span>
-                          <ul className="hl-list">
-                            {trip.highlights.map((hl, i) => (
-                              <li key={i}>
-                                <span className="hl-arrow">&rarr;</span>
-                                <span>{hl}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
 
                       {/* Card Action Buttons */}
                       <div className="trip-card-actions">
