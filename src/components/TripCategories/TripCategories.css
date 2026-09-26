@@ -323,6 +323,54 @@
   100% { transform: scale(1); opacity: 0.8; }
 }
 
+/* Explore Action Button in List Row */
+.dest-row-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #C85A32;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+
+.dest-list-row:hover .dest-row-action-btn {
+  transform: translateX(4px);
+  color: #E6A817;
+}
+
+/* Visual Panel Hover Badge */
+.dest-hover-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 10;
+  background: rgba(14, 18, 16, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dest-main-frame:hover .dest-hover-badge {
+  background: #C85A32;
+  border-color: #C85A32;
+  transform: translateY(-3px);
+}
+
 /* Responsive styles */
 @media (max-width: 992px) {
   .destinations-split-layout {
@@ -392,3 +440,4 @@
     height: 52px;
   }
 }
+

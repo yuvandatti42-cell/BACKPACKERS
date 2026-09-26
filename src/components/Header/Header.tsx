@@ -13,7 +13,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
-  const isNotHome = currentRoute === 'destinations' || window.location.hash === '#destinations';
+  const isNotHome = currentRoute !== 'home' || 
+                    window.location.hash === '#destinations' || 
+                    window.location.hash.startsWith('#region');
 
   useEffect(() => {
     const handleScroll = () => {

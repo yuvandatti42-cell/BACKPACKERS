@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
+import { RegionExplorePage } from './pages/RegionExplorePage';
 import './styles/variables.css';
 import './styles/base.css';
 import './styles/layout.css';
@@ -13,6 +14,9 @@ export const App: React.FC = () => {
     if (pathname === '/destinations' || hash === 'destinations') {
       return 'destinations';
     }
+    if (hash.startsWith('region/') || hash.startsWith('region:')) {
+      return 'region:' + hash.replace(/^region[\/:]/, '');
+    }
     return 'home';
   });
 
@@ -24,6 +28,8 @@ export const App: React.FC = () => {
       const pathname = window.location.pathname;
       if (pathname === '/destinations' || hash === 'destinations') {
         setCurrentRoute('destinations');
+      } else if (hash.startsWith('region/') || hash.startsWith('region:')) {
+        setCurrentRoute('region:' + hash.replace(/^region[\/:]/, ''));
       } else {
         setCurrentRoute('home');
       }
@@ -44,7 +50,12 @@ export const App: React.FC = () => {
       setActiveFilter('all');
     }
 
-    if (route === 'destinations') {
+    if (route.startsWith('region:')) {
+      const regId = route.replace('region:', '');
+      setCurrentRoute(route);
+      window.location.hash = `region/${regId}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (route === 'destinations') {
       setCurrentRoute('destinations');
       window.location.hash = 'destinations';
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -67,6 +78,11 @@ export const App: React.FC = () => {
       }
     }
   };
+
+  if (currentRoute.startsWith('region:')) {
+    const regionId = currentRoute.replace('region:', '');
+    return <RegionExplorePage regionId={regionId} onNavigate={navigateTo} />;
+  }
 
   if (currentRoute === 'destinations') {
     return <DestinationsPage onNavigate={navigateTo} initialFilter={activeFilter} />;

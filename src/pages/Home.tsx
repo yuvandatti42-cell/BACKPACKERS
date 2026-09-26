@@ -12,7 +12,7 @@ import { TripPlanner } from '../components/TripPlanner/TripPlanner';
 import { Footer } from '../components/Footer/Footer';
 
 interface HomeProps {
-  onNavigate?: (route: string, sectionId?: string) => void;
+  onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
 }
 
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
@@ -24,7 +24,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <Header onNavigate={onNavigate} currentRoute="home" />
       <main id="main-content">
         <HeroSection />
-        <TripCategories />
+        <TripCategories onNavigate={onNavigate} />
         <FeaturedExpedition />
         <FeaturedExpeditions />
         <OurStory />

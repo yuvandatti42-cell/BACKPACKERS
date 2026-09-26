@@ -268,54 +268,6 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     description: 'The Middle Land between India and Tibet. Remote, rugged, and unpaved, Spiti demands resilience as you conquer glacial runoff rivers and ancient monastery valleys.',
     image: '/tour_spiti.jpg',
     frameColor: '#C29B53'
-  },
-  {
-    id: 'tawang',
-    number: '09',
-    region: 'NORTH EAST',
-    title: 'TAWANG HIGH FRONTIER',
-    subtitle: 'Sela Pass • Frozen Lakes • Tawang Monastery Citadel',
-    tripTypes: ['long-expedition'],
-    elevation: '13,700 FT / 4,170 M',
-    difficulty: 'EXPEDITION',
-    duration: '8 DAYS / 7 NIGHTS',
-    distance: '950 KM',
-    bestSeason: 'MARCH — MAY / OCTOBER — NOVEMBER',
-    squadSize: '4 - 8 RIDERS',
-    terrain: 'Snowy Passes, Pine Valleys & High Frontier Spurs',
-    highlights: [
-      'Traverse Sela High Pass & pristine frozen lakes',
-      'Visit world-famous 400-year-old Tawang Buddhist Monastery citadel',
-      'Pine-scented valley trails through Dirang & Bomdila',
-      'Unmatched North-East frontier mountain ridge vistas'
-    ],
-    description: 'Traverse Sela Pass into the untouched high-altitude frontier of Tawang, home to the second largest Buddhist monastery in the world.',
-    image: '/ost.jpg',
-    frameColor: '#5C5468'
-  },
-  {
-    id: 'bhutan',
-    number: '10',
-    region: 'BHUTAN',
-    title: 'LAST THUNDER DRAGON KINGDOM',
-    subtitle: 'Dochula Pass • Paro Taktsang • Punakha Valley',
-    tripTypes: [],
-    elevation: '10,200 FT / 3,110 M',
-    difficulty: 'INTERMEDIATE',
-    duration: '9 DAYS / 8 NIGHTS',
-    distance: '780 KM',
-    bestSeason: 'SEPTEMBER — MAY',
-    squadSize: '4 - 8 RIDERS',
-    terrain: 'Smooth Winding Himalayan Valleys & Pine Forests',
-    highlights: [
-      'Ride through 108 memorial stupas at Dochula High Pass',
-      'Hike to the legendary Tiger Nest monastery above Paro cliff',
-      'Immerse in pure Himalayan culture and pristine fortress dzongs',
-      'Smooth flow switchbacks through alpine pine valleys'
-    ],
-    description: 'A serene yet exhilarating cross-border journey into the peaceful Dragon Kingdom of Bhutan. Experience immaculate Himalayan switchbacks, ancient dzongs, and untouched pine forests.',
-    image: '/tour_bhutan.jpg',
-    frameColor: '#4A8280'
   }
 ];
 
@@ -374,7 +326,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
               <input
                 type="text"
                 className="dest-inline-search-input"
-                placeholder="Search trip routes by name, region, pass or keyword (e.g. Munnar, Spiti, Waterfall, Bhutan)..."
+                placeholder="Search trip routes by name, region, pass or keyword (e.g. Munnar, Spiti, Waterfall, Kerala)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

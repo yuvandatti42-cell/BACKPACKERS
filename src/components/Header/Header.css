@@ -8,22 +8,22 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: none;
+  background-color: rgba(14, 18, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(230, 168, 23, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   transition: padding var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal), backdrop-filter var(--transition-normal);
-  padding: 1.25rem 0;
+  padding: 1rem 0;
 }
 
 .site-header.nav-scrolled {
   padding: 0.75rem 0;
-  background-color: rgba(20, 20, 18, 0.96);
+  background-color: rgba(14, 18, 16, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(230, 168, 23, 0.35);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
@@ -97,12 +97,12 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  background-color: rgba(230, 168, 23, 0.14);
-  border: 1px solid rgba(230, 168, 23, 0.45);
-  color: var(--accent-primary, #E6A817);
+  background-color: #E6A817;
+  border: 1px solid #E6A817;
+  color: #121212 !important;
   border-radius: 50%;
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
@@ -114,9 +114,9 @@
 }
 
 .nav-back-arrow-btn:hover {
-  background-color: var(--accent-primary, #E6A817);
-  color: #141412;
-  border-color: var(--accent-primary, #E6A817);
+  background-color: #FFFFFF;
+  color: #121212 !important;
+  border-color: #FFFFFF;
   transform: translateX(-3px);
   box-shadow: 0 4px 15px rgba(230, 168, 23, 0.4);
 }
@@ -146,7 +146,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid #E6A817;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   transition: width var(--transition-normal), height var(--transition-normal);
 }
@@ -176,15 +176,15 @@
   letter-spacing: 0.08em;
   color: #FFFFFF !important; /* Bright crisp white */
   line-height: 0.95;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .brand-center-sub {
   font-family: var(--font-body);
   font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  color: #FFFFFF !important; /* Crisp white for optimal background contrast */
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #E6A817 !important; /* Bright warm gold accent for ultimate pop */
   text-transform: uppercase;
   margin-top: 3px;
   line-height: 1;
@@ -195,18 +195,19 @@
   padding: 0.65rem 1.45rem;
   font-size: 0.85rem;
   border-radius: 30px;
-  border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
-  background-color: rgba(255, 255, 255, 0.12) !important;
-  color: #FFFFFF !important;
-  font-weight: 700;
+  border: 1.5px solid #E6A817 !important;
+  background-color: #E6A817 !important;
+  color: #121212 !important;
+  font-weight: 800;
   letter-spacing: 0.12em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 14px rgba(230, 168, 23, 0.3);
+  transition: all 0.25s ease;
 }
 
 .btn-contact-header:hover {
-  background-color: #FAF8F5 !important;
-  color: #1F1F1D !important;
-  border-color: #FAF8F5 !important;
+  background-color: #FFFFFF !important;
+  color: #121212 !important;
+  border-color: #FFFFFF !important;
 }
 
 /* Mobile Toggle Hamburger */

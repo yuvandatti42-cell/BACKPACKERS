@@ -3,9 +3,21 @@ import { CATEGORIES_DATA } from '../../data/categoriesData';
 import { TravellerCharacterSVG } from '../TravellerTransition/TravellerCharacterSVG';
 import './TripCategories.css';
 
-// Destination corridors exploration section (Ladakh, Nepal, Kerala, International)
-export const TripCategories: React.FC = () => {
+interface TripCategoriesProps {
+  onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
+}
+
+// Destination corridors exploration section (Ladakh, South India, North India, North East)
+export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const handleSelectCategory = (id: string) => {
+    if (onNavigate) {
+      onNavigate(`region:${id}`);
+    } else {
+      window.location.hash = `region/${id}`;
+    }
+  };
 
   return (
     <section id="destinations-section" className="destinations-editorial" aria-labelledby="destinations-title">
@@ -43,8 +55,17 @@ export const TripCategories: React.FC = () => {
                   key={dest.id}
                   className={`dest-list-row ${isActive ? 'is-active' : ''}`}
                   onMouseEnter={() => setActiveIndex(index)}
+                  onClick={() => handleSelectCategory(dest.id)}
                   tabIndex={0}
                   onFocus={() => setActiveIndex(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSelectCategory(dest.id);
+                    }
+                  }}
+                  role="button"
+                  aria-label={`Explore ${dest.title}`}
                 >
                   <div className="dest-row-number">{dest.number}</div>
                   <div className="dest-row-content">
@@ -52,8 +73,13 @@ export const TripCategories: React.FC = () => {
                     <p className={`dest-row-desc ${isActive ? 'is-visible' : ''}`}>
                       {dest.description}
                     </p>
+                    {isActive && (
+                      <span className="dest-row-action-btn">
+                        EXPLORE {dest.title} TRIPS &rarr;
+                      </span>
+                    )}
                   </div>
-                  <span className="dest-row-indicator">&rarr;</span>
+                  <span className="dest-row-indicator" title={`Explore ${dest.title}`}>&rarr;</span>
                 </div>
               );
             })}
@@ -63,7 +89,12 @@ export const TripCategories: React.FC = () => {
           <div className="destinations-visual-panel">
             
             {/* Main Large Cinematic Image Container */}
-            <div className="dest-main-frame">
+            <div 
+              className="dest-main-frame" 
+              onClick={() => handleSelectCategory(CATEGORIES_DATA[activeIndex].id)}
+              style={{ cursor: 'pointer' }}
+              title={`Click to view all ${CATEGORIES_DATA[activeIndex].title} trips`}
+            >
               {CATEGORIES_DATA.map((dest, index) => (
                 <img 
                   key={dest.id}
@@ -74,12 +105,22 @@ export const TripCategories: React.FC = () => {
                 />
               ))}
               <div className="dest-img-shimmer" />
+              <div className="dest-hover-badge">
+                EXPLORE {CATEGORIES_DATA[activeIndex]?.title} TRIPS &rarr;
+              </div>
             </div>
 
             {/* Overlapping Asymmetric Supporting Image */}
-            <div className="dest-supporting-frame">
+            <div 
+              className="dest-supporting-frame"
+              onClick={() => {
+                const nextIndex = (activeIndex + 1) % CATEGORIES_DATA.length;
+                handleSelectCategory(CATEGORIES_DATA[nextIndex].id);
+              }}
+              style={{ cursor: 'pointer' }}
+              title="Click to explore option"
+            >
               {CATEGORIES_DATA.map((dest, index) => {
-                // Shift indices to show a different supporting image for variety
                 const supportIndex = (index + 1) % CATEGORIES_DATA.length;
                 const supportImg = CATEGORIES_DATA[supportIndex];
                 return (
@@ -102,3 +143,4 @@ export const TripCategories: React.FC = () => {
     </section>
   );
 };
+
