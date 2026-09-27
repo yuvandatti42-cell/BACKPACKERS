@@ -1,7 +1,11 @@
 import React from 'react';
 import './FeaturedExpedition.css';
 
-export const FeaturedExpedition: React.FC = () => {
+interface FeaturedExpeditionProps {
+  onOpenBookModal?: (title?: string) => void;
+}
+
+export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onOpenBookModal }) => {
   return (
     <section className="featured-expedition" aria-labelledby="featured-expedition-title">
       {/* Background Cinematic Image */}
@@ -51,7 +55,15 @@ export const FeaturedExpedition: React.FC = () => {
             </div>
           </div>
 
-
+          <button
+            type="button"
+            className="btn btn-primary"
+            style={{ marginTop: '1rem', width: 'fit-content' }}
+            onClick={() => onOpenBookModal?.('Ladakh High Passes')}
+          >
+            <span>BOOK THIS EXPEDITION</span>
+            <span className="btn-icon-arrow" aria-hidden="true">&rarr;</span>
+          </button>
         </div>
 
       </div>

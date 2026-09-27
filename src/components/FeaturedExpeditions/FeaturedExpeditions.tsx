@@ -7,7 +7,11 @@ const INFINITE_EXPEDITIONS = Array.from({ length: REPEAT_COUNT }, () => EXPEDITI
 const TOTAL_ITEMS = EXPEDITIONS_DATA.length;
 const INITIAL_INDEX = TOTAL_ITEMS; // Start in middle set
 
-export const FeaturedExpeditions: React.FC = () => {
+interface FeaturedExpeditionsProps {
+  onOpenBookModal?: (title?: string) => void;
+}
+
+export const FeaturedExpeditions: React.FC<FeaturedExpeditionsProps> = ({ onOpenBookModal }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const animFrameRef = useRef<number | null>(null);
 
@@ -223,6 +227,7 @@ export const FeaturedExpeditions: React.FC = () => {
                   onClick={() => {
                     setDisableTransition(false);
                     setActiveIndex(idx);
+                    if (onOpenBookModal) onOpenBookModal(exp.title);
                   }}
                 >
                   <article className="expedition-card">

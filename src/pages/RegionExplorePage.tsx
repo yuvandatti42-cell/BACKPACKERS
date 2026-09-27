@@ -11,6 +11,7 @@ import './RegionExplorePage.css';
 interface RegionExplorePageProps {
   regionId: string;
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
+  onOpenBookModal?: (title?: string) => void;
 }
 
 interface ConsolidatedTrip {
@@ -34,7 +35,7 @@ interface ConsolidatedTrip {
   category?: string;
 }
 
-export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, onNavigate }) => {
+export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, onNavigate, onOpenBookModal }) => {
   const [activeRegionId, setActiveRegionId] = useState<string>(regionId);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -366,12 +367,18 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
 
               <div className="detail-modal-actions">
                 <a 
-                  href={`https://wa.me/917207681067?text=${encodeURIComponent(`Hi Backpackers Destinations, I want to book the ${activeDetailTrip.title} (${activeDetailTrip.duration}) trip.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#book"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenBookModal) {
+                      onOpenBookModal(activeDetailTrip.title);
+                    } else {
+                      window.open(`https://wa.me/917207681067?text=${encodeURIComponent(`Hi Backpackers Destinations, I want to book the ${activeDetailTrip.title} (${activeDetailTrip.duration}) trip.`)}`, '_blank');
+                    }
+                  }}
                   className="btn btn-modal-book"
                 >
-                  <span>BOOK THIS EXPEDITION ON WHATSAPP &rarr;</span>
+                  <span>BOOK THIS EXPEDITION &rarr;</span>
                 </a>
 
                 <a 
