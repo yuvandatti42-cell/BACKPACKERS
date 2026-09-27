@@ -13,24 +13,25 @@ import { Footer } from '../components/Footer/Footer';
 
 interface HomeProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
+  onOpenBookModal?: (title?: string) => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   return (
     <div className={`app-wrapper ${isReady ? 'is-loaded' : ''}`}>
       <SplashScreen onComplete={() => setIsReady(true)} />
-      <Header onNavigate={onNavigate} currentRoute="home" />
+      <Header onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} currentRoute="home" />
       <main id="main-content">
-        <HeroSection />
+        <HeroSection onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
         <TripCategories onNavigate={onNavigate} />
-        <FeaturedExpedition />
-        <FeaturedExpeditions />
+        <FeaturedExpedition onOpenBookModal={onOpenBookModal} />
+        <FeaturedExpeditions onOpenBookModal={onOpenBookModal} />
         <OurStory />
         <TravelerStories />
         <EditorialIntro />
-        <TripPlanner />
+        <TripPlanner onOpenBookModal={onOpenBookModal} />
       </main>
       <Footer />
     </div>

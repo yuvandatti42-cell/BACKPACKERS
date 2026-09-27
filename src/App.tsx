@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { RegionExplorePage } from './pages/RegionExplorePage';
+import { BookNowModal } from './components/BookNowModal/BookNowModal';
 import './styles/variables.css';
 import './styles/base.css';
 import './styles/layout.css';
@@ -21,6 +22,17 @@ export const App: React.FC = () => {
   });
 
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [isBookModalOpen, setIsBookModalOpen] = useState<boolean>(false);
+  const [bookModalTitle, setBookModalTitle] = useState<string | undefined>(undefined);
+
+  const openBookModal = (tripTitle?: string) => {
+    setBookModalTitle(tripTitle);
+    setIsBookModalOpen(true);
+  };
+
+  const closeBookModal = () => {
+    setIsBookModalOpen(false);
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -30,6 +42,9 @@ export const App: React.FC = () => {
         setCurrentRoute('destinations');
       } else if (hash.startsWith('region/') || hash.startsWith('region:')) {
         setCurrentRoute('region:' + hash.replace(/^region[\/:]/, ''));
+      } else if (hash === 'book' || hash === 'book-now') {
+        setIsBookModalOpen(true);
+        setCurrentRoute('home');
       } else {
         setCurrentRoute('home');
       }
@@ -48,6 +63,11 @@ export const App: React.FC = () => {
       setActiveFilter(categoryFilter);
     } else if (route === 'destinations') {
       setActiveFilter('all');
+    }
+
+    if (sectionId === 'book' || route === 'book') {
+      openBookModal();
+      return;
     }
 
     if (route.startsWith('region:')) {
@@ -79,16 +99,34 @@ export const App: React.FC = () => {
     }
   };
 
-  if (currentRoute.startsWith('region:')) {
-    const regionId = currentRoute.replace('region:', '');
-    return <RegionExplorePage regionId={regionId} onNavigate={navigateTo} />;
-  }
+  return (
+    <>
+      {currentRoute.startsWith('region:') ? (
+        <RegionExplorePage 
+          regionId={currentRoute.replace('region:', '')} 
+          onNavigate={navigateTo} 
+          onOpenBookModal={openBookModal}
+        />
+      ) : currentRoute === 'destinations' ? (
+        <DestinationsPage 
+          onNavigate={navigateTo} 
+          initialFilter={activeFilter} 
+          onOpenBookModal={openBookModal}
+        />
+      ) : (
+        <Home 
+          onNavigate={navigateTo} 
+          onOpenBookModal={openBookModal}
+        />
+      )}
 
-  if (currentRoute === 'destinations') {
-    return <DestinationsPage onNavigate={navigateTo} initialFilter={activeFilter} />;
-  }
-
-  return <Home onNavigate={navigateTo} />;
+      <BookNowModal 
+        isOpen={isBookModalOpen} 
+        onClose={closeBookModal} 
+        tripTitle={bookModalTitle} 
+      />
+    </>
+  );
 };
 
 export default App;

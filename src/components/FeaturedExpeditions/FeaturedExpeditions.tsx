@@ -116,19 +116,23 @@ export const FeaturedExpeditions: React.FC = () => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || dragStartX === null) return;
     const currentX = e.touches[0].clientX;
+    const delta = currentX - dragStartX;
+
     if (animFrameRef.current !== null) {
       cancelAnimationFrame(animFrameRef.current);
     }
     animFrameRef.current = requestAnimationFrame(() => {
-      setDragOffset(currentX - dragStartX);
+      setDragOffset(delta);
     });
   };
 
   const handleTouchEnd = () => {
     if (isDragging) {
-      if (dragOffset < -35) {
+      // Responsive flick threshold (20px for mobile flick, 40px for desktop drag)
+      const threshold = window.innerWidth <= 768 ? 20 : 35;
+      if (dragOffset < -threshold) {
         handleNext();
-      } else if (dragOffset > 35) {
+      } else if (dragOffset > threshold) {
         handlePrev();
       } else {
         setDragOffset(0);

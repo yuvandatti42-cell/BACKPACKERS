@@ -118,10 +118,6 @@ export const RegionSpotlight: React.FC = () => {
                   <span className="strip-label">NETWORK ID</span>
                   <span className="strip-val">BD-EXP-{displayedRegion.number}</span>
                 </div>
-                <div className="strip-item">
-                  <span className="strip-label">SEASON</span>
-                  <span className="strip-val">BEST TIMING OPEN</span>
-                </div>
               </div>
 
               <a href="#planner" className="btn btn-primary" style={{ marginTop: '1rem', width: 'fit-content' }}>

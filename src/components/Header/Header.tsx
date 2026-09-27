@@ -4,10 +4,11 @@ import './Header.css';
 
 interface HeaderProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
+  onOpenBookModal?: (title?: string) => void;
   currentRoute?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
@@ -250,11 +251,18 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             </a>
             <div className="nav-vertical-divider" aria-hidden="true" />
             <a 
-              href="#planner" 
+              href="#book" 
               className="btn btn-contact-header"
-              onClick={(e) => handleNavClick(e, 'home', 'planner')}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenBookModal) {
+                  onOpenBookModal();
+                } else {
+                  handleNavClick(e, 'home', 'planner');
+                }
+              }}
             >
-              CONTACT US
+              BOOK NOW
             </a>
           </div>
 

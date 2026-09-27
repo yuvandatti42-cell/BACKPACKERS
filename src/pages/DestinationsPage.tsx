@@ -283,9 +283,14 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
 interface DestinationsPageProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
   initialFilter?: string;
+  onOpenBookModal?: (title?: string) => void;
 }
 
-export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, initialFilter = 'all' }) => {
+export const DestinationsPage: React.FC<DestinationsPageProps> = ({ 
+  onNavigate, 
+  initialFilter = 'all',
+  onOpenBookModal
+}) => {
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala-weekend');
@@ -447,10 +452,16 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate, 
                               <span className="spec-label">ALTITUDE</span>
                               <span className="spec-val">{item.elevation}</span>
                             </div>
-                            <div className="spec-box">
-                              <span className="spec-label">SEASON</span>
-                              <span className="spec-val">{item.bestSeason}</span>
-                            </div>
+                            <button
+                              type="button"
+                              className="btn-card-book-now"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (onOpenBookModal) onOpenBookModal(item.title);
+                              }}
+                            >
+                              BOOK NOW
+                            </button>
                           </div>
                         </div>
                       </div>

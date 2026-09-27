@@ -464,6 +464,11 @@ input[type="date"]:not(:placeholder-shown) ~ .minimal-label {
   .form-row-grid {
     gap: 2rem var(--space-md);
   }
+
+  .map-address-text,
+  .map-contact-pills {
+    display: none;
+  }
 }
 
 @media (max-width: 580px) {

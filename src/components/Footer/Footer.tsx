@@ -22,9 +22,6 @@ export const Footer: React.FC = () => {
           <h2 className="footer-cta-headline">
             LET'S START <span className="footer-headline-yellow">RIGHT NOW</span>
           </h2>
-          <a href="#planner" className="btn-footer-cta">
-            CONTACT US
-          </a>
         </div>
 
         {/* Bottom Details Columns */}

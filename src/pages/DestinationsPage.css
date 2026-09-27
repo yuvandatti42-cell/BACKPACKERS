@@ -776,6 +776,28 @@
   color: var(--text-primary);
 }
 
+.btn-card-book-now {
+  background-color: #16a34a;
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  white-space: nowrap;
+}
+
+.btn-card-book-now:hover {
+  background-color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
+}
+
 .btn-dest-catalog {
   width: 100%;
   display: flex;

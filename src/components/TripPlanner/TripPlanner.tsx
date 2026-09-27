@@ -12,15 +12,20 @@ const INITIAL_FORM_STATE: InquiryFormData = {
   message: ''
 };
 
-export const TripPlanner: React.FC = () => {
+interface TripPlannerProps {
+  onOpenBookModal?: (title?: string) => void;
+}
+
+export const TripPlanner: React.FC<TripPlannerProps> = () => {
   const [formData, setFormData] = useState<InquiryFormData>(INITIAL_FORM_STATE);
+  const [expectingCallback, setExpectingCallback] = useState<boolean>(false);
   const [errors, setErrors] = useState<Partial<Record<keyof InquiryFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submittedMessage, setSubmittedMessage] = useState<string | null>(null);
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof InquiryFormData, string>> = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.name.trim()) newErrors.name = 'Full Name is required.';
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required.';
     if (!formData.email.trim() || !formData.email.includes('@')) newErrors.email = 'Valid email is required.';
     if (!formData.destination) newErrors.destination = 'Destination is required.';
@@ -43,12 +48,40 @@ export const TripPlanner: React.FC = () => {
 
     setIsSubmitting(true);
 
+    const messageText = 
+`Hi Backpackers Destinations,
+
+*New Trip Inquiry / Booking Details:*
+• *Full Name:* ${formData.name}
+• *Phone Number (WhatsApp):* ${formData.phone}
+• *Email:* ${formData.email}
+• *Destination / Corridor:* ${formData.destination || 'Not Specified'}
+• *Squad Size:* ${formData.travellers || '1'}
+• *Expecting Callback?:* ${expectingCallback ? 'Yes' : 'No'}
+• *Notes:* ${formData.message || 'None'}`;
+
+    const encodedWhatsapp = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/917207681067?text=${encodedWhatsapp}`;
+
+    const emailSubject = encodeURIComponent(`Booking Inquiry - ${formData.name}`);
+    const emailBody = encodeURIComponent(messageText);
+    const mailtoUrl = `mailto:contact@backpackersdestinations.com?subject=${emailSubject}&body=${emailBody}`;
+
+    // 1. Trigger Email client
+    window.open(mailtoUrl, '_blank');
+
+    // 2. Trigger WhatsApp
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 400);
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmittedMessage(
-        `Thank you, ${formData.name}. Your inquiry for "${formData.destination}" has been received. Our team will review the route notes and contact you shortly.`
+        `Thank you, ${formData.name}. Your details have been sent to WhatsApp and Email (contact@backpackersdestinations.com).`
       );
       setFormData(INITIAL_FORM_STATE);
+      setExpectingCallback(false);
       setErrors({});
     }, 850);
   };

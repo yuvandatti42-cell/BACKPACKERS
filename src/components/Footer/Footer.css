@@ -81,7 +81,7 @@
   color: #121212;
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 0.85rem 2.25rem;
@@ -151,11 +151,14 @@
   font-family: var(--font-body);
   font-size: 0.8125rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 300; /* Thinner font weight */
+  letter-spacing: 0.01em;
   margin-bottom: 0.85rem;
   max-width: 540px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .footer-contact-row {
@@ -170,10 +173,13 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   color: #FFFFFF;
-  font-weight: 600;
+  font-weight: 300; /* Thinner font weight */
+  letter-spacing: 0.01em;
   text-decoration: none;
   transition: color var(--transition-fast);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .footer-contact-item:hover {
@@ -182,7 +188,7 @@
 
 .contact-prefix {
   color: #E6A817;
-  font-weight: 700;
+  font-weight: 500;
   margin-right: 0.25rem;
   font-size: 0.875rem;
 }
@@ -190,7 +196,7 @@
 .contact-divider {
   color: #E6A817;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .footer-social-row {
@@ -246,7 +252,7 @@
 
 .footer-legal-links a {
   color: rgba(255, 255, 255, 0.92);
-  font-weight: 600;
+  font-weight: 400;
   transition: color var(--transition-fast);
   text-decoration: none;
 }
@@ -257,7 +263,7 @@
 
 .footer-waiver-link {
   color: #E6A817 !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
 }
 
 .footer-waiver-link:hover {
@@ -266,7 +272,7 @@
 
 .legal-separator {
   color: #E6A817;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.8125rem;
 }
 
@@ -278,8 +284,45 @@
   }
 }
 
+@media (max-width: 768px) {
+  .site-footer-editorial {
+    min-height: auto;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .footer-reg-text {
+    display: none;
+  }
+
+  .footer-contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-divider {
+    display: none;
+  }
+
+  .footer-contact-item {
+    font-size: 0.8125rem;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  }
+
+  .contact-prefix {
+    color: #E6A817;
+  }
+}
+
 @media (max-width: 600px) {
   .footer-logo-img {
     height: 95px;
   }
 }
+
+
+
