@@ -8,6 +8,7 @@
   padding-bottom: var(--space-3xl);
   border-bottom: 1px solid var(--border-light);
   overflow: hidden;
+  width: 100%;
 }
 
 /* Title & Walking Traveller Companion Row */
@@ -74,6 +75,7 @@
   display: flex;
   align-items: flex-end;
   will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
   animation: travellerWalkBesideTitle 13s linear infinite;
 }
 
@@ -90,7 +92,7 @@
 /* Character dissolves softly into nothingness at the edges */
 @keyframes travellerWalkBesideTitle {
   0% {
-    transform: translateX(-40px);
+    transform: translate3d(-40px, 0, 0);
     opacity: 0;
   }
   10% {
@@ -100,7 +102,7 @@
     opacity: 1;
   }
   96%, 100% {
-    transform: translateX(calc(100% + 20px));
+    transform: translate3d(calc(100% + 20px), 0, 0);
     opacity: 0;
   }
 }
@@ -123,11 +125,12 @@
   display: grid;
   grid-template-columns: 50px 1fr auto;
   align-items: flex-start;
-  padding: 2rem 0;
+  padding: 1.75rem 0;
   border-bottom: 1px solid var(--border-light);
   cursor: pointer;
   outline: none;
-  transition: border-color var(--transition-normal);
+  transition: border-color var(--transition-normal), background-color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .dest-list-row:first-child {
@@ -149,8 +152,8 @@
 
 .dest-row-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.75rem);
-  line-height: 0.95;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  line-height: 1;
   letter-spacing: 0.01em;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -158,16 +161,39 @@
   transform-origin: left center;
 }
 
-.dest-row-desc {
-  max-height: 0;
-  opacity: 0;
+/* Smooth CSS Grid Accordion expansion */
+.dest-row-desc-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: grid-template-rows;
+}
+
+.dest-list-row.is-active .dest-row-desc-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.dest-row-desc-inner {
   overflow: hidden;
+  transition: opacity 0.35s ease;
+  opacity: 0;
+}
+
+.dest-list-row.is-active .dest-row-desc-inner {
+  opacity: 1;
+}
+
+.dest-mobile-inline-img-wrap {
+  display: none;
+}
+
+.dest-row-desc {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.6;
-  transition: max-height 0.45s var(--ease-editorial), opacity 0.45s var(--ease-editorial), margin 0.45s var(--ease-editorial);
-  margin-top: 0;
+  margin-top: 0.85rem;
+  margin-bottom: 0.25rem;
 }
 
 .dest-row-indicator {
@@ -177,10 +203,15 @@
   transform: translateX(0);
   transition: all var(--transition-normal);
   line-height: 1;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Active Row Hover States */
@@ -195,12 +226,6 @@
 .dest-list-row.is-active .dest-row-title {
   color: var(--text-primary);
   transform: scale(1.02);
-}
-
-.dest-list-row.is-active .dest-row-desc.is-visible {
-  max-height: 150px;
-  opacity: 1;
-  margin-top: 1rem;
 }
 
 .dest-list-row.is-active .dest-row-indicator {
@@ -245,9 +270,10 @@
   object-fit: cover;
   opacity: 0;
   z-index: 1;
-  transform: scale(1.06);
+  transform: scale(1.05);
   filter: brightness(0.98);
-  transition: opacity 0.75s var(--ease-editorial), transform 1.5s var(--ease-editorial);
+  transition: opacity 0.6s var(--ease-editorial), transform 1.2s var(--ease-editorial);
+  will-change: opacity, transform;
 }
 
 .dest-main-img.is-visible {
@@ -264,7 +290,7 @@
   pointer-events: none;
 }
 
-/* Overlapping Supporting Frame (Extends Outside container) */
+/* Overlapping Supporting Frame */
 .dest-supporting-frame {
   position: absolute;
   bottom: 0;
@@ -289,7 +315,8 @@
   opacity: 0;
   z-index: 1;
   transform: scale(1.08);
-  transition: opacity 0.75s var(--ease-editorial), transform 1.5s var(--ease-editorial);
+  transition: opacity 0.6s var(--ease-editorial), transform 1.2s var(--ease-editorial);
+  will-change: opacity, transform;
 }
 
 .dest-supporting-img.is-visible {
@@ -348,10 +375,11 @@
   text-transform: uppercase;
   transition: all var(--transition-fast);
   cursor: pointer;
-  padding: 0.35rem 0.6rem;
+  padding: 0.5rem 0.8rem;
   margin-left: -0.6rem;
   border-radius: 4px;
   user-select: none;
+  min-height: 44px;
 }
 
 .dest-row-action-btn:hover {
@@ -387,25 +415,44 @@
   transform: translateY(-3px);
 }
 
-/* Responsive styles */
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE SMOOTHNESS OPTIMIZATIONS
+   ========================================================================== */
+
 @media (max-width: 992px) {
+  .destinations-editorial {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
   .destinations-split-layout {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
   }
 
   .destinations-visual-panel {
-    height: 400px;
-    order: -1; /* Display image above text list on mobile */
+    height: 340px;
+    order: -1; /* Display image above text list on mobile/tablet */
+    margin-bottom: 0.5rem;
+  }
+
+  .dest-main-frame {
+    width: 85%;
+    height: 88%;
+    border-radius: 8px;
   }
 
   .dest-supporting-frame {
     width: 38%;
-    height: 48%;
+    height: 50%;
+    transform: translate(0, 0); /* Eliminate offset to prevent horizontal scroll overflow */
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
   }
 
   .dest-list-row {
-    padding: 1.5rem 0;
+    padding: 1.35rem 0;
   }
 
   .destinations-title-wrap {
@@ -414,34 +461,25 @@
 
   .title-traveller-lane {
     min-width: 140px;
-    height: 62px;
+    height: 60px;
   }
 
   .title-traveller-mover {
-    height: 58px;
-    animation-duration: 10s;
+    height: 54px;
+    animation-duration: 11s;
   }
 
   .title-traveller-mover .traveller-chibi-svg,
   .title-traveller-mover .traveller-character-svg {
-    height: 58px;
+    height: 54px;
+    filter: none; /* Disable filter drop-shadow on mobile to optimize GPU render frames */
   }
 }
 
 @media (max-width: 600px) {
-  .dest-row-title {
-    font-size: 1.65rem;
-  }
-
-  .dest-list-row {
-    grid-template-columns: 35px 1fr auto;
-    padding: 1.25rem 0;
-  }
-
-  .dest-row-desc.is-visible {
-    display: block;
-    font-size: 0.825rem;
-    line-height: 1.5;
+  .destinations-editorial {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 
   .destinations-title-wrap {
@@ -453,18 +491,95 @@
   .title-traveller-lane {
     width: 100%;
     max-width: 100%;
-    height: 56px;
+    height: 48px;
     margin-bottom: 0;
   }
 
   .title-traveller-mover {
-    height: 52px;
-    animation-duration: 8s;
+    height: 44px;
+    animation-duration: 9s;
   }
 
   .title-traveller-mover .traveller-chibi-svg,
   .title-traveller-mover .traveller-character-svg {
-    height: 52px;
+    height: 44px;
+    filter: none;
+  }
+
+  .destinations-visual-panel {
+    height: 230px;
+    order: -1;
+    margin-bottom: 0.25rem;
+  }
+
+  .dest-main-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+
+  .dest-supporting-frame {
+    display: none; /* Hide supporting frame on phone viewports to prevent visual noise & overflow */
+  }
+
+  .dest-hover-badge {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+  }
+
+  .dest-row-title {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .dest-list-row {
+    grid-template-columns: 32px 1fr auto;
+    padding: 1.15rem 0;
+    gap: 0.5rem;
+  }
+
+  .dest-row-number {
+    font-size: 1rem;
+    padding-top: 0.1rem;
+  }
+
+  .dest-mobile-inline-img-wrap {
+    display: block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 140px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-light);
+  }
+
+  .dest-mobile-inline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .dest-row-desc {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-top: 0.35rem;
+  }
+
+  .dest-row-action-btn {
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgba(200, 90, 50, 0.08);
+    padding: 0.65rem 0.85rem;
+    margin-left: 0;
+    margin-top: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
   }
 }
-

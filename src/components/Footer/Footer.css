@@ -285,6 +285,22 @@
 }
 
 @media (max-width: 768px) {
+  .site-footer-editorial::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/pi_rider_cutout.png');
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+    filter: brightness(1.35) contrast(1.08);
+    pointer-events: none;
+    z-index: 2;
+  }
+
   .site-footer-editorial {
     min-height: auto;
     padding-top: 2.5rem;
