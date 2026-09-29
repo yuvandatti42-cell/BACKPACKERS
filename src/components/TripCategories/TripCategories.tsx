@@ -19,22 +19,6 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
     }
   };
 
-  const handleRowClick = (index: number, id: string) => {
-    if (activeIndex === index) {
-      // If already active, direct tap on mobile navigates directly
-      handleSelectCategory(id);
-    } else {
-      setActiveIndex(index);
-    }
-  };
-
-  const handleMouseEnter = (index: number) => {
-    // Only trigger hover on devices that support hover (prevents mobile touch stutter)
-    if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      setActiveIndex(index);
-    }
-  };
-
   return (
     <section id="destinations-section" className="destinations-editorial" aria-labelledby="destinations-title">
       <div className="container">
@@ -70,14 +54,14 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                 <div 
                   key={dest.id}
                   className={`dest-list-row ${isActive ? 'is-active' : ''}`}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onClick={() => handleRowClick(index, dest.id)}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
                   tabIndex={0}
                   onFocus={() => setActiveIndex(index)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      handleRowClick(index, dest.id);
+                      setActiveIndex(index);
                     }
                   }}
                   role="button"
@@ -86,44 +70,30 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                   <div className="dest-row-number">{dest.number}</div>
                   <div className="dest-row-content">
                     <h3 className="dest-row-title">{dest.title}</h3>
-                    
-                    {/* Hardware accelerated smooth grid collapse wrapper */}
-                    <div className="dest-row-desc-wrapper">
-                      <div className="dest-row-desc-inner">
-                        {/* Mobile inline preview thumbnail for instant touch feedback */}
-                        <div className="dest-mobile-inline-img-wrap">
-                          <img 
-                            src={dest.image} 
-                            alt={dest.alt} 
-                            className="dest-mobile-inline-img"
-                            loading="lazy"
-                          />
-                        </div>
-
-                        <p className="dest-row-desc">
-                          {dest.description}
-                        </p>
-                        <span 
-                          className="dest-row-action-btn"
-                          onClick={(e) => {
+                    <p className={`dest-row-desc ${isActive ? 'is-visible' : ''}`}>
+                      {dest.description}
+                    </p>
+                    {isActive && (
+                      <span 
+                        className="dest-row-action-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectCategory(dest.id);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
                             e.stopPropagation();
+                            e.preventDefault();
                             handleSelectCategory(dest.id);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.stopPropagation();
-                              e.preventDefault();
-                              handleSelectCategory(dest.id);
-                            }
-                          }}
-                          role="button"
-                          tabIndex={0}
-                          aria-label={`Explore ${dest.title} trips`}
-                        >
-                          EXPLORE {dest.title} TRIPS &rarr;
-                        </span>
-                      </div>
-                    </div>
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Explore ${dest.title} trips`}
+                      >
+                        EXPLORE {dest.title} TRIPS &rarr;
+                      </span>
+                    )}
                   </div>
                   <span 
                     className="dest-row-indicator" 
@@ -208,4 +178,3 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
     </section>
   );
 };
-
