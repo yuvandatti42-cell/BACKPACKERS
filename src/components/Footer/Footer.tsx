@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         <div className="footer-top-brand">
           <a href="#hero" className="footer-logo-lockup" aria-label="Backpackers Destinations Home">
             <img 
-              src="/newlgo2.jpeg" 
+              src="/newlgo2.png" 
               alt="Backpackers Destinations Logo" 
               className="footer-logo-img" 
             />
