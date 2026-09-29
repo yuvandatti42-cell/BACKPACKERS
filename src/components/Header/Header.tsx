@@ -8,7 +8,7 @@ interface HeaderProps {
   currentRoute?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, currentRoute }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
@@ -251,16 +251,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             </a>
             <div className="nav-vertical-divider" aria-hidden="true" />
             <a 
-              href="#book" 
+              href="#destinations" 
               className="btn btn-contact-header"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onOpenBookModal) {
-                  onOpenBookModal();
-                } else {
-                  handleNavClick(e, 'home', 'planner');
-                }
-              }}
+              onClick={(e) => handleNavClick(e, 'destinations')}
             >
               BOOK NOW
             </a>

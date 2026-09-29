@@ -6,20 +6,14 @@ interface HeroSectionProps {
   onOpenBookModal?: (title?: string) => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenBookModal }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const handleBookClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (onOpenBookModal) {
-      onOpenBookModal();
-    } else if (onNavigate) {
-      onNavigate('home', 'planner');
+    if (onNavigate) {
+      onNavigate('destinations');
     } else {
-      const plannerSection = document.getElementById('planner');
-      if (plannerSection) {
-        plannerSection.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.location.hash = 'planner';
-      }
+      window.location.hash = 'destinations';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -48,10 +42,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenBook
           {/* Action Panel CTA Button */}
           <div className="hero-action-panel animate-fade-in" style={{ animationDelay: '650ms' }}>
             <a 
-              href="#planner" 
+              href="#destinations" 
               className="btn-hero-cta"
               onClick={handleBookClick}
-              aria-label="Book your trip"
+              aria-label="Explore Destinations"
             >
               <span>BOOK YOUR TRIP</span>
               <svg className="btn-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
