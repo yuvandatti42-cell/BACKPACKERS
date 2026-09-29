@@ -207,7 +207,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             >
               <div className="brand-logo-circle">
                 <img 
-                  src="/logo.jpg" 
+                  src="/newlgo1.jpeg" 
                   alt="Backpackers Destinations Logo" 
                   className="brand-logo-img" 
                 />
