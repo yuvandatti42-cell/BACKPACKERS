@@ -8,7 +8,7 @@ export const REGIONS_DATA: DestinationRegion[] = [
     title: 'Ladakh Trans-Himalayan High Passes',
     terrain: 'Mountain Passes, High-Altitude Valleys, Cold Desert',
     description: 'High mountain roads across Khardung La and Chang La. Cold desert landscapes, high-altitude lakes, and raw Himalayan passes.',
-    image: '/ladakh.jpg',
+    image: '/ladakh.webp',
     alt: 'Rugged high-altitude mountain valley road in Ladakh'
   },
   {
@@ -18,7 +18,7 @@ export const REGIONS_DATA: DestinationRegion[] = [
     title: 'Kerala, Western Ghats & Coastal Corridors',
     terrain: 'Coastal Roads, Tropical Forests, Tea Plantations, 36 Hairpins',
     description: 'Winding routes through Munnar tea hills, misty Ghat passes, Valparai switchbacks, and tranquil coastal paths.',
-    image: '/ke.jpg',
+    image: '/ke.webp',
     alt: 'Misty tea hills and winding roads in Western Ghats, South India'
   },
   {
@@ -28,7 +28,7 @@ export const REGIONS_DATA: DestinationRegion[] = [
     title: 'Spiti Valley & Garhwal Himalayan Circuits',
     terrain: 'Unpaved Shales, Cliff Gorges, Glacial Nullahs',
     description: 'Cliffside dirt roads, high altitude lakes, Key monastery, and unscripted backcountry mountain runs.',
-    image: '/tour_spiti.jpg',
+    image: '/tour_spiti.webp',
     alt: 'Barren mountain gorge and unpaved road in Spiti, North India'
   },
   {
@@ -38,7 +38,7 @@ export const REGIONS_DATA: DestinationRegion[] = [
     title: 'Meghalaya Abode of Clouds & Tawang Frontiers',
     terrain: 'Cloud Rainforests, River Canyons, High Slopes',
     description: 'Misty cliff passes, Cherrapunji waterfalls, Dawki crystal rivers, and living root bridge corridors.',
-    image: '/ostt.jpg',
+    image: '/ostt.webp',
     alt: 'Misty green cliffs and waterfall canyons in North East India'
   }
 ];

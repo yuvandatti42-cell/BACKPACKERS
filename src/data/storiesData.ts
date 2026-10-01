@@ -20,7 +20,7 @@ export const REVIEWS_DATA: ClientReview[] = [
     ],
     reviewer: 'ROBERT, IRELAND - KERALA',
     rating: 5,
-    image: '/reviwe.jpeg',
+    image: '/reviwe.webp',
     imagePosition: 'center bottom'
   },
   {
@@ -33,7 +33,7 @@ export const REVIEWS_DATA: ClientReview[] = [
     ],
     reviewer: 'SARAH, UK - LADAKH',
     rating: 5,
-    image: '/re2.jpeg',
+    image: '/re2.webp',
     imagePosition: 'center 20%'
   },
   {
@@ -46,7 +46,7 @@ export const REVIEWS_DATA: ClientReview[] = [
     ],
     reviewer: 'MARCO, ITALY - NEPAL',
     rating: 5,
-    image: '/re3.png',
+    image: '/re3.webp',
     imagePosition: 'center 15%'
   }
 ];

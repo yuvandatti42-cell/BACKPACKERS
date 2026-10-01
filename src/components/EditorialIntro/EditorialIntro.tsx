@@ -10,7 +10,7 @@ export const EditorialIntro: React.FC = () => {
         <div className="mission-panorama-card">
           <div className="panorama-image-wrap">
             <img 
-              src="/pi2.jpg" 
+              src="/pi2.webp" 
               alt="Adventure motorcyclists traversing the dramatic mountain roads of Ladakh" 
               loading="lazy"
               decoding="async"

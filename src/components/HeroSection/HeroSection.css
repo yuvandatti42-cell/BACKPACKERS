@@ -30,7 +30,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/heroo.jpg');
+  background-image: url('/heroo.webp');
   background-size: cover;
   background-position: 22% 32%; /* Positions lead Himalayan rider at left-center */
   background-repeat: no-repeat;
@@ -411,7 +411,7 @@
   }
 
   .hero-alpine::before {
-    background-image: url('/heroo.jpg');
+    background-image: url('/heroo.webp');
     background-position: 28% 28%;
     background-size: cover;
     filter: none;
@@ -495,7 +495,7 @@
 
   /* Repositioned mobile framing: rider's helmet, goggles, and motorcycle are 100% visible */
   .hero-alpine::before {
-    background-image: url('/heroo.jpg');
+    background-image: url('/heroo.webp');
     background-position: 36% 18%;
     background-size: cover;
     filter: none;

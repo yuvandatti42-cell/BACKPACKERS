@@ -11,7 +11,7 @@ interface FeaturedExpeditionsProps {
   onOpenBookModal?: (title?: string) => void;
 }
 
-export const FeaturedExpeditions: React.FC<FeaturedExpeditionsProps> = ({ onOpenBookModal }) => {
+export const FeaturedExpeditions: React.FC<FeaturedExpeditionsProps> = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const animFrameRef = useRef<number | null>(null);
 
@@ -227,7 +227,6 @@ export const FeaturedExpeditions: React.FC<FeaturedExpeditionsProps> = ({ onOpen
                   onClick={() => {
                     setDisableTransition(false);
                     setActiveIndex(idx);
-                    if (onOpenBookModal) onOpenBookModal(exp.title);
                   }}
                 >
                   <article className="expedition-card">

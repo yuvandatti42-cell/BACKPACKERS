@@ -30,8 +30,6 @@ export const FeaturedTrips: React.FC = () => {
                 <span className="badge">{trip.category}</span>
               </div>
 
-              <p>{trip.description}</p>
-
               <div className="route-specs">
                 <div className="route-spec-item">
                   <span className="route-spec-label">Region</span>

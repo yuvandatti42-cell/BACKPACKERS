@@ -2,16 +2,17 @@ import React from 'react';
 import './FeaturedExpedition.css';
 
 interface FeaturedExpeditionProps {
+  onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
   onOpenBookModal?: (title?: string) => void;
 }
 
-export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onOpenBookModal }) => {
+export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onNavigate }) => {
   return (
     <section className="featured-expedition" aria-labelledby="featured-expedition-title">
       {/* Background Cinematic Image */}
       <div className="featured-expedition-media">
         <img 
-          src="/ladakh.jpg" 
+          src="/ladakh.webp" 
           alt="A long, lonely winding asphalt highway heading into the colossal mountains of Ladakh" 
           className="featured-expedition-img"
           loading="lazy"
@@ -39,7 +40,7 @@ export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onOpenBo
           <div className="expedition-stats">
             <div className="expedition-stat-item">
               <span className="stat-label">ALTITUDE</span>
-              <span className="stat-value">5,359 M</span>
+              <span className="stat-value">17,582 FT</span>
             </div>
             <div className="expedition-stat-item">
               <span className="stat-label">STAGES</span>
@@ -59,9 +60,15 @@ export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onOpenBo
             type="button"
             className="btn btn-primary"
             style={{ marginTop: '1rem', width: 'fit-content' }}
-            onClick={() => onOpenBookModal?.('Ladakh High Passes')}
+            onClick={() => {
+              if (onNavigate) {
+                onNavigate('destinations', undefined, 'bike-trips');
+              } else {
+                window.location.hash = 'destinations';
+              }
+            }}
           >
-            <span>BOOK THIS EXPEDITION</span>
+            <span>EXPLORE DESTINATIONS</span>
             <span className="btn-icon-arrow" aria-hidden="true">&rarr;</span>
           </button>
         </div>

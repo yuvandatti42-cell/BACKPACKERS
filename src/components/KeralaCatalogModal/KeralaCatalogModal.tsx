@@ -227,14 +227,14 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
               {(activeTab === 'all' || activeTab === 'cover') && (
                 <div 
                   className="kerala-page-cover"
-                  style={{ backgroundImage: `url('/dest_kerala.jpg')` }}
+                  style={{ backgroundImage: `url('/ke.webp')` }}
                 >
                   <div className="kerala-cover-overlay" />
 
                   {/* Cover Top Header */}
                   <div className="kerala-cover-header">
                     <div className="kerala-cover-logo-wrap">
-                      <img src="/logo-white.png" alt="Backpackers Destinations Logo" className="kerala-cover-logo-img" />
+                      <img src="/logo-white.webp" alt="Backpackers Destinations Logo" className="kerala-cover-logo-img" />
                       <div className="kerala-cover-logo-text">
                         <span className="kerala-cover-logo-brand">Backpackers</span>
                         <span className="kerala-cover-logo-sub">DESTINATIONS</span>

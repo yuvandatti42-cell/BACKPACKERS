@@ -3,6 +3,7 @@ import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { RegionExplorePage } from './pages/RegionExplorePage';
 import { BookNowModal } from './components/BookNowModal/BookNowModal';
+import { FloatingSocialButtons } from './components/FloatingSocialButtons/FloatingSocialButtons';
 import './styles/variables.css';
 import './styles/base.css';
 import './styles/layout.css';
@@ -125,6 +126,8 @@ export const App: React.FC = () => {
         onClose={closeBookModal} 
         tripTitle={bookModalTitle} 
       />
+
+      <FloatingSocialButtons />
     </>
   );
 };

@@ -8,7 +8,7 @@ interface HeaderProps {
   currentRoute?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
@@ -139,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
                   >
-                    <img src="/wkndtp.jpeg" alt="" className="dropdown-thumb-img" />
+                    <img src="/wkndtp.webp" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Weekend Trips</span>
                       <span className="item-sub">Quick 2–3 Day Escapes</span>
@@ -151,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
                   >
-                    <img src="/long.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/long.webp" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Long Expedition</span>
                       <span className="item-sub">6–14 Day Overlands</span>
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
                   >
-                    <img src="/bike.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/bike.webp" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Bike Trips</span>
                       <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
@@ -175,7 +175,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
                     className="dropdown-item-link"
                     onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
                   >
-                    <img src="/off.jpg" alt="" className="dropdown-thumb-img" />
+                    <img src="/off.webp" alt="" className="dropdown-thumb-img" />
                     <div className="dropdown-item-text">
                       <span className="item-title">Off Beaten Places</span>
                       <span className="item-sub">Raw Backcountry Routes</span>
@@ -207,7 +207,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             >
               <div className="brand-logo-circle">
                 <img 
-                  src="/newlgo1.jpeg" 
+                  src="/newlgo1.webp" 
                   alt="Backpackers Destinations Logo" 
                   className="brand-logo-img" 
                 />
@@ -242,7 +242,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
             >
               <div className="gear-station-logo-wrap">
                 <img 
-                  src="/gearlogo.jpeg" 
+                  src="/gearlogo.webp" 
                   alt="Gear Station Logo" 
                   className="gear-station-logo-img" 
                 />
@@ -334,7 +334,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
           >
             <div className="gear-station-logo-wrap">
               <img 
-                src="/gearlogo.jpeg" 
+                src="/gearlogo.webp" 
                 alt="Gear Station Logo" 
                 className="gear-station-logo-img" 
               />
@@ -370,6 +370,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentRoute }) => {
         isOpen={isSearchOpen} 
         onClose={() => setIsSearchOpen(false)} 
         onNavigate={onNavigate} 
+        onOpenBookModal={onOpenBookModal}
       />
     </>
   );

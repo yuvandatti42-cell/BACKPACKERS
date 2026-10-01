@@ -23,7 +23,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 100%), url('/pi.jpg');
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 100%), url('/pi.webp');
   background-size: cover;
   background-position: center 42%;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/pi_rider_cutout.png');
+  background-image: url('/pi_rider_cutout.webp');
   background-size: cover;
   background-position: center 42%;
   background-repeat: no-repeat;

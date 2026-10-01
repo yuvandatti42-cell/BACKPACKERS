@@ -26,7 +26,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {
       <main id="main-content">
         <HeroSection onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
         <TripCategories onNavigate={onNavigate} />
-        <FeaturedExpedition onOpenBookModal={onOpenBookModal} />
+        <FeaturedExpedition onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
         <FeaturedExpeditions onOpenBookModal={onOpenBookModal} />
         <OurStory />
         <TravelerStories />

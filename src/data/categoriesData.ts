@@ -6,7 +6,7 @@ export const CATEGORIES_DATA: TripCategory[] = [
     number: '01',
     title: 'LADAKH TRIPS',
     description: 'High altitude mountain passes, Khardung La, Zanskar valley crossings, and cold desert tracks across the Himalayas.',
-    image: '/ldk.jpg',
+    image: '/ldk.webp',
     alt: 'Expedition trekker looking at colossal Himalayan snow peaks in Ladakh',
     isLead: true
   },
@@ -15,7 +15,7 @@ export const CATEGORIES_DATA: TripCategory[] = [
     number: '02',
     title: 'SOUTH INDIA',
     description: 'Misty Western Ghats tea plantations, 36 hairpin mountain curves, rainforest ridges, and coastal roads.',
-    image: '/ke.jpg',
+    image: '/ke.webp',
     alt: 'Lush green tea garden switchback roads in South India'
   },
   {
@@ -23,7 +23,7 @@ export const CATEGORIES_DATA: TripCategory[] = [
     number: '03',
     title: 'NORTH INDIA',
     description: 'Cliffside dirt routes through Spiti Valley, Kinnaur, Uttarakhand mountain ridges, and Atal pass circuits.',
-    image: '/north.jpeg',
+    image: '/north.webp',
     alt: 'High altitude desert mountain valley in Spiti, North India'
   },
   {
@@ -31,7 +31,7 @@ export const CATEGORIES_DATA: TripCategory[] = [
     number: '04',
     title: 'NORTH EAST',
     description: 'Cloud-draped cliff roads, living root bridge canyons, Meghalaya waterfalls, and Tawang frontiers.',
-    image: '/ostt.jpg',
+    image: '/ostt.webp',
     alt: 'Misty cloud cliffs and canyons in North East India'
   }
 ];

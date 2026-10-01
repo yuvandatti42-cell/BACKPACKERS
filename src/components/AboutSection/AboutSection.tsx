@@ -8,7 +8,7 @@ export const AboutSection: React.FC = () => {
         <div className="about-grid">
           <div className="about-media-frame">
             <img 
-              src="/in.jpg" 
+              src="/in.webp" 
               alt="Experienced overland travel guide standing beside their bike overlooking high mountain peaks" 
               loading="lazy" 
             />

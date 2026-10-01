@@ -21,20 +21,9 @@ const ROUTES_DATA: RouteData[] = [
     endPoint: 'Hanle',
     distance: '1,200 KM',
     duration: '10 Days',
-    elevation: '5,359 M',
+    elevation: '17,582 FT',
     coordinates: 'N 34°09\' • E 77°34\'',
     pathD: 'M 50 150 C 120 70, 200 80, 280 180 S 380 280, 450 180'
-  },
-  {
-    id: 'nepal',
-    name: 'Nepal',
-    startPoint: 'Kathmandu',
-    endPoint: 'Lo Manthang',
-    distance: '850 KM',
-    duration: '8 Days',
-    elevation: '3,800 M',
-    coordinates: 'N 27°42\' • E 85°19\'',
-    pathD: 'M 50 220 C 150 220, 180 120, 270 120 S 380 220, 450 120'
   },
   {
     id: 'kerala',
@@ -43,7 +32,7 @@ const ROUTES_DATA: RouteData[] = [
     endPoint: 'Munnar',
     distance: '640 KM',
     duration: '6 Days',
-    elevation: '1,600 M',
+    elevation: '8,800 FT',
     coordinates: 'N 9°58\' • E 76°16\'',
     pathD: 'M 50 100 C 130 180, 210 180, 290 80 S 390 100, 450 220'
   },
@@ -54,7 +43,7 @@ const ROUTES_DATA: RouteData[] = [
     endPoint: 'Valparai',
     distance: '750 KM',
     duration: '7 Days',
-    elevation: '2,240 M',
+    elevation: '7,350 FT',
     coordinates: 'N 11°24\' • E 76°41\'',
     pathD: 'M 50 180 C 150 280, 220 180, 300 120 S 380 80, 450 200'
   }
