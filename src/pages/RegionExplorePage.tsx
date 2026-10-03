@@ -191,20 +191,6 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                 )}
               </div>
 
-              {/* Difficulty Filter Buttons */}
-              <div className="difficulty-pills">
-                <span className="diff-label">DIFFICULTY:</span>
-                {['all', 'beginner', 'intermediate', 'advanced', 'expedition'].map(diff => (
-                  <button 
-                    key={diff}
-                    className={`diff-pill ${selectedDifficulty === diff ? 'is-active' : ''}`}
-                    onClick={() => setSelectedDifficulty(diff)}
-                  >
-                    {diff.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-
             </div>
           </div>
         </section>

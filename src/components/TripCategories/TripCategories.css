@@ -69,13 +69,12 @@
 /* Smooth horizontal traverse movement across the lane */
 .title-traveller-mover {
   position: absolute;
-  left: 0;
   bottom: 0;
   height: 68px; /* Cute, larger chibi scale */
   display: flex;
   align-items: flex-end;
-  will-change: transform, opacity;
-  animation: travellerWalkBesideTitle 13s linear infinite;
+  will-change: left, opacity;
+  animation: travellerWalkBesideTitle 12s linear infinite;
 }
 
 /* Subtle ground drop shadow & vector bike mascot styling */
@@ -91,17 +90,17 @@
 /* Character dissolves softly into nothingness at the edges */
 @keyframes travellerWalkBesideTitle {
   0% {
-    transform: translateX(-40px);
+    left: -45px;
     opacity: 0;
   }
-  10% {
+  12% {
     opacity: 1;
   }
-  82% {
+  85% {
     opacity: 1;
   }
-  96%, 100% {
-    transform: translateX(calc(100% + 20px));
+  98%, 100% {
+    left: calc(100% - 25px);
     opacity: 0;
   }
 }

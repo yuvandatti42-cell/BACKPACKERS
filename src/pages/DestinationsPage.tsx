@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
+import { TravellerCharacterSVG } from '../components/TravellerTransition/TravellerCharacterSVG';
 import './DestinationsPage.css';
 
 
@@ -67,6 +68,14 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
         {/* Category Filter Tabs & Search Bar */}
         <section className="dest-filter-section">
           <div className="container">
+            {/* Animated Mobile Bike Rider Mascot Track */}
+            <div className="dest-mobile-rider-lane" aria-hidden="true">
+              <div className="dest-mobile-rider-track" />
+              <div className="dest-mobile-rider-mover">
+                <TravellerCharacterSVG isMoving={true} />
+              </div>
+            </div>
+
             {/* Live Inline Search Bar */}
             <div className="dest-search-inline-wrap">
               <svg className="inline-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

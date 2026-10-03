@@ -139,8 +139,8 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'KODAIKANAL',
     title: 'KODAIKANAL',
     subtitle: 'Pillar Rocks • Berijam Lake Forest • Pine Reserve',
-    startingPrice: '₹7,499',
-    numericPrice: 7499,
+    startingPrice: '₹6,999',
+    numericPrice: 6999,
     tripTypes: ['weekend'],
     elevation: '7,000 FT / 2,133 M',
     difficulty: 'INTERMEDIATE',
@@ -160,7 +160,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     description: 'Known as the Princess of Hill Stations. A misty, pine-scented highland route winding around precipitous cliff vistas and tranquil mountain lakes.',
     image: '/kodai.webp',
     frameColor: '#4E7063',
-    keywords: ['kodaikanal', 'kodai', 'pillar rocks', 'berijam', 'pine forest', 'coaker walk', 'shola', 'south india', 'tamil nadu', 'hill station', 'weekend', '7499']
+    keywords: ['kodaikanal', 'kodai', 'pillar rocks', 'berijam', 'pine forest', 'coaker walk', 'shola', 'south india', 'tamil nadu', 'hill station', 'weekend', '6999']
   },
   {
     id: 'ooty-coonoor',
