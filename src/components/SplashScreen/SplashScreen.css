@@ -101,7 +101,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  transform: scale(0.92); /* Perfect breathing room & alignment — logo emblem is 100% complete & centered */
+  transform: scale(1.03); /* Zoomed in larger while remaining 100% centered and unclipped */
   mix-blend-mode: multiply;
   user-select: none;
   -webkit-user-drag: none;
