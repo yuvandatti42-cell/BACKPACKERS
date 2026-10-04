@@ -156,15 +156,14 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
               📄 PDF Embed
             </button>
             
-            <a 
-              href="/kerala_catalog.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <button 
+              type="button"
+              onClick={() => setIsPdfLeadOpen(true)}
               className="catalog-tab-btn link-btn"
               title="Open PDF in new browser tab"
             >
               ↗ Open New Tab
-            </a>
+            </button>
 
             <button 
               type="button"

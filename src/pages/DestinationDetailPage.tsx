@@ -37,13 +37,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   };
 
   const handlePdfClick = () => {
-    if (detail.id === 'kerala') {
-      setIsKeralaCatalogOpen(true);
-    } else if (detail.id === 'ooty-coonoor') {
-      setIsOotyCatalogOpen(true);
-    } else {
-      setIsGenericPdfLeadOpen(true);
-    }
+    setIsGenericPdfLeadOpen(true);
   };
 
   const executeGenericDownload = () => {
@@ -381,8 +375,18 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
       <PdfDownloadModal
         isOpen={isGenericPdfLeadOpen}
         onClose={() => setIsGenericPdfLeadOpen(false)}
-        title={`${detail.title} Itinerary Brochure`}
-        onDirectDownload={executeGenericDownload}
+        title={`${detail.title} PDF Catalog`}
+        pdfUrl={detail.pdfUrl || (detail.id === 'ooty-coonoor' ? '/ooty_catalog.pdf' : '/kerala_catalog.pdf')}
+        downloadFilename={`${detail.id}_catalog.pdf`}
+        onDirectDownload={() => {
+          if (detail.id === 'kerala') {
+            setIsKeralaCatalogOpen(true);
+          } else if (detail.id === 'ooty-coonoor') {
+            setIsOotyCatalogOpen(true);
+          } else {
+            executeGenericDownload();
+          }
+        }}
       />
     </div>
   );

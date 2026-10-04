@@ -142,15 +142,14 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
               📄 PDF Embed
             </button>
             
-            <a 
-              href="/ooty_catalog.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <button 
+              type="button"
+              onClick={() => setIsPdfLeadOpen(true)}
               className="catalog-tab-btn link-btn"
               title="Open PDF in new tab"
             >
               ↗ Open New Tab
-            </a>
+            </button>
 
             <button 
               type="button"
