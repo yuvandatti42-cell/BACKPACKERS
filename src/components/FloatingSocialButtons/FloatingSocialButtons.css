@@ -40,6 +40,17 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
+/* Direct Phone Call Button */
+.btn-floating-phone {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+}
+
+.btn-floating-phone:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.55);
+}
+
 /* Crisp Clean WhatsApp Button */
 .btn-floating-whatsapp {
   background: #25D366;
