@@ -767,14 +767,14 @@
   }
 }
 
-/* Mobile Glass Bright Cherry Red "BOOK TRIP" Button */
+/* Mobile Glass Bright Alpine Orange "BOOK TRIP" Button */
 .mobile-glass-book-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.45rem 0.95rem;
   border-radius: 30px;
-  background: linear-gradient(135deg, #FF1744 0%, #D50000 100%);
+  background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #FFFFFF !important;
   font-family: var(--font-body);
@@ -783,7 +783,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(213, 0, 0, 0.55), 0 0 12px rgba(255, 23, 68, 0.4);
+  box-shadow: 0 4px 16px rgba(230, 81, 0, 0.55), 0 0 12px rgba(255, 122, 0, 0.4);
   position: relative;
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);

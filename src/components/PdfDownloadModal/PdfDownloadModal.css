@@ -227,14 +227,14 @@
   color: #1C1C1C;
 }
 
-/* Submit Button — Glowing Red Pill */
+/* Submit Button — Glowing Orange Pill */
 .btn-pdf-submit {
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  background: linear-gradient(135deg, #FF1744 0%, #D50000 100%);
+  background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%);
   color: #FFFFFF;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.875rem;
@@ -248,7 +248,7 @@
   position: relative;
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(213, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(230, 81, 0, 0.5);
   margin-top: 0.25rem;
 }
 
@@ -276,10 +276,10 @@
 }
 
 .btn-pdf-submit:hover {
-  background: linear-gradient(135deg, #FF4569 0%, #FF1744 100%);
+  background: linear-gradient(135deg, #FF9100 0%, #FF7A00 100%);
   color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(213, 0, 0, 0.7);
+  box-shadow: 0 8px 26px rgba(230, 81, 0, 0.7);
 }
 
 .btn-pdf-submit:disabled {

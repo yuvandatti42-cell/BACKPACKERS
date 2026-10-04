@@ -669,7 +669,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #FF1744 0%, #D50000 50%, #900C3F 100%);
+  background: linear-gradient(135deg, #FF7A00 0%, #F57C00 50%, #E65100 100%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #FFFFFF;
   font-family: var(--font-body);
@@ -681,7 +681,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(213, 0, 0, 0.55), 0 0 15px rgba(255, 23, 68, 0.4);
+  box-shadow: 0 4px 20px rgba(230, 81, 0, 0.55), 0 0 15px rgba(255, 122, 0, 0.4);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -709,9 +709,9 @@
 }
 
 .btn-bottom-book:hover {
-  background: linear-gradient(135deg, #FF4569 0%, #FF1744 50%, #D50000 100%);
+  background: linear-gradient(135deg, #FF9100 0%, #FF7A00 50%, #F57C00 100%);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 26px rgba(213, 0, 0, 0.7), 0 0 25px rgba(255, 69, 105, 0.6);
+  box-shadow: 0 8px 26px rgba(230, 81, 0, 0.7), 0 0 25px rgba(255, 145, 0, 0.6);
   color: #FFFFFF;
 }
 
@@ -867,10 +867,10 @@
     letter-spacing: 0.08em;
     background: linear-gradient(
       180deg, 
-      #FF4D5E 0%, 
-      #D90429 28%, 
-      #9B001C 62%, 
-      #C40223 100%
+      #FF9E80 0%, 
+      #FF7A00 28%, 
+      #E65100 62%, 
+      #D84315 100%
     ) !important;
     color: #FFFFFF !important;
     border: 1px solid rgba(255, 255, 255, 0.45) !important;

@@ -709,7 +709,7 @@
 }
 
 .btn-card-book-now {
-  background: linear-gradient(135deg, #FF1744 0%, #D50000 100%);
+  background: linear-gradient(135deg, #FF7A00 0%, #E65100 100%);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.35);
   font-family: var(--font-body);
@@ -722,14 +722,14 @@
   position: relative;
   overflow: hidden;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px rgba(213, 0, 0, 0.5);
+  box-shadow: 0 4px 14px rgba(230, 81, 0, 0.5);
   white-space: nowrap;
 }
 
 .btn-card-book-now:hover {
-  background: linear-gradient(135deg, #FF4569 0%, #FF1744 100%);
+  background: linear-gradient(135deg, #FF9100 0%, #FF7A00 100%);
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 6px 20px rgba(213, 0, 0, 0.7);
+  box-shadow: 0 6px 20px rgba(230, 81, 0, 0.7);
 }
 
 .btn-dest-catalog {
