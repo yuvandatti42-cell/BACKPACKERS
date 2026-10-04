@@ -739,36 +739,48 @@
   }
 
   /* Mobile Top Hero Image */
+  .dest-detail-page-wrapper,
+  .dest-detail-main-content,
+  .dest-detail-layout-grid,
   .dest-detail-media-column {
     position: relative;
     top: auto;
     width: 100%;
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 
   .dest-detail-hero-frame {
     aspect-ratio: 16 / 10;
     border-radius: 0;
     padding: 0;
+    margin: 0;
     box-shadow: none;
     width: 100%;
+    max-width: 100% !important;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-poster-canvas {
     border-radius: 0;
     box-shadow: none;
     width: 100%;
+    max-width: 100% !important;
     height: 100%;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-poster-canvas img,
+  .hero-poster-img,
   .dest-detail-hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
     max-width: 100%;
+    display: block;
   }
 
   .mobile-floating-back {
