@@ -99,8 +99,9 @@
 .splash-logo-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.14); /* Fits and zooms the logo emblem edge-to-edge inside the circular frame */
+  object-fit: contain;
+  object-position: center center;
+  transform: scale(0.92); /* Perfect breathing room & alignment — logo emblem is 100% complete & centered */
   mix-blend-mode: multiply;
   user-select: none;
   -webkit-user-drag: none;

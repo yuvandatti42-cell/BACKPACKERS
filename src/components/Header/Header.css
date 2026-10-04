@@ -159,8 +159,9 @@
 .brand-logo-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.08);
+  object-fit: contain;
+  object-position: center center;
+  transform: scale(0.92);
   transform-origin: center center;
 }
 
