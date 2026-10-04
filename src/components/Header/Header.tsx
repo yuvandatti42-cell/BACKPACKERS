@@ -207,7 +207,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             >
               <div className="brand-logo-circle">
                 <img 
-                  src="/newlgo1.webp" 
+                  src="/newlgo2.webp" 
                   alt="Backpackers Destinations Logo" 
                   className="brand-logo-img" 
                 />

@@ -101,7 +101,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  transform: scale(1.03); /* Zoomed in larger while remaining 100% centered and unclipped */
+  transform: scale(0.96); /* Perfectly centered 1:1 fit with zero clipping */
   mix-blend-mode: multiply;
   user-select: none;
   -webkit-user-drag: none;

@@ -132,7 +132,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         <div className="splash-logo-core">
           <div className="splash-logo-circle-frame">
             <img 
-              src="/newlgo1.webp" 
+              src="/newlgo2.webp" 
               alt="Backpackers Destinations Official Logo" 
               className="splash-logo-img" 
             />

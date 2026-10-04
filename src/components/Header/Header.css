@@ -161,7 +161,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  transform: scale(1.03);
+  transform: scale(0.96);
   transform-origin: center center;
 }
 
