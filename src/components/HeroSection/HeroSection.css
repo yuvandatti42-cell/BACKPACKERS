@@ -172,10 +172,10 @@
   padding: 0.95rem 2.15rem;
   background: linear-gradient(
     180deg, 
-    #FF4D5E 0%, 
-    #D90429 28%, 
-    #9B001C 62%, 
-    #C40223 100%
+    #FF8F00 0%, 
+    #F57C00 28%, 
+    #E65100 62%, 
+    #D84315 100%
   ) !important;
   color: #FFFFFF !important;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
@@ -189,7 +189,7 @@
   box-shadow: 
     inset 0 1.5px 1px rgba(255, 255, 255, 0.7), 
     inset 0 -3px 5px rgba(0, 0, 0, 0.5), 
-    0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    0 4px 14px rgba(230, 81, 0, 0.45) !important;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -198,10 +198,10 @@
 .btn-hero-cta:hover {
   background: linear-gradient(
     180deg, 
-    #FF6B7A 0%, 
-    #EF233C 28%, 
-    #B7094C 62%, 
-    #D90429 100%
+    #FF9E80 0%, 
+    #FF7A00 28%, 
+    #F57C00 62%, 
+    #E65100 100%
   ) !important;
   border-color: rgba(255, 255, 255, 0.75) !important;
   color: #FFFFFF !important;
@@ -606,10 +606,10 @@
     gap: 0.45rem;
     background: linear-gradient(
       180deg, 
-      #FF4D5E 0%, 
-      #D90429 28%, 
-      #9B001C 62%, 
-      #C40223 100%
+      #FF8F00 0%, 
+      #F57C00 28%, 
+      #E65100 62%, 
+      #D84315 100%
     ) !important;
     border: 1px solid rgba(255, 255, 255, 0.45) !important;
     color: #FFFFFF !important;
@@ -617,7 +617,7 @@
     box-shadow: 
       inset 0 1.5px 1px rgba(255, 255, 255, 0.7), 
       inset 0 -2.5px 5px rgba(0, 0, 0, 0.5), 
-      0 4px 14px rgba(0, 0, 0, 0.4) !important;
+      0 4px 14px rgba(230, 81, 0, 0.45) !important;
     white-space: nowrap;
     border-radius: 999px;
     transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
