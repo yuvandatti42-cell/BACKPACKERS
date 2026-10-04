@@ -35,6 +35,17 @@ const DURATION_RANGES = [
   { id: 'long', label: 'Long (8+ Days)' }
 ];
 
+const POPULAR_QUICK_SEARCHES = [
+  { label: '🔥 All Routes', query: '' },
+  { label: '🌴 Kerala', query: 'Kerala' },
+  { label: '🏔 Ladakh', query: 'Ladakh' },
+  { label: '☕ Chikmagalur', query: 'Chikmagalur' },
+  { label: '🏕 Spiti Valley', query: 'Spiti' },
+  { label: '🌊 Gokarna', query: 'Gokarna' },
+  { label: '🌲 Kodaikanal / Ooty', query: 'Ooty' },
+  { label: '🏍 Bike Trips', query: 'bike' }
+];
+
 const TYPEWRITER_PROMPTS = [
   "Search by destination, pass, or keyword (e.g. Munnar, Spiti, Rafting)...",
   "Search for Munnar Tea Passes & Wayanad Rainforest...",
@@ -61,7 +72,7 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
   const [placeholderText, setPlaceholderText] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Typewriter effect for live search placeholder
+  // Typewriter effect for search input placeholder
   useEffect(() => {
     if (!isOpen) return;
 
@@ -136,9 +147,9 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
 
   const query = searchTerm.toLowerCase().trim();
 
-  // Multi-factor filtering strictly over canonical DESTINATION_CORRIDORS
+  // Multi-factor filtering over DESTINATION_CORRIDORS
   const filteredTrips: CorridorDetail[] = DESTINATION_CORRIDORS.filter((trip) => {
-    // 1. Text Search Filter (Matches Title, Subtitle, Region, Terrain, Elevation, Description, Highlights, Starting Price, Keywords)
+    // 1. Text Search Filter
     if (query) {
       const matchTitle = trip.title.toLowerCase().includes(query);
       const matchSub = (trip.subtitle || '').toLowerCase().includes(query);
@@ -186,19 +197,20 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     return true;
   });
 
-  const handleBookClick = (tripTitle: string) => {
+  const handleCardClick = (destId: string) => {
     onClose();
-    if (onOpenBookModal) {
-      onOpenBookModal(tripTitle);
+    if (onNavigate) {
+      onNavigate(`destination:${destId}`);
     } else {
-      window.location.hash = 'destinations';
+      window.location.hash = `destination/${destId}`;
     }
   };
 
-  const handleExploreClick = (tripCategoryFilter?: string) => {
+  const handleBookClick = (e: React.MouseEvent, tripTitle: string) => {
+    e.stopPropagation();
     onClose();
-    if (onNavigate) {
-      onNavigate('destinations', undefined, tripCategoryFilter || 'all');
+    if (onOpenBookModal) {
+      onOpenBookModal(tripTitle);
     } else {
       window.location.hash = 'destinations';
     }
@@ -210,229 +222,245 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     (selectedPrice !== 'all' ? 1 : 0) +
     (selectedDuration !== 'all' ? 1 : 0);
 
+  const formatDurationShort = (durationStr: string): string => {
+    if (!durationStr) return '';
+    const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
+    if (match) {
+      return `${match[1]}D/${match[2]}N`;
+    }
+    const daysOnly = durationStr.match(/(\d+)\s*DAYS?/i);
+    if (daysOnly) {
+      return `${daysOnly[1]}D`;
+    }
+    return durationStr;
+  };
+
   return (
-    <div className="search-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="search-modal-container" onClick={(e) => e.stopPropagation()}>
+    <div className="search-page-overlay" role="dialog" aria-modal="true">
+      {/* Search Page Header Navigation */}
+      <header className="search-page-nav-bar">
+        <div className="search-nav-container">
+          <button type="button" className="search-nav-back-btn" onClick={onClose} title="Back to Exploring" aria-label="Close search">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </button>
+
+          <div className="search-nav-brand">
+            <span>BACKPACKERS DESTINATIONS</span>
+          </div>
+
+          <div className="search-nav-spacer" />
+        </div>
+      </header>
+
+      {/* Main Search Page Container */}
+      <div className="search-page-main">
         
-        {/* Modal Header */}
-        <div className="search-modal-header">
-          <div className="search-input-wrapper">
-            <svg className="search-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              ref={inputRef}
-              type="text"
-              className="search-input-field"
-              placeholder={placeholderText || "Search by destination, pass, landscape or budget..."}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            {searchTerm && (
-              <button 
-                className="search-clear-btn" 
-                onClick={() => setSearchTerm('')} 
-                aria-label="Clear search text"
-              >
-                ✕
-              </button>
-            )}
-          </div>
+        {/* Search Hero Box */}
+        <section className="search-hero-box">
+          <div className="search-hero-container">
+            <span className="search-eyebrow">EXPLORE ROUTE CORRIDORS</span>
+            <h1 className="search-hero-title">FIND YOUR NEXT ADVENTURE</h1>
 
-          {/* Filter Drawer Toggle Button */}
-          <button 
-            className={`search-filter-btn ${showFilterDrawer ? 'is-open' : ''} ${activeFilterCount > 0 ? 'has-active' : ''}`}
-            onClick={() => setShowFilterDrawer(!showFilterDrawer)}
-            aria-label="Toggle multi-factor filters"
-            title="Filter by Landscape, Style, Price & Duration"
-          >
-            <svg className="filter-icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-            </svg>
-            <span className="filter-btn-label">
-              {activeFilterCount > 0 ? `Filter (${activeFilterCount})` : 'Filters'}
-            </span>
-            <span className={`filter-arrow ${showFilterDrawer ? 'is-up' : ''}`}>▾</span>
-          </button>
-
-          <button className="search-modal-close-btn" onClick={onClose} aria-label="Close search" title="Close search (ESC)">
-            ✕
-          </button>
-        </div>
-
-        {/* Quick Landscape Zone Chips Bar */}
-        <div className="search-quick-landscape-bar">
-          <span className="quick-label">LANDSCAPE:</span>
-          <div className="quick-chips-scroll">
-            {LANDSCAPE_ZONES.map((zone) => (
-              <button
-                key={zone}
-                className={`quick-zone-chip ${selectedLandscape === zone ? 'is-active' : ''}`}
-                onClick={() => setSelectedLandscape(zone)}
-              >
-                {zone}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Multi-Factor Filter Drawer Panel */}
-        {showFilterDrawer && (
-          <div className="search-filter-dropdown-panel">
-            <div className="filter-drawer-grid">
-              
-              {/* Landscape Zone Selector */}
-              <div className="filter-group-box">
-                <span className="filter-group-title">GEOGRAPHICAL REGION</span>
-                <div className="filter-group-chips">
-                  {LANDSCAPE_ZONES.map((zone) => (
-                    <button
-                      key={zone}
-                      className={`filter-dropdown-chip ${selectedLandscape === zone ? 'is-active' : ''}`}
-                      onClick={() => setSelectedLandscape(zone)}
-                    >
-                      {zone}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Trip Category / Style Selector */}
-              <div className="filter-group-box">
-                <span className="filter-group-title">TRIP CATEGORY</span>
-                <div className="filter-group-chips">
-                  {TRIP_STYLES.map((style) => (
-                    <button
-                      key={style.id}
-                      className={`filter-dropdown-chip ${selectedStyle === style.id ? 'is-active' : ''}`}
-                      onClick={() => setSelectedStyle(style.id)}
-                    >
-                      {style.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price Range Selector */}
-              <div className="filter-group-box">
-                <span className="filter-group-title">PRICE RANGE</span>
-                <div className="filter-group-chips">
-                  {PRICE_RANGES.map((price) => (
-                    <button
-                      key={price.id}
-                      className={`filter-dropdown-chip ${selectedPrice === price.id ? 'is-active' : ''}`}
-                      onClick={() => setSelectedPrice(price.id)}
-                    >
-                      {price.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Duration Range Selector */}
-              <div className="filter-group-box">
-                <span className="filter-group-title">TRIP DURATION</span>
-                <div className="filter-group-chips">
-                  {DURATION_RANGES.map((dur) => (
-                    <button
-                      key={dur.id}
-                      className={`filter-dropdown-chip ${selectedDuration === dur.id ? 'is-active' : ''}`}
-                      onClick={() => setSelectedDuration(dur.id)}
-                    >
-                      {dur.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-
-            {/* Reset All Filters Bar */}
-            {(activeFilterCount > 0 || searchTerm) && (
-              <div className="filter-drawer-footer">
-                <span className="filter-active-summary">
-                  Showing {filteredTrips.length} matching packages
-                </span>
-                <button className="btn-reset-all-filters" onClick={resetAllFilters}>
-                  RESET ALL FILTERS ✕
+            {/* Main Search Bar Input with integrated Filter button */}
+            <div className="search-input-hero-wrap">
+              <svg className="search-hero-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                ref={inputRef}
+                type="text"
+                className="search-hero-input"
+                placeholder={placeholderText || "Search by destination, pass, landscape or budget..."}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <div className="search-input-actions">
+                {searchTerm && (
+                  <button 
+                    type="button"
+                    className="search-hero-clear-btn" 
+                    onClick={() => setSearchTerm('')} 
+                    title="Clear search"
+                  >
+                    ✕
+                  </button>
+                )}
+                <button 
+                  type="button" 
+                  className={`search-small-filter-btn ${showFilterDrawer ? 'is-open' : ''} ${activeFilterCount > 0 ? 'has-active' : ''}`}
+                  onClick={() => setShowFilterDrawer(!showFilterDrawer)}
+                  title="Filter options"
+                >
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                  </svg>
+                  <span>Filter{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}</span>
                 </button>
               </div>
+            </div>
+
+            {/* Multi-Factor Filter Drawer */}
+            {showFilterDrawer && (
+              <div className="search-filter-drawer-container">
+                <div className="filter-drawer-grid">
+                  
+                  <div className="filter-group-box">
+                    <span className="filter-group-title">REGION</span>
+                    <div className="filter-group-chips">
+                      {LANDSCAPE_ZONES.map((zone) => (
+                        <button
+                          key={zone}
+                          className={`filter-dropdown-chip ${selectedLandscape === zone ? 'is-active' : ''}`}
+                          onClick={() => setSelectedLandscape(zone)}
+                        >
+                          {zone}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="filter-group-box">
+                    <span className="filter-group-title">CATEGORY</span>
+                    <div className="filter-group-chips">
+                      {TRIP_STYLES.map((style) => (
+                        <button
+                          key={style.id}
+                          className={`filter-dropdown-chip ${selectedStyle === style.id ? 'is-active' : ''}`}
+                          onClick={() => setSelectedStyle(style.id)}
+                        >
+                          {style.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="filter-group-box">
+                    <span className="filter-group-title">PRICE RANGE</span>
+                    <div className="filter-group-chips">
+                      {PRICE_RANGES.map((price) => (
+                        <button
+                          key={price.id}
+                          className={`filter-dropdown-chip ${selectedPrice === price.id ? 'is-active' : ''}`}
+                          onClick={() => setSelectedPrice(price.id)}
+                        >
+                          {price.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="filter-group-box">
+                    <span className="filter-group-title">DURATION</span>
+                    <div className="filter-group-chips">
+                      {DURATION_RANGES.map((dur) => (
+                        <button
+                          key={dur.id}
+                          className={`filter-dropdown-chip ${selectedDuration === dur.id ? 'is-active' : ''}`}
+                          onClick={() => setSelectedDuration(dur.id)}
+                        >
+                          {dur.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+                {(activeFilterCount > 0 || searchTerm) && (
+                  <div className="filter-drawer-footer">
+                    <span>Showing {filteredTrips.length} matching packages</span>
+                    <button className="btn-reset-all-filters" onClick={resetAllFilters}>
+                      RESET ALL FILTERS ✕
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+          </div>
+        </section>
+
+        {/* Results Showcase Header */}
+        <div className="search-results-container">
+          <div className="results-header-bar">
+            <span className="results-count-headline">
+              SHOWING <strong className="text-accent">{filteredTrips.length}</strong> EXPEDITION ROUTES
+            </span>
+            {(activeFilterCount > 0 || searchTerm) && (
+              <button className="btn-clear-active-filters" onClick={resetAllFilters}>
+                CLEAR FILTERS ✕
+              </button>
             )}
           </div>
-        )}
 
-        {/* Search Results Content */}
-        <div className="search-results-content">
+          {/* Cards Grid */}
           {filteredTrips.length > 0 ? (
-            <div className="search-cards-grid">
-              {filteredTrips.map((trip) => (
-                <article key={trip.id} className="search-trip-card">
-                  <div className="search-card-media">
-                    <img src={trip.image} alt={trip.title} className="search-card-img" loading="lazy" />
-                    <span className="search-region-badge" style={{ backgroundColor: trip.frameColor }}>
-                      {trip.landscapeZone}
-                    </span>
-                    <span className="search-price-badge">
-                      STARTING {trip.startingPrice}
-                    </span>
-                  </div>
+            <div className="search-results-grid">
+              {filteredTrips.map((item) => {
+                const durationShort = formatDurationShort(item.duration);
+                return (
+                  <article
+                    key={item.id}
+                    className="search-dest-card"
+                    onClick={() => handleCardClick(item.id)}
+                  >
+                    <div className="search-card-frame" style={{ backgroundColor: item.frameColor }}>
+                      <div className="search-card-inner-canvas">
+                        <div className="search-card-img-wrap">
+                          <img 
+                            src={item.image} 
+                            alt={item.title} 
+                            className="search-card-img" 
+                            loading="lazy" 
+                          />
+                        </div>
 
-                  <div className="search-card-info">
-                    <div className="search-card-top">
-                      <span className="search-card-vertical">{trip.region}</span>
-                      <span className="search-card-diff">{trip.difficulty}</span>
-                    </div>
+                        <div className="search-card-body">
+                          <h3 className="search-card-title">
+                            {item.title} {durationShort}
+                          </h3>
+                          <div className="search-card-price-row">
+                            <span className="price-label">from</span>
+                            <span className="price-val">{item.startingPrice}</span>
+                          </div>
 
-                    <h3 className="search-card-title">{trip.title}</h3>
-                    <p className="search-card-subtitle">{trip.subtitle}</p>
-
-                    {/* Product Specs Grid */}
-                    <div className="search-card-specs">
-                      <span className="spec-item">⏱ {trip.duration}</span>
-                      <span className="spec-item">🏔 {trip.elevation}</span>
-                      <span className="spec-item">🛣 {trip.distance}</span>
-                    </div>
-
-                    {/* Product Highlights */}
-                    {trip.highlights && trip.highlights.length > 0 && (
-                      <div className="search-highlights">
-                        {trip.highlights.slice(0, 3).map((hl, i) => (
-                          <span key={i} className="search-hl-chip">• {hl}</span>
-                        ))}
+                          <button 
+                            type="button" 
+                            className="btn-card-quick-book"
+                            onClick={(e) => handleBookClick(e, item.title)}
+                          >
+                            Book Now
+                          </button>
+                        </div>
                       </div>
-                    )}
-
-                    {/* Product Action Buttons */}
-                    <div className="search-card-actions">
-                      <button 
-                        className="btn-search-action btn-inquire" 
-                        onClick={() => handleBookClick(trip.title)}
-                      >
-                        BOOK THIS ROUTE
-                      </button>
-                      <button 
-                        className="btn-search-action btn-catalog" 
-                        onClick={() => handleExploreClick(trip.tripTypes[0])}
-                      >
-                        EXPLORE ROUTE ↗
-                      </button>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           ) : (
-            <div className="search-empty-state">
-              <div className="empty-icon">🧭</div>
-              <h3>NO DESTINATION PACKAGES MATCHED YOUR SEARCH</h3>
-              <p>We couldn't find any packages for "{searchTerm || selectedLandscape}". Try searching for popular destinations like <strong>Kerala</strong>, <strong>Ladakh</strong>, <strong>Spiti</strong>, <strong>Ooty</strong>, or <strong>Meghalaya</strong>.</p>
-              <button 
-                className="btn-empty-reset" 
-                onClick={resetAllFilters}
-              >
-                RESET ALL FILTERS
-              </button>
+            <div className="search-empty-hero">
+              <div className="empty-icon-circle">🧭</div>
+              <h3 className="empty-title">NO MATCHING EXPEDITION ROUTES FOUND</h3>
+              <p className="empty-desc">
+                We couldn't find any packages matching "{searchTerm}". Try exploring popular categories below or clear active filters.
+              </p>
+              <div className="empty-quick-links">
+                {POPULAR_QUICK_SEARCHES.slice(1, 6).map((chip) => (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    className="empty-chip-btn"
+                    onClick={() => setSearchTerm(chip.query)}
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>

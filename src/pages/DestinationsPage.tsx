@@ -29,7 +29,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
   onOpenBookModal
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
-  const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala-weekend');
 
   React.useEffect(() => {
@@ -39,21 +38,25 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
   }, [initialFilter]);
 
   const filteredCorridors = DESTINATION_CORRIDORS.filter(c => {
-    const matchesCategory = selectedFilter === 'all' || c.tripTypes.includes(selectedFilter as TripTypeCategory);
-    if (!matchesCategory) return false;
-    if (!searchQuery.trim()) return true;
+    let matchesCategory = selectedFilter === 'all';
+    if (!matchesCategory) {
+      if (selectedFilter === 'south-india') {
+        matchesCategory = c.landscapeZone === 'South India' || c.region.toLowerCase().includes('south');
+      } else if (selectedFilter === 'north-india') {
+        matchesCategory = c.landscapeZone === 'North India & Ladakh' || c.region.toLowerCase().includes('north');
+      } else if (selectedFilter === 'ladakh') {
+        matchesCategory = c.region.toLowerCase().includes('ladakh') || c.id === 'ladakh';
+      } else if (selectedFilter === 'north-east') {
+        matchesCategory = c.region.toLowerCase().includes('east') || c.tripTypes.includes('off-beaten');
+      } else {
+        matchesCategory = 
+          c.tripTypes.includes(selectedFilter as TripTypeCategory) ||
+          c.region.toLowerCase().includes(selectedFilter.toLowerCase()) ||
+          c.keywords.some(k => k.toLowerCase() === selectedFilter.toLowerCase());
+      }
+    }
 
-    const q = searchQuery.toLowerCase().trim();
-    return (
-      c.title.toLowerCase().includes(q) ||
-      c.region.toLowerCase().includes(q) ||
-      c.subtitle.toLowerCase().includes(q) ||
-      c.description.toLowerCase().includes(q) ||
-      c.terrain.toLowerCase().includes(q) ||
-      c.difficulty.toLowerCase().includes(q) ||
-      c.duration.toLowerCase().includes(q) ||
-      c.highlights.some(h => h.toLowerCase().includes(q))
-    );
+    return matchesCategory;
   });
 
   return (
@@ -65,7 +68,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
 
 
 
-        {/* Category Filter Tabs & Search Bar */}
+        {/* Category Filter Tabs */}
         <section className="dest-filter-section">
           <div className="container">
             {/* Animated Mobile Bike Rider Mascot Track */}
@@ -74,30 +77,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
               <div className="dest-mobile-rider-mover">
                 <TravellerCharacterSVG isMoving={true} />
               </div>
-            </div>
-
-            {/* Live Inline Search Bar */}
-            <div className="dest-search-inline-wrap">
-              <svg className="inline-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <input
-                type="text"
-                className="dest-inline-search-input"
-                placeholder="Search trip routes by name, region, pass or keyword (e.g. Munnar, Spiti, Waterfall, Kerala)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button 
-                  className="dest-inline-clear-btn" 
-                  onClick={() => setSearchQuery('')}
-                  title="Clear search filter"
-                >
-                  ✕ CLEAR SEARCH
-                </button>
-              )}
             </div>
 
             <div className="filter-bar-wrap">
@@ -141,70 +120,55 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
               </div>
             ) : (
               <div className="dest-cards-grid">
-                {filteredCorridors.map((item) => (
-                  <article 
-                    key={item.id} 
-                    className={`dest-card ${item.id === activeCorridorId ? 'is-selected' : ''}`}
-                    onClick={() => setActiveCorridorId(item.id)}
-                  >
-                    <div className="dest-card-frame" style={{ backgroundColor: item.frameColor }}>
-                      <div className="dest-card-inner-canvas">
-                        <div className="dest-card-img-wrap">
-                          <img src={item.image} alt={item.title} className="dest-card-img" loading="lazy" decoding="async" />
-                          <div className="dest-card-overlay" />
-                          <span className="dest-card-number">#{item.number}</span>
-                          <span className="dest-card-region">{item.region}</span>
-                        </div>
+                {filteredCorridors.map((item) => {
+                  const formatDurationShort = (durationStr: string): string => {
+                    if (!durationStr) return '';
+                    const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
+                    if (match) {
+                      return `${match[1]}D/${match[2]}N`;
+                    }
+                    const daysOnly = durationStr.match(/(\d+)\s*DAYS?/i);
+                    if (daysOnly) {
+                      return `${daysOnly[1]}D`;
+                    }
+                    return durationStr;
+                  };
 
-                        <div className="dest-card-body">
-                          <div className="dest-card-meta-top">
-                            <span className="dest-diff-tag">{item.difficulty}</span>
-                            <span className="meta-dot">•</span>
-                            <span className="dest-duration">{item.duration}</span>
+                  const durationShort = formatDurationShort(item.duration);
+
+                  return (
+                    <article 
+                      key={item.id} 
+                      className={`dest-card ${item.id === activeCorridorId ? 'is-selected' : ''}`}
+                      onClick={() => {
+                        setActiveCorridorId(item.id);
+                        if (onNavigate) {
+                          onNavigate(`destination:${item.id}`);
+                        } else if (onOpenBookModal) {
+                          onOpenBookModal(item.title);
+                        }
+                      }}
+                    >
+                      <div className="dest-card-frame" style={{ backgroundColor: item.frameColor }}>
+                        <div className="dest-card-inner-canvas">
+                          <div className="dest-card-img-wrap">
+                            <img src={item.image} alt={item.title} className="dest-card-img" loading="lazy" decoding="async" />
                           </div>
 
-                          <div className="dest-card-title-row">
-                            <h3 className="dest-card-title">{item.title}</h3>
-                            <div className="dest-card-price-tag">
-                              <span className="price-tag-label">STARTING PRICE</span>
-                              <span className="price-tag-val">{item.startingPrice}</span>
+                          <div className="dest-card-body">
+                            <h3 className="dest-card-title">
+                              {item.title} {durationShort}
+                            </h3>
+                            <div className="dest-card-price-row">
+                              <span className="price-label">from</span>
+                              <span className="price-val">{item.startingPrice}</span>
                             </div>
-                          </div>
-                          <p className="dest-card-subtitle">{item.subtitle}</p>
-
-                          {/* Trip Type Badges Pill Row */}
-                          <div className="dest-type-pills-row">
-                            {item.tripTypes.map(tId => {
-                              const tObj = TRIP_TYPES.find(t => t.id === tId);
-                              return tObj ? (
-                                <span key={tId} className="type-pill-tag">
-                                  <span>{tObj.title}</span>
-                                </span>
-                              ) : null;
-                            })}
-                          </div>
-
-                          <div className="dest-card-specs-row">
-                            <div className="spec-box">
-                              <span className="spec-label">ALTITUDE</span>
-                              <span className="spec-val">{item.elevation}</span>
-                            </div>
-                            <button
-                              type="button"
-                              className="btn-card-book-now"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                if (onOpenBookModal) onOpenBookModal(item.title);
-                              }}
-                            >
-                              BOOK NOW
-                            </button>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  );
+                })}
               </div>
             )}
           </div>

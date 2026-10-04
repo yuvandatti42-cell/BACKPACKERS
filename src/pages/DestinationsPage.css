@@ -567,11 +567,11 @@
 
 .dest-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 380px));
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
-  max-width: 1160px;
+  max-width: 1380px;
   margin: 0 auto;
 }
 
@@ -587,16 +587,16 @@
 
 .dest-card:hover,
 .dest-card.is-selected {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .dest-card-frame {
   position: relative;
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  transition: box-shadow var(--transition-normal);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+  transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -604,234 +604,82 @@
 
 .dest-card:hover .dest-card-frame,
 .dest-card.is-selected .dest-card-frame {
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
 }
 
 .dest-card-inner-canvas {
-  background-color: var(--bg-primary);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #FFFFFF;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
-  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .dest-card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 8.5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background-color: #141413;
   flex-shrink: 0;
+  border-radius: 14px 14px 0 0;
 }
 
 .dest-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s var(--ease-editorial);
+  display: block;
+  transition: transform 0.6s var(--ease-editorial);
 }
 
 .dest-card:hover .dest-card-img {
   transform: scale(1.05);
 }
 
-.dest-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(18, 18, 18, 0.7) 0%, transparent 60%);
-}
-
-.dest-card-number {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  background: rgba(18, 18, 18, 0.85);
-  color: #FAF8F5;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  padding: 0.15rem 0.45rem;
-  line-height: 1;
-  border-radius: 2px;
-}
-
-.dest-card-region {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
 .dest-card-body {
-  padding: 0.85rem 0.95rem;
+  padding: 1.1rem 1rem 0.9rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  flex-grow: 1;
-}
-
-.dest-card-meta-top {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.dest-diff-tag {
-  color: var(--accent-primary);
-}
-
-.dest-duration {
-  color: var(--text-muted);
-}
-
-.dest-card-title-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
+  gap: 0.3rem;
+  background-color: #FFFFFF;
+  border-radius: 0 0 14px 14px;
 }
 
 .dest-card-title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.15rem;
-  line-height: 1.1;
-  letter-spacing: 0.01em;
-  color: var(--text-primary);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: #1A1A18;
   margin: 0;
   text-transform: uppercase;
   word-break: break-word;
-  flex: 1;
 }
 
-.dest-card-price-tag {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  background-color: rgba(200, 90, 50, 0.08);
-  border: 1px solid rgba(200, 90, 50, 0.3);
-  padding: 0.2rem 0.55rem;
-  border-radius: 3px;
-  flex-shrink: 0;
-  text-align: right;
-  line-height: 1;
-}
-
-.dest-card-price-tag .price-tag-label {
-  font-family: var(--font-body);
-  font-size: 0.525rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.dest-card-price-tag .price-tag-val {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  color: #C85A32;
-  font-weight: 700;
-}
-
-.dest-card-subtitle {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  line-height: 1.35;
-  color: var(--text-muted);
-  margin: 0;
-  font-weight: 600;
-}
-
-.dest-type-pills-row {
+.dest-card-price-row {
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  flex-wrap: wrap;
-  margin-top: 0.1rem;
-}
-
-.type-pill-tag {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--text-primary);
-  background-color: var(--bg-tertiary);
-  padding: 0.15rem 0.45rem;
-  border-radius: 2px;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.pill-thumb-img {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  object-fit: cover;
-  display: inline-block;
-}
-
-.dest-card-specs-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.45rem 0;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  margin: 0.15rem 0;
-}
-
-.spec-box {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.spec-label {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.spec-val {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.dest-card-desc {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.dest-card-actions {
-  display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.4rem;
-  margin-top: auto;
-  padding-top: 0.55rem;
-  border-top: 1px solid var(--border-light);
+  margin-top: 0.15rem;
+}
+
+.dest-card-price-row .price-label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #7E7E7E;
+}
+
+.dest-card-price-row .price-val {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1C1C1C;
+  letter-spacing: -0.01em;
 }
 
 .btn-dest-inquire {
@@ -861,25 +709,27 @@
 }
 
 .btn-card-book-now {
-  background-color: #16a34a;
+  background: linear-gradient(135deg, #FF1744 0%, #D50000 100%);
   color: #FFFFFF;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   padding: 0.55rem 1.15rem;
   border-radius: 999px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 4px 14px rgba(213, 0, 0, 0.5);
   white-space: nowrap;
 }
 
 .btn-card-book-now:hover {
-  background-color: #15803d;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
+  background: linear-gradient(135deg, #FF4569 0%, #FF1744 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(213, 0, 0, 0.7);
 }
 
 .btn-dest-catalog {
@@ -1140,7 +990,7 @@
 
 @media (max-width: 1100px) {
   .dest-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
 
@@ -1214,18 +1064,39 @@
   }
 
   .dest-cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.25rem;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
     width: 100%;
   }
 
   .dest-card-frame {
-    padding: 6px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .dest-card-inner-canvas {
+    border-radius: 11px;
+  }
+
+  .dest-card-img-wrap {
+    border-radius: 11px 11px 0 0;
   }
 
   .dest-card-body {
-    padding: 1rem;
+    padding: 0.9rem 0.85rem 0.75rem 0.85rem;
+  }
+
+  .dest-card-title {
+    font-size: 1.05rem;
+  }
+
+  .dest-card-price-row .price-label {
+    font-size: 0.825rem;
+  }
+
+  .dest-card-price-row .price-val {
+    font-size: 1.05rem;
   }
 
   /* Minimal Mobile Redesign for Trip Classifications Section (+ TRIP CLASSIFICATIONS FIVE WAYS TO TRAVEL WITH US) */

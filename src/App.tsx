@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { RegionExplorePage } from './pages/RegionExplorePage';
+import { DestinationDetailPage } from './pages/DestinationDetailPage';
 import { BookNowModal } from './components/BookNowModal/BookNowModal';
 import { FloatingSocialButtons } from './components/FloatingSocialButtons/FloatingSocialButtons';
 import './styles/variables.css';
@@ -15,6 +16,9 @@ export const App: React.FC = () => {
     const pathname = window.location.pathname;
     if (pathname === '/destinations' || hash === 'destinations') {
       return 'destinations';
+    }
+    if (hash.startsWith('destination/') || hash.startsWith('destination:')) {
+      return 'destination:' + hash.replace(/^destination[\/:]/, '');
     }
     if (hash.startsWith('region/') || hash.startsWith('region:')) {
       return 'region:' + hash.replace(/^region[\/:]/, '');
@@ -41,6 +45,8 @@ export const App: React.FC = () => {
       const pathname = window.location.pathname;
       if (pathname === '/destinations' || hash === 'destinations') {
         setCurrentRoute('destinations');
+      } else if (hash.startsWith('destination/') || hash.startsWith('destination:')) {
+        setCurrentRoute('destination:' + hash.replace(/^destination[\/:]/, ''));
       } else if (hash.startsWith('region/') || hash.startsWith('region:')) {
         setCurrentRoute('region:' + hash.replace(/^region[\/:]/, ''));
       } else if (hash === 'book' || hash === 'book-now') {
@@ -71,7 +77,12 @@ export const App: React.FC = () => {
       return;
     }
 
-    if (route.startsWith('region:')) {
+    if (route.startsWith('destination:')) {
+      const destId = route.replace('destination:', '');
+      setCurrentRoute(route);
+      window.location.hash = `destination/${destId}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (route.startsWith('region:')) {
       const regId = route.replace('region:', '');
       setCurrentRoute(route);
       window.location.hash = `region/${regId}`;
@@ -102,7 +113,13 @@ export const App: React.FC = () => {
 
   return (
     <>
-      {currentRoute.startsWith('region:') ? (
+      {currentRoute.startsWith('destination:') ? (
+        <DestinationDetailPage 
+          destinationId={currentRoute.replace('destination:', '')} 
+          onNavigate={navigateTo} 
+          onOpenBookModal={openBookModal}
+        />
+      ) : currentRoute.startsWith('region:') ? (
         <RegionExplorePage 
           regionId={currentRoute.replace('region:', '')} 
           onNavigate={navigateTo} 

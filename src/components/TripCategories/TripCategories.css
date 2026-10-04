@@ -170,16 +170,56 @@
   margin-top: 0;
 }
 
+.dest-row-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  background: transparent;
+  border: none;
+  color: #E6A817;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.dest-row-action-btn:hover {
+  color: #F5BA24;
+  transform: translateX(4px);
+}
+
+.dest-row-action-btn:active {
+  transform: translateX(2px);
+}
+
 .dest-row-indicator {
+  background: transparent;
+  border: none;
   font-size: 1.5rem;
   color: var(--text-muted);
   opacity: 0;
   transform: translateX(-10px);
   transition: all var(--transition-normal);
   line-height: 1.1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
 }
 
-/* Active Row Hover States */
+.dest-row-indicator:hover {
+  color: #E6A817 !important;
+  transform: translateX(4px) !important;
+}
+
+.dest-row-indicator:active {
+  transform: scale(0.9) !important;
+}
+
 .dest-list-row.is-active {
   border-bottom-color: var(--border-strong);
 }
@@ -196,7 +236,7 @@
 .dest-list-row.is-active .dest-row-desc.is-visible {
   max-height: 150px;
   opacity: 1;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
 }
 
 .dest-list-row.is-active .dest-row-indicator {

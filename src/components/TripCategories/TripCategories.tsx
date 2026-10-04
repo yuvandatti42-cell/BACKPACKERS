@@ -11,11 +11,11 @@ interface TripCategoriesProps {
 export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
-  const handleSelectCategory = (id: string) => {
+  const handleNavigateToCategory = (id: string) => {
     if (onNavigate) {
-      onNavigate(`region:${id}`);
+      onNavigate('destinations', undefined, id);
     } else {
-      window.location.hash = `region/${id}`;
+      window.location.hash = 'destinations';
     }
   };
 
@@ -58,12 +58,6 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                   onClick={() => setActiveIndex(index)}
                   tabIndex={0}
                   onFocus={() => setActiveIndex(index)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setActiveIndex(index);
-                    }
-                  }}
                   role="button"
                   aria-label={`Select ${dest.title}`}
                 >
@@ -78,14 +72,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                         className="dest-row-action-btn"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleSelectCategory(dest.id);
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            handleSelectCategory(dest.id);
-                          }
+                          handleNavigateToCategory(dest.id);
                         }}
                         role="button"
                         tabIndex={0}
@@ -95,26 +82,18 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                       </span>
                     )}
                   </div>
-                  <span 
+                  <button 
+                    type="button"
                     className="dest-row-indicator" 
                     title={`Explore ${dest.title}`}
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSelectCategory(dest.id);
+                      handleNavigateToCategory(dest.id);
                     }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        handleSelectCategory(dest.id);
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
                     aria-label={`Explore ${dest.title}`}
                   >
                     &rarr;
-                  </span>
+                  </button>
                 </div>
               );
             })}
@@ -126,7 +105,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
             {/* Main Large Cinematic Image Container */}
             <div 
               className="dest-main-frame" 
-              onClick={() => handleSelectCategory(CATEGORIES_DATA[activeIndex].id)}
+              onClick={() => handleNavigateToCategory(CATEGORIES_DATA[activeIndex].id)}
               style={{ cursor: 'pointer' }}
               title={`Click to view all ${CATEGORIES_DATA[activeIndex].title} trips`}
             >
@@ -141,7 +120,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
               ))}
               <div className="dest-img-shimmer" />
               <div className="dest-hover-badge">
-                EXPLORE {CATEGORIES_DATA[activeIndex]?.title} TRIPS &rarr;
+                <span>EXPLORE MORE</span> &rarr;
               </div>
             </div>
 
@@ -150,7 +129,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
               className="dest-supporting-frame"
               onClick={() => {
                 const nextIndex = (activeIndex + 1) % CATEGORIES_DATA.length;
-                handleSelectCategory(CATEGORIES_DATA[nextIndex].id);
+                handleNavigateToCategory(CATEGORIES_DATA[nextIndex].id);
               }}
               style={{ cursor: 'pointer' }}
               title="Click to explore option"

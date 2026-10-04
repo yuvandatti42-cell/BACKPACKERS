@@ -249,14 +249,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
               </div>
               <span className="gear-station-text">GET YOUR GEAR</span>
             </a>
-            <div className="nav-vertical-divider" aria-hidden="true" />
-            <a 
-              href="#destinations" 
-              className="btn btn-contact-header"
-              onClick={(e) => handleNavClick(e, 'destinations')}
-            >
-              BOOK NOW
-            </a>
           </div>
 
           {/* Mobile Header Actions (Glass Search Button + Hamburger Toggle) */}
