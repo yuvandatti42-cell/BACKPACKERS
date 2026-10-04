@@ -429,8 +429,13 @@
   }
 
   .poster-frame {
-    height: clamp(420px, 58vh, 520px);
-    padding: 12px 24px 12px 12px;
+    height: clamp(400px, 56vh, 500px);
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .vertical-label {
+    display: none; /* Hide vertical side label on mobile to give image maximum full-width view */
   }
 
   .poster-title-overlay {
