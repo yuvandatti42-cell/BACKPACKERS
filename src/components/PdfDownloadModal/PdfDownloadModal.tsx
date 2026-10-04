@@ -20,9 +20,8 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
 }) => {
   const [fullName, setFullName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
   const [expectingCallback, setExpectingCallback] = useState<boolean>(false);
-  const [errors, setErrors] = useState<{ fullName?: string; phone?: string; email?: string }>({});
+  const [errors, setErrors] = useState<{ fullName?: string; phone?: string }>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -31,10 +30,8 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     if (isOpen) {
       const savedName = localStorage.getItem('bp_user_name') || '';
       const savedPhone = localStorage.getItem('bp_user_phone') || '';
-      const savedEmail = localStorage.getItem('bp_user_email') || '';
       if (savedName) setFullName(savedName);
       if (savedPhone) setPhone(savedPhone);
-      if (savedEmail) setEmail(savedEmail);
       setErrors({});
       setIsSubmitted(false);
       setIsSubmitting(false);
@@ -61,16 +58,12 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
   if (!isOpen) return null;
 
   const validate = () => {
-    const newErrors: { fullName?: string; phone?: string; email?: string } = {};
+    const newErrors: { fullName?: string; phone?: string } = {};
     if (!fullName.trim()) newErrors.fullName = 'Full Name is required.';
     
     const digitsOnly = phone.replace(/\D/g, '');
     if (!phone.trim() || digitsOnly.length < 10) {
       newErrors.phone = 'Valid 10-digit WhatsApp phone number is required.';
-    }
-
-    if (email.trim() && !email.includes('@')) {
-      newErrors.email = 'Please enter a valid email address.';
     }
 
     setErrors(newErrors);
@@ -98,12 +91,10 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
 
     const cleanName = fullName.trim();
     const cleanPhone = phone.trim();
-    const cleanEmail = email.trim();
 
     // Store in localStorage for future convenience
     localStorage.setItem('bp_user_name', cleanName);
     localStorage.setItem('bp_user_phone', cleanPhone);
-    if (cleanEmail) localStorage.setItem('bp_user_email', cleanEmail);
 
     const callbackText = expectingCallback ? 'Yes' : 'No';
     const messageText = 
@@ -112,7 +103,6 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
 *New PDF Download Lead:*
 • *Full Name:* ${cleanName}
 • *Phone Number (WhatsApp):* ${cleanPhone}
-• *Email:* ${cleanEmail || 'Not provided'}
 • *Expecting a Callback?:* ${callbackText}
 • *PDF Document:* ${title}`;
 
@@ -175,7 +165,7 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
           /* Form Screen */
           <>
             <form className="pdf-modal-body" onSubmit={handleSubmit} noValidate>
-              <p className="pdf-subtext">ENTER YOUR DETAILS TO DOWNLOAD PDF &amp; GET NOTIFIED</p>
+              <p className="pdf-subtext">ENTER YOUR DETAILS TO GET NOTIFIED</p>
 
               {/* Full Name */}
               <div className="pdf-field-group">
@@ -209,22 +199,6 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
                   required
                 />
                 {errors.phone && <span className="pdf-error-text">{errors.phone}</span>}
-              </div>
-
-              {/* Email Address */}
-              <div className="pdf-field-group">
-                <label className="pdf-field-label">EMAIL ADDRESS</label>
-                <input
-                  type="email"
-                  className={`pdf-input ${errors.email ? 'input-error' : ''}`}
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
-                  }}
-                />
-                {errors.email && <span className="pdf-error-text">{errors.email}</span>}
               </div>
 
               {/* Checkbox Row */}
