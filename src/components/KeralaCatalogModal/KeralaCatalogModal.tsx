@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
 import './KeralaCatalogModal.css';
 
 interface KeralaCatalogModalProps {
@@ -11,6 +12,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
   const [activeTab, setActiveTab] = useState<'all' | 'cover' | 'details'>('all');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [pdfError, setPdfError] = useState<boolean>(false);
+  const [isPdfLeadOpen, setIsPdfLeadOpen] = useState<boolean>(false);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -164,9 +166,9 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
               ↗ Open New Tab
             </a>
 
-            <a 
-              href="/kerala_catalog.pdf" 
-              download="Kerala_3D2N_Catalog.pdf" 
+            <button 
+              type="button"
+              onClick={() => setIsPdfLeadOpen(true)}
               className="catalog-tab-btn download-btn"
               title="Download official PDF document"
             >
@@ -176,7 +178,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
               Download PDF
-            </a>
+            </button>
 
             <button className="catalog-tab-btn print-btn" onClick={handlePrint} title="Print or Save PDF">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -403,9 +405,13 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
                     <a href="/kerala_catalog.pdf" target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
                       📄 Open PDF Document
                     </a>
-                    <a href="/kerala_catalog.pdf" download="Kerala_3D2N_Catalog.pdf" className="btn-fallback-secondary">
+                    <button 
+                      type="button" 
+                      onClick={() => setIsPdfLeadOpen(true)} 
+                      className="btn-fallback-secondary"
+                    >
                       ⬇ Download PDF
-                    </a>
+                    </button>
                   </div>
                 </div>
               )}
@@ -422,6 +428,14 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
         </div>
 
       </div>
+
+      <PdfDownloadModal
+        isOpen={isPdfLeadOpen}
+        onClose={() => setIsPdfLeadOpen(false)}
+        title="Kerala 3D / 2N Tour Catalog"
+        pdfUrl="/kerala_catalog.pdf"
+        downloadFilename="Kerala_3D2N_Catalog.pdf"
+      />
     </div>
   );
 };

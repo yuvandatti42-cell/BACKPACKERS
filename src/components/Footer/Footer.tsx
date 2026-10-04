@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
 import './Footer.css';
 
 export const Footer: React.FC = () => {
+  const [isPdfLeadOpen, setIsPdfLeadOpen] = useState<boolean>(false);
   return (
     <footer className="site-footer-editorial" role="contentinfo">
       <div className="container">
@@ -61,21 +63,28 @@ export const Footer: React.FC = () => {
         {/* Footer Bottom Row */}
         <div className="footer-bottom-row">
           <div className="footer-legal-links">
-            <a 
-              href="/terms_and_conditions.pdf" 
-              download="Backpackers_Destinations_Terms_and_Liability_Waiver.pdf"
-              target="_blank" 
-              rel="noopener noreferrer"
+            <button 
+              type="button"
+              onClick={() => setIsPdfLeadOpen(true)}
               className="footer-waiver-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
             >
               Terms &amp; Conditions and Liability Waiver (PDF ↓)
-            </a>
+            </button>
             <span className="legal-separator">/</span>
             <a href="#">Privacy policy</a>
           </div>
         </div>
 
       </div>
+
+      <PdfDownloadModal
+        isOpen={isPdfLeadOpen}
+        onClose={() => setIsPdfLeadOpen(false)}
+        title="Terms & Conditions and Liability Waiver PDF"
+        pdfUrl="/terms_and_conditions.pdf"
+        downloadFilename="Backpackers_Destinations_Terms_and_Liability_Waiver.pdf"
+      />
     </footer>
   );
 };

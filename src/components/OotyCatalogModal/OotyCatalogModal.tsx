@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
 import './OotyCatalogModal.css';
 
 interface OotyCatalogModalProps {
@@ -10,6 +11,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
   const [viewMode, setViewMode] = useState<'pages' | 'pdf'>('pages');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [pdfError, setPdfError] = useState<boolean>(false);
+  const [isPdfLeadOpen, setIsPdfLeadOpen] = useState<boolean>(false);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -150,9 +152,9 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
               ↗ Open New Tab
             </a>
 
-            <a 
-              href="/ooty_catalog.pdf" 
-              download="Ooty_Coonoor_Catalog.pdf" 
+            <button 
+              type="button"
+              onClick={() => setIsPdfLeadOpen(true)}
               className="catalog-tab-btn download-btn"
               title="Download exact PDF document"
             >
@@ -162,7 +164,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
               Download PDF
-            </a>
+            </button>
 
             <button className="catalog-close-btn" onClick={onClose} aria-label="Close modal">
               &times;
@@ -194,9 +196,13 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
                     <a href="/ooty_catalog.pdf" target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
                       📄 Open PDF Document
                     </a>
-                    <a href="/ooty_catalog.pdf" download="Ooty_Coonoor_Catalog.pdf" className="btn-fallback-secondary">
+                    <button 
+                      type="button" 
+                      onClick={() => setIsPdfLeadOpen(true)} 
+                      className="btn-fallback-secondary"
+                    >
                       ⬇ Download PDF
-                    </a>
+                    </button>
                   </div>
                 </div>
               )}
@@ -213,6 +219,14 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
         </div>
 
       </div>
+
+      <PdfDownloadModal
+        isOpen={isPdfLeadOpen}
+        onClose={() => setIsPdfLeadOpen(false)}
+        title="Ooty & Coonoor Tour Catalog"
+        pdfUrl="/ooty_catalog.pdf"
+        downloadFilename="Ooty_Coonoor_Catalog.pdf"
+      />
     </div>
   );
 };

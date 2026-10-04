@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InquiryFormData } from '../../types';
+import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
 import './TripPlanner.css';
 
 const INITIAL_FORM_STATE: InquiryFormData = {
@@ -22,6 +23,7 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
   const [errors, setErrors] = useState<Partial<Record<keyof InquiryFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submittedMessage, setSubmittedMessage] = useState<string | null>(null);
+  const [isPdfLeadOpen, setIsPdfLeadOpen] = useState<boolean>(false);
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof InquiryFormData, string>> = {};
@@ -229,15 +231,14 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
                   <div className="form-pdf-subnote">
                     <span className="subnote-dot">•</span>
                     <span>Mandatory Participant Form: </span>
-                    <a 
-                      href="/terms_and_conditions.pdf" 
-                      download="Backpackers_Destinations_Terms_and_Liability_Waiver.pdf"
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                    <button 
+                      type="button"
+                      onClick={() => setIsPdfLeadOpen(true)}
                       className="cute-pdf-link"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                     >
                       Download Terms &amp; Waiver PDF ↓
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -305,6 +306,14 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
 
         </div>
       </div>
+
+      <PdfDownloadModal
+        isOpen={isPdfLeadOpen}
+        onClose={() => setIsPdfLeadOpen(false)}
+        title="Terms & Conditions and Liability Waiver PDF"
+        pdfUrl="/terms_and_conditions.pdf"
+        downloadFilename="Backpackers_Destinations_Terms_and_Liability_Waiver.pdf"
+      />
     </section>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DESTINATION_DETAILS_MAP, DestinationDetail } from '../data/destinationDetailsData';
 import { KeralaCatalogModal } from '../components/KeralaCatalogModal/KeralaCatalogModal';
 import { OotyCatalogModal } from '../components/OotyCatalogModal/OotyCatalogModal';
+import { PdfDownloadModal } from '../components/PdfDownloadModal/PdfDownloadModal';
 import './DestinationDetailPage.css';
 
 interface DestinationDetailPageProps {
@@ -18,6 +19,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   const [activeTab, setActiveTab] = useState<'about' | 'itinerary' | 'pricing' | 'inclusions'>('about');
   const [isKeralaCatalogOpen, setIsKeralaCatalogOpen] = useState<boolean>(false);
   const [isOotyCatalogOpen, setIsOotyCatalogOpen] = useState<boolean>(false);
+  const [isGenericPdfLeadOpen, setIsGenericPdfLeadOpen] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -40,16 +42,19 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
     } else if (detail.id === 'ooty-coonoor') {
       setIsOotyCatalogOpen(true);
     } else {
-      // Create a downloadable text summary / pdf triggers
-      const content = `${detail.title} - ${detail.durationFull}\nStarting Price: ${detail.startingPrice}\n\nOverview:\n${detail.about.overview}\n\nHighlights:\n${detail.about.highlights.join('\n')}\n\nItinerary:\n${detail.itinerary.map(i => `Day ${i.day}: ${i.title}\n${i.description}`).join('\n\n')}`;
-      const blob = new Blob([content], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${detail.id}_itinerary.txt`;
-      a.click();
-      URL.revokeObjectURL(url);
+      setIsGenericPdfLeadOpen(true);
     }
+  };
+
+  const executeGenericDownload = () => {
+    const content = `${detail.title} - ${detail.durationFull}\nStarting Price: ${detail.startingPrice}\n\nOverview:\n${detail.about.overview}\n\nHighlights:\n${detail.about.highlights.join('\n')}\n\nItinerary:\n${detail.itinerary.map(i => `Day ${i.day}: ${i.title}\n${i.description}`).join('\n\n')}`;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${detail.id}_itinerary.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   const handleBookClick = () => {
@@ -371,6 +376,13 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
       <OotyCatalogModal 
         isOpen={isOotyCatalogOpen} 
         onClose={() => setIsOotyCatalogOpen(false)} 
+      />
+
+      <PdfDownloadModal
+        isOpen={isGenericPdfLeadOpen}
+        onClose={() => setIsGenericPdfLeadOpen(false)}
+        title={`${detail.title} Itinerary Brochure`}
+        onDirectDownload={executeGenericDownload}
       />
     </div>
   );
