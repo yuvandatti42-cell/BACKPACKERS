@@ -205,3 +205,4 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
 };
 
 export default BookNowModal;
+

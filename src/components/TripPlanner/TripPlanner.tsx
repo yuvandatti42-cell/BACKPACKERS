@@ -253,57 +253,6 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
             </form>
           </div>
 
-          {/* Right Column: Office Basecamp Map & Details Panel */}
-          <div className="planner-map-panel">
-            <div className="map-panel-header">
-              <span className="text-meta planner-eyebrow">BASECAMP &amp; SCOUTING DESK</span>
-              <h3 className="map-panel-title">EXPEDITION HQ</h3>
-              <p className="map-address-text">
-                📍 5-4-97, Bhavani colony, Premavathipet, Rajendranagar, Rangareddy, 500030
-              </p>
-              <div className="map-contact-pills">
-                <a href="tel:7207681067" className="map-contact-pill" title="Call Us">
-                  <span className="pill-icon">📞</span> +91 72076 81067
-                </a>
-                <a href="mailto:contact@backpackersdestinations.com" className="map-contact-pill" title="Email Us">
-                  <span className="pill-icon">✉️</span> contact@backpackersdestinations.com
-                </a>
-                <a 
-                  href="https://wa.me/917207681067?text=Hi%20Backpackers%20Destinations%2C%20I%20have%20an%20expedition%20query!" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="map-contact-pill pill-whatsapp"
-                  title="WhatsApp Us"
-                >
-                  <span className="pill-icon">💬</span> WhatsApp
-                </a>
-              </div>
-            </div>
-
-            <div className="map-frame-wrapper">
-              <iframe
-                title="Backpackers Destinations Headquarters Map"
-                src="https://maps.google.com/maps?q=5-4-97%2C%20Bhavani%20colony%2C%20Premavathipet%2C%20Rajendranagar%2C%20Rangareddy%2C%20500030&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="google-map-iframe"
-              />
-            </div>
-
-            <a 
-              href="https://maps.google.com/?q=5-4-97%2C+Bhavani+colony%2C+Premavathipet%2C+Rajendranagar%2C+Rangareddy%2C+500030" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn btn-directions"
-            >
-              OPEN IN GOOGLE MAPS ↗
-            </a>
-          </div>
-
         </div>
       </div>
 

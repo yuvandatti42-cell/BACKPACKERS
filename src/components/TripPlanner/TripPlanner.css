@@ -11,10 +11,11 @@
 }
 
 .planner-split-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-3xl);
-  align-items: start;
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .planner-map-panel {

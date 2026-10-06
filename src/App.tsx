@@ -5,6 +5,7 @@ import { RegionExplorePage } from './pages/RegionExplorePage';
 import { DestinationDetailPage } from './pages/DestinationDetailPage';
 import { BookNowModal } from './components/BookNowModal/BookNowModal';
 import { FloatingSocialButtons } from './components/FloatingSocialButtons/FloatingSocialButtons';
+import { scrollToSection } from './utils/scrollUtils';
 import './styles/variables.css';
 import './styles/base.css';
 import './styles/layout.css';
@@ -96,10 +97,7 @@ export const App: React.FC = () => {
       if (sectionId) {
         window.location.hash = sectionId;
         const scrollToTarget = () => {
-          const el = document.getElementById(sectionId);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
+          scrollToSection(sectionId);
         };
         scrollToTarget();
         setTimeout(scrollToTarget, 50);

@@ -202,17 +202,19 @@
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 80px;
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100vh;
+  height: 100svh;
   background-color: var(--bg-primary);
-  padding: var(--space-xl) var(--gutter);
-  z-index: 99;
+  padding: 5.5rem 1.5rem 2.5rem;
+  z-index: 999999;
   flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid var(--border-light);
+  border-top: none;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer.is-open {

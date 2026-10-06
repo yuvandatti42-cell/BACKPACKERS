@@ -19,6 +19,17 @@ html {
   color: var(--text-primary);
 }
 
+/* Global Mobile Scroll Offset: Ensures anchor links and scroll targets always stop below fixed navbar */
+section[id],
+main[id],
+div[id],
+form[id],
+article[id],
+.section[id],
+[id]:not(defs *):not(svg *) {
+  scroll-margin-top: calc(var(--mobile-header-height, 84px) + var(--scroll-safe-gap, 14px));
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);

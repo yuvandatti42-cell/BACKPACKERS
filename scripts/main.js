@@ -128,7 +128,12 @@ function initCategoriesInteraction() {
     if (card.classList.contains('category-sub-card')) {
       card.addEventListener('click', () => {
         const plannerEl = document.getElementById('planner');
-        if (plannerEl) plannerEl.scrollIntoView({ behavior: 'smooth' });
+        if (plannerEl) {
+          const header = document.querySelector('.site-header, header');
+          const headerHeight = header ? header.getBoundingClientRect().height : 80;
+          const y = plannerEl.getBoundingClientRect().top + window.pageYOffset - headerHeight - 14;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
       });
     }
   });

@@ -87,4 +87,32 @@
   /* Radius (Minimal, sharp corners) */
   --radius-none: 0px;
   --radius-xs: 2px;
+
+  /* Responsive Fixed Header Scroll Offsets */
+  --mobile-header-height: 90px;
+  --scroll-safe-gap: 14px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --mobile-header-height: 82px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --mobile-header-height: 76px;
+  }
+}
+
+@media (max-width: 430px) {
+  :root {
+    --mobile-header-height: 72px;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --mobile-header-height: 68px;
+  }
 }

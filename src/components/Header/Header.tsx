@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TripSearchModal } from '../TripSearchModal/TripSearchModal';
+import { scrollToSection } from '../../utils/scrollUtils';
 import './Header.css';
 
 interface HeaderProps {
@@ -47,13 +48,16 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
 
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('mobile-menu-active');
       window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-active');
     }
 
     return () => {
       document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-active');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMobileMenuOpen]);
@@ -75,16 +79,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
     } else {
       if (route === 'destinations') {
         window.location.hash = 'destinations';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToSection('destinations');
       } else {
         const targetSection = sectionId ? sectionId : 'hero';
         window.location.hash = targetSection;
-        const el = document.getElementById(targetSection);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        scrollToSection(targetSection);
       }
     }
   };

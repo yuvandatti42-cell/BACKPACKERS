@@ -163,33 +163,32 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  font-size: 1rem;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.95rem 2.15rem;
+  padding: 1.05rem 2.4rem;
   background: linear-gradient(
     180deg, 
-    #FF8F00 0%, 
-    #F57C00 28%, 
-    #E65100 62%, 
-    #D84315 100%
+    #FFEE58 0%, 
+    #FFD600 28%, 
+    #FFB300 62%, 
+    #FFA000 100%
   ) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   border-radius: 999px;
   text-decoration: none;
   transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
   cursor: pointer;
   white-space: nowrap;
   box-sizing: border-box;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  text-shadow: none !important;
   box-shadow: 
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.7), 
-    inset 0 -3px 5px rgba(0, 0, 0, 0.5), 
-    0 4px 14px rgba(230, 81, 0, 0.45) !important;
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.9), 
+    inset 0 -3px 4px rgba(0, 0, 0, 0.25) !important;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -198,36 +197,38 @@
 .btn-hero-cta:hover {
   background: linear-gradient(
     180deg, 
-    #FF9E80 0%, 
-    #FF7A00 28%, 
-    #F57C00 62%, 
-    #E65100 100%
+    #FFF59D 0%, 
+    #FFEE58 28%, 
+    #FFD600 62%, 
+    #FFC107 100%
   ) !important;
-  border-color: rgba(255, 255, 255, 0.75) !important;
-  color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.45) !important;
+  color: #000000 !important;
   transform: none !important;
+  box-shadow: 
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95), 
+    inset 0 -3px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Pure Mechanical Button Push Inward on Click / Tap */
 .btn-hero-cta:active {
   transform: translateY(3px) scale(0.97) !important;
   box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.75), 
-    inset 0 1px 2px rgba(0, 0, 0, 0.9), 
-    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    inset 0 4px 8px rgba(0, 0, 0, 0.3), 
+    inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   transition: transform 0.05s ease, box-shadow 0.05s ease;
 }
 
 .btn-hero-cta .btn-icon-arrow {
-  width: 16px;
-  height: 16px;
-  color: #FFFFFF;
+  width: 18px;
+  height: 18px;
+  color: #000000 !important;
   transition: transform 300ms ease;
   display: inline-block;
 }
 
 .btn-hero-cta:hover .btn-icon-arrow {
-  color: #FFFFFF;
+  color: #000000 !important;
   transform: translateX(4px);
 }
 
@@ -378,8 +379,8 @@
   }
 
   .btn-hero-cta {
-    padding: 1rem 1.85rem;
-    font-size: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 0.9375rem;
   }
 }
 
@@ -420,9 +421,9 @@
   }
 
   .btn-hero-cta {
-    padding: 0.95rem 1.5rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    padding: 0.95rem 1.75rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -497,9 +498,9 @@
   }
 
   .btn-hero-cta {
-    padding: 0.9rem 1.35rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -599,25 +600,24 @@
   }
 
   .btn-hero-cta {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    gap: 0.45rem;
+    padding: 0.75rem 1.45rem;
+    font-size: 0.875rem;
+    font-weight: 900 !important;
+    letter-spacing: 0.08em;
+    gap: 0.55rem;
     background: linear-gradient(
       180deg, 
-      #FF8F00 0%, 
-      #F57C00 28%, 
-      #E65100 62%, 
-      #D84315 100%
+      #FFEE58 0%, 
+      #FFD600 28%, 
+      #FFB300 62%, 
+      #FFA000 100%
     ) !important;
-    border: 1px solid rgba(255, 255, 255, 0.45) !important;
-    color: #FFFFFF !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
     box-shadow: 
-      inset 0 1.5px 1px rgba(255, 255, 255, 0.7), 
-      inset 0 -2.5px 5px rgba(0, 0, 0, 0.5), 
-      0 4px 14px rgba(230, 81, 0, 0.45) !important;
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.9), 
+      inset 0 -2.5px 4px rgba(0, 0, 0, 0.2) !important;
     white-space: nowrap;
     border-radius: 999px;
     transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
@@ -626,8 +626,9 @@
   }
 
   .btn-hero-cta .btn-icon-arrow {
-    width: 13px;
-    height: 13px;
+    width: 15px;
+    height: 15px;
+    color: #000000 !important;
   }
 }
 
@@ -646,9 +647,9 @@
   }
 
   .btn-hero-cta {
-    padding: 0.78rem 1.35rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    padding: 0.75rem 1.35rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
   }
 }
 

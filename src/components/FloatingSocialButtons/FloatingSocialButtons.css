@@ -131,3 +131,14 @@
     display: none;
   }
 }
+
+/* Hide floating buttons when mobile drawer menu is open */
+body.mobile-menu-active .floating-social-container,
+body:has(.mobile-drawer.is-open) .floating-social-container,
+.mobile-drawer.is-open ~ .floating-social-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  transform: translateY(20px) !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
