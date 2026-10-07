@@ -5,7 +5,8 @@
 .site-footer-editorial {
   background-color: #161714;
   color: #F3F2EC; /* Spec off-white text */
-  min-height: clamp(540px, 70vh, 800px);
+  min-height: 100vh;
+  min-height: 100dvh;
   padding-top: clamp(3rem, 5vh, 4.5rem);
   padding-bottom: clamp(2rem, 3vh, 3.5rem);
   border-top: none;
@@ -312,9 +313,16 @@
 
 @media (max-width: 768px) {
   .site-footer-editorial {
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 2.5rem;
     padding-bottom: 2rem;
+  }
+
+  .site-footer-editorial::before,
+  .site-footer-editorial::after {
+    background-size: cover;
+    background-position: center 42%;
   }
 
   .footer-reg-text {
@@ -352,6 +360,8 @@
     max-width: 90vw;
   }
 }
+
+
 
 
 
