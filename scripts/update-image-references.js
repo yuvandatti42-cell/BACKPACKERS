@@ -30,7 +30,7 @@ targetFiles.forEach((file) => {
   if (!fs.existsSync(file)) return;
   let content = fs.readFileSync(file, 'utf-8');
   
-  // Replace .jpg, .jpeg, .png image references in string paths (like '/image.jpg' or 'image.png')
+  // Replace .jpg, .jpeg, .png image references in string paths (like '/image.webp' or 'image.webp')
   const newContent = content.replace(/(['"\/`])([\w\-]+)\.(jpg|jpeg|png)(['"`\?\)\#])/gi, (match, p1, p2, p3, p4) => {
     // Keep favicon.png or specific non-image assets if needed, otherwise convert to webp
     if (p2 === 'favicon' && p3 === 'ico') return match;

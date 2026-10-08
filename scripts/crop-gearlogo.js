@@ -1,7 +1,7 @@
 import fs from 'fs';
 import jpeg from 'jpeg-js';
 
-const jpegData = fs.readFileSync('gearlogo.jpeg');
+const jpegData = fs.readFileSync('gearlogo.webp');
 const rawImageData = jpeg.decode(jpegData, { useTolerantUnknown: true });
 
 const { width, height, data } = rawImageData;
@@ -57,5 +57,5 @@ const croppedJpeg = jpeg.encode({
   height: cropHeight
 }, 95);
 
-fs.writeFileSync('public/gearlogo.jpeg', croppedJpeg.data);
-console.log('Saved cropped logo to public/gearlogo.jpeg');
+fs.writeFileSync('public/gearlogo.webp', croppedJpeg.data);
+console.log('Saved cropped logo to public/gearlogo.webp');

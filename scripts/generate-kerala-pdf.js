@@ -11,10 +11,10 @@ async function generateKeralaPdf() {
   const fontHelveticaOblique = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
 
   // Load images
-  const keralaBgBytes = fs.readFileSync(path.resolve('public/dest_kerala.jpg'));
+  const keralaBgBytes = fs.readFileSync(path.resolve('public/dest_kerala.webp'));
   const keralaBgImg = await pdfDoc.embedJpg(keralaBgBytes);
 
-  const logoBytes = fs.readFileSync(path.resolve('public/logo-white.png'));
+  const logoBytes = fs.readFileSync(path.resolve('public/logo-white.webp'));
   const logoImg = await pdfDoc.embedPng(logoBytes);
 
   // Colors
