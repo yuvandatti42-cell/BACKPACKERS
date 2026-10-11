@@ -3,6 +3,7 @@ import { DESTINATION_DETAILS_MAP, DestinationDetail } from '../data/destinationD
 import { KeralaCatalogModal } from '../components/KeralaCatalogModal/KeralaCatalogModal';
 import { OotyCatalogModal } from '../components/OotyCatalogModal/OotyCatalogModal';
 import { PdfDownloadModal } from '../components/PdfDownloadModal/PdfDownloadModal';
+import { GlideSelect } from '../components/GlideSelect/GlideSelect';
 import './DestinationDetailPage.css';
 
 interface DestinationDetailPageProps {
@@ -16,7 +17,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   onNavigate,
   onOpenBookModal
 }) => {
-  const [activeTab, setActiveTab] = useState<'about' | 'itinerary' | 'pricing' | 'inclusions'>('about');
+  const [activeTab, setActiveTab] = useState<'about' | 'itinerary' | 'inclusions'>('about');
   const [isKeralaCatalogOpen, setIsKeralaCatalogOpen] = useState<boolean>(false);
   const [isOotyCatalogOpen, setIsOotyCatalogOpen] = useState<boolean>(false);
   const [isGenericPdfLeadOpen, setIsGenericPdfLeadOpen] = useState<boolean>(false);
@@ -27,6 +28,57 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
 
   // Lookup destination details or fallback to Kerala
   const detail: DestinationDetail = DESTINATION_DETAILS_MAP[destinationId] || DESTINATION_DETAILS_MAP['kerala'];
+  const variants = (detail.durationVariants && detail.durationVariants.length > 0)
+    ? detail.durationVariants
+    : [
+        {
+          id: 'default',
+          label: `${detail.title} ${detail.durationShort}`,
+          durationShort: detail.durationShort,
+          durationFull: detail.durationFull,
+          startingPrice: detail.startingPrice,
+          pdfUrl: detail.pdfUrl || '/kerala_catalog.pdf',
+          about: detail.about,
+          itinerary: detail.itinerary,
+          pricing: detail.pricing
+        }
+      ];
+
+  const [selectedVariantId, setSelectedVariantId] = useState<string>(variants[0].id);
+
+  useEffect(() => {
+    const currentVariants = (detail.durationVariants && detail.durationVariants.length > 0)
+      ? detail.durationVariants
+      : [
+          {
+            id: 'default',
+            label: `${detail.title} ${detail.durationShort}`,
+            durationShort: detail.durationShort,
+            durationFull: detail.durationFull,
+            startingPrice: detail.startingPrice,
+            pdfUrl: detail.pdfUrl || '/kerala_catalog.pdf',
+            about: detail.about,
+            itinerary: detail.itinerary,
+            pricing: detail.pricing
+          }
+        ];
+    setSelectedVariantId(currentVariants[0].id);
+  }, [destinationId, detail]);
+
+  const glideOptions = variants.map(v => ({
+    value: v.id,
+    label: v.durationShort ? `${v.durationShort}` : v.label,
+    tag: v.startingPrice
+  }));
+
+  const activeVariant = variants.find(v => v.id === selectedVariantId) || (variants.length > 0 ? variants[0] : null);
+
+  const currentDurationShort = activeVariant ? activeVariant.durationShort : detail.durationShort;
+  const currentDurationFull = activeVariant ? activeVariant.durationFull : detail.durationFull;
+  const currentStartingPrice = activeVariant ? activeVariant.startingPrice : detail.startingPrice;
+  const currentPdfUrl = activeVariant ? activeVariant.pdfUrl : (detail.pdfUrl || '/kerala_catalog.pdf');
+  const currentAbout = (activeVariant && activeVariant.about) ? activeVariant.about : detail.about;
+  const currentItinerary = (activeVariant && activeVariant.itinerary) ? activeVariant.itinerary : detail.itinerary;
 
   const handleBack = () => {
     if (onNavigate) {
@@ -37,26 +89,48 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   };
 
   const handlePdfClick = () => {
-    setIsGenericPdfLeadOpen(true);
+    const targetPdfUrl = currentPdfUrl || '/kerala_3d2n_catalog.pdf';
+
+    // 1. Open the PDF directly in a new browser tab
+    window.open(targetPdfUrl, '_blank');
+
+    // 2. Trigger direct file download
+    const link = document.createElement('a');
+    link.href = targetPdfUrl;
+    link.download = `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const executeGenericDownload = () => {
-    const content = `${detail.title} - ${detail.durationFull}\nStarting Price: ${detail.startingPrice}\n\nOverview:\n${detail.about.overview}\n\nHighlights:\n${detail.about.highlights.join('\n')}\n\nItinerary:\n${detail.itinerary.map(i => `Day ${i.day}: ${i.title}\n${i.description}`).join('\n\n')}`;
+    if (currentPdfUrl && currentPdfUrl.endsWith('.pdf')) {
+      window.open(currentPdfUrl, '_blank');
+      const link = document.createElement('a');
+      link.href = currentPdfUrl;
+      link.download = `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+    const content = `${detail.title} - ${currentDurationFull}\nStarting Price: ${currentStartingPrice}\n\nOverview:\n${currentAbout.overview}\n\nHighlights:\n${currentAbout.highlights.join('\n')}\n\nItinerary:\n${currentItinerary.map(i => `Day ${i.day}: ${i.title}\n${i.description}`).join('\n\n')}`;
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${detail.id}_itinerary.txt`;
+    a.download = `${detail.id}_${activeVariant ? activeVariant.id : 'catalog'}.txt`;
     a.click();
     URL.revokeObjectURL(url);
   };
 
   const handleBookClick = () => {
+    const bookingTitle = `${detail.title} ${currentDurationShort}`;
     if (onOpenBookModal) {
-      onOpenBookModal(detail.title);
+      onOpenBookModal(bookingTitle);
     } else {
       const whatsappUrl = `https://wa.me/917207681067?text=${encodeURIComponent(
-        `Hi Backpackers Destinations! I want to book the ${detail.title} (${detail.durationShort}) trip.`
+        `Hi Backpackers Destinations! I want to book the ${detail.title} (${currentDurationShort}) trip.`
       )}`;
       window.open(whatsappUrl, '_blank');
     }
@@ -125,11 +199,41 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
 
               {/* Title & Price Section */}
               <div className="dest-sheet-header">
-                <h1 className="dest-sheet-title">
-                  {detail.title} {detail.durationShort}
-                </h1>
-                <div className="dest-sheet-price">
-                  {detail.startingPrice}
+                <div className="dest-sheet-header-main">
+                  <div className="dest-sheet-title-box">
+                    <h1 className="dest-sheet-title">
+                      {detail.title} <span className="duration-tag-badge">{currentDurationShort}</span>
+                    </h1>
+                    <div className="dest-sheet-price">
+                      {currentStartingPrice}
+                    </div>
+                  </div>
+
+                  {variants.length > 0 && (
+                    <div className="dest-duration-dropdown-container">
+                      <label className="dest-duration-dropdown-label">
+                        PLAN DURATION
+                      </label>
+                      <GlideSelect
+                        options={glideOptions}
+                        value={selectedVariantId}
+                        onChange={(val) => setSelectedVariantId(val)}
+                        ariaLabel="Plan duration"
+                        showTags={true}
+                        accentColor="#F5BA24"
+                        surfaceColor="#1C1C18"
+                        highlightColor="#2E2E28"
+                        textColor="#FAF8F5"
+                        size="sm"
+                        radius={10}
+                        menuWidth={180}
+                        placement="bottom"
+                        align="right"
+                        popDuration={180}
+                        glideDuration={220}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="dest-sheet-duration-row">
@@ -137,7 +241,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <span>{detail.durationFull}</span>
+                  <span>{currentDurationFull}</span>
                 </div>
               </div>
 
@@ -168,16 +272,6 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                 <button
                   type="button"
                   role="tab"
-                  aria-selected={activeTab === 'pricing'}
-                  className={`sheet-tab-btn ${activeTab === 'pricing' ? 'is-active' : ''}`}
-                  onClick={() => setActiveTab('pricing')}
-                >
-                  Pricing
-                </button>
-
-                <button
-                  type="button"
-                  role="tab"
                   aria-selected={activeTab === 'inclusions'}
                   className={`sheet-tab-btn ${activeTab === 'inclusions' ? 'is-active' : ''}`}
                   onClick={() => setActiveTab('inclusions')}
@@ -193,32 +287,15 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                 {activeTab === 'about' && (
                   <div className="tab-panel tab-about-panel">
                     <p className="about-overview-text">
-                      {detail.about.overview}
+                      {currentAbout.overview}
                     </p>
 
-                    <div className="about-specs-grid">
-                      <div className="spec-item">
-                        <span className="spec-lbl">MAX ELEVATION</span>
-                        <span className="spec-val">{detail.elevation}</span>
-                      </div>
-                      <div className="spec-item">
-                        <span className="spec-lbl">DIFFICULTY</span>
-                        <span className="spec-val diff-tag">{detail.difficulty}</span>
-                      </div>
-                      <div className="spec-item">
-                        <span className="spec-lbl">BEST SEASON</span>
-                        <span className="spec-val">{detail.bestSeason}</span>
-                      </div>
-                      <div className="spec-item">
-                        <span className="spec-lbl">SQUAD SIZE</span>
-                        <span className="spec-val">{detail.squadSize}</span>
-                      </div>
-                    </div>
+
 
                     <div className="about-highlights-section">
                       <h3 className="section-subtitle">KEY ROUTE HIGHLIGHTS</h3>
                       <ul className="highlights-list">
-                        {detail.about.highlights.map((hl, index) => (
+                        {currentAbout.highlights.map((hl, index) => (
                           <li key={index} className="highlight-item">
                             <span className="hl-icon">✦</span>
                             <span>{hl}</span>
@@ -233,7 +310,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                 {activeTab === 'itinerary' && (
                   <div className="tab-panel tab-itinerary-panel">
                     <div className="itinerary-timeline">
-                      {detail.itinerary.map((dayItem) => (
+                      {currentItinerary.map((dayItem) => (
                         <div key={dayItem.day} className="itinerary-day-card">
                           <div className="day-badge-col">
                             <span className="day-number">DAY {dayItem.day < 10 ? `0${dayItem.day}` : dayItem.day}</span>
@@ -256,37 +333,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                   </div>
                 )}
 
-                {/* TAB 3: PRICING */}
-                {activeTab === 'pricing' && (
-                  <div className="tab-panel tab-pricing-panel">
-                    <div className="pricing-banner">
-                      <span className="p-lbl">STARTING EXPEDITION PRICE</span>
-                      <span className="p-amt">{detail.startingPrice}</span>
-                      <span className="p-sub">Per person inclusive of stays, transport & meals</span>
-                    </div>
 
-                    <div className="occupancy-options-list">
-                      {detail.pricing.occupancyTypes.map((opt, oIdx) => (
-                        <div key={oIdx} className="occupancy-card">
-                          <div className="occ-info">
-                            <h4 className="occ-title">{opt.type}</h4>
-                            {opt.note && <span className="occ-note">{opt.note}</span>}
-                          </div>
-                          <div className="occ-price">{opt.price}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="pricing-notes-box">
-                      <h4 className="notes-title">BOOKING NOTES & TERMS</h4>
-                      <ul>
-                        {detail.pricing.notes.map((note, nIdx) => (
-                          <li key={nIdx}>• {note}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
 
                 {/* TAB 4: INCLUSIONS */}
                 {activeTab === 'inclusions' && (
@@ -365,6 +412,8 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
       <KeralaCatalogModal 
         isOpen={isKeralaCatalogOpen} 
         onClose={() => setIsKeralaCatalogOpen(false)} 
+        pdfUrl={currentPdfUrl}
+        durationLabel={activeVariant ? activeVariant.label : 'Kerala Catalog'}
       />
 
       <OotyCatalogModal 
@@ -375,9 +424,9 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
       <PdfDownloadModal
         isOpen={isGenericPdfLeadOpen}
         onClose={() => setIsGenericPdfLeadOpen(false)}
-        title={`${detail.title} PDF Catalog`}
-        pdfUrl={detail.pdfUrl || (detail.id === 'ooty-coonoor' ? '/ooty_catalog.pdf' : '/kerala_catalog.pdf')}
-        downloadFilename={`${detail.id}_catalog.pdf`}
+        title={`${detail.title} (${currentDurationShort}) PDF Catalog`}
+        pdfUrl={currentPdfUrl}
+        downloadFilename={`${detail.id}_${activeVariant ? activeVariant.id : 'catalog'}.pdf`}
         onDirectDownload={() => {
           if (detail.id === 'kerala') {
             setIsKeralaCatalogOpen(true);

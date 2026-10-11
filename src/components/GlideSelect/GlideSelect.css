@@ -1,0 +1,207 @@
+/* ==========================================================================
+   GLIDE SELECT COMPONENT STYLING
+   Backpackers Destinations Brand Palette Integration
+   ========================================================================== */
+
+.glide-select-container {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Trigger Button
+   -------------------------------------------------------------------------- */
+.glide-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  background-color: var(--surface-color, #1A1A18);
+  color: var(--text-color, #FAF8F5);
+  border: 1.5px solid var(--accent-border, rgba(230, 168, 23, 0.4));
+  border-radius: var(--radius, 12px);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+}
+
+.glide-select-trigger:hover {
+  background-color: #242420;
+  border-color: var(--accent-color, #F5BA24);
+  box-shadow: 0 6px 18px rgba(230, 168, 23, 0.28);
+  transform: translateY(-1px);
+}
+
+.glide-select-trigger:focus-visible {
+  outline: 2px solid var(--accent-color, #F5BA24);
+  outline-offset: 2px;
+}
+
+.trigger-label {
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.trigger-chevron {
+  color: var(--accent-color, #F5BA24);
+  transition: transform var(--pop-duration, 180ms) cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.trigger-chevron.is-rotated {
+  transform: rotate(180deg);
+}
+
+/* Sizes */
+.glide-size-sm .glide-select-trigger {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.775rem;
+}
+
+.glide-size-md .glide-select-trigger {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.glide-size-lg .glide-select-trigger {
+  padding: 0.65rem 1.1rem;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Floating Menu Popover
+   -------------------------------------------------------------------------- */
+.glide-select-menu {
+  position: absolute;
+  z-index: 1000;
+  background-color: var(--surface-color, #1A1A18);
+  border: 1.5px solid rgba(230, 168, 23, 0.35);
+  border-radius: var(--radius, 12px);
+  padding: 5px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: glideSelectPop var(--pop-duration, 180ms) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top right;
+}
+
+@keyframes glideSelectPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Placement & Alignment */
+.glide-select-menu.placement-bottom {
+  top: calc(100% + 6px);
+}
+
+.glide-select-menu.placement-top {
+  bottom: calc(100% + 6px);
+  transform-origin: bottom right;
+}
+
+.glide-select-menu.align-left {
+  left: 0;
+}
+
+.glide-select-menu.align-right {
+  right: 0;
+  left: auto;
+}
+
+/* Options Wrapper */
+.glide-options-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+/* Gliding Highlight Pill Element */
+.glide-highlight-pill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: var(--highlight-color, #2D2D27);
+  border: 1px solid rgba(245, 186, 36, 0.3);
+  border-radius: calc(var(--radius, 12px) - 3px);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform var(--glide-duration, 220ms) cubic-bezier(0.16, 1, 0.3, 1),
+              height var(--glide-duration, 220ms) cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Menu Option Row */
+.glide-option-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-color, #FAF8F5);
+  padding: 0.55rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: left;
+  border-radius: calc(var(--radius, 12px) - 3px);
+  cursor: pointer;
+  outline: none;
+  transition: color 0.15s ease;
+}
+
+.glide-option-item.is-selected {
+  color: #FFFFFF;
+}
+
+.option-label {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.option-right-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.75rem;
+}
+
+.option-tag {
+  font-size: 0.775rem;
+  font-weight: 800;
+  color: var(--accent-color, #F5BA24);
+  letter-spacing: 0.02em;
+}
+
+.option-check-icon {
+  color: var(--accent-color, #F5BA24);
+  flex-shrink: 0;
+}
+
+/* Disabled State */
+.glide-select-container.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.glide-select-container.is-disabled .glide-select-trigger {
+  cursor: not-allowed;
+}

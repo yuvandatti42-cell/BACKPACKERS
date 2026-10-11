@@ -5,6 +5,28 @@ export interface ItineraryDay {
   highlights?: string[];
 }
 
+export interface DurationVariant {
+  id: string;
+  label: string;
+  durationShort: string;
+  durationFull: string;
+  startingPrice: string;
+  numericPrice?: number;
+  pdfUrl: string;
+  about?: {
+    overview: string;
+    highlights: string[];
+    landscapeSummary?: string;
+    bestTimeToVisit?: string;
+  };
+  itinerary?: ItineraryDay[];
+  pricing?: {
+    startingPrice: string;
+    occupancyTypes: { type: string; price: string; note?: string }[];
+    notes: string[];
+  };
+}
+
 export interface DestinationDetail {
   id: string;
   title: string;
@@ -40,24 +62,280 @@ export interface DestinationDetail {
     included: string[];
     excluded: string[];
   };
+
+  durationVariants?: DurationVariant[];
 }
 
 export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   kerala: {
     id: 'kerala',
     title: 'KERALA',
-    durationShort: '6D/5N',
-    durationFull: '6 Days - 5 Nights',
-    startingPrice: '₹ 5,999',
-    numericPrice: 5999,
+    durationShort: '3D/2N',
+    durationFull: '3 Days - 2 Nights',
+    startingPrice: '₹ 3,999',
+    numericPrice: 3999,
     image: '/ke.webp',
-    pdfUrl: '/kerala_catalog.pdf',
+    pdfUrl: '/kerala_3d2n_catalog.pdf',
     frameColor: '#7B8C78',
     region: 'KERALA',
     elevation: '8,800 FT / 2,695 M',
     squadSize: '6 - 12 TRAVELLERS',
     difficulty: 'BEGINNER',
     bestSeason: 'SEPTEMBER — MARCH',
+    durationVariants: [
+      {
+        id: '3d2n',
+        label: 'Kerala 3D2N',
+        durationShort: '3D/2N',
+        durationFull: '3 Days - 2 Nights',
+        startingPrice: '₹ 3,999',
+        numericPrice: 3999,
+        pdfUrl: '/kerala_3d2n_catalog.pdf',
+        about: {
+          overview: 'Travel Tour Kerala (3 Days / 2 Nights) covering the breathtaking tea hills of Munnar and the rich historic coastal culture of Kochi.',
+          highlights: [
+            'Cheyyappara & Valara Waterfalls & 2nd Mile View Point',
+            'Tata Tea Museum, Eravikulam National Park, Mattupetty Dam & Echo Point',
+            'Fort Kochi (Chinese Fishing Nets, St. Francis Church & Beach)',
+            'Dutch Palace & Jewish Synagogue heritage trail'
+          ],
+          landscapeSummary: 'Tea Slopes, Waterfalls & Heritage Coast',
+          bestTimeToVisit: 'Year-round quick getaway'
+        },
+        itinerary: [
+          {
+            day: 1,
+            title: 'Kochi Arrival & Scenic Climb to Munnar',
+            description: 'Driver pick up on arrival from Kochi airport / railway station / bus station. Drive to Munnar visiting Cheyyappara Waterfalls, Valara Waterfalls, and 2nd Mile View Point. Overnight stay at Munnar.',
+            highlights: ['Cheyyappara Waterfalls', 'Valara Waterfalls', '2nd Mile View Point', 'Overnight Munnar Hotel']
+          },
+          {
+            day: 2,
+            title: 'Munnar Sightseeing & High Altitude Tea Trails',
+            description: 'Sightseeing transfer to Tata Tea Museum, Eravikulam National Park, Mattupetty Dam, and Echo Point. Overnight stay at Munnar.',
+            highlights: ['Tata Tea Museum', 'Eravikulam National Park', 'Mattupetty Dam', 'Echo Point', 'Overnight Munnar Hotel']
+          },
+          {
+            day: 3,
+            title: 'Kochi Heritage Trail & Departure Transfer',
+            description: 'After breakfast visit Fort Kochi (Chinese Fishing Nets, Vasco Da Gama Square, St. Francis CSI Church, Fort Kochi Beach), Dutch Palace, and Jewish Synagogue. Transfer back to Kochi Railway station / Airport leaving with heartful of memories.',
+            highlights: ['Fort Kochi & Chinese Fishing Nets', 'Dutch Palace', 'Jewish Synagogue', 'Departure Transfer']
+          }
+        ],
+        pricing: {
+          startingPrice: '₹ 3,999',
+          occupancyTypes: [
+            { type: 'Triple / Quad Sharing', price: '₹ 3,999', note: 'Per person (Standard Plan)' },
+            { type: 'Double / Twin Occupancy', price: '₹ 4,999', note: 'Per person (Couples / Private Room)' },
+            { type: 'Private Cab & Deluxe Hotel Upgrade', price: '₹ 6,999', note: 'Per person (Luxury Stay Package)' }
+          ],
+          notes: [
+            'Includes 2N stay in Munnar Hotel & private cab transport.',
+            'Driver duty time 8:00 AM to 8:00 PM (extra ₹300/hour).',
+            'Includes driver bata, toll, parking, road tax, permit & fuel charges.',
+            'Entrance fees for optional activities & unmentioned points excluded.'
+          ]
+        }
+      },
+      {
+        id: '4d3n',
+        label: 'Kerala 4D3N',
+        durationShort: '4D/3N',
+        durationFull: '4 Days - 3 Nights',
+        startingPrice: '₹ 4,999',
+        numericPrice: 4999,
+        pdfUrl: '/kerala_4d3n_catalog.pdf',
+        about: {
+          overview: 'The popular 4-day Kerala escape featuring comprehensive Munnar cloud forest views, tea factory visits, and Alleppey backwater houseboat stay.',
+          highlights: [
+            'Munnar Tea Estate Stay & Eravikulam Sanctuary',
+            'Mattupetty Dam & Echo Point Viewpoints',
+            'Alleppey Houseboat Overnight Cruise',
+            'Traditional Kerala Cultural Experience'
+          ],
+          landscapeSummary: 'High Tea Ridges & Backwater Corridors',
+          bestTimeToVisit: 'September through April'
+        },
+        itinerary: [
+          {
+            day: 1,
+            title: 'Arrival & Scenic Climb to Munnar',
+            description: 'Meet squad at pickup point. Scenic drive through Western Ghats switchbacks to Munnar tea plantations.',
+            highlights: ['Cheeyappara Waterfalls', 'Tea Estate Check-in']
+          },
+          {
+            day: 2,
+            title: 'Munnar Eravikulam & Tea Ridge Exploration',
+            description: 'Explore Eravikulam National Park (Nilgiri Tahr), Mattupetty Lake, and tea museum.',
+            highlights: ['Eravikulam Sanctuary', 'Mattupetty Lake', 'Tea Museum']
+          },
+          {
+            day: 3,
+            title: 'Alleppey Backwaters Houseboat Stay',
+            description: 'Drive to Alleppey. Board private Kerala houseboat for backwater lagoon cruise.',
+            highlights: ['Overnight Houseboat', 'Fresh Seafood/Meals', 'Sunset Views']
+          },
+          {
+            day: 4,
+            title: 'Kochi Spice Village & Departure',
+            description: 'Morning backwater breakfast, spice shopping in Kochi, transfer for departure.',
+            highlights: ['Fort Kochi / Spice Walk', 'Departure']
+          }
+        ],
+        pricing: {
+          startingPrice: '₹ 4,999',
+          occupancyTypes: [
+            { type: 'Triple / Quad Sharing', price: '₹ 4,999', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 6,299', note: 'Per person' },
+            { type: 'Private Cottage Upgrade', price: '₹ 9,499', note: 'Per person' }
+          ],
+          notes: [
+            'Includes stays, transport, houseboat & breakfasts/dinners.',
+            'Advance booking required.'
+          ]
+        }
+      },
+      {
+        id: '5d4n',
+        label: 'Kerala 5D4N',
+        durationShort: '5D/4N',
+        durationFull: '5 Days - 4 Nights',
+        startingPrice: '₹ 5,499',
+        numericPrice: 5499,
+        pdfUrl: '/kerala_5d4n_catalog.pdf',
+        about: {
+          overview: 'Comprehensive 5-day Kerala expedition linking Munnar high tea country, Thekkady wildlife sanctuary trails, and Alleppey backwaters.',
+          highlights: [
+            'Munnar cloud forest & tea garden trails',
+            'Thekkady Periyar Wildlife Sanctuary & spice gardens',
+            'Alleppey traditional houseboat cruise',
+            'Cultural Kathakali & Kalaripayattu shows'
+          ],
+          landscapeSummary: 'Tea Hills, Spice Forests & Backwaters',
+          bestTimeToVisit: 'September through March'
+        },
+        itinerary: [
+          {
+            day: 1,
+            title: 'Arrival & Munnar Hill Ascent',
+            description: 'Transfer from pickup point up to Munnar tea estate valleys.',
+            highlights: ['Cheeyappara Falls', 'Campfire Night']
+          },
+          {
+            day: 2,
+            title: 'Munnar Sightseeing & High Viewpoints',
+            description: 'Full day exploring Eravikulam National Park, Echo Point, and Top Station views.',
+            highlights: ['Eravikulam Park', 'Top Station']
+          },
+          {
+            day: 3,
+            title: 'Thekkady Periyar Sanctuary Trail',
+            description: 'Drive to Thekkady. Boat safari on Periyar Lake and spice plantation tour.',
+            highlights: ['Periyar Safari', 'Spice Garden Walk']
+          },
+          {
+            day: 4,
+            title: 'Alleppey Backwaters Houseboat',
+            description: 'Scenic drive to Alleppey. Board private houseboat for backwater cruise.',
+            highlights: ['Houseboat Stay', 'Lagoon Sunset']
+          },
+          {
+            day: 5,
+            title: 'Kochi Heritage Trail & Departure',
+            description: 'Explore Chinese Fishing Nets & spice markets before final departure.',
+            highlights: ['Fort Kochi', 'Departure Transfer']
+          }
+        ],
+        pricing: {
+          startingPrice: '₹ 5,499',
+          occupancyTypes: [
+            { type: 'Triple / Quad Sharing', price: '₹ 5,499', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 6,899', note: 'Per person' },
+            { type: 'Luxury Resort Upgrade', price: '₹ 10,499', note: 'Per person' }
+          ],
+          notes: [
+            'Includes stay, transfers, Periyar boat safari & houseboat cruise.'
+          ]
+        }
+      },
+      {
+        id: '7d6n',
+        label: 'Kerala 7D6N',
+        durationShort: '7D/6N',
+        durationFull: '7 Days - 6 Nights',
+        startingPrice: '₹ 7,999',
+        numericPrice: 7999,
+        pdfUrl: '/kerala_7d6n_catalog.pdf',
+        about: {
+          overview: 'The ultimate grand Kerala expedition! 7 days covering Kochi heritage, Munnar tea hills, Thekkady wildlife, Wayanad rainforests, Varkala cliff beach, and Alleppey backwaters.',
+          highlights: [
+            'Munnar Tea Estate Stay & Eravikulam Park',
+            'Thekkady Spice Plantations & Periyar Lake Safari',
+            'Wayanad Banasura Dam & Rainforest Treks',
+            'Varkala Cliff Beach Sunset & Coastal Strolls',
+            'Alleppey Deluxe Overnight Houseboat Cruise'
+          ],
+          landscapeSummary: 'Mountains, Rainforests, Beaches & Backwaters',
+          bestTimeToVisit: 'September through April'
+        },
+        itinerary: [
+          {
+            day: 1,
+            title: 'Arrival in Kochi & Munnar Hill Drive',
+            description: 'Pickup from Kochi. Ascent to Munnar past waterfalls and tea slopes.',
+            highlights: ['Cheeyappara Falls', 'Munnar Tea Stay']
+          },
+          {
+            day: 2,
+            title: 'Munnar High Altitude Tea Trails',
+            description: 'Full day Munnar exploration: Eravikulam Park, Mattupetty Lake & Top Station.',
+            highlights: ['Eravikulam Park', 'Top Station']
+          },
+          {
+            day: 3,
+            title: 'Thekkady Spice Trails & Lake Safari',
+            description: 'Traverse to Thekkady. Spice garden tour and Periyar wildlife lake safari.',
+            highlights: ['Periyar Safari', 'Spice Tour']
+          },
+          {
+            day: 4,
+            title: 'Wayanad Bamboo Forest & Banasura Dam',
+            description: 'Explore Wayanad rainforests, Banasura Sagar dam, and bamboo rafting.',
+            highlights: ['Banasura Dam', 'Bamboo Rafting']
+          },
+          {
+            day: 5,
+            title: 'Varkala Cliff Beach Sunset',
+            description: 'Drive down to Varkala Cliff Beach. Sunset views over the Arabian Sea.',
+            highlights: ['Varkala Cliff', 'Beach Sunset']
+          },
+          {
+            day: 6,
+            title: 'Alleppey Backwaters Houseboat Cruise',
+            description: 'Board private deluxe houseboat for overnight lagoon cruise with traditional meals.',
+            highlights: ['Houseboat Stay', 'Kerala Feast']
+          },
+          {
+            day: 7,
+            title: 'Fort Kochi Heritage & Departure',
+            description: 'Explore Chinese Fishing Nets and Jew Town markets before departure transfer.',
+            highlights: ['Fort Kochi', 'Departure']
+          }
+        ],
+        pricing: {
+          startingPrice: '₹ 7,999',
+          occupancyTypes: [
+            { type: 'Triple / Quad Sharing', price: '₹ 7,999', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 9,999', note: 'Per person' },
+            { type: 'Luxury Beach & Villa Upgrade', price: '₹ 14,999', note: 'Per person' }
+          ],
+          notes: [
+            'All stays, transfers, beach/forest tours, houseboat cruise included.',
+            'Custom dates for private groups of 4+.'
+          ]
+        }
+      }
+    ],
     about: {
       overview: 'Kerala is a diverse, affordable, and vibrant tropical destination offering a mix of breathtaking natural tea gardens, pristine mountain ridges, bamboo forests, and world-renowned backwater lagoons. From misty tea slopes in Munnar to peaceful traditional houseboat stays in Alleppey, this journey combines high mountain passes with lush coastal backwaters.',
       highlights: [
@@ -141,59 +419,149 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   ladakh: {
     id: 'ladakh',
     title: 'LADAKH',
-    durationShort: '9D/8N',
-    durationFull: '9 Days - 8 Nights',
-    startingPrice: '₹ 28,999',
-    numericPrice: 28999,
+    durationShort: '7 Days',
+    durationFull: '7 Days - 6 Nights',
+    startingPrice: '₹ 23,999',
+    numericPrice: 23999,
     image: '/ladakh.webp',
-    pdfUrl: '/kerala_catalog.pdf',
+    pdfUrl: '/ladakh.pdf',
     frameColor: '#768C9E',
     region: 'LADAKH',
-    elevation: '17,582 FT / 5,359 M',
+    elevation: '19,024 FT / 5,798 M',
     squadSize: '4 - 10 RIDERS',
     difficulty: 'EXPEDITION',
     bestSeason: 'JUNE — SEPTEMBER',
+    durationVariants: [
+      {
+        id: '7d6n',
+        label: 'Ladakh 7 Days (Umling La)',
+        durationShort: '7 Days',
+        durationFull: '7 Days - 6 Nights',
+        startingPrice: '₹ 23,999',
+        numericPrice: 23999,
+        pdfUrl: '/ladakh.pdf',
+        about: {
+          overview: 'High Altitude Himalayan Traverse: Leh to Leh via Umling La (7 Days / 6 Nights). Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
+          highlights: [
+            'Summit Umling La Pass (19,024 ft) — World\'s Highest Motorable Road',
+            'Cross Khardung La (17,582 ft) down to Hunder Bactrian Camel Sand Dunes',
+            'Lakeside camping at turquoise Pangong Tso & starry night sky stargazing',
+            'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier'
+          ],
+          landscapeSummary: 'World\'s Highest Passes, Cold Desert & Changthang Plateau',
+          bestTimeToVisit: 'June through October'
+        },
+        itinerary: [
+          { day: 1, title: 'Arrival in Leh & Mandatory Acclimatization', description: 'Arrive at Leh Airport, hotel check-in, rest and acclimatize to high altitude (11,500 ft). Evening briefing session with lead captain. Dinner and overnight stay in Leh.', highlights: ['Leh Airport Pickup', 'Acclimatization (11,500 ft)', 'Captain Briefing', 'Overnight Leh'] },
+          { day: 2, title: 'Leh to Nubra Valley via Khardung La (17,582 ft)', description: 'Drive over world-renowned Khardung La Pass (17,582 ft). Visit Diskit Monastery (108-ft Maitreya Buddha) and explore Hunder Sand Dunes for double-humped Bactrian camel safari. Overnight stay at Hunder.', highlights: ['Khardung La Pass (17,582 ft)', 'Diskit Monastery', '108ft Buddha Statue', 'Hunder Sand Dunes', 'Bactrian Camel Safari'] },
+          { day: 3, title: 'Nubra Valley to Pangong Tso via Shyok River', description: 'Journey to stunning Pangong Tso via Agam and Shyok River gorge. Check into lakeside campsite, sit by the tranquil waters, and stargaze. Overnight stay at Pangong.', highlights: ['Shyok River Route', 'Pangong Tso Saltwater Lake', 'Lakeside Camping', 'Stargazing'] },
+          { day: 4, title: 'Pangong Tso to Hanle via Rezang La War Memorial', description: 'Drive across Changthang Plateau past grazing yaks and nomadic settlements. Visit Rezang La War Memorial. Arrive in Hanle, famous for its high-altitude observatory and clear night skies. Overnight stay in Hanle.', highlights: ['Changthang Plateau', 'Rezang La War Memorial', 'Hanle Dark Sky Observatory', 'Overnight Hanle'] },
+          { day: 5, title: 'Hanle to Umling La Summit (19,024 ft) & Demchok Circuit', description: 'High-altitude expedition to summit Umling La Pass (19,024 ft) — the highest motorable road on Earth! Witness the stark Line of Actual Control frontier at Demchok before returning to Hanle.', highlights: ['Umling La Summit (19,024 ft)', 'World\'s Highest Motorable Road', 'Demchok LAC Frontier', 'Overnight Hanle'] },
+          { day: 6, title: 'Hanle to Leh via Chumathang & Indus River Valley', description: 'Exhilarating drive through Chumathang Valley alongside the winding Indus River. Transition out of the Changthang plateau back to Leh for a celebration dinner.', highlights: ['Chumathang Hot Springs Valley', 'Indus River Drive', 'Return to Leh', 'Celebration Dinner'] },
+          { day: 7, title: 'Leh Souvenir Market & Departure Transfer', description: 'Enjoy breakfast, shop for souvenirs in Leh Market, and transfer to Leh Airport with memories of the highest Himalayan passes.', highlights: ['Leh Market Walk', 'Airport Drop', 'Trip Ends with Memories'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 23,999',
+          occupancyTypes: [
+            { type: 'Tempo Traveller / SUV Passenger Seat', price: '₹ 23,999', note: 'Per person in backup vehicle' },
+            { type: 'Dual Rider / Pillion Package', price: '₹ 23,999', note: 'Per person sharing bike' },
+            { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 28,999', note: 'Includes Bike + Fuel + Stays' }
+          ],
+          notes: [
+            'Includes Royal Enfield Himalayan bike / SUV transport + Fuel.',
+            'All Inner Line Permits, Red Cross fee & Wildlife charges included.',
+            'Emergency Medical Oxygen Cylinders & Backup Support Truck onboard.'
+          ]
+        }
+      },
+      {
+        id: '12d11n',
+        label: 'Ladakh 12 Days (Srinagar to Manali)',
+        durationShort: '12 Days',
+        durationFull: '12 Days - 11 Nights',
+        startingPrice: '₹ 28,999',
+        numericPrice: 28999,
+        pdfUrl: '/lad2.pdf',
+        about: {
+          overview: 'Trans-Himalayan Traverse: Srinagar to Manali via Umling La (12 Days / 11 Nights). Conquer 11 extreme high passes including Umling La (19,024 ft), Khardung La (17,582 ft), Baralacha La, Tanglang La & Zoji La across Srinagar, Kargil, Leh, Nubra, Pangong, Hanle, Sarchu, and Manali.',
+          highlights: [
+            'Traverse Srinagar to Manali across 11 mountain passes including Umling La (19,024 ft)',
+            'Drass & Kargil War Memorial, Tiger Hill views & Zoji La pass',
+            'Khardung La, Hunder Bactrian Camel safari & Diskit 108ft Maitreya Buddha',
+            'Pangong Tso lakeside camping, Hanle Dark Sky Reserve & Demchok LAC frontier',
+            'Moore Plains, Gata Loops (21 hairpin bends), Baralacha La & Rohtang Pass'
+          ],
+          landscapeSummary: 'Trans-Himalayan Traverse across Jammu & Kashmir, Ladakh, and Himachal',
+          bestTimeToVisit: 'June through October'
+        },
+        itinerary: [
+          { day: 1, title: 'Arrival in Srinagar & Acclimatization', description: 'Arrive at Srinagar Airport, transfer to hotel. Rest, adapt to altitude and prepare for the epic Himalayan traverse.', highlights: ['Srinagar Airport Pickup', 'Acclimatization', 'Squad Dinner'] },
+          { day: 2, title: 'Srinagar to Kargil via Zoji La Pass (~220 kms)', description: 'Drive through Sonamarg (Meadow of Gold), conquer legendary Zoji La pass, visit Drass War Memorial & views of Tiger Hill & Tololing.', highlights: ['Sonamarg Valley', 'Zoji La Pass', 'Drass War Memorial', 'Tiger Hill View'] },
+          { day: 3, title: 'Kargil to Leh via Monasteries & Moonland (~230 kms)', description: 'Cross Namika La (Pillar of the Sky) & Fotu La passes. Visit Lamayuru Monastery, Hall of Fame, Magnetic Hill, and Indus-Zanskar Sangam confluence.', highlights: ['Fotu La & Namika La', 'Lamayuru Monastery', 'Magnetic Hill', 'Indus-Zanskar Sangam', 'Shanti Stupa'] },
+          { day: 4, title: 'Leh to Nubra Valley via Khardung La (~160 kms)', description: 'Drive over Khardung La Pass (17,582 ft). Visit Diskit Monastery (108ft Buddha statue) and explore Hunder sand dunes for Bactrian camel safari.', highlights: ['Khardung La (17,582 ft)', 'Diskit Monastery', 'Hunder Sand Dunes', 'Bactrian Camel Safari'] },
+          { day: 5, title: 'Nubra Valley to Pangong Tso via Shyok River (~180 kms)', description: 'Ride through rugged Shyok River gorge to stunning turquoise Pangong Tso. Check into lakeside campsite for sunset and stargazing.', highlights: ['Shyok River Gorge', 'Pangong Tso Check-in', 'Lakeside Camping', 'Stargazing'] },
+          { day: 6, title: 'Pangong Tso to Hanle via Rezang La War Memorial (~270 kms)', description: 'Drive across Changthang plateau past grazing yaks. Pay homage at Rezang La War Memorial and arrive in Hanle dark sky observatory zone.', highlights: ['Changthang Plateau', 'Rezang La War Memorial', 'Hanle Dark Sky Reserve'] },
+          { day: 7, title: 'Hanle to Umling La Summit (19,024 ft) & Demchok (~200 kms RT)', description: 'Summit Umling La Pass (19,024 ft) — the world highest motorable road! Visit border frontier at Demchok before returning to Hanle.', highlights: ['Umling La Summit (19,024 ft)', 'Highest Motorable Road', 'Demchok LAC Frontier'] },
+          { day: 8, title: 'Hanle to Leh via Puga Valley & Indus River (~200 kms)', description: 'Drive past Puga geothermal hot springs and Chumathang Valley alongside Indus River back to Leh.', highlights: ['Puga Geothermal Valley', 'Chumathang Hot Springs', 'Indus River Drive', 'Return to Leh'] },
+          { day: 9, title: 'Leh to Sarchu via Moore Plains & Gata Loops (~230 kms)', description: 'Drive across Moore Plains, ascend Tanglang La, Lachung La (16,617 ft) and Nakee La. Conquer 21 hairpin bends at Gata Loops to Sarchu campsite.', highlights: ['Moore Plains', 'Tanglang La Pass', 'Gata Loops (21 Bends)', 'Sarchu Camp Stays'] },
+          { day: 10, title: 'Sarchu to Manali via Baralacha La & Rohtang Pass (~220 kms)', description: 'Cross high-altitude Baralacha La (16,040 ft), view pristine Suraj Tal lake, pass Darcha & Zingzing Bar, and cross Rohtang Pass down to Manali.', highlights: ['Baralacha La (16,040 ft)', 'Suraj Tal Lake', 'Rohtang Pass', 'Arrival in Manali'] },
+          { day: 11, title: 'Manali Self Exploration & Overnight Volvo Bus to Delhi', description: 'Morning at leisure in Manali. Explore local Mall Road and cafes before boarding luxury AC Volvo bus to Delhi by evening.', highlights: ['Manali Cafe Walk', 'Mall Road', 'Overnight AC Volvo Bus'] },
+          { day: 12, title: 'Arrival in Delhi - Expedition Concludes', description: 'Morning arrival in Delhi. Depart with unforgettable memories of the 12-day Trans-Himalayan journey.', highlights: ['Arrival in Delhi', 'Expedition Concludes'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 28,999',
+          occupancyTypes: [
+            { type: 'Own Bike + Pillion / SUV Passenger Seat', price: '₹ 28,999', note: 'Per person in backup vehicle / own bike' },
+            { type: 'Dual Rider / Pillion (RE Himalayan 411cc)', price: '₹ 35,999', note: 'Per person sharing bike + fuel' },
+            { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 45,999', note: 'Includes Bike + Fuel + Stays + Permits' }
+          ],
+          notes: [
+            'Includes Royal Enfield Himalayan bike / SUV transport with fuel for entire circuit.',
+            'Srinagar airport pickup & Manali to Delhi luxury AC Volvo bus ticket included.',
+            'All Inner Line Permits, Red Cross fee, Wildlife charges & Oxygen cylinder support included.'
+          ]
+        }
+      }
+    ],
     about: {
-      overview: 'The legendary Trans-Himalayan overland expedition. Traverse barren cold desert passes above 17,000 ft, ancient cliffside monasteries, and high-altitude lakes. Featuring Khardung La, Pangong Tso, and Nubra Valley backed by satellite comms, oxygen support, and dedicated luggage trucks.',
+      overview: 'High Altitude Himalayan Traverse: Leh to Leh via Umling La (7 Days / 6 Nights). Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
       highlights: [
-        'Cross world-famous Khardung La & Chang La high mountain passes',
-        'Camp lakeside at turquoise Pangong Tso under starry skies',
-        'Sand dune camel safari & monastery valleys in Nubra',
-        'Full backup support crew, oxygen backup & satellite comms'
+        'Summit Umling La Pass (19,024 ft) — World\'s Highest Motorable Road',
+        'Cross Khardung La (17,582 ft) down to Hunder Bactrian Camel Sand Dunes',
+        'Lakeside camping at turquoise Pangong Tso & starry night sky stargazing',
+        'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier'
       ],
-      landscapeSummary: 'Cold Desert, High Motorable Passes & Himalayan Scree',
-      bestTimeToVisit: 'June through September (Passes open & clear blue skies)'
+      landscapeSummary: 'World\'s Highest Passes, Cold Desert & Changthang Plateau',
+      bestTimeToVisit: 'June through October'
     },
     itinerary: [
-      { day: 1, title: 'Arrive in Leh & Mandatory Acclimatization', description: 'Rest and adapt to high altitude (11,500 ft). Briefing session with lead captain evening.' },
-      { day: 2, title: 'Leh Local Exploration & Monasteries', description: 'Visit Shanti Stupa, Leh Palace, Hall of Fame, and magnetic hill route.' },
-      { day: 3, title: 'Leh to Nubra Valley via Khardung La (17,582 ft)', description: 'Ascend world highest motorable pass Khardung La down to Hunder sand dunes.' },
-      { day: 4, title: 'Hunder Dunes Camel Safari & Diskit Monastery', description: 'Explore double-humped Bactrian camels and giant Buddha statue in Diskit.' },
-      { day: 5, title: 'Nubra Valley to Pangong Tso via Shyok River Circuit', description: 'Ride alongside roaring Shyok River through rugged gorges to turquoise Pangong Tso.' },
-      { day: 6, title: 'Star Gaze at Pangong Tso & High Altitude Sunrise', description: 'Wake up to serene lake colors, explore lakeside trails and local wildlife.' },
-      { day: 7, title: 'Pangong Tso to Leh via Chang La Pass (17,590 ft)', description: 'Cross snow-dusted Chang La pass and visit Hemis & Thiksey Monasteries.' },
-      { day: 8, title: 'Sangam Confluence & Magnetic Hill Traverse', description: 'Visit Indus & Zanskar river confluence and Pathar Sahib Gurudwara.' },
-      { day: 9, title: 'Souvenir Shopping & Departure from Leh', description: 'Transfer to Leh Airport with unforgettable Trans-Himalayan memories.' }
+      { day: 1, title: 'Arrival in Leh & Mandatory Acclimatization', description: 'Arrive at Leh Airport, hotel check-in, rest and acclimatize to high altitude (11,500 ft). Evening briefing session with lead captain. Dinner and overnight stay in Leh.', highlights: ['Leh Airport Pickup', 'Acclimatization (11,500 ft)', 'Captain Briefing', 'Overnight Leh'] },
+      { day: 2, title: 'Leh to Nubra Valley via Khardung La (17,582 ft)', description: 'Drive over world-renowned Khardung La Pass (17,582 ft). Visit Diskit Monastery (108-ft Maitreya Buddha) and explore Hunder Sand Dunes for double-humped Bactrian camel safari. Overnight stay at Hunder.', highlights: ['Khardung La Pass (17,582 ft)', 'Diskit Monastery', '108ft Buddha Statue', 'Hunder Sand Dunes', 'Bactrian Camel Safari'] },
+      { day: 3, title: 'Nubra Valley to Pangong Tso via Shyok River', description: 'Journey to stunning Pangong Tso via Agam and Shyok River gorge. Check into lakeside campsite, sit by the tranquil waters, and stargaze. Overnight stay at Pangong.', highlights: ['Shyok River Route', 'Pangong Tso Saltwater Lake', 'Lakeside Camping', 'Stargazing'] },
+      { day: 4, title: 'Pangong Tso to Hanle via Rezang La War Memorial', description: 'Drive across Changthang Plateau past grazing yaks and nomadic settlements. Visit Rezang La War Memorial. Arrive in Hanle, famous for its high-altitude observatory and clear night skies. Overnight stay in Hanle.', highlights: ['Changthang Plateau', 'Rezang La War Memorial', 'Hanle Dark Sky Observatory', 'Overnight Hanle'] },
+      { day: 5, title: 'Hanle to Umling La Summit (19,024 ft) & Demchok Circuit', description: 'High-altitude expedition to summit Umling La Pass (19,024 ft) — the highest motorable road on Earth! Witness the stark Line of Actual Control frontier at Demchok before returning to Hanle.', highlights: ['Umling La Summit (19,024 ft)', 'World\'s Highest Motorable Road', 'Demchok LAC Frontier', 'Overnight Hanle'] },
+      { day: 6, title: 'Hanle to Leh via Chumathang & Indus River Valley', description: 'Exhilarating drive through Chumathang Valley alongside the winding Indus River. Transition out of the Changthang plateau back to Leh for a celebration dinner.', highlights: ['Chumathang Hot Springs Valley', 'Indus River Drive', 'Return to Leh', 'Celebration Dinner'] },
+      { day: 7, title: 'Leh Souvenir Market & Departure Transfer', description: 'Enjoy breakfast, shop for souvenirs in Leh Market, and transfer to Leh Airport with memories of the highest Himalayan passes.', highlights: ['Leh Market Walk', 'Airport Drop', 'Trip Ends with Memories'] }
     ],
     pricing: {
-      startingPrice: '₹ 28,999',
+      startingPrice: '₹ 23,999',
       occupancyTypes: [
-        { type: 'Solo Rider (RE Himalayan 411cc/450cc)', price: '₹ 28,999', note: 'Includes Bike + Fuel + Stays' },
-        { type: 'Dual Rider / Pillion Package', price: '₹ 22,999', note: 'Per person sharing bike' },
-        { type: '4x4 SUV Passenger Seat', price: '₹ 26,999', note: 'Per person in backup vehicle' }
+        { type: 'Tempo Traveller / SUV Passenger Seat', price: '₹ 23,999', note: 'Per person in backup vehicle' },
+        { type: 'Dual Rider / Pillion Package', price: '₹ 23,999', note: 'Per person sharing bike' },
+        { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 28,999', note: 'Includes Bike + Fuel + Stays' }
       ],
       notes: [
-        'Includes Royal Enfield Himalayan bike with fuel for entire circuit.',
-        'Medical oxygen cylinders & paramedic trained captain onboard.',
-        'Inner Line Permits and environmental fee included.'
+        'Includes Royal Enfield Himalayan bike / SUV transport + Fuel.',
+        'All Inner Line Permits, Red Cross fee & Wildlife charges included.',
+        'Emergency Medical Oxygen Cylinders & Backup Support Truck onboard.'
       ]
     },
     inclusions: {
       included: [
-        'Royal Enfield Himalayan Motorbike + Fuel',
+        'Royal Enfield Himalayan Motorbike / SUV Transport + Fuel',
         'Backup Support Vehicle for Luggage & Mechanical Crew',
         'Medical Oxygen Cylinder & First Aid Support',
-        '3-Star Hotel Stays & Deluxe Campsite Tents',
+        'Hotel Stays & Deluxe Campsite Tents',
         'Daily Breakfast & Dinner Meals',
         'All Inner Line Permits & Wildlife Fees'
       ],
@@ -233,10 +601,10 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       bestTimeToVisit: 'Year-Round (Cool mountain climate & lush evergreen trails)'
     },
     itinerary: [
-      { day: 1, title: 'Ghat Climb & Pine Valley Check-in', description: 'Ascend Palani hills, visit Silver Cascade Waterfalls, check into cozy hillside resort.' },
-      { day: 2, title: 'Pillar Rocks, Coakers Walk & Pine Forest', description: 'Walk through dense pine tree trails, cliffside cloud views at Pillar Rocks.' },
-      { day: 3, title: 'Off-Grid Berijam Lake Forest Reserve Trail', description: 'Enter restricted forest permit zone to Berijam Lake surrounded by wildlife.' },
-      { day: 4, title: 'Kodai Lake Boating & Homemade Chocolates', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, return departure.' }
+      { day: 1, title: 'Ghat Climb & Pine Valley Check-in', description: 'Ascend Palani hills, visit Silver Cascade Waterfalls, check into cozy hillside resort.', highlights: ['Silver Cascade Waterfalls', 'Palani Ghat Road', 'Pine Valley Check-in'] },
+      { day: 2, title: 'Pillar Rocks, Coakers Walk & Pine Forest', description: 'Walk through dense pine tree trails, cliffside cloud views at Pillar Rocks.', highlights: ['Pillar Rocks', 'Coakers Walk', 'Pine Forest Trail'] },
+      { day: 3, title: 'Off-Grid Berijam Lake Forest Reserve Trail', description: 'Enter restricted forest permit zone to Berijam Lake surrounded by wildlife.', highlights: ['Berijam Lake', 'Forest Permit Route', 'Eco Sanctuary'] },
+      { day: 4, title: 'Kodai Lake Boating & Homemade Chocolates', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, return departure.', highlights: ['Kodai Lake Boating', 'Artisan Chocolates', 'Departure Transfer'] }
     ],
     pricing: {
       startingPrice: '₹ 6,999',
@@ -278,36 +646,37 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     about: {
       overview: 'A thrilling Nilgiri mountain traverse featuring 36 steep hairpin bend switchbacks, emerald tea plantations, the UNESCO Nilgiri Mountain Railway, and cool mountain breezes across Ooty and Coonoor.',
       highlights: [
-        'Day 1: Botanical Garden, Doddabetta Peak & Ooty Lake',
-        'Day 2: Pine Forest, Pykara Waterfalls & Shooting Spots',
-        'Day 3: Nilgiri Mountain Railway, Sims Park & Dolphins Nose',
-        'Coimbatore Pickup & Drop, Campfire & Meals Included'
+        'Botanical Garden, Doddabetta Peak & Tea Factory & Chocolate Museum',
+        'Pine Forest, 9th Mile Shooting Spot & Pykara Waterfalls & Lake',
+        'Nilgiri Mountain Railway Toy Train ride & Sim\'s Park Coonoor',
+        'Lamb\'s Rock, Dolphin\'s Nose & Catherine Falls Viewpoint'
       ],
       landscapeSummary: 'Continuous Hairpin Switchbacks & High Tea Slopes',
       bestTimeToVisit: 'September through May'
     },
     itinerary: [
-      { day: 1, title: 'Coimbatore Pickup & 36 Hairpin Climb', description: 'Drive up famous 36 hairpin bends to Ooty. Visit Doddabetta Peak & Botanical Gardens.' },
-      { day: 2, title: 'Pykara Waterfalls & Pine Reserve', description: 'Explore shooting spots, pine canopy walks, and Pykara lake speed boating.' },
-      { day: 3, title: 'UNESCO Heritage Toy Train to Coonoor & Return', description: 'Ride iconic steam train to Coonoor, visit Sims Park & Dolphins Nose.' }
+      { day: 1, title: 'Ooty Local Sightseeing & Peak Views', description: 'Coimbatore pickup, climb 36 hairpin bends to Ooty. Visit Botanical Garden, Doddabetta Peak & Telescope House, Tea Factory & Chocolate Museum, Rose Garden, Ooty Lake & Boat House, and St. Stephen\'s Church.', highlights: ['Botanical Garden', 'Doddabetta Peak', 'Tea Factory & Chocolate Museum', 'Rose Garden', 'Ooty Lake'] },
+      { day: 2, title: 'Pykara Waterfalls & Shooting Spots Trail', description: 'Explore Pine Forest, Wenlock Downs (9th Mile Shooting Spot), Kamraj Sagar Dam, Pykara Waterfalls, Pykara Lake & Dam boating, and Glenmorgan Viewpoint.', highlights: ['Pine Forest', '9th Mile Shooting Spot', 'Kamraj Sagar Dam', 'Pykara Waterfalls', 'Pykara Lake Boating'] },
+      { day: 3, title: 'Coonoor Sightseeing & Nilgiri Mountain Railway', description: 'Ride iconic UNESCO Nilgiri Mountain Railway steam train to Coonoor. Visit Sim\'s Park, Highfield Tea Factory, Lamb\'s Rock, Dolphin\'s Nose, Catherine Falls & Sleeping Lady Viewpoint before departure drop.', highlights: ['Nilgiri Toy Train', 'Sim\'s Park', 'Highfield Tea Factory', 'Lamb\'s Rock', 'Dolphin\'s Nose'] }
     ],
     pricing: {
       startingPrice: '₹ 6,999',
       occupancyTypes: [
         { type: 'Shared Cottage Stay', price: '₹ 6,999', note: 'Per person' },
-        { type: 'Private Room Stay', price: '₹ 8,299', note: 'Per person' }
+        { type: 'Private Room Stay', price: '₹ 8,999', note: 'Per person' }
       ],
-      notes: ['Includes Heritage Toy Train ticket and all internal transit.']
+      notes: ['Includes Coimbatore Pickup & Drop, 2 Nights Stay, 2 Breakfasts & 2 Dinners, Campfire.']
     },
     inclusions: {
       included: [
         'Coimbatore Pickup & Drop Transport',
-        'Heritage Toy Train Tickets',
-        'Resort Stay with Campfire',
-        'Daily Breakfast & Dinner',
-        'Expedition Leader'
+        '2 Nights Accommodation',
+        'Sightseeing Cab for 3 Days',
+        '2 Breakfasts & 2 Dinners',
+        'Campfire (1 Night)',
+        'Driver Allowance, Toll & Parking Charges'
       ],
-      excluded: ['Lunch', 'Personal Expenses', 'Camera Fees']
+      excluded: ['Entry Tickets & Activity Charges', 'Toy Train Tickets', 'Boating Charges', 'Lunch & Additional Meals', 'Personal Expenses']
     }
   },
 
@@ -338,11 +707,11 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       bestTimeToVisit: 'October through March'
     },
     itinerary: [
-      { day: 1, title: 'Transfer to Tiruvannamalai & Ashram Visit', description: 'Arrive in sacred Arunachalam, visit Sri Ramana Ashram.' },
-      { day: 2, title: 'Barefoot Girivalam Circuit & Temple Trail', description: 'Walk 14 km Girivalam path around sacred hill and visit Arunachaleswarar Temple.' },
-      { day: 3, title: 'Coastal Drive to Pondicherry & Promenade Walk', description: 'Drive to Pondicherry, explore French Quarter streetscapes and seaside promenade.' },
-      { day: 4, title: 'Auroville & Paradise Beach Exploration', description: 'Visit Matrimandir viewpoint in Auroville, boat ride to Paradise Beach.' },
-      { day: 5, title: 'French Cafe Crawl & Departure', description: 'Morning croissant & coffee walk in White Town before return transit.' }
+      { day: 1, title: 'Transfer to Tiruvannamalai & Ashram Visit', description: 'Arrive in sacred Arunachalam, visit Sri Ramana Ashram.', highlights: ['Tiruvannamalai Arrival', 'Sri Ramana Ashram', 'Evening Aarti'] },
+      { day: 2, title: 'Barefoot Girivalam Circuit & Temple Trail', description: 'Walk 14 km Girivalam path around sacred hill and visit Arunachaleswarar Temple.', highlights: ['Barefoot Girivalam 14km', 'Arunachaleswarar Temple', 'Sacred Hill Trail'] },
+      { day: 3, title: 'Coastal Drive to Pondicherry & Promenade Walk', description: 'Drive to Pondicherry, explore French Quarter streetscapes and seaside promenade.', highlights: ['French Town White Town', 'Rock Beach Promenade', 'Coastal Sunset'] },
+      { day: 4, title: 'Auroville & Paradise Beach Exploration', description: 'Visit Matrimandir viewpoint in Auroville, boat ride to Paradise Beach.', highlights: ['Auroville Matrimandir', 'Paradise Beach Boat Ride', 'Chunnambar Backwaters'] },
+      { day: 5, title: 'French Cafe Crawl & Departure', description: 'Morning croissant & coffee walk in White Town before return transit.', highlights: ['French Bakery Walk', 'Souvenir Shopping', 'Departure Transfer'] }
     ],
     pricing: {
       startingPrice: '₹ 7,499',
@@ -366,12 +735,12 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   'gokarna-dandeli': {
     id: 'gokarna-dandeli',
     title: 'GOKARNA AND DANDELI',
-    durationShort: '5D/4N',
-    durationFull: '5 Days - 4 Nights',
+    durationShort: '3D/2N',
+    durationFull: '3 Days - 2 Nights',
     startingPrice: '₹ 5,999',
     numericPrice: 5999,
     image: '/gokarna.webp',
-    pdfUrl: '/kerala_catalog.pdf',
+    pdfUrl: '/gnd.pdf',
     frameColor: '#3A5C6D',
     region: 'KARNATAKA',
     elevation: '1,800 FT / 550 M',
@@ -379,52 +748,50 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     difficulty: 'INTERMEDIATE',
     bestSeason: 'OCTOBER — MAY',
     about: {
-      overview: 'Where the jungle meets the Arabian Sea. Experience high-octane white-water rafting on Dandeli’s Kali River followed by relaxed cliff beach sunsets and 5-beach treks in Gokarna.',
+      overview: 'Wild Adventure meets Coastal Escape! From the wild rivers and dense canopy of Dandeli to the cliff beaches, sacred temples, and coastal landscapes of Gokarna.',
       highlights: [
-        'Sunset cliff treks connecting Om Beach, Half Moon & Paradise Beach',
-        'White-water rafting and river camping on the roaring Kali River in Dandeli',
-        'Dense jungle canopy rides in Anshi Tiger Reserve',
-        'Beachside bonfires & fresh local coastal seafood dining'
+        'Kayaking, River Boating & Zorbing adventure in Dandeli',
+        'Vibhooti Waterfalls, Honnavar & Murudeshwar Temple',
+        'Historic Mirjan Fort & beachside relaxation in Gokarna',
+        'Mahabaleshwar Temple & Om Beach exploration'
       ],
       landscapeSummary: 'Coastal Cliff Roads, Dense Jungle Reserves & River Gorges',
       bestTimeToVisit: 'October through May'
     },
     itinerary: [
-      { day: 1, title: 'Overnight Transit to Dandeli Rainforest', description: 'Journey into Western Ghats rainforest reserve.' },
-      { day: 2, title: 'White Water Rafting on Kali River & Jungle Stay', description: 'Conquer Class 3 rapids on Kali River, night campfire in forest camp.' },
-      { day: 3, title: 'Transit to Gokarna & Om Beach Sunset', description: 'Drive down to coast, check into Kudle beachside stays, sunset at Om Beach.' },
-      { day: 4, title: '5-Beach Cliffside Trek & Paradise Beach', description: 'Trek along ocean cliffs connecting Gokarna Main, Kudle, Om, Half Moon & Paradise beaches.' },
-      { day: 5, title: 'Mirjan Fort Visit & Departure', description: 'Explore historic mossy stone walls of Mirjan Fort before return departure.' }
+      { day: 1, title: 'Dandeli Adventure (Where the Wild Things Begin)', description: 'Start with an action-packed day in Dandeli. Enjoy kayaking, river boating, and zorbing surrounded by nature. Optional river rafting and zipline available. Evening campfire.', highlights: ['Kayaking', 'River Boating', 'Zorbing', 'Optional Rafting', 'Optional Zipline', 'Campfire Evening'] },
+      { day: 2, title: 'Coastal Karnataka Trail (Waterfalls to the Coast)', description: 'Discover Vibhooti Waterfalls, explore Honnavar, visit Murudeshwar Temple & iconic giant Shiva statue, and historic Mirjan Fort before beachside relaxation.', highlights: ['Vibhooti Waterfalls', 'Honnavar', 'Murudeshwar Temple', 'Mirjan Fort', 'Beachside Stay'] },
+      { day: 3, title: 'Gokarna Exploration (Temples, Beaches & Goodbye)', description: 'Visit Mahabaleshwar Temple and Ganapati Temple, followed by time at Gokarna Main Beach and famous Om Beach before beginning departure.', highlights: ['Mahabaleshwar Temple', 'Ganapati Temple', 'Gokarna Main Beach', 'Om Beach', 'Departure Transfer'] }
     ],
     pricing: {
       startingPrice: '₹ 5,999',
       occupancyTypes: [
-        { type: 'Camp & Hostel Stay', price: '₹ 5,999', note: 'Per person' },
-        { type: 'Resort & Beach Shack Stay', price: '₹ 7,299', note: 'Per person' }
+        { type: 'Standard Sharing Plan', price: '₹ 5,999', note: 'Per person' },
+        { type: 'Deluxe Occupancy Upgrade', price: '₹ 7,999', note: 'Per person' }
       ],
-      notes: ['Includes White Water Rafting ticket in Dandeli.']
+      notes: ['Includes 2 Nights Stay (Dandeli & Gokarna), Kayaking, Boating & Zorbing.']
     },
     inclusions: {
       included: [
-        'Round-trip AC Bus / Vehicle Transport',
-        'Kali River Rafting Ticket',
-        'Forest Camp & Beach Stays',
-        'Daily Breakfast & Dinner',
-        'Guided Beach Cliff Trek'
+        'Pickup & Drop Transport',
+        '2 Nights Accommodation',
+        'Adventure Activities (Kayaking, River Boating, Zorbing)',
+        'Local Transfers (Cab / Vehicle)',
+        'Campfire Evening & Trip Assistance'
       ],
-      excluded: ['Optional Water Sports (Jet Ski, Zipline)', 'Lunch']
+      excluded: ['Optional River Rafting & Zipline Charges', 'Entry Tickets & Personal Expenses', 'Lunch & Additional Meals']
     }
   },
 
   chikmagalur: {
     id: 'chikmagalur',
     title: 'CHIKMAGALUR',
-    durationShort: '4D/3N',
-    durationFull: '4 Days - 3 Nights',
-    startingPrice: '₹ 5,999',
-    numericPrice: 5999,
+    durationShort: '3D/2N',
+    durationFull: '3 Days - 2 Nights',
+    startingPrice: '₹ 6,999',
+    numericPrice: 6999,
     image: '/chick.webp',
-    pdfUrl: '/kerala_catalog.pdf',
+    pdfUrl: '/chik.pdf',
     frameColor: '#7B6852',
     region: 'KARNATAKA',
     elevation: '6,317 FT / 1,930 M',
@@ -432,95 +799,155 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     difficulty: 'INTERMEDIATE',
     bestSeason: 'SEPTEMBER — MAY',
     about: {
-      overview: 'The birthplace of Indian coffee. Ride up misty high-altitude peaks, navigate coffee plantation dirt tracks, summit Mullayanagiri, and cool off beneath roaring waterfall cascades.',
+      overview: 'Chikmagalur Traverse (3 Days / 2 Nights). A refreshing escape into misty mountains, lush landscapes, waterfalls, and cultural heritage. From Belur & Halebidu temples to Karnataka\'s highest peak Mullayanagiri and Z Point sunset.',
       highlights: [
-        'Summits Karnataka’s highest peak Mullayanagiri amidst rolling fog',
-        'Off-road Jeep & bike trails to hidden Hebbe & Jhari Waterfalls',
-        'Private coffee estate stays with bean-to-cup brewing workshops',
-        'Scenic ridge rides across Baba Budangiri mountain range'
+        'Explore historic Belur & Halebidu Temples and Yagachi Water Sports',
+        'Summit Mullayanagiri Peak, Seethalayyanagiri & Baba Budangiri',
+        'Discover Jhari Falls, Hebbe Falls & Shanthi Falls',
+        'Catch breathtaking sunset at Z Point and enjoy Bonfire & Music Night'
       ],
       landscapeSummary: 'Coffee Estate Roads, Mountain Switchbacks & Dirt Spurs',
       bestTimeToVisit: 'September through May'
     },
     itinerary: [
-      { day: 1, title: 'Check-in to Private Coffee Estate', description: 'Arrive in Chikmagalur, fresh coffee brewing workshop & estate walk.' },
-      { day: 2, title: 'Summit Mullayanagiri & Baba Budangiri Ridge', description: 'Climb 500 steps to Karnataka highest peak (Mullayanagiri) wrapped in clouds.' },
-      { day: 3, title: '4x4 Off-Road Jeep Trail to Hebbe & Jhari Waterfalls', description: 'Take 4WD Jeeps deep into forest trails to swim beneath roaring cascades.' },
-      { day: 4, title: 'Belur Hoysala Architecture & Departure', description: 'Visit 12th century Hoysaleswara temple before return journey.' }
+      { day: 1, title: 'Culture & Leisure (Belur & Halebidu Temples)', description: 'Blend history, culture, and leisure. Explore the magnificent Belur Temple and Halebidu Temple, head to Yagachi for water sports, and local exploration before settling into homestay.', highlights: ['Belur Temple', 'Halebidu Temple', 'Yagachi Water Sports', 'Local Exploration'] },
+      { day: 2, title: 'Peaks & Views (Mullayanagiri & Z Point Sunset)', description: 'Full day of mountain landscapes. Ascend Mullayanagiri Peak and Seethalayyanagiri, visit Jhari Falls, explore Baba Budangiri, and watch sunset at Z Point. Unwind with Bonfire & Music Night.', highlights: ['Mullayanagiri Peak', 'Seethalayyanagiri', 'Jhari Falls', 'Baba Budangiri', 'Z Point Sunset', 'Bonfire & Music Night'] },
+      { day: 3, title: 'Nature & Waterfalls (Kemmanagundi & Hebbe Falls)', description: 'Explore Kemmanagundi, trek to spectacular Hebbe Falls and Shanthi Falls, take on Z Point Trek before concluding your expedition.', highlights: ['Kemmanagundi', 'Hebbe Falls', 'Z Point Trek', 'Shanthi Falls', 'Departure Transfer'] }
     ],
     pricing: {
-      startingPrice: '₹ 5,999',
+      startingPrice: '₹ 6,999',
       occupancyTypes: [
-        { type: 'Coffee Estate Homestay', price: '₹ 5,999', note: 'Per person' },
-        { type: 'Luxury Plantation Villa', price: '₹ 7,499', note: 'Per person' }
+        { type: 'Triple Sharing Homestay', price: '₹ 6,999', note: 'Per person (Standard Plan)' },
+        { type: 'Twin / Double Occupancy', price: '₹ 8,499', note: 'Per person (Private Room)' }
       ],
-      notes: ['Includes 4x4 Off-Road Jeep trail ride.']
+      notes: ['Includes 2 Nights Homestay Accommodation with Breakfast & Dinner.', 'Bonfire & Music Night included.']
     },
     inclusions: {
       included: [
-        'Transport from Pickup Point',
-        'Coffee Estate Stay with Bonfire',
-        '4x4 Off-Road Jeep Ride to Waterfalls',
-        'Daily Breakfast & Dinner',
-        'Expedition Leader'
+        'Pickup & Drop Transport',
+        '2 Nights Homestay Accommodation (Triple Sharing)',
+        'Meals: Breakfast & Dinner Included',
+        'Sightseeing Assistance for Temples, Peaks & Waterfalls',
+        'Bonfire & Music Night'
       ],
-      excluded: ['Lunch & Snacks', 'Personal Expenses']
+      excluded: ['Entry Tickets & Activity Charges', 'Water Sports Charges at Yagachi', 'Lunch & Additional Meals', 'Personal Expenses']
     }
   },
 
   spiti: {
     id: 'spiti',
     title: 'DESERT MOUNTAIN CIRCUIT',
-    durationShort: '7D/6N',
-    durationFull: '7 Days - 6 Nights',
-    startingPrice: '₹ 28,999',
-    numericPrice: 28999,
+    durationShort: '9D/8N',
+    durationFull: '9 Days - 8 Nights',
+    startingPrice: '₹ 21,999',
+    numericPrice: 21999,
     image: '/tour_spiti.webp',
-    pdfUrl: '/kerala_catalog.pdf',
+    pdfUrl: '/spiti.pdf',
     frameColor: '#C29B53',
     region: 'SPITI VALLEY',
     elevation: '15,059 FT / 4,590 M',
     squadSize: '4 - 8 RIDERS',
     difficulty: 'EXPEDITION',
     bestSeason: 'JUNE — OCTOBER',
+    durationVariants: [
+      {
+        id: '9d8n',
+        label: 'Spiti 9D8N',
+        durationShort: '9D/8N',
+        durationFull: '9 Days - 8 Nights',
+        startingPrice: '₹ 21,999',
+        numericPrice: 21999,
+        pdfUrl: '/spiti.pdf',
+        about: {
+          overview: 'Himalayan Traverse: Kullu to Manali via Kaza (9 Days / 8 Nights). An extreme, high-altitude journey riding the roof of the world through Jalori Pass, Kinnaur Valley, Chitkul frontier, ancient monasteries, high salt passes, and starry Chandratal Moon Lake.',
+          highlights: [
+            'Traverse steep Jalori Pass (10,236 FT) and ancient Bhimakali Temple in Sarahan',
+            'Explore Chitkul - the last inhabited village on the Indo-Tibet frontier along Baspa river',
+            'Visit 1,000-year-old Tabo Monastery, Dhankar cliff monastery & Key Monastery',
+            'Send postcards from Hikkim (world\'s highest post office) & visit Komic village (15,027 FT)',
+            'Cross mighty Kunzum Pass (15,059 FT) and camp under Milky Way skies at Chandratal Lake',
+            'Tackle the notorious Batal-Gramphu riverbed crossing and navigate through the Atal Tunnel'
+          ],
+          landscapeSummary: 'Kinnaur Cliff Corridors, Glacial Nullahs, High Salt Passes & Moonscapes',
+          bestTimeToVisit: 'June through October'
+        },
+        itinerary: [
+          { day: 1, title: 'Arrival in Kullu - Acclimatization & Orientation', description: 'Arrive at Kullu Airport with transfer to hotel. Rest, acclimatize to high altitude, conduct local orientation and bike allocations.', highlights: ['Kullu Airport Pickup', 'Acclimatization Rest', 'Machine & Gear Allocation'] },
+          { day: 2, title: 'Kullu to Sarahan via Jalori Pass (10,236 FT)', description: 'Engines on! Tackle the steep inclines of Jalori Pass through dense cedar forests and reach the historic Bhimakali Temple.', highlights: ['Jalori Pass 10236ft', 'Dense Pine Forests', 'Sarahan Bhimakali Temple'] },
+          { day: 3, title: 'Sarahan to Chitkul via Baspa Valley', description: 'Ride into scenic Kinnaur Valley towards Chitkul, the last inhabited village near the Indo-Tibet frontier on the banks of Baspa River.', highlights: ['Kinnaur Valley Gorges', 'Baspa Riverbanks', 'Chitkul Indo-Tibet Border Village'] },
+          { day: 4, title: 'Sangla to Kaza via Khab & Nako', description: 'Transforming landscapes from green Kinnaur to barren Spiti cold desert. Navigate Khab confluence, Nako and the infamous Malling Nallah into Kaza.', highlights: ['Khab Sutlej-Spiti Confluence', 'Nako High Lake', 'Malling Nallah Run', 'Kaza Capital'] },
+          { day: 5, title: 'Kaza Local Exploration: Key, Kibber, Hikkim & Komic', description: 'High-altitude circuit to cliffside Key Monastery, high Kibber village, world\'s highest post office at Hikkim (14,567 FT) and Komic village (15,027 FT).', highlights: ['Key Cliff Monastery', 'Hikkim Highest Post Office', 'Komic Village 15000ft', 'Tibetan-Buddhist Heritage'] },
+          { day: 6, title: 'Kaza to Chandratal Moon Lake via Kunzum Pass (15,059 FT)', description: 'Summit the majestic Kunzum La pass with panoramic views of Bara Shigri Glacier, descending to starlight camping at sacred Chandratal Moon Lake.', highlights: ['Kunzum Pass 15059ft', 'Chhatru Glacial Runoffs', 'Chandratal Moon Lake Camp', 'Milky Way Stargazing'] },
+          { day: 7, title: 'Chandratal to Manali via Batal-Gramphu & Atal Tunnel', description: 'Conquer the notorious off-road riverbeds of Batal and Gramphu, passing through the engineering wonder of Atal Tunnel back into lush Manali.', highlights: ['Batal Water Crossings', 'Gramphu Off-Road Stretch', 'Atal Tunnel Crossing', 'Manali Green Valleys'] },
+          { day: 8, title: 'Manali to Delhi via Kullu Highway (AC Volvo)', description: 'Morning leisure in Manali, local cafe walks, and scenic drive down the Kullu highway boarding the overnight AC Volvo towards Delhi.', highlights: ['Old Manali Heritage Walk', 'Kullu Valley Highway', 'Overnight Luxury AC Volvo'] },
+          { day: 9, title: 'Arrival in Delhi - Farewell & Onward Journey', description: 'Morning arrival in Delhi. Bid farewell to fellow riders with lifetime memories of the 9-day Spiti Himalayan traverse.', highlights: ['Morning Delhi Arrival', 'Certificate of Achievement', 'Himalayan Expedition Memories'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 21,999',
+          occupancyTypes: [
+            { type: 'Own Bike / Personal Machine', price: '₹ 21,999', note: 'Excludes Fuel & Spares' },
+            { type: 'RE Himalayan 411 (Dual / With Pillion)', price: '₹ 27,999', note: 'Per Person (Includes Bike + Fuel)' },
+            { type: 'RE Himalayan 411 (Solo Rider)', price: '₹ 34,999', note: 'Includes Dedicated Bike + Fuel' },
+            { type: '4x4 SUV / Tempo Traveller Seat', price: '₹ 25,999', note: 'Per Person Passenger in SUV' }
+          ],
+          notes: ['Includes Oxygen Cylinder, Backup Luggage Truck & Professional Mechanic with Spares.']
+        }
+      }
+    ],
     about: {
-      overview: 'The Middle Land between India and Tibet. Remote, rugged, and unpaved, Spiti demands resilience as you conquer glacial runoff rivers, Key Monastery perched on a cliff, and camp under milky way skies at Chandratal Lake.',
+      overview: 'Himalayan Traverse: Kullu to Manali via Kaza (9 Days / 8 Nights). An extreme, high-altitude journey riding the roof of the world through Jalori Pass, Kinnaur Valley, Chitkul frontier, ancient monasteries, high salt passes, and starry Chandratal Moon Lake.',
       highlights: [
-        'Cross treacherous water nullahs along Kinnaur cliff road',
-        'Visit Key Monastery perched on a thousand-foot hill spire',
-        'Camp under crystal clear starry skies at Chandratal Lake',
-        'Conquer Kunzum La pass with panoramic views of Shigri Glacier'
+        'Traverse steep Jalori Pass (10,236 FT) and ancient Bhimakali Temple in Sarahan',
+        'Explore Chitkul - the last inhabited village on the Indo-Tibet frontier along Baspa river',
+        'Visit 1,000-year-old Tabo Monastery, Dhankar cliff monastery & Key Monastery',
+        'Send postcards from Hikkim (world\'s highest post office) & visit Komic village (15,027 FT)',
+        'Cross mighty Kunzum Pass (15,059 FT) and camp under Milky Way skies at Chandratal Lake',
+        'Tackle the notorious Batal-Gramphu riverbed crossing and navigate through the Atal Tunnel'
       ],
-      landscapeSummary: 'Water Crossings, Loose Shales & High Alpine Gorges',
+      landscapeSummary: 'Kinnaur Cliff Corridors, Glacial Nullahs, High Salt Passes & Moonscapes',
       bestTimeToVisit: 'June through October'
     },
     itinerary: [
-      { day: 1, title: 'Shimla to Kalpa via Kinnaur Cliff Road', description: 'Drive along dangerous cliff road corridor cut into mountain rock.' },
-      { day: 2, title: 'Kalpa to Nako Lake & Tabo Monastery', description: 'Visit 1,000-year-old Tabo Monastery (Tibet of India).' },
-      { day: 3, title: 'Tabo to Dhankar Monastery & Kaza', description: 'Visit cliffside Dhankar Monastery overlooking Spiti river.' },
-      { day: 4, title: 'Key Monastery, Hikkim & Komic Village', description: 'Post postcard from highest post office (Hikkim) & visit Key Monastery.' },
-      { day: 5, title: 'Kaza to Chandratal Moon Lake via Kunzum Pass (15,059 ft)', description: 'Cross high alpine Kunzum La pass down to sacred Chandratal lake.' },
-      { day: 6, title: 'Chandratal Lake Camping to Manali via Atal Tunnel', description: 'Sunrise lake walk, cross Batal river bed to Manali.' },
-      { day: 7, title: 'Manali Local Sightseeing & Departure', description: 'Souvenir shopping and evening departure.' }
+      { day: 1, title: 'Arrival in Kullu - Acclimatization & Orientation', description: 'Arrive at Kullu Airport with transfer to hotel. Rest, acclimatize to high altitude, conduct local orientation and bike allocations.', highlights: ['Kullu Airport Pickup', 'Acclimatization Rest', 'Machine & Gear Allocation'] },
+      { day: 2, title: 'Kullu to Sarahan via Jalori Pass (10,236 FT)', description: 'Engines on! Tackle the steep inclines of Jalori Pass through dense cedar forests and reach the historic Bhimakali Temple.', highlights: ['Jalori Pass 10236ft', 'Dense Pine Forests', 'Sarahan Bhimakali Temple'] },
+      { day: 3, title: 'Sarahan to Chitkul via Baspa Valley', description: 'Ride into scenic Kinnaur Valley towards Chitkul, the last inhabited village near the Indo-Tibet frontier on the banks of Baspa River.', highlights: ['Kinnaur Valley Gorges', 'Baspa Riverbanks', 'Chitkul Indo-Tibet Border Village'] },
+      { day: 4, title: 'Sangla to Kaza via Khab & Nako', description: 'Transforming landscapes from green Kinnaur to barren Spiti cold desert. Navigate Khab confluence, Nako and the infamous Malling Nallah into Kaza.', highlights: ['Khab Sutlej-Spiti Confluence', 'Nako High Lake', 'Malling Nallah Run', 'Kaza Capital'] },
+      { day: 5, title: 'Kaza Local Exploration: Key, Kibber, Hikkim & Komic', description: 'High-altitude circuit to cliffside Key Monastery, high Kibber village, world\'s highest post office at Hikkim (14,567 FT) and Komic village (15,027 FT).', highlights: ['Key Cliff Monastery', 'Hikkim Highest Post Office', 'Komic Village 15000ft', 'Tibetan-Buddhist Heritage'] },
+      { day: 6, title: 'Kaza to Chandratal Moon Lake via Kunzum Pass (15,059 FT)', description: 'Summit the majestic Kunzum La pass with panoramic views of Bara Shigri Glacier, descending to starlight camping at sacred Chandratal Moon Lake.', highlights: ['Kunzum Pass 15059ft', 'Chhatru Glacial Runoffs', 'Chandratal Moon Lake Camp', 'Milky Way Stargazing'] },
+      { day: 7, title: 'Chandratal to Manali via Batal-Gramphu & Atal Tunnel', description: 'Conquer the notorious off-road riverbeds of Batal and Gramphu, passing through the engineering wonder of Atal Tunnel back into lush Manali.', highlights: ['Batal Water Crossings', 'Gramphu Off-Road Stretch', 'Atal Tunnel Crossing', 'Manali Green Valleys'] },
+      { day: 8, title: 'Manali to Delhi via Kullu Highway (AC Volvo)', description: 'Morning leisure in Manali, local cafe walks, and scenic drive down the Kullu highway boarding the overnight AC Volvo towards Delhi.', highlights: ['Old Manali Heritage Walk', 'Kullu Valley Highway', 'Overnight Luxury AC Volvo'] },
+      { day: 9, title: 'Arrival in Delhi - Farewell & Onward Journey', description: 'Morning arrival in Delhi. Bid farewell to fellow riders with lifetime memories of the 9-day Spiti Himalayan traverse.', highlights: ['Morning Delhi Arrival', 'Certificate of Achievement', 'Himalayan Expedition Memories'] }
     ],
     pricing: {
-      startingPrice: '₹ 28,999',
+      startingPrice: '₹ 21,999',
       occupancyTypes: [
-        { type: 'RE Himalayan Motorbike Package', price: '₹ 28,999', note: 'Includes Bike + Fuel' },
-        { type: '4x4 SUV Passenger Seat', price: '₹ 25,999', note: 'Per person in SUV' }
+        { type: 'Own Bike / Personal Machine', price: '₹ 21,999', note: 'Excludes Fuel & Spares' },
+        { type: 'RE Himalayan 411 (Dual / With Pillion)', price: '₹ 27,999', note: 'Per Person (Includes Bike + Fuel)' },
+        { type: 'RE Himalayan 411 (Solo Rider)', price: '₹ 34,999', note: 'Includes Dedicated Bike + Fuel' },
+        { type: '4x4 SUV / Tempo Traveller Seat', price: '₹ 25,999', note: 'Per Person Passenger in SUV' }
       ],
-      notes: ['Includes Oxygen Cylinder & Backup Support Vehicle.']
+      notes: ['Includes Oxygen Cylinder, Backup Luggage Truck & Professional Mechanic with Spares.']
     },
     inclusions: {
       included: [
-        'RE Himalayan Motorbike + Fuel / 4x4 SUV',
-        'Backup Support Vehicle & Luggage Truck',
-        'Oxygen Cylinder & First Aid Kit',
-        'Spitian Homestays & Chandratal Campsite Tents',
-        'Daily Breakfast & Dinner',
-        'All Inner Line Permits'
+        'RE Himalayan Motorbike (with Fuel, Mechanical Support & Spares) / 4x4 SUV / Tempo Traveller',
+        'Kullu Airport Pickup & Manali to Delhi AC Volvo Bus Transfers',
+        'All Meals: Breakfast & Dinner included throughout stay (Day 1 dinner to Day 9 breakfast)',
+        'All Inner-Line Permits, Red Cross fee, environmental & union permissions',
+        'Emergency Oxygen Cylinders & Medical First-Aid Kit',
+        'Backup Support Vehicle to carry luggage',
+        'Experienced Tour Captain / Ride Marshal & Mechanic with spare parts',
+        'Commercial Riding Gear (Helmets, Knee Guards, and Elbow Guards)',
+        'DSLR Photography & Evening Bonfire',
+        'Certificate of Achievement'
       ],
-      excluded: ['Transit to Shimla/Manali', 'Lunch', 'Riding Gear']
+      excluded: [
+        'Lunch and monument entry fees',
+        'Bike transportation charges if bike is left midway',
+        'Personal expenses, transit to Kullu & onward from Delhi',
+        'Fuel & spare parts for riders bringing their own vehicle',
+        'Personal insurance & compensation for accidental damage'
+      ]
     }
   }
 };

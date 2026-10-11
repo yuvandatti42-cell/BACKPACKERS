@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-bottom: 5rem; /* Space for fixed bottom bar */
+  padding-bottom: 7rem; /* Space for fixed bottom bar & floating action buttons */
 }
 
 /* --------------------------------------------------------------------------
@@ -199,8 +199,23 @@
   margin: 0 auto 1rem auto;
 }
 
-/* Title & Price */
+/* Title & Price Header Row */
 .dest-sheet-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dest-sheet-header-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.dest-sheet-title-box {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -208,22 +223,117 @@
 
 .dest-sheet-title {
   font-family: var(--font-body);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.01em;
   color: #111111;
   margin: 0;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.duration-tag-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #1A1A18;
+  background: linear-gradient(135deg, #F5BA24 0%, #E6A817 100%);
+  padding: 0.12rem 0.5rem;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px rgba(245, 186, 36, 0.25);
+  white-space: nowrap;
 }
 
 .dest-sheet-price {
   font-family: var(--font-body);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #111111;
   letter-spacing: -0.01em;
   margin-top: 0.1rem;
+}
+
+/* Header Dropdown Selector */
+.dest-duration-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.dest-duration-dropdown-label {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #888888;
+  text-transform: uppercase;
+}
+
+.dest-dropdown-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: #F7F5F0;
+  border: 1.5px solid #E5E0D5;
+  border-radius: 20px;
+  padding: 0.35rem 1.85rem 0.35rem 0.85rem;
+  transition: all 0.22s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.dest-dropdown-select-wrapper:hover {
+  border-color: #F5BA24;
+  background-color: #FFFDF7;
+  box-shadow: 0 4px 12px rgba(245, 186, 36, 0.2);
+}
+
+.dest-duration-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 800;
+  color: #1A1A18;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.dest-duration-select option {
+  background-color: #FFFFFF;
+  color: #111111;
+  font-weight: 700;
+  padding: 8px;
+}
+
+.dropdown-chevron {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #E6A817;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.dest-dropdown-select-wrapper:hover .dropdown-chevron {
+  transform: translateY(-35%);
 }
 
 .dest-sheet-duration-row {
@@ -340,10 +450,10 @@
 
 .spec-lbl {
   font-family: var(--font-body);
-  font-size: 0.625rem;
-  font-weight: 700;
+  font-size: 0.65rem;
+  font-weight: 800;
   letter-spacing: 0.1em;
-  color: #7E7E7E;
+  color: #525252;
 }
 
 .spec-val {
@@ -370,23 +480,27 @@
 .highlights-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
-.highlight-item {
+.highlight-item,
+.about-highlights-section .highlights-list li,
+.highlight-item span {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #222222;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #1A1A18 !important;
+  font-weight: 500;
 }
 
 .hl-icon {
-  color: #E6A817;
-  font-size: 0.8rem;
+  color: #D97706 !important;
+  font-size: 0.85rem;
   margin-top: 2px;
+  flex-shrink: 0;
 }
 
 /* ITINERARY PANEL */
@@ -803,7 +917,8 @@
   }
 
   .dest-sheet-title {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
   }
 
   .dest-sheet-price {
@@ -832,14 +947,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Bottom Bar full width on mobile with glassmorphism */
+  /* Bottom Bar full width on mobile with glassmorphism matching page theme */
   .dest-detail-bottom-bar {
     padding: 0.75rem 1rem;
-    background: rgba(20, 20, 18, 0.88);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35);
+    border-top: 1px solid #EAE5DA;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .bottom-bar-container {
@@ -850,13 +965,15 @@
   }
 
   .btn-bottom-pdf {
-    flex: 0 0 35%;
+    flex: 0 0 32%;
     padding: 0.75rem 0.5rem;
     font-size: 0.85rem;
-    background-color: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #FFFFFF;
+    background-color: #FAF8F5;
+    border: 1.5px solid #1A1A18;
+    color: #1A1A18;
     backdrop-filter: blur(8px);
+    border-radius: 12px;
+    font-weight: 800;
   }
 
   .btn-bottom-book {

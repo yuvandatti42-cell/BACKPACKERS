@@ -892,7 +892,7 @@
   text-transform: uppercase;
 }
 
-.highlights-list {
+.spotlight-highlights-block .highlights-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -901,7 +901,7 @@
   gap: 0.5rem;
 }
 
-.highlights-list li {
+.spotlight-highlights-block .highlights-list li {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;

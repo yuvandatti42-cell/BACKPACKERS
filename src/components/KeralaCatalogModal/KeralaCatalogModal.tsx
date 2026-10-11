@@ -5,9 +5,16 @@ import './KeralaCatalogModal.css';
 interface KeralaCatalogModalProps {
   isOpen: boolean;
   onClose: () => void;
+  pdfUrl?: string;
+  durationLabel?: string;
 }
 
-export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, onClose }) => {
+export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
+  isOpen,
+  onClose,
+  pdfUrl = '/kerala_catalog.pdf',
+  durationLabel = 'KERALA CATALOG'
+}) => {
   const [viewMode, setViewMode] = useState<'interactive' | 'pages' | 'pdf'>('interactive');
   const [activeTab, setActiveTab] = useState<'all' | 'cover' | 'details'>('all');
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -60,7 +67,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
         const pdfjsLib = (window as any).pdfjsLib;
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-        const pdf = await pdfjsLib.getDocument('/kerala_catalog.pdf').promise;
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         if (isCancelled) return;
 
         const container = canvasContainerRef.current;
@@ -158,7 +165,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
             
             <button 
               type="button"
-              onClick={() => setIsPdfLeadOpen(true)}
+              onClick={() => window.open(pdfUrl, '_blank')}
               className="catalog-tab-btn link-btn"
               title="Open PDF in new browser tab"
             >
@@ -167,7 +174,14 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
 
             <button 
               type="button"
-              onClick={() => setIsPdfLeadOpen(true)}
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = pdfUrl;
+                link.download = `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
               className="catalog-tab-btn download-btn"
               title="Download official PDF document"
             >
@@ -401,7 +415,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
                 <div className="pdf-fallback-box">
                   <p>Could not render PDF pages on canvas. You can open or download the exact PDF file directly below:</p>
                   <div className="fallback-actions">
-                    <a href="/kerala_catalog.pdf" target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
+                    <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
                       📄 Open PDF Document
                     </a>
                     <button 
@@ -418,7 +432,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
           ) : (
             <div className="pdf-embed-wrap">
               <iframe 
-                src="/kerala_catalog.pdf#toolbar=1&navpanes=0&view=FitH" 
+                src={`${pdfUrl}#toolbar=1&navpanes=0&view=FitH`} 
                 title="Official Kerala Catalog PDF Brochure"
                 className="pdf-iframe-element"
               />
@@ -431,9 +445,9 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({ isOpen, 
       <PdfDownloadModal
         isOpen={isPdfLeadOpen}
         onClose={() => setIsPdfLeadOpen(false)}
-        title="Kerala 3D / 2N Tour Catalog"
-        pdfUrl="/kerala_catalog.pdf"
-        downloadFilename="Kerala_3D2N_Catalog.pdf"
+        title={`${durationLabel} Catalog`}
+        pdfUrl={pdfUrl}
+        downloadFilename={`${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`}
       />
     </div>
   );
