@@ -41,6 +41,9 @@ const POPULAR_QUICK_SEARCHES = [
   { label: '🏔 Ladakh', query: 'Ladakh' },
   { label: '☕ Chikmagalur', query: 'Chikmagalur' },
   { label: '🏕 Spiti Valley', query: 'Spiti' },
+  { label: '🌧 Meghalaya', query: 'Meghalaya' },
+  { label: '🏔 Tawang', query: 'Tawang' },
+  { label: '🪂 Bir Billing', query: 'Bir Billing' },
   { label: '🌊 Gokarna', query: 'Gokarna' },
   { label: '🌲 Kodaikanal / Ooty', query: 'Ooty' },
   { label: '🏍 Bike Trips', query: 'bike' }

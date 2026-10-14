@@ -8,6 +8,9 @@ export default defineConfig({
     port: 5180,
     strictPort: false,
     host: true,
-    open: true
+    open: true,
+    watch: {
+      ignored: ['**/*.pdf']
+    }
   }
 });

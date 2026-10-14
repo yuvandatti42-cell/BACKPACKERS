@@ -949,5 +949,318 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         'Personal insurance & compensation for accidental damage'
       ]
     }
+  },
+
+  meghalaya: {
+    id: 'meghalaya',
+    title: 'MEGHALAYA',
+    durationShort: '6D/5N',
+    durationFull: '6 Days - 5 Nights',
+    startingPrice: '₹ 14,999',
+    numericPrice: 14999,
+    image: '/meghalaya.webp',
+    pdfUrl: '/megha.pdf',
+    frameColor: '#2E6554',
+    region: 'MEGHALAYA',
+    elevation: '6,440 FT / 1,963 M',
+    squadSize: '6 - 12 TRAVELLERS',
+    difficulty: 'INTERMEDIATE',
+    bestSeason: 'OCTOBER — MAY',
+    durationVariants: [
+      {
+        id: '6d5n',
+        label: 'Meghalaya 6D5N',
+        durationShort: '6D/5N',
+        durationFull: '6 Days - 5 Nights',
+        startingPrice: '₹ 14,999',
+        numericPrice: 14999,
+        pdfUrl: '/megha.pdf',
+        about: {
+          overview: 'Meghalaya Abode of Clouds (6 Days / 5 Nights). Explore emerald rainforests, ancient Khasi living root bridges, plunging waterfalls, prehistoric limestone caves, and transparent turquoise rivers along the misty Indo-Bangladesh border.',
+          highlights: [
+            'Trek 3,500 stone stairs down the jungle valley to the Double Decker Living Root Bridge',
+            'Boat on the transparent glass waters of Umngot River in Dawki',
+            'Marvel at Nohkalikai Falls (tallest plunge waterfall in India) and Wei Sawdong 3-tier cascade',
+            'Cave exploration through limestone stalactite formations at Mawsmai and Arwah caves',
+            'Stroll through Mawlynnong — awarded Asia\'s cleanest village'
+          ],
+          landscapeSummary: 'Rainforest Stone Steps, Limestone Canyons & Crystal Waters',
+          bestTimeToVisit: 'October through May'
+        },
+        itinerary: [
+          { day: 1, title: 'Guwahati to Shillong via Umiam Lake', description: 'Scenic drive up the Khasi hills with photo stop at tranquil Umiam Lake (Barapani). Check-in and evening explore Police Bazar.', highlights: ['Umiam Lake Viewpoint', 'Shillong Hill Town', 'Police Bazar Cafe Trail'] },
+          { day: 2, title: 'Shillong to Cherrapunji (Sohra) via Waterfalls', description: 'Drive along misty gorges visiting Elephant Falls, Mawkdok Dympep Valley zipline point, and Garden of Caves.', highlights: ['Elephant Falls', 'Mawkdok Valley Suspension', 'Garden of Caves', 'Cherrapunji Mist'] },
+          { day: 3, title: 'Double Decker Living Root Bridge & Rainbow Falls Trek', description: 'Descend 3,500 ancient stone stairs into deep Nongriat jungle to see centuries-old Bio-engineering living root bridges and turquoise natural pools.', highlights: ['Double Decker Root Bridge', 'Rainbow Falls', 'Natural Jungle Pools', 'Nongriat Rainforest'] },
+          { day: 4, title: 'Cherrapunji Caving & Transfer to Mawlynnong & Dawki', description: 'Explore limestone fossils in Arwah & Mawsmai Caves, marvel at 1,115 ft Nohkalikai Falls, and transfer to Mawlynnong clean village.', highlights: ['Arwah Fossil Caves', 'Nohkalikai Plunge View', 'Mawlynnong Village Walk', 'Single Root Bridge'] },
+          { day: 5, title: 'Dawki Umngot River Boating & Krang Shuri Falls to Shillong', description: 'Sunrise boat ride on transparent glass waters of Umngot River in Dawki/Shnongpdeng, swim in azure pools of Krang Shuri Falls, return to Shillong.', highlights: ['Umngot Transparent Boating', 'Bangladesh Border View', 'Krang Shuri Azure Pool', 'Riverside Campsite'] },
+          { day: 6, title: 'Shillong Heritage Walk & Departure via Guwahati', description: 'Morning visit to Laitlum Grand Canyons, shopping for Khasi handicrafts, and scenic descent to Guwahati Airport.', highlights: ['Laitlum Grand Canyon', 'Khasi Souvenirs', 'Guwahati Airport Transfer'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 14,999',
+          occupancyTypes: [
+            { type: 'Triple Sharing Backpackers', price: '₹ 14,999', note: 'Per Person in 3-Sharing Room' },
+            { type: 'Twin / Double Sharing Room', price: '₹ 16,999', note: 'Per Person (Ideal for couples & duos)' },
+            { type: 'Solo Private Room Upgrade', price: '₹ 21,999', note: 'Dedicated Private Room' }
+          ],
+          notes: ['Includes Guwahati pickup & drop in comfortable vehicle with dedicated driver.']
+        }
+      }
+    ],
+    about: {
+      overview: 'Meghalaya Abode of Clouds (6 Days / 5 Nights). Explore emerald rainforests, ancient Khasi living root bridges, plunging waterfalls, prehistoric limestone caves, and transparent turquoise rivers along the misty Indo-Bangladesh border.',
+      highlights: [
+        'Trek 3,500 stone stairs down the jungle valley to the Double Decker Living Root Bridge',
+        'Boat on the transparent glass waters of Umngot River in Dawki',
+        'Marvel at Nohkalikai Falls (tallest plunge waterfall in India) and Wei Sawdong 3-tier cascade',
+        'Cave exploration through limestone stalactite formations at Mawsmai and Arwah caves',
+        'Stroll through Mawlynnong — awarded Asia\'s cleanest village'
+      ],
+      landscapeSummary: 'Rainforest Stone Steps, Limestone Canyons & Crystal Waters',
+      bestTimeToVisit: 'October through May'
+    },
+    itinerary: [
+      { day: 1, title: 'Guwahati to Shillong via Umiam Lake', description: 'Scenic drive up the Khasi hills with photo stop at tranquil Umiam Lake (Barapani). Check-in and evening explore Police Bazar.', highlights: ['Umiam Lake Viewpoint', 'Shillong Hill Town', 'Police Bazar Cafe Trail'] },
+      { day: 2, title: 'Shillong to Cherrapunji (Sohra) via Waterfalls', description: 'Drive along misty gorges visiting Elephant Falls, Mawkdok Dympep Valley zipline point, and Garden of Caves.', highlights: ['Elephant Falls', 'Mawkdok Valley Suspension', 'Garden of Caves', 'Cherrapunji Mist'] },
+      { day: 3, title: 'Double Decker Living Root Bridge & Rainbow Falls Trek', description: 'Descend 3,500 ancient stone stairs into deep Nongriat jungle to see centuries-old Bio-engineering living root bridges and turquoise natural pools.', highlights: ['Double Decker Root Bridge', 'Rainbow Falls', 'Natural Jungle Pools', 'Nongriat Rainforest'] },
+      { day: 4, title: 'Cherrapunji Caving & Transfer to Mawlynnong & Dawki', description: 'Explore limestone fossils in Arwah & Mawsmai Caves, marvel at 1,115 ft Nohkalikai Falls, and transfer to Mawlynnong clean village.', highlights: ['Arwah Fossil Caves', 'Nohkalikai Plunge View', 'Mawlynnong Village Walk', 'Single Root Bridge'] },
+      { day: 5, title: 'Dawki Umngot River Boating & Krang Shuri Falls to Shillong', description: 'Sunrise boat ride on transparent glass waters of Umngot River in Dawki/Shnongpdeng, swim in azure pools of Krang Shuri Falls, return to Shillong.', highlights: ['Umngot Transparent Boating', 'Bangladesh Border View', 'Krang Shuri Azure Pool', 'Riverside Campsite'] },
+      { day: 6, title: 'Shillong Heritage Walk & Departure via Guwahati', description: 'Morning visit to Laitlum Grand Canyons, shopping for Khasi handicrafts, and scenic descent to Guwahati Airport.', highlights: ['Laitlum Grand Canyon', 'Khasi Souvenirs', 'Guwahati Airport Transfer'] }
+    ],
+    pricing: {
+      startingPrice: '₹ 14,999',
+      occupancyTypes: [
+        { type: 'Triple Sharing Backpackers', price: '₹ 14,999', note: 'Per Person in 3-Sharing Room' },
+        { type: 'Twin / Double Sharing Room', price: '₹ 16,999', note: 'Per Person (Ideal for couples & duos)' },
+        { type: 'Solo Private Room Upgrade', price: '₹ 21,999', note: 'Dedicated Private Room' }
+      ],
+      notes: ['Includes Guwahati pickup & drop in comfortable vehicle with dedicated driver.']
+    },
+    inclusions: {
+      included: [
+        'Guwahati to Guwahati Transfers in comfortable SUV / Tempo Traveller',
+        '5 Nights Handpicked Stays (Shillong Hotel, Cherrapunji Resort & Dawki River Camp)',
+        'Daily Breakfast & Dinner throughout the expedition',
+        'Local Khasi Guide for Nongriat Double Decker Trek',
+        'Boating fee at Dawki Umngot River',
+        'All state permits, parking & toll charges',
+        'Campfire evening at Shnongpdeng riverside'
+      ],
+      excluded: [
+        'Flight/Train to Guwahati Airport',
+        'Lunches and personal cafe visits',
+        'Adventure water sports (Scuba, Cliff Jumping, Zipline)',
+        'Personal shopping & monument camera permits'
+      ]
+    }
+  },
+
+  tawang: {
+    id: 'tawang',
+    title: 'TAWANG',
+    durationShort: '7D/6N',
+    durationFull: '7 Days - 6 Nights',
+    startingPrice: '₹ 19,999',
+    numericPrice: 19999,
+    image: '/tawang.webp',
+    pdfUrl: '/tawang.pdf',
+    frameColor: '#9C6B38',
+    region: 'TAWANG / ARUNACHAL',
+    elevation: '15,200 FT / 4,632 M',
+    squadSize: '4 - 8 RIDERS',
+    difficulty: 'EXPEDITION',
+    bestSeason: 'MARCH — NOVEMBER',
+    durationVariants: [
+      {
+        id: '7d6n',
+        label: 'Tawang 7D6N',
+        durationShort: '7D/6N',
+        durationFull: '7 Days - 6 Nights',
+        startingPrice: '₹ 19,999',
+        numericPrice: 19999,
+        pdfUrl: '/tawang.pdf',
+        about: {
+          overview: 'Tawang Eastern Himalayan Circuit (7 Days / 6 Nights). An extraordinary high-altitude overland expedition crossing the snow-draped Sela Pass (13,700 FT), visiting the 400-year-old Tawang Monastery, and reaching the remote frontier of Bum La Pass (15,200 FT) on the India-Tibet border.',
+          highlights: [
+            'Ascend Sela Pass (13,700 FT) flanked by yellow Buddhist prayer flags and frozen Sela Lake',
+            'Explore 400-year-old Tawang Monastery — 2nd largest Buddhist monastery on Earth',
+            'Off-road 4x4 expedition to Bum La Pass (15,200 FT) and crystal clear Sangetsar (Madhuri) Lake',
+            'Visit Jaswant Garh War Memorial & dramatic Nuranang (Jang) Waterfalls',
+            'Immerse in Monpa tribal culture and serene apple orchard valleys in Dirang'
+          ],
+          landscapeSummary: 'High Mountain Passes, Snow Scree & Cloud Canyon Swerves',
+          bestTimeToVisit: 'March through November'
+        },
+        itinerary: [
+          { day: 1, title: 'Guwahati to Bhalukpong / Nameri Gateway', description: 'Scenic drive leaving Assam plains into the forested foothills of western Arunachal Pradesh.', highlights: ['Kameng River Valley', 'Arunachal Border Checkpost', 'Nameri Forest Fringe'] },
+          { day: 2, title: 'Bhalukpong to Dirang via Tenga Valley', description: 'Ascend through dense mountain forests along Tenga river, visiting apple & kiwi orchards and Dirang Dzong heritage village.', highlights: ['Tenga Valley Canyon', 'Dirang Dzong 17th Century', 'Hot Water Springs'] },
+          { day: 3, title: 'Dirang to Tawang via Sela Pass (13,700 FT)', description: 'Conquer legendary Sela Pass with panoramic Himalayan snow peaks, walk along frozen Sela Lake, and pay respects at Jaswant Garh War Memorial.', highlights: ['Sela Pass 13700ft', 'Sela Lake Mirrors', 'Jaswant Garh Memorial', 'Nuranang 100m Waterfalls'] },
+          { day: 4, title: 'Bum La Pass (15,200 FT) & Sangetsar Lake Frontier Circuit', description: 'Rugged 4x4 overland run to the India-China Tibetan border at Bum La Pass and picnic beside pine-surrounded Sangetsar (Madhuri) Lake.', highlights: ['Bum La Border Post 15200ft', 'Sangetsar (Madhuri) Lake', 'PT Tso Alpine Tarns', 'High Himalayan Scree'] },
+          { day: 5, title: 'Tawang Monastery, Urgelling Gompa & Light Show', description: 'Explore the grand golden Gompa of Tawang Monastery, birthplace of the 6th Dalai Lama, and evening Sound & Light show at War Memorial.', highlights: ['Tawang Monastery (Galden Namgey Lhatse)', 'Urgelling Birthplace', 'Tawang War Memorial Light Show'] },
+          { day: 6, title: 'Tawang to Bomdila via Dirang Valley', description: 'Scenic return traverse winding down high mountain corridors into Bomdila, visiting Bomdila Monastery overlooking the valley.', highlights: ['Bomdila Monastery Viewpoint', 'Himalayan Ridge Sunset', 'Local Monpa Market'] },
+          { day: 7, title: 'Bomdila to Guwahati Airport Departure', description: 'Descent down to the Brahmaputra plains with return transfer to Guwahati Airport.', highlights: ['Guwahati Airport Drop', 'Frontier Expedition Memories', 'Arunachal Souvenirs'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 19,999',
+          occupancyTypes: [
+            { type: '4x4 SUV Passenger Seat', price: '₹ 19,999', note: 'Per Person in Expedition SUV' },
+            { type: 'Twin Sharing Deluxe Hotel/Homestay', price: '₹ 23,499', note: 'Per Person for Duos / Couples' },
+            { type: 'RE Himalayan 411 Motorbike Package', price: '₹ 28,999', note: 'Includes Bike + Fuel + Spares' }
+          ],
+          notes: ['Includes Arunachal Inner Line Permit (ILP) & Bum La Pass special military permissions.']
+        }
+      }
+    ],
+    about: {
+      overview: 'Tawang Eastern Himalayan Circuit (7 Days / 6 Nights). An extraordinary high-altitude overland expedition crossing the snow-draped Sela Pass (13,700 FT), visiting the 400-year-old Tawang Monastery, and reaching the remote frontier of Bum La Pass (15,200 FT) on the India-Tibet border.',
+      highlights: [
+        'Ascend Sela Pass (13,700 FT) flanked by yellow Buddhist prayer flags and frozen Sela Lake',
+        'Explore 400-year-old Tawang Monastery — 2nd largest Buddhist monastery on Earth',
+        'Off-road 4x4 expedition to Bum La Pass (15,200 FT) and crystal clear Sangetsar (Madhuri) Lake',
+        'Visit Jaswant Garh War Memorial & dramatic Nuranang (Jang) Waterfalls',
+        'Immerse in Monpa tribal culture and serene apple orchard valleys in Dirang'
+      ],
+      landscapeSummary: 'High Mountain Passes, Snow Scree & Cloud Canyon Swerves',
+      bestTimeToVisit: 'March through November'
+    },
+    itinerary: [
+      { day: 1, title: 'Guwahati to Bhalukpong / Nameri Gateway', description: 'Scenic drive leaving Assam plains into the forested foothills of western Arunachal Pradesh.', highlights: ['Kameng River Valley', 'Arunachal Border Checkpost', 'Nameri Forest Fringe'] },
+      { day: 2, title: 'Bhalukpong to Dirang via Tenga Valley', description: 'Ascend through dense mountain forests along Tenga river, visiting apple & kiwi orchards and Dirang Dzong heritage village.', highlights: ['Tenga Valley Canyon', 'Dirang Dzong 17th Century', 'Hot Water Springs'] },
+      { day: 3, title: 'Dirang to Tawang via Sela Pass (13,700 FT)', description: 'Conquer legendary Sela Pass with panoramic Himalayan snow peaks, walk along frozen Sela Lake, and pay respects at Jaswant Garh War Memorial.', highlights: ['Sela Pass 13700ft', 'Sela Lake Mirrors', 'Jaswant Garh Memorial', 'Nuranang 100m Waterfalls'] },
+      { day: 4, title: 'Bum La Pass (15,200 FT) & Sangetsar Lake Frontier Circuit', description: 'Rugged 4x4 overland run to the India-China Tibetan border at Bum La Pass and picnic beside pine-surrounded Sangetsar (Madhuri) Lake.', highlights: ['Bum La Border Post 15200ft', 'Sangetsar (Madhuri) Lake', 'PT Tso Alpine Tarns', 'High Himalayan Scree'] },
+      { day: 5, title: 'Tawang Monastery, Urgelling Gompa & Light Show', description: 'Explore the grand golden Gompa of Tawang Monastery, birthplace of the 6th Dalai Lama, and evening Sound & Light show at War Memorial.', highlights: ['Tawang Monastery (Galden Namgey Lhatse)', 'Urgelling Birthplace', 'Tawang War Memorial Light Show'] },
+      { day: 6, title: 'Tawang to Bomdila via Dirang Valley', description: 'Scenic return traverse winding down high mountain corridors into Bomdila, visiting Bomdila Monastery overlooking the valley.', highlights: ['Bomdila Monastery Viewpoint', 'Himalayan Ridge Sunset', 'Local Monpa Market'] },
+      { day: 7, title: 'Bomdila to Guwahati Airport Departure', description: 'Descent down to the Brahmaputra plains with return transfer to Guwahati Airport.', highlights: ['Guwahati Airport Drop', 'Frontier Expedition Memories', 'Arunachal Souvenirs'] }
+    ],
+    pricing: {
+      startingPrice: '₹ 19,999',
+      occupancyTypes: [
+        { type: '4x4 SUV Passenger Seat', price: '₹ 19,999', note: 'Per Person in Expedition SUV' },
+        { type: 'Twin Sharing Deluxe Hotel/Homestay', price: '₹ 23,499', note: 'Per Person for Duos / Couples' },
+        { type: 'RE Himalayan 411 Motorbike Package', price: '₹ 28,999', note: 'Includes Bike + Fuel + Spares' }
+      ],
+      notes: ['Includes Arunachal Inner Line Permit (ILP) & Bum La Pass special military permissions.']
+    },
+    inclusions: {
+      included: [
+        'Guwahati to Guwahati 4x4 Expedition Vehicle with Mountain Chauffeur',
+        '6 Nights Handpicked Stays (Bhalukpong, Dirang, Tawang & Bomdila)',
+        'Arunachal Inner Line Permit (ILP) & Bum La DC/Army Permits',
+        'Daily Breakfast & Dinner throughout the trip',
+        'Bum La Pass & Sangetsar Lake 4x4 Local Vehicle Permit Run',
+        'Experienced Tour Captain & First Aid Support',
+        'Emergency High Altitude Oxygen Cylinder'
+      ],
+      excluded: [
+        'Flight/Train to Guwahati Airport',
+        'Lunches and personal snacks',
+        'Camera fees at historical monasteries',
+        'Personal insurance & porter expenses'
+      ]
+    }
+  },
+
+  'bir-billing': {
+    id: 'bir-billing',
+    title: 'BIR BILLING',
+    durationShort: '7D/6N',
+    durationFull: '7 Days - 6 Nights',
+    startingPrice: '₹ 49,499',
+    numericPrice: 49499,
+    image: '/bir_billing.webp',
+    pdfUrl: '/bir.pdf',
+    frameColor: '#4B6B46',
+    region: 'BIR BILLING',
+    elevation: '8,000 FT / 2,438 M',
+    squadSize: '4 - 10 TRAVELLERS',
+    difficulty: 'BEGINNER',
+    bestSeason: 'SEPTEMBER — JUNE',
+    durationVariants: [
+      {
+        id: '7d6n',
+        label: 'Bir Billing 7D6N',
+        durationShort: '7D/6N',
+        durationFull: '7 Days - 6 Nights',
+        startingPrice: '₹ 49,499',
+        numericPrice: 49499,
+        pdfUrl: '/bir.pdf',
+        about: {
+          overview: 'Bir Billing Paragliding Solo Flight Course & Expedition (7 Days / 6 Nights). Transform your passion for flight into reality with an immersive 7-day certified paragliding course in the world\'s second highest takeoff site. Move from ground school fundamentals to soaring solo over the spectacular Dhauladhar ranges of Himachal.',
+          highlights: [
+            'Professional Paragliding Course with certified & experienced flight instructors',
+            'Progressive training: equipment masterclass, canopy inflation, forward & reverse launch',
+            'Multiple high-altitude solo flights over the Kangra Valley landing at Bir Colony',
+            'Includes Delhi to Bir Billing roundtrip Volvo/AC transit, stays & daily meals',
+            'Explore Tibetan monasteries, tea factory tours, and vibrant mountain cafes'
+          ],
+          landscapeSummary: 'Rolling Tea Valleys, Alpine Ridge Spur & High Sky Thermals',
+          bestTimeToVisit: 'September through June'
+        },
+        itinerary: [
+          { day: 1, title: 'Arrival in Bir – Paragliding Ground Training (Learn the Fundamentals)', description: 'Morning arrival in Bir Billing from Delhi. Check-in to accommodation and meet certified instructors for theoretical briefing, equipment introduction, harness fitting, and initial canopy ground handling.', highlights: ['Arrival & Orientation', 'Equipment & Harness Fitting', 'Canopy Inflation Practice', 'Evening Bir Colony Walk'] },
+          { day: 2, title: 'Ground Training (Build Your Control)', description: 'Intensive full-day ground handling sessions. Practice directional control, glider inflation, active stabilization, and forward launch techniques under continuous instructor supervision.', highlights: ['Canopy Pitch Control', 'Forward Launch Drills', 'Glider Flare & Touchdown Basics', 'Video Analysis Session'] },
+          { day: 3, title: 'Advanced Ground Training (Preparing for the Sky)', description: 'Finalize ground school drills and transition to slope launches. Practice radio communication procedures, emergency protocols, approach patterns, and flight plan briefing for solo flights.', highlights: ['Slope Gliding Runs', 'Radio Protocol Briefing', 'Flight Path Planning', 'Solo Flight Clearance'] },
+          { day: 4, title: 'Solo Flight & Exploring (Your First Solo High Flight)', description: 'The defining milestone! Ascend to Billing takeoff (8,000 FT), strap in under radio guidance, launch into the Himalayan skies, and experience your first glorious solo flight landing gently at Bir.', highlights: ['Billing 8,000 FT Takeoff', 'First Solo High Flight', 'Radio-Guided Landing', 'Debriefing & Flight Log Entry'] },
+          { day: 5, title: 'Solo Flights & Exploration (Fly. Explore. Experience.)', description: 'Continue solo flying with morning flights refining turns, glide ratio management, and airspeed control. Afternoon explore local Tibetan monasteries and serene organic tea gardens.', highlights: ['Second Solo High Flight', 'Turn & Speed Control Drills', 'Chokling Monastery Visit', 'Local Himalayan Cafe Trail'] },
+          { day: 6, title: 'Solo Flights & Mastery (Master the Moment)', description: 'Final high flying day over Bir Billing. Execute solo flight exercises, thermaling fundamentals, and smooth target landings. Evening celebration dinner and course achievement certification.', highlights: ['High Altitude Solo Flight', 'Spot Landing Practice', 'Course Certification Celebration', 'Bonfire Dinner'] },
+          { day: 7, title: 'Exploration & Departure (Until the Next Flight)', description: 'Morning visit to Palpung Sherabling Monastery nestled in dense pine forests. Final souvenir shopping in Bir Tibetan market before boarding evening transit back to Delhi.', highlights: ['Sherabling Monastery Tour', 'Souvenir Shopping', 'Farewell to Flying Squad', 'Evening Departure to Delhi'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 49,499',
+          occupancyTypes: [
+            { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 49,499', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
+            { type: 'Advance Seat Reservation', price: '₹ 10,000', note: 'Per Person (Remaining balance due before departure)' }
+          ],
+          notes: ['Advance booking amount: ₹ 10,000/- per person. Solo flights are subject to clear wind and weather conditions for participant safety.']
+        }
+      }
+    ],
+    about: {
+      overview: 'Bir Billing Paragliding Solo Flight Course & Expedition (7 Days / 6 Nights). Transform your passion for flight into reality with an immersive 7-day certified paragliding course in the world\'s second highest takeoff site. Move from ground school fundamentals to soaring solo over the spectacular Dhauladhar ranges of Himachal.',
+      highlights: [
+        'Professional Paragliding Course with certified & experienced flight instructors',
+        'Progressive training: equipment masterclass, canopy inflation, forward & reverse launch',
+        'Multiple high-altitude solo flights over the Kangra Valley landing at Bir Colony',
+        'Includes Delhi to Bir Billing roundtrip Volvo/AC transit, stays & daily meals',
+        'Explore Tibetan monasteries, tea factory tours, and vibrant mountain cafes'
+      ],
+      landscapeSummary: 'Rolling Tea Valleys, Alpine Ridge Spur & High Sky Thermals',
+      bestTimeToVisit: 'September through June'
+    },
+    itinerary: [
+      { day: 1, title: 'Arrival in Bir – Paragliding Ground Training (Learn the Fundamentals)', description: 'Morning arrival in Bir Billing from Delhi. Check-in to accommodation and meet certified instructors for theoretical briefing, equipment introduction, harness fitting, and initial canopy ground handling.', highlights: ['Arrival & Orientation', 'Equipment & Harness Fitting', 'Canopy Inflation Practice', 'Evening Bir Colony Walk'] },
+      { day: 2, title: 'Ground Training (Build Your Control)', description: 'Intensive full-day ground handling sessions. Practice directional control, glider inflation, active stabilization, and forward launch techniques under continuous instructor supervision.', highlights: ['Canopy Pitch Control', 'Forward Launch Drills', 'Glider Flare & Touchdown Basics', 'Video Analysis Session'] },
+      { day: 3, title: 'Advanced Ground Training (Preparing for the Sky)', description: 'Finalize ground school drills and transition to slope launches. Practice radio communication procedures, emergency protocols, approach patterns, and flight plan briefing for solo flights.', highlights: ['Slope Gliding Runs', 'Radio Protocol Briefing', 'Flight Path Planning', 'Solo Flight Clearance'] },
+      { day: 4, title: 'Solo Flight & Exploring (Your First Solo High Flight)', description: 'The defining milestone! Ascend to Billing takeoff (8,000 FT), strap in under radio guidance, launch into the Himalayan skies, and experience your first glorious solo flight landing gently at Bir.', highlights: ['Billing 8,000 FT Takeoff', 'First Solo High Flight', 'Radio-Guided Landing', 'Debriefing & Flight Log Entry'] },
+      { day: 5, title: 'Solo Flights & Exploration (Fly. Explore. Experience.)', description: 'Continue solo flying with morning flights refining turns, glide ratio management, and airspeed control. Afternoon explore local Tibetan monasteries and serene organic tea gardens.', highlights: ['Second Solo High Flight', 'Turn & Speed Control Drills', 'Chokling Monastery Visit', 'Local Himalayan Cafe Trail'] },
+      { day: 6, title: 'Solo Flights & Mastery (Master the Moment)', description: 'Final high flying day over Bir Billing. Execute solo flight exercises, thermaling fundamentals, and smooth target landings. Evening celebration dinner and course achievement certification.', highlights: ['High Altitude Solo Flight', 'Spot Landing Practice', 'Course Certification Celebration', 'Bonfire Dinner'] },
+      { day: 7, title: 'Exploration & Departure (Until the Next Flight)', description: 'Morning visit to Palpung Sherabling Monastery nestled in dense pine forests. Final souvenir shopping in Bir Tibetan market before boarding evening transit back to Delhi.', highlights: ['Sherabling Monastery Tour', 'Souvenir Shopping', 'Farewell to Flying Squad', 'Evening Departure to Delhi'] }
+    ],
+    pricing: {
+      startingPrice: '₹ 49,499',
+      occupancyTypes: [
+        { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 49,499', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
+        { type: 'Advance Seat Reservation', price: '₹ 10,000', note: 'Per Person (Remaining balance due before departure)' }
+      ],
+      notes: ['Advance booking amount: ₹ 10,000/- per person. Solo flights are subject to clear wind and weather conditions for participant safety.']
+    },
+    inclusions: {
+      included: [
+        'Professional Paragliding Course Fees & Ground Training',
+        'Experienced & Certified Flying Instructors',
+        'Structured Training from Ground School to Solo Flight',
+        'Paragliding Flying Gear & Training Equipment Support',
+        'Radio Communication & Continuous In-Flight Supervision',
+        'Roundtrip AC Transportation: Delhi to Bir Billing & Return',
+        '6 Nights Accommodation in Bir Billing',
+        'Daily Breakfast & Dinner throughout the course',
+        'Local Transportation for Billing Takeoff & Training Grounds'
+      ],
+      excluded: [
+        'Lunches and personal cafe visits',
+        'Any monument or monastery entry fees',
+        'Personal insurance & equipment damage indemnity',
+        'Anything not specifically mentioned under inclusions'
+      ]
+    }
   }
 };

@@ -66,7 +66,7 @@ export interface CorridorDetail {
   bestSeason: string;
   squadSize: string;
   terrain: string;
-  landscapeZone: 'South India' | 'North India & Ladakh';
+  landscapeZone: 'South India' | 'North India & Ladakh' | 'North East';
   highlights: string[];
   description: string;
   image: string;
@@ -306,5 +306,92 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     image: '/tour_spiti.webp',
     frameColor: '#C29B53',
     keywords: ['spiti', 'spiti valley', 'kaza', 'kunzum', 'chandratal', 'moon lake', 'key monastery', 'hikkim', 'chitkul', 'kullu', 'jalori', 'manali', 'north india', 'himachal', 'cold desert', 'bike', '21999', '27999', '9 days', '9d8n']
+  },
+  {
+    id: 'meghalaya',
+    number: '09',
+    region: 'MEGHALAYA',
+    title: 'MEGHALAYA',
+    subtitle: 'Cherrapunji • Dawki Umngot • Mawlynnong • Living Root Bridges',
+    startingPrice: '₹14,999',
+    numericPrice: 14999,
+    tripTypes: ['long-expedition', 'off-beaten'],
+    elevation: '6,440 FT / 1,963 M',
+    difficulty: 'INTERMEDIATE',
+    duration: '6 DAYS / 5 NIGHTS',
+    durationDays: 6,
+    distance: '580 KM',
+    bestSeason: 'OCTOBER — MAY',
+    squadSize: '6 - 12 TRAVELLERS',
+    terrain: 'Rainforest Stone Steps, Limestone Canyons & Crystal Waters',
+    landscapeZone: 'North East',
+    highlights: [
+      'Trek down 3,500 ancient stone stairs to the Double Decker Living Root Bridge',
+      'Boat on the transparent glass-like turquoise waters of Umngot River in Dawki',
+      'Gaze at Nohkalikai Falls and Wei Sawdong 3-tier plunge waterfalls in Cherrapunji',
+      'Caving through prehistoric limestone labyrinth at Mawsmai and Arwah caves'
+    ],
+    description: 'The wettest place on Earth and India’s mystical misty corridor. Hike across centuries-old living root bridges, cliffside waterfalls, and boat on see-through glass waters along the Bangladesh border.',
+    image: '/meghalaya.webp',
+    frameColor: '#2E6554',
+    keywords: ['meghalaya', 'shillong', 'cherrapunji', 'sohra', 'dawki', 'living root bridge', 'mawlynnong', 'north east', 'waterfall', 'caving', '14999', 'off beaten', 'rainforest']
+  },
+  {
+    id: 'tawang',
+    number: '10',
+    region: 'TAWANG / ARUNACHAL',
+    title: 'TAWANG',
+    subtitle: 'Sela Pass (13,700 ft) • Tawang Monastery • Bum La Border • Sangetsar Lake',
+    startingPrice: '₹19,999',
+    numericPrice: 19999,
+    tripTypes: ['long-expedition', 'bike-trips', 'off-beaten'],
+    elevation: '15,200 FT / 4,632 M',
+    difficulty: 'EXPEDITION',
+    duration: '7 DAYS / 6 NIGHTS',
+    durationDays: 7,
+    distance: '840 KM',
+    bestSeason: 'MARCH — NOVEMBER',
+    squadSize: '4 - 8 RIDERS',
+    terrain: 'High Mountain Passes, Snow Scree & Cloud Canyon Swerves',
+    landscapeZone: 'North East',
+    highlights: [
+      'Cross the frozen Sela Pass (13,700 FT) draped in yellow prayer flags',
+      'Explore 400-year-old Tawang Monastery — 2nd largest Buddhist monastery on Earth',
+      'Off-road to Bum La Pass (15,200 FT) on the India-China Tibetan frontier',
+      'Camp beside mythical Sangetsar Lake (Madhuri Lake) surrounded by pine trunks'
+    ],
+    description: 'The frontier of dawn-lit mountains. Traverse deep gorge corridors of western Arunachal, high-altitude alpine passes, and remote Tibetan-Buddhist gompas near the roof of the Eastern Himalayas.',
+    image: '/tawang.webp',
+    frameColor: '#9C6B38',
+    keywords: ['tawang', 'arunachal', 'arunachal pradesh', 'sela pass', 'bum la', 'tawang monastery', 'madhuri lake', 'sangetsar', 'dirang', 'bomdila', 'north east', 'himalaya', 'bike', '19999', 'off beaten']
+  },
+  {
+    id: 'bir-billing',
+    number: '11',
+    region: 'BIR BILLING',
+    title: 'BIR BILLING',
+    subtitle: 'Billing Takeoff (8,000 ft) • Solo Paragliding Course • Tibetan Colony • Rajgundha',
+    startingPrice: '₹49,499',
+    numericPrice: 49499,
+    tripTypes: ['long-expedition', 'off-beaten'],
+    elevation: '8,000 FT / 2,438 M',
+    difficulty: 'BEGINNER',
+    duration: '7 DAYS / 6 NIGHTS',
+    durationDays: 7,
+    distance: '520 KM',
+    bestSeason: 'SEPTEMBER — JUNE',
+    squadSize: '4 - 10 TRAVELLERS',
+    terrain: 'Rolling Tea Valleys, Alpine Ridge Spur & High Sky Thermals',
+    landscapeZone: 'North India & Ladakh',
+    highlights: [
+      'Comprehensive P1/P2 Paragliding Pilot Course with certified instructors',
+      'Ground training, canopy control & multiple solo high flights from Billing (8,000 FT)',
+      'Delhi to Bir Billing roundtrip transit, handpicked boutique stays, and meals',
+      'Explore peaceful Bir Tibetan Colony, monastery trails, and starry night skies'
+    ],
+    description: 'The paragliding mecca of Asia. An intensive 7-day expedition taking you from ground training to solo soaring above the snow-clad Dhauladhar range with certified master instructors.',
+    image: '/bir_billing.webp',
+    frameColor: '#4B6B46',
+    keywords: ['bir billing', 'bir', 'billing', 'paragliding', 'paragliding course', 'dhauladhar', 'rajgundha', 'kangra', 'himachal', 'north india', 'solo flight', '49499', '7 days', '7d6n', 'tibetan colony']
   }
 ];

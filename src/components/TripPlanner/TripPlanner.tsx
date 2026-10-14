@@ -165,6 +165,9 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
                     <option value="Gokarna & Dandeli Coastal Jungle">Gokarna & Dandeli Coastal Jungle</option>
                     <option value="Chikmagalur Coffee Mountain Trail">Chikmagalur Coffee Mountain Trail</option>
                     <option value="Spiti Valley Desert Circuit">Spiti Valley Desert Circuit</option>
+                    <option value="Meghalaya (6D/5N)">Meghalaya (6D/5N)</option>
+                    <option value="Tawang (7D/6N)">Tawang (7D/6N)</option>
+                    <option value="Bir Billing (7D/6N)">Bir Billing (7D/6N)</option>
                     <option value="Bhutan Thunder Dragon Kingdom">Bhutan Thunder Dragon Kingdom</option>
                     <option value="Custom Tailored Run">Custom Tailored Route</option>
                   </select>
