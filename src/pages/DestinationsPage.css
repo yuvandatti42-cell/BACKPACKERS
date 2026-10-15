@@ -669,9 +669,10 @@
 
 .dest-card-price-row .price-label {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #7E7E7E;
+  white-space: nowrap;
 }
 
 .dest-card-price-row .price-val {
@@ -680,6 +681,7 @@
   font-weight: 800;
   color: #1C1C1C;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .btn-dest-inquire {

@@ -6,7 +6,7 @@ interface TripSearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
 }
 
 const LANDSCAPE_ZONES = [
@@ -209,11 +209,11 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     }
   };
 
-  const handleBookClick = (e: React.MouseEvent, tripTitle: string) => {
+  const handleBookClick = (e: React.MouseEvent, tripTitle: string, planDuration?: string, price?: string) => {
     e.stopPropagation();
     onClose();
     if (onOpenBookModal) {
-      onOpenBookModal(tripTitle);
+      onOpenBookModal(tripTitle, planDuration, price);
     } else {
       window.location.hash = 'destinations';
     }
@@ -225,8 +225,8 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     (selectedPrice !== 'all' ? 1 : 0) +
     (selectedDuration !== 'all' ? 1 : 0);
 
-  const formatDurationShort = (durationStr: string): string => {
-    if (!durationStr) return '';
+  const formatDurationShort = (durationStr: string, corridorId?: string): string => {
+    if (!durationStr || corridorId === 'kerala' || corridorId === 'ladakh' || durationStr.includes('—') || durationStr.includes('-')) return '';
     const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
     if (match) {
       return `${match[1]}D/${match[2]}N`;
@@ -404,7 +404,7 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
           {filteredTrips.length > 0 ? (
             <div className="search-results-grid">
               {filteredTrips.map((item) => {
-                const durationShort = formatDurationShort(item.duration);
+                const durationShort = formatDurationShort(item.duration, item.id);
                 return (
                   <article
                     key={item.id}
@@ -424,17 +424,17 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
 
                         <div className="search-card-body">
                           <h3 className="search-card-title">
-                            {item.title} {durationShort}
+                            {item.title}{durationShort ? ` ${durationShort}` : ''}
                           </h3>
                           <div className="search-card-price-row">
-                            <span className="price-label">from</span>
+                            <span className="price-label">starting from</span>
                             <span className="price-val">{item.startingPrice}</span>
                           </div>
 
                           <button 
                             type="button" 
                             className="btn-card-quick-book"
-                            onClick={(e) => handleBookClick(e, item.title)}
+                            onClick={(e) => handleBookClick(e, item.title, item.duration, item.startingPrice)}
                           >
                             Book Now
                           </button>

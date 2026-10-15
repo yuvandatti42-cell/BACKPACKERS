@@ -11,7 +11,7 @@ import './RegionExplorePage.css';
 interface RegionExplorePageProps {
   regionId: string;
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
 }
 
 interface ConsolidatedTrip {
@@ -357,9 +357,9 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                   onClick={(e) => {
                     e.preventDefault();
                     if (onOpenBookModal) {
-                      onOpenBookModal(activeDetailTrip.title);
+                      onOpenBookModal(activeDetailTrip.title, activeDetailTrip.duration, activeDetailTrip.price);
                     } else {
-                      window.open(`https://wa.me/917207681067?text=${encodeURIComponent(`Hi Backpackers Destinations, I want to book the ${activeDetailTrip.title} (${activeDetailTrip.duration}) trip.`)}`, '_blank');
+                      window.open(`https://wa.me/917207681067?text=${encodeURIComponent(`Hi Backpackers Destinations! I want to book the ${activeDetailTrip.title} (${activeDetailTrip.duration}) trip.`)}`, '_blank');
                     }
                   }}
                   className="btn btn-modal-book"

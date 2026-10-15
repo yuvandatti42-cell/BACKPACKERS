@@ -20,7 +20,7 @@ export { DESTINATION_CORRIDORS, TRIP_TYPES };
 interface DestinationsPageProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
   initialFilter?: string;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
 }
 
 export const DestinationsPage: React.FC<DestinationsPageProps> = ({ 
@@ -29,7 +29,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
   onOpenBookModal
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
-  const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala-weekend');
+  const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala');
 
   React.useEffect(() => {
     if (initialFilter) {
@@ -121,8 +121,8 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
             ) : (
               <div className="dest-cards-grid">
                 {filteredCorridors.map((item) => {
-                  const formatDurationShort = (durationStr: string): string => {
-                    if (!durationStr) return '';
+                  const formatDurationShort = (durationStr: string, corridorId?: string): string => {
+                    if (!durationStr || corridorId === 'kerala' || corridorId === 'ladakh' || durationStr.includes('—') || durationStr.includes('-')) return '';
                     const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
                     if (match) {
                       return `${match[1]}D/${match[2]}N`;
@@ -134,7 +134,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
                     return durationStr;
                   };
 
-                  const durationShort = formatDurationShort(item.duration);
+                  const durationShort = formatDurationShort(item.duration, item.id);
 
                   return (
                     <article 
@@ -145,7 +145,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
                         if (onNavigate) {
                           onNavigate(`destination:${item.id}`);
                         } else if (onOpenBookModal) {
-                          onOpenBookModal(item.title);
+                          onOpenBookModal(item.title, item.duration, item.startingPrice);
                         }
                       }}
                     >
@@ -157,10 +157,10 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
 
                           <div className="dest-card-body">
                             <h3 className="dest-card-title">
-                              {item.title} {durationShort}
+                              {item.title}{durationShort ? ` ${durationShort}` : ''}
                             </h3>
                             <div className="dest-card-price-row">
-                              <span className="price-label">from</span>
+                              <span className="price-label">starting from</span>
                               <span className="price-val">{item.startingPrice}</span>
                             </div>
                           </div>

@@ -25,6 +25,10 @@ export interface DurationVariant {
     occupancyTypes: { type: string; price: string; note?: string }[];
     notes: string[];
   };
+  inclusions?: {
+    included: string[];
+    excluded: string[];
+  };
 }
 
 export interface DestinationDetail {
@@ -71,9 +75,9 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     id: 'kerala',
     title: 'KERALA',
     durationShort: '3D/2N',
-    durationFull: '3 Days - 2 Nights',
-    startingPrice: '₹ 3,999',
-    numericPrice: 3999,
+    durationFull: '3–7 Days (4 Curated Packages)',
+    startingPrice: '₹ 5,999',
+    numericPrice: 5999,
     image: '/ke.webp',
     pdfUrl: '/kerala_3d2n_catalog.pdf',
     frameColor: '#7B8C78',
@@ -88,18 +92,18 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         label: 'Kerala 3D2N',
         durationShort: '3D/2N',
         durationFull: '3 Days - 2 Nights',
-        startingPrice: '₹ 3,999',
-        numericPrice: 3999,
+        startingPrice: '₹ 5,999',
+        numericPrice: 5999,
         pdfUrl: '/kerala_3d2n_catalog.pdf',
         about: {
-          overview: 'Travel Tour Kerala (3 Days / 2 Nights) covering the breathtaking tea hills of Munnar and the rich historic coastal culture of Kochi.',
+          overview: 'Kerala Tour (3 Days / 2 Nights) — 2 Days Munnar with seamless Kochi transfer, covering the breathtaking tea hills of Munnar, Cheyyappara waterfalls, and scenic viewpoints.',
           highlights: [
+            '2 Days exploring Munnar tea hills & mist valleys',
             'Cheyyappara & Valara Waterfalls & 2nd Mile View Point',
-            'Tata Tea Museum, Eravikulam National Park, Mattupetty Dam & Echo Point',
-            'Fort Kochi (Chinese Fishing Nets, St. Francis Church & Beach)',
-            'Dutch Palace & Jewish Synagogue heritage trail'
+            'Tata Tea Museum, Eravikulam National Park & Mattupetty Dam',
+            'Kochi pickup & drop transfer included'
           ],
-          landscapeSummary: 'Tea Slopes, Waterfalls & Heritage Coast',
+          landscapeSummary: 'Munnar Tea Hills & Kochi Transfer',
           bestTimeToVisit: 'Year-round quick getaway'
         },
         itinerary: [
@@ -117,17 +121,17 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
           },
           {
             day: 3,
-            title: 'Kochi Heritage Trail & Departure Transfer',
-            description: 'After breakfast visit Fort Kochi (Chinese Fishing Nets, Vasco Da Gama Square, St. Francis CSI Church, Fort Kochi Beach), Dutch Palace, and Jewish Synagogue. Transfer back to Kochi Railway station / Airport leaving with heartful of memories.',
-            highlights: ['Fort Kochi & Chinese Fishing Nets', 'Dutch Palace', 'Jewish Synagogue', 'Departure Transfer']
+            title: 'Munnar to Kochi Transfer & Departure',
+            description: 'After breakfast, scenic return drive from Munnar to Kochi. Transfer to Kochi Railway station / Airport with a heartful of memories.',
+            highlights: ['Scenic Munnar Descent', 'Kochi Transfer', 'Departure Transfer']
           }
         ],
         pricing: {
-          startingPrice: '₹ 3,999',
+          startingPrice: '₹ 5,999',
           occupancyTypes: [
-            { type: 'Triple / Quad Sharing', price: '₹ 3,999', note: 'Per person (Standard Plan)' },
-            { type: 'Double / Twin Occupancy', price: '₹ 4,999', note: 'Per person (Couples / Private Room)' },
-            { type: 'Private Cab & Deluxe Hotel Upgrade', price: '₹ 6,999', note: 'Per person (Luxury Stay Package)' }
+            { type: 'Triple / Quad Sharing', price: '₹ 5,999', note: 'Per person (Standard Plan)' },
+            { type: 'Double / Twin Occupancy', price: '₹ 6,999', note: 'Per person (Couples / Private Room)' },
+            { type: 'Private Cab & Deluxe Hotel Upgrade', price: '₹ 8,999', note: 'Per person (Luxury Stay Package)' }
           ],
           notes: [
             'Includes 2N stay in Munnar Hotel & private cab transport.',
@@ -142,55 +146,55 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         label: 'Kerala 4D3N',
         durationShort: '4D/3N',
         durationFull: '4 Days - 3 Nights',
-        startingPrice: '₹ 4,999',
-        numericPrice: 4999,
+        startingPrice: '₹ 7,999',
+        numericPrice: 7999,
         pdfUrl: '/kerala_4d3n_catalog.pdf',
         about: {
-          overview: 'The popular 4-day Kerala escape featuring comprehensive Munnar cloud forest views, tea factory visits, and Alleppey backwater houseboat stay.',
+          overview: 'Kerala Tour (4 Days / 3 Nights) — 2 Days Munnar, 1 Day Alleppey & Kochi Transfer. Combines high tea ridges with tranquil Alleppey backwater houseboat cruise.',
           highlights: [
-            'Munnar Tea Estate Stay & Eravikulam Sanctuary',
+            '2 Days Munnar Tea Estate Stay & Eravikulam Sanctuary',
+            '1 Day Alleppey Backwaters Houseboat Stay',
             'Mattupetty Dam & Echo Point Viewpoints',
-            'Alleppey Houseboat Overnight Cruise',
-            'Traditional Kerala Cultural Experience'
+            'Kochi Airport / Station Transfer Included'
           ],
-          landscapeSummary: 'High Tea Ridges & Backwater Corridors',
+          landscapeSummary: 'Munnar Tea Ridges, Alleppey Backwaters & Kochi Transfer',
           bestTimeToVisit: 'September through April'
         },
         itinerary: [
           {
             day: 1,
-            title: 'Arrival & Scenic Climb to Munnar',
-            description: 'Meet squad at pickup point. Scenic drive through Western Ghats switchbacks to Munnar tea plantations.',
-            highlights: ['Cheeyappara Waterfalls', 'Tea Estate Check-in']
+            title: 'Arrival in Kochi & Scenic Climb to Munnar',
+            description: 'Meet squad at Kochi pickup point. Scenic drive through Western Ghats switchbacks past Cheeyappara Waterfalls to Munnar tea plantations.',
+            highlights: ['Cheeyappara Waterfalls', 'Tea Estate Check-in', 'Overnight Munnar']
           },
           {
             day: 2,
             title: 'Munnar Eravikulam & Tea Ridge Exploration',
-            description: 'Explore Eravikulam National Park (Nilgiri Tahr), Mattupetty Lake, and tea museum.',
-            highlights: ['Eravikulam Sanctuary', 'Mattupetty Lake', 'Tea Museum']
+            description: 'Explore Eravikulam National Park (Nilgiri Tahr), Mattupetty Lake, Echo Point, and Tata Tea Museum.',
+            highlights: ['Eravikulam Sanctuary', 'Mattupetty Lake', 'Tea Museum', 'Overnight Munnar']
           },
           {
             day: 3,
             title: 'Alleppey Backwaters Houseboat Stay',
-            description: 'Drive to Alleppey. Board private Kerala houseboat for backwater lagoon cruise.',
-            highlights: ['Overnight Houseboat', 'Fresh Seafood/Meals', 'Sunset Views']
+            description: 'Drive down from Munnar to Alleppey. Board private Kerala houseboat for backwater lagoon cruise with traditional meals.',
+            highlights: ['1 Day Alleppey', 'Overnight Houseboat', 'Fresh Kerala Meals', 'Sunset Views']
           },
           {
             day: 4,
-            title: 'Kochi Spice Village & Departure',
-            description: 'Morning backwater breakfast, spice shopping in Kochi, transfer for departure.',
-            highlights: ['Fort Kochi / Spice Walk', 'Departure']
+            title: 'Kochi Transfer & Departure',
+            description: 'Morning backwater breakfast, transfer back to Kochi for airport/railway departure.',
+            highlights: ['Morning Lagoon Cruise', 'Kochi Transfer', 'Departure']
           }
         ],
         pricing: {
-          startingPrice: '₹ 4,999',
+          startingPrice: '₹ 7,999',
           occupancyTypes: [
-            { type: 'Triple / Quad Sharing', price: '₹ 4,999', note: 'Per person' },
-            { type: 'Double / Twin Occupancy', price: '₹ 6,299', note: 'Per person' },
-            { type: 'Private Cottage Upgrade', price: '₹ 9,499', note: 'Per person' }
+            { type: 'Triple / Quad Sharing', price: '₹ 7,999', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 9,499', note: 'Per person' },
+            { type: 'Private Houseboat Cottage Upgrade', price: '₹ 12,499', note: 'Per person' }
           ],
           notes: [
-            'Includes stays, transport, houseboat & breakfasts/dinners.',
+            'Includes stays in Munnar & Alleppey houseboat, transport & meals.',
             'Advance booking required.'
           ]
         }
@@ -200,61 +204,61 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         label: 'Kerala 5D4N',
         durationShort: '5D/4N',
         durationFull: '5 Days - 4 Nights',
-        startingPrice: '₹ 5,499',
-        numericPrice: 5499,
+        startingPrice: '₹ 11,999',
+        numericPrice: 11999,
         pdfUrl: '/kerala_5d4n_catalog.pdf',
         about: {
-          overview: 'Comprehensive 5-day Kerala expedition linking Munnar high tea country, Thekkady wildlife sanctuary trails, and Alleppey backwaters.',
+          overview: 'Comprehensive Kerala Tour (5 Days / 4 Nights) — 2 Days Munnar, 1 Day Thekkady, 1 Day Alappuzha, 1 Day Kochi. Linking tea hills, Periyar wildlife, backwater lagoons, and Kochi heritage.',
           highlights: [
-            'Munnar cloud forest & tea garden trails',
-            'Thekkady Periyar Wildlife Sanctuary & spice gardens',
-            'Alleppey traditional houseboat cruise',
-            'Cultural Kathakali & Kalaripayattu shows'
+            '2 Days Munnar cloud forest & tea garden trails',
+            '1 Day Thekkady Periyar Wildlife Sanctuary & spice gardens',
+            '1 Day Alappuzha (Alleppey) traditional houseboat cruise',
+            '1 Day Kochi heritage trail & Kochi Transfer'
           ],
-          landscapeSummary: 'Tea Hills, Spice Forests & Backwaters',
+          landscapeSummary: 'Munnar, Thekkady, Alappuzha & Kochi Transfer',
           bestTimeToVisit: 'September through March'
         },
         itinerary: [
           {
             day: 1,
-            title: 'Arrival & Munnar Hill Ascent',
-            description: 'Transfer from pickup point up to Munnar tea estate valleys.',
-            highlights: ['Cheeyappara Falls', 'Campfire Night']
+            title: 'Kochi Arrival & Munnar Hill Ascent',
+            description: 'Pickup from Kochi and drive up to Munnar tea valleys past Cheeyappara waterfalls.',
+            highlights: ['Cheeyappara Falls', 'Munnar Tea Stay']
           },
           {
             day: 2,
             title: 'Munnar Sightseeing & High Viewpoints',
-            description: 'Full day exploring Eravikulam National Park, Echo Point, and Top Station views.',
-            highlights: ['Eravikulam Park', 'Top Station']
+            description: 'Full day exploring Eravikulam National Park, Echo Point, and high-altitude tea trails.',
+            highlights: ['Eravikulam Park', 'Mattupetty Dam', 'Echo Point']
           },
           {
             day: 3,
-            title: 'Thekkady Periyar Sanctuary Trail',
+            title: 'Thekkady Periyar Sanctuary & Spice Trails',
             description: 'Drive to Thekkady. Boat safari on Periyar Lake and spice plantation tour.',
-            highlights: ['Periyar Safari', 'Spice Garden Walk']
+            highlights: ['1 Day Thekkady', 'Periyar Safari', 'Spice Garden Walk']
           },
           {
             day: 4,
-            title: 'Alleppey Backwaters Houseboat',
-            description: 'Scenic drive to Alleppey. Board private houseboat for backwater cruise.',
-            highlights: ['Houseboat Stay', 'Lagoon Sunset']
+            title: 'Alappuzha (Alleppey) Backwaters Houseboat',
+            description: 'Scenic drive to Alappuzha. Board private houseboat for backwater lagoon cruise.',
+            highlights: ['1 Day Alappuzha', 'Houseboat Stay', 'Lagoon Sunset']
           },
           {
             day: 5,
-            title: 'Kochi Heritage Trail & Departure',
-            description: 'Explore Chinese Fishing Nets & spice markets before final departure.',
-            highlights: ['Fort Kochi', 'Departure Transfer']
+            title: 'Kochi Heritage Trail & Departure Transfer',
+            description: 'Explore 1 Day Kochi: Fort Kochi, Chinese Fishing Nets & spice markets before departure.',
+            highlights: ['1 Day Kochi', 'Fort Kochi', 'Kochi Transfer & Departure']
           }
         ],
         pricing: {
-          startingPrice: '₹ 5,499',
+          startingPrice: '₹ 11,999',
           occupancyTypes: [
-            { type: 'Triple / Quad Sharing', price: '₹ 5,499', note: 'Per person' },
-            { type: 'Double / Twin Occupancy', price: '₹ 6,899', note: 'Per person' },
-            { type: 'Luxury Resort Upgrade', price: '₹ 10,499', note: 'Per person' }
+            { type: 'Triple / Quad Sharing', price: '₹ 11,999', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 13,499', note: 'Per person' },
+            { type: 'Luxury Resort & Private Houseboat Upgrade', price: '₹ 16,999', note: 'Per person' }
           ],
           notes: [
-            'Includes stay, transfers, Periyar boat safari & houseboat cruise.'
+            'Includes stay, transfers, Periyar safari, Alappuzha houseboat & Kochi transfer.'
           ]
         }
       },
@@ -263,19 +267,20 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         label: 'Kerala 7D6N',
         durationShort: '7D/6N',
         durationFull: '7 Days - 6 Nights',
-        startingPrice: '₹ 7,999',
-        numericPrice: 7999,
+        startingPrice: '₹ 14,999',
+        numericPrice: 14999,
         pdfUrl: '/kerala_7d6n_catalog.pdf',
         about: {
-          overview: 'The ultimate grand Kerala expedition! 7 days covering Kochi heritage, Munnar tea hills, Thekkady wildlife, Wayanad rainforests, Varkala cliff beach, and Alleppey backwaters.',
+          overview: 'The Grand Kerala Tour (7 Days / 6 Nights) — 2 Days Munnar, 1 Day Thekkady, 1 Day Alappuzha, 1 Day Kochi, Day 6 Varkala, Day 7 Trivandrum. The ultimate overland across mountains, wildlife, backwaters, and ocean cliffs.',
           highlights: [
-            'Munnar Tea Estate Stay & Eravikulam Park',
-            'Thekkady Spice Plantations & Periyar Lake Safari',
-            'Wayanad Banasura Dam & Rainforest Treks',
-            'Varkala Cliff Beach Sunset & Coastal Strolls',
-            'Alleppey Deluxe Overnight Houseboat Cruise'
+            '2 Days Munnar Tea Estate Stay & Eravikulam Park',
+            '1 Day Thekkady Spice Plantations & Periyar Lake Safari',
+            '1 Day Alappuzha Deluxe Overnight Houseboat Cruise',
+            '1 Day Kochi Heritage Trail (Fort Kochi & Chinese Nets)',
+            'Day 6 Varkala Cliff Beach Sunset & Coastal Strolls',
+            'Day 7 Trivandrum Cultural Landmarks & Departure'
           ],
-          landscapeSummary: 'Mountains, Rainforests, Beaches & Backwaters',
+          landscapeSummary: 'Munnar, Thekkady, Alappuzha, Kochi, Varkala & Trivandrum',
           bestTimeToVisit: 'September through April'
         },
         itinerary: [
@@ -289,45 +294,45 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
             day: 2,
             title: 'Munnar High Altitude Tea Trails',
             description: 'Full day Munnar exploration: Eravikulam Park, Mattupetty Lake & Top Station.',
-            highlights: ['Eravikulam Park', 'Top Station']
+            highlights: ['2 Days Munnar', 'Eravikulam Park', 'Top Station']
           },
           {
             day: 3,
             title: 'Thekkady Spice Trails & Lake Safari',
             description: 'Traverse to Thekkady. Spice garden tour and Periyar wildlife lake safari.',
-            highlights: ['Periyar Safari', 'Spice Tour']
+            highlights: ['1 Day Thekkady', 'Periyar Safari', 'Spice Tour']
           },
           {
             day: 4,
-            title: 'Wayanad Bamboo Forest & Banasura Dam',
-            description: 'Explore Wayanad rainforests, Banasura Sagar dam, and bamboo rafting.',
-            highlights: ['Banasura Dam', 'Bamboo Rafting']
+            title: 'Alappuzha Backwaters Houseboat Cruise',
+            description: 'Board private deluxe houseboat for overnight lagoon cruise with traditional meals.',
+            highlights: ['1 Day Alappuzha', 'Houseboat Stay', 'Kerala Feast']
           },
           {
             day: 5,
-            title: 'Varkala Cliff Beach Sunset',
-            description: 'Drive down to Varkala Cliff Beach. Sunset views over the Arabian Sea.',
-            highlights: ['Varkala Cliff', 'Beach Sunset']
+            title: 'Kochi Heritage Trail & Cultural Evening',
+            description: 'Explore Chinese Fishing Nets, Fort Kochi colonial quarter, and Jew Town markets.',
+            highlights: ['1 Day Kochi', 'Fort Kochi & Chinese Nets', 'Cultural Trail']
           },
           {
             day: 6,
-            title: 'Alleppey Backwaters Houseboat Cruise',
-            description: 'Board private deluxe houseboat for overnight lagoon cruise with traditional meals.',
-            highlights: ['Houseboat Stay', 'Kerala Feast']
+            title: 'Varkala Cliff Beach Sunset & Coastal Strolls',
+            description: 'Drive down to Varkala. Relax on the famous red laterite cliff overlooking the Arabian Sea.',
+            highlights: ['Day 6 Varkala', 'Varkala Cliff Beach', 'Sunset Views']
           },
           {
             day: 7,
-            title: 'Fort Kochi Heritage & Departure',
-            description: 'Explore Chinese Fishing Nets and Jew Town markets before departure transfer.',
-            highlights: ['Fort Kochi', 'Departure']
+            title: 'Trivandrum Sightseeing & Departure',
+            description: 'Visit iconic Padmanabhaswamy Temple, Kovalam Beach, and transfer for departure.',
+            highlights: ['Day 7 Trivandrum', 'Padmanabhaswamy Temple', 'Departure Transfer']
           }
         ],
         pricing: {
-          startingPrice: '₹ 7,999',
+          startingPrice: '₹ 14,999',
           occupancyTypes: [
-            { type: 'Triple / Quad Sharing', price: '₹ 7,999', note: 'Per person' },
-            { type: 'Double / Twin Occupancy', price: '₹ 9,999', note: 'Per person' },
-            { type: 'Luxury Beach & Villa Upgrade', price: '₹ 14,999', note: 'Per person' }
+            { type: 'Triple / Quad Sharing', price: '₹ 14,999', note: 'Per person' },
+            { type: 'Double / Twin Occupancy', price: '₹ 17,499', note: 'Per person' },
+            { type: 'Luxury Beach & Villa Upgrade', price: '₹ 22,499', note: 'Per person' }
           ],
           notes: [
             'All stays, transfers, beach/forest tours, houseboat cruise included.',
@@ -362,35 +367,30 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       },
       {
         day: 3,
-        title: 'Traverse to Wayanad Rainforest & Sanctuary Trails',
-        description: 'Drive through forest corridors connecting Munnar to Wayanad. Check in to jungle eco-lodges surrounded by bamboo groves and coffee estates.',
-        highlights: ['Spice Plantation Walk', 'Wayanad Sanctuary Drive', 'Eco-Lodge Stay']
+        title: 'Thekkady Periyar Wildlife Sanctuary Trail',
+        description: 'Drive through Western Ghats forest corridors connecting Munnar to Thekkady. Spice garden walk and Periyar boat safari.',
+        highlights: ['1 Day Thekkady', 'Spice Plantation Walk', 'Periyar Wildlife Sanctuary']
       },
       {
         day: 4,
-        title: 'Banasura Sagar Dam & Sentinel Rock Waterfalls',
-        description: 'Trek to Banasura Sagar (India’s largest earth dam) and cool off under the cascading waters of Soochipara / Sentinel Rock Waterfalls.',
-        highlights: ['Banasura Sagar Dam Trek', 'Soochipara Waterfall', 'Bamboo Rafting']
+        title: 'Alappuzha (Alleppey) Backwaters Traditional Houseboat Cruise',
+        description: 'Drive down to Alappuzha. Board a private traditional Kerala houseboat for an overnight cruise along palm-fringed lagoons and paddy fields.',
+        highlights: ['1 Day Alappuzha', 'Overnight Houseboat Stay', 'Fresh Kerala Seafood / Meals', 'Backwater Sunset']
       },
       {
         day: 5,
-        title: 'Alleppey Backwaters Traditional Houseboat Cruise',
-        description: 'Drive down to Alleppey. Board a private traditional Kerala houseboat for an overnight cruise along palm-fringed lagoons and paddy fields.',
-        highlights: ['Overnight Houseboat Stay', 'Fresh Kerala Seafood / Meals', 'Backwater Sunset']
-      },
-      {
-        day: 6,
-        title: 'Malabar Coast Spice Market & Departure',
-        description: 'Enjoy sunrise over the backwaters, visit local spice markets and heritage coir craft workshops before final transfer to drop-off.',
-        highlights: ['Spice Market Shopping', 'Heritage Coir Village', 'Departure Transfer']
+        title: 'Fort Kochi Heritage Quarter & Departure Transfer',
+        description: 'Enjoy sunrise over the backwaters, visit Fort Kochi Chinese fishing nets and spice markets before transfer to airport / railway station.',
+        highlights: ['1 Day Kochi', 'Fort Kochi & Chinese Fishing Nets', 'Departure Transfer']
       }
     ],
     pricing: {
       startingPrice: '₹ 5,999',
       occupancyTypes: [
-        { type: 'Triple / Quad Sharing', price: '₹ 5,999', note: 'Per person (Best for groups & friends)' },
-        { type: 'Double / Twin Occupancy', price: '₹ 7,499', note: 'Per person (Couples / Private Room)' },
-        { type: 'Private Cottage / Villa Upgrade', price: '₹ 11,999', note: 'Per person (Luxury Stay Package)' }
+        { type: '3D/2N: 2 Days Munnar + Kochi Transfer', price: '₹ 5,999', note: 'Starting package per person' },
+        { type: '4D/3N: 2 Days Munnar + 1 Day Alleppey + Kochi Transfer', price: '₹ 7,999', note: 'Houseboat package per person' },
+        { type: '5D/4N: Munnar, Thekkady, Alappuzha, Kochi', price: '₹ 11,999', note: 'Overland circuit per person' },
+        { type: '7D/6N: Munnar, Thekkady, Alappuzha, Kochi, Varkala, Trivandrum', price: '₹ 14,999', note: 'Grand tour package per person' }
       ],
       notes: [
         'Prices include all stays, breakfasts, dinners, houseboat cruise & transport.',
@@ -419,8 +419,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   ladakh: {
     id: 'ladakh',
     title: 'LADAKH',
-    durationShort: '7 Days',
-    durationFull: '7 Days - 6 Nights',
+    durationShort: '7 — 12 Days',
+    durationFull: '7 to 12 Days (Leh to Leh & Srinagar to Manali)',
     startingPrice: '₹ 23,999',
     numericPrice: 23999,
     image: '/ladakh.webp',
@@ -434,19 +434,20 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     durationVariants: [
       {
         id: '7d6n',
-        label: 'Ladakh 7 Days (Umling La)',
-        durationShort: '7 Days',
-        durationFull: '7 Days - 6 Nights',
+        label: 'Ladakh 7D/6N (Leh to Leh)',
+        durationShort: '7D/6N',
+        durationFull: 'Leh to Leh 7D/6N - Bike Trip Planning',
         startingPrice: '₹ 23,999',
         numericPrice: 23999,
         pdfUrl: '/ladakh.pdf',
         about: {
-          overview: 'High Altitude Himalayan Traverse: Leh to Leh via Umling La (7 Days / 6 Nights). Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
+          overview: 'High Altitude Himalayan Traverse: Leh to Leh 7D/6N Bike Trip Planning. Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
           highlights: [
             'Summit Umling La Pass (19,024 ft) — World\'s Highest Motorable Road',
             'Cross Khardung La (17,582 ft) down to Hunder Bactrian Camel Sand Dunes',
             'Lakeside camping at turquoise Pangong Tso & starry night sky stargazing',
-            'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier'
+            'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier',
+            'Vehicle Packages: Himalayan 411 CC (Solo / Pillion) & Tempo Travelling'
           ],
           landscapeSummary: 'World\'s Highest Passes, Cold Desert & Changthang Plateau',
           bestTimeToVisit: 'June through October'
@@ -463,73 +464,110 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         pricing: {
           startingPrice: '₹ 23,999',
           occupancyTypes: [
-            { type: 'Tempo Traveller / SUV Passenger Seat', price: '₹ 23,999', note: 'Per person in backup vehicle' },
-            { type: 'Dual Rider / Pillion Package', price: '₹ 23,999', note: 'Per person sharing bike' },
-            { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 28,999', note: 'Includes Bike + Fuel + Stays' }
+            { type: 'Tempo Travelling', price: '₹ 23,999', note: 'Per person in backup support vehicle' },
+            { type: 'Himalayan 411 CC + Pillion', price: '₹ 23,999', note: 'Per person (Rider + Pillion sharing bike)' },
+            { type: 'Himalayan 411 CC', price: '₹ 28,999', note: 'Solo Rider (RE Himalayan 411 CC)' }
           ],
           notes: [
-            'Includes Royal Enfield Himalayan bike / SUV transport + Fuel.',
-            'All Inner Line Permits, Red Cross fee & Wildlife charges included.',
-            'Emergency Medical Oxygen Cylinders & Backup Support Truck onboard.'
+            'Includes Royal Enfield Himalayan 411 CC motorbike / Tempo Travelling seat + Fuel.',
+            'Inner Line Permits (ILP), Environmental fee & Wildlife charges included.',
+            'Backup Support Vehicle, Experienced Mechanic with tools, Safety Armours & All Meals.',
+            'Emergency Medical Oxygen Cylinders onboard.'
+          ]
+        },
+        inclusions: {
+          included: [
+            'Bike (if opted): Himalayan 411 CC (with Pillion option) or Tempo Travelling seat',
+            'Inner Line Permit: All required ILP & environmental permits',
+            'Backup Vehicle: Support vehicle throughout the trip',
+            'Fuel: Fuel for the entire trip',
+            'Mechanic: Experienced mechanic with tools',
+            'Armours for Safety: Riding armours (knee, elbow) for safety',
+            'Meals: All meals (Breakfast, Lunch, Dinner) during the trip',
+            'Medical Oxygen Cylinder & First Aid Support'
+          ],
+          excluded: [
+            'Flights to/from Leh Airport',
+            'Refundable Security Deposit for Bike',
+            'Personal shopping & miscellaneous personal expenses'
           ]
         }
       },
       {
         id: '12d11n',
-        label: 'Ladakh 12 Days (Srinagar to Manali)',
-        durationShort: '12 Days',
-        durationFull: '12 Days - 11 Nights',
+        label: 'Ladakh 12D/11N (Srinagar to Manali)',
+        durationShort: '12D/11N',
+        durationFull: 'Srinagar to Manali - 12D/11N Bike Trip',
         startingPrice: '₹ 28,999',
         numericPrice: 28999,
         pdfUrl: '/lad2.pdf',
         about: {
-          overview: 'Trans-Himalayan Traverse: Srinagar to Manali via Umling La (12 Days / 11 Nights). Conquer 11 extreme high passes including Umling La (19,024 ft), Khardung La (17,582 ft), Baralacha La, Tanglang La & Zoji La across Srinagar, Kargil, Leh, Nubra, Pangong, Hanle, Sarchu, and Manali.',
+          overview: 'Ladakh Srinagar to Manali 12D/11N Bike Trip. The ultimate Trans-Himalayan grand expedition crossing 11 high mountain passes across Srinagar, Kargil, Leh, Nubra, Pangong, Hanle, Sarchu, and Manali, summiting the highest motorable road on Earth at Umling La (19,024 ft).',
           highlights: [
             'Traverse Srinagar to Manali across 11 mountain passes including Umling La (19,024 ft)',
             'Drass & Kargil War Memorial, Tiger Hill views & Zoji La pass',
             'Khardung La, Hunder Bactrian Camel safari & Diskit 108ft Maitreya Buddha',
             'Pangong Tso lakeside camping, Hanle Dark Sky Reserve & Demchok LAC frontier',
-            'Moore Plains, Gata Loops (21 hairpin bends), Baralacha La & Rohtang Pass'
+            'Moore Plains, Gata Loops (21 hairpin bends), Baralacha La & Manali exploration'
           ],
           landscapeSummary: 'Trans-Himalayan Traverse across Jammu & Kashmir, Ladakh, and Himachal',
           bestTimeToVisit: 'June through October'
         },
         itinerary: [
-          { day: 1, title: 'Arrival in Srinagar & Acclimatization', description: 'Arrive at Srinagar Airport, transfer to hotel. Rest, adapt to altitude and prepare for the epic Himalayan traverse.', highlights: ['Srinagar Airport Pickup', 'Acclimatization', 'Squad Dinner'] },
-          { day: 2, title: 'Srinagar to Kargil via Zoji La Pass (~220 kms)', description: 'Drive through Sonamarg (Meadow of Gold), conquer legendary Zoji La pass, visit Drass War Memorial & views of Tiger Hill & Tololing.', highlights: ['Sonamarg Valley', 'Zoji La Pass', 'Drass War Memorial', 'Tiger Hill View'] },
-          { day: 3, title: 'Kargil to Leh via Monasteries & Moonland (~230 kms)', description: 'Cross Namika La (Pillar of the Sky) & Fotu La passes. Visit Lamayuru Monastery, Hall of Fame, Magnetic Hill, and Indus-Zanskar Sangam confluence.', highlights: ['Fotu La & Namika La', 'Lamayuru Monastery', 'Magnetic Hill', 'Indus-Zanskar Sangam', 'Shanti Stupa'] },
-          { day: 4, title: 'Leh to Nubra Valley via Khardung La (~160 kms)', description: 'Drive over Khardung La Pass (17,582 ft). Visit Diskit Monastery (108ft Buddha statue) and explore Hunder sand dunes for Bactrian camel safari.', highlights: ['Khardung La (17,582 ft)', 'Diskit Monastery', 'Hunder Sand Dunes', 'Bactrian Camel Safari'] },
-          { day: 5, title: 'Nubra Valley to Pangong Tso via Shyok River (~180 kms)', description: 'Ride through rugged Shyok River gorge to stunning turquoise Pangong Tso. Check into lakeside campsite for sunset and stargazing.', highlights: ['Shyok River Gorge', 'Pangong Tso Check-in', 'Lakeside Camping', 'Stargazing'] },
-          { day: 6, title: 'Pangong Tso to Hanle via Rezang La War Memorial (~270 kms)', description: 'Drive across Changthang plateau past grazing yaks. Pay homage at Rezang La War Memorial and arrive in Hanle dark sky observatory zone.', highlights: ['Changthang Plateau', 'Rezang La War Memorial', 'Hanle Dark Sky Reserve'] },
-          { day: 7, title: 'Hanle to Umling La Summit (19,024 ft) & Demchok (~200 kms RT)', description: 'Summit Umling La Pass (19,024 ft) — the world highest motorable road! Visit border frontier at Demchok before returning to Hanle.', highlights: ['Umling La Summit (19,024 ft)', 'Highest Motorable Road', 'Demchok LAC Frontier'] },
-          { day: 8, title: 'Hanle to Leh via Puga Valley & Indus River (~200 kms)', description: 'Drive past Puga geothermal hot springs and Chumathang Valley alongside Indus River back to Leh.', highlights: ['Puga Geothermal Valley', 'Chumathang Hot Springs', 'Indus River Drive', 'Return to Leh'] },
-          { day: 9, title: 'Leh to Sarchu via Moore Plains & Gata Loops (~230 kms)', description: 'Drive across Moore Plains, ascend Tanglang La, Lachung La (16,617 ft) and Nakee La. Conquer 21 hairpin bends at Gata Loops to Sarchu campsite.', highlights: ['Moore Plains', 'Tanglang La Pass', 'Gata Loops (21 Bends)', 'Sarchu Camp Stays'] },
-          { day: 10, title: 'Sarchu to Manali via Baralacha La & Rohtang Pass (~220 kms)', description: 'Cross high-altitude Baralacha La (16,040 ft), view pristine Suraj Tal lake, pass Darcha & Zingzing Bar, and cross Rohtang Pass down to Manali.', highlights: ['Baralacha La (16,040 ft)', 'Suraj Tal Lake', 'Rohtang Pass', 'Arrival in Manali'] },
-          { day: 11, title: 'Manali Self Exploration & Overnight Volvo Bus to Delhi', description: 'Morning at leisure in Manali. Explore local Mall Road and cafes before boarding luxury AC Volvo bus to Delhi by evening.', highlights: ['Manali Cafe Walk', 'Mall Road', 'Overnight AC Volvo Bus'] },
-          { day: 12, title: 'Arrival in Delhi - Expedition Concludes', description: 'Morning arrival in Delhi. Depart with unforgettable memories of the 12-day Trans-Himalayan journey.', highlights: ['Arrival in Delhi', 'Expedition Concludes'] }
+          { day: 1, title: 'Arrival in Srinagar', description: 'Arrive in Srinagar, check into hotel/houseboat. Rest, team introduction, bike allocation, and mandatory briefing for the epic Himalayan traverse.', highlights: ['Arrival in Srinagar', 'Team Briefing', 'Squad Dinner & Rest'] },
+          { day: 2, title: 'Srinagar to Kargil', description: 'Drive through Sonamarg (Meadow of Gold), conquer legendary Zoji La pass (11,575 ft), visit Drass War Memorial with views of Tiger Hill and Tololing before reaching Kargil.', highlights: ['Sonamarg Valley', 'Zoji La Pass', 'Drass War Memorial', 'Tiger Hill View', 'Overnight Kargil'] },
+          { day: 3, title: 'Kargil to Leh', description: 'Cross Namika La and Fotu La passes. Visit ancient Lamayuru Monastery (Moonland of Ladakh), Hall of Fame, Magnetic Hill, and Indus-Zanskar Sangam confluence to Leh.', highlights: ['Fotu La & Namika La', 'Lamayuru Moonland', 'Magnetic Hill', 'Indus-Zanskar Sangam', 'Overnight Leh'] },
+          { day: 4, title: 'Leh to Nubra', description: 'Ride over world-famous Khardung La Pass (17,582 ft) into Nubra Valley. Visit Diskit Monastery (108ft Buddha statue) and explore Hunder sand dunes for Bactrian camel safari.', highlights: ['Khardung La (17,582 ft)', 'Diskit Monastery', 'Hunder Sand Dunes', 'Bactrian Camel Safari', 'Overnight Nubra'] },
+          { day: 5, title: 'Nubra to Pangong', description: 'Ride through rugged Shyok River gorge to stunning turquoise Pangong Tso. Check into lakeside campsite for sunset and starry night sky stargazing.', highlights: ['Shyok River Gorge', 'Pangong Tso Check-in', 'Lakeside Camping', 'Stargazing'] },
+          { day: 6, title: 'Pangong to Hanle', description: 'Drive across Changthang plateau past grazing yaks via Chushul. Pay homage at Rezang La War Memorial and arrive in Hanle dark sky observatory zone.', highlights: ['Changthang Plateau', 'Rezang La War Memorial', 'Hanle Dark Sky Reserve', 'Overnight Hanle'] },
+          { day: 7, title: 'Hanle to Umlingla to Demchok to Hanle', description: 'Summit Umling La Pass (19,024 ft) — the highest motorable road on planet Earth! Visit border frontier at Demchok before returning to Hanle.', highlights: ['Umling La Summit (19,024 ft)', 'Highest Motorable Road', 'Demchok LAC Frontier', 'Overnight Hanle'] },
+          { day: 8, title: 'Hanle to Leh', description: 'Drive past Puga geothermal hot springs and Chumathang Valley alongside Indus River back to Leh for souvenir shopping and celebration dinner.', highlights: ['Puga Geothermal Valley', 'Chumathang Hot Springs', 'Indus River Drive', 'Return to Leh'] },
+          { day: 9, title: 'Leh to Sarchu', description: 'Drive across Moore Plains, ascend Tanglang La, Lachung La (16,617 ft) and Nakee La. Conquer 21 hairpin bends at Gata Loops to Sarchu campsite.', highlights: ['Moore Plains', 'Tanglang La Pass', 'Gata Loops (21 Bends)', 'Sarchu Camp Stays'] },
+          { day: 10, title: 'Sarchu to Manali', description: 'Cross high-altitude Baralacha La (16,040 ft), view pristine Suraj Tal lake, pass Darcha & Zingzing Bar, and cross Atal Tunnel down to Manali.', highlights: ['Baralacha La (16,040 ft)', 'Suraj Tal Lake', 'Atal Tunnel', 'Arrival in Manali'] },
+          { day: 11, title: 'Exploring Manali', description: 'Full day exploring Manali: Old Manali cafes, Hadimba Temple, Jogini waterfalls, and stroll Mall Road with celebration team dinner.', highlights: ['Old Manali Cafes', 'Hadimba Temple', 'Mall Road', 'Celebration Dinner'] },
+          { day: 12, title: 'Departure from Manali', description: 'Check-out with lifelong memories and brotherhood of the 12-day Trans-Himalayan mountain expedition.', highlights: ['Check-out & Departure', '12-Day Journey Complete'] }
         ],
         pricing: {
           startingPrice: '₹ 28,999',
           occupancyTypes: [
-            { type: 'Own Bike + Pillion / SUV Passenger Seat', price: '₹ 28,999', note: 'Per person in backup vehicle / own bike' },
-            { type: 'Dual Rider / Pillion (RE Himalayan 411cc)', price: '₹ 35,999', note: 'Per person sharing bike + fuel' },
-            { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 45,999', note: 'Includes Bike + Fuel + Stays + Permits' }
+            { type: 'Own Bike', price: '₹ 28,999', note: 'Rider with own motorcycle (Includes backup, fuel & stays)' },
+            { type: 'Himalayan 411CC + Pillion', price: '₹ 35,999', note: 'Per person (Rider + Pillion sharing Himalayan 411 CC)' },
+            { type: 'Himalayan 411CC', price: '₹ 45,999', note: 'Solo Rider (Royal Enfield Himalayan 411 CC)' }
           ],
           notes: [
-            'Includes Royal Enfield Himalayan bike / SUV transport with fuel for entire circuit.',
-            'Srinagar airport pickup & Manali to Delhi luxury AC Volvo bus ticket included.',
-            'All Inner Line Permits, Red Cross fee, Wildlife charges & Oxygen cylinder support included.'
+            'Includes Royal Enfield Himalayan 411cc bike with fuel for entire circuit.',
+            'All Inner Line Permits, Red Cross fee, Wildlife charges & Oxygen cylinder support included.',
+            'Dedicated Backup Support Vehicle, Experienced Mechanic with tools & Safety Armours included.',
+            'All Meals (Breakfast, Lunch, Dinner) during the tour.'
+          ]
+        },
+        inclusions: {
+          included: [
+            'Bike (if opted): Himalayan 411CC (with Pillion option)',
+            'Inner Line Permit: All required ILP',
+            'Backup Vehicle: Support vehicle throughout the trip',
+            'Fuel: Fuel for the entire trip',
+            'Mechanic: Experienced mechanic with tools',
+            'Armours for Safety: Riding armours (knee, elbow) for safety',
+            'Meals: All meals (Breakfast, Lunch, Dinner) during the trip',
+            'Oxygen Cylinder & First Aid Support'
+          ],
+          excluded: [
+            'Travel to Srinagar / Return from Manali',
+            'Refundable security deposit for rented motorcycle',
+            'Personal shopping, extra beverages & laundry'
           ]
         }
       }
     ],
     about: {
-      overview: 'High Altitude Himalayan Traverse: Leh to Leh via Umling La (7 Days / 6 Nights). Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
+      overview: 'High Altitude Himalayan Traverse: Choose between the 7D/6N Leh to Leh circuit or the grand 12D/11N Srinagar to Manali expedition. Summit the highest motorable road on Earth at Umling La (19,024 ft), cross Khardung La (17,582 ft), explore Nubra Valley, camp lakeside at Pangong Tso, and experience the dark sky reserve at Hanle.',
       highlights: [
         'Summit Umling La Pass (19,024 ft) — World\'s Highest Motorable Road',
         'Cross Khardung La (17,582 ft) down to Hunder Bactrian Camel Sand Dunes',
         'Lakeside camping at turquoise Pangong Tso & starry night sky stargazing',
-        'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier'
+        'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok LAC Frontier',
+        'Vehicle Options: Himalayan 411 CC (Solo / Pillion), Own Bike & Tempo Travelling'
       ],
       landscapeSummary: 'World\'s Highest Passes, Cold Desert & Changthang Plateau',
       bestTimeToVisit: 'June through October'
@@ -546,30 +584,32 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     pricing: {
       startingPrice: '₹ 23,999',
       occupancyTypes: [
-        { type: 'Tempo Traveller / SUV Passenger Seat', price: '₹ 23,999', note: 'Per person in backup vehicle' },
-        { type: 'Dual Rider / Pillion Package', price: '₹ 23,999', note: 'Per person sharing bike' },
-        { type: 'Solo Rider (RE Himalayan 411cc)', price: '₹ 28,999', note: 'Includes Bike + Fuel + Stays' }
+        { type: 'Tempo Travelling', price: '₹ 23,999', note: 'Per person in backup support vehicle' },
+        { type: 'Himalayan 411 CC + Pillion', price: '₹ 23,999', note: 'Per person (Rider + Pillion sharing bike)' },
+        { type: 'Himalayan 411 CC', price: '₹ 28,999', note: 'Solo Rider (RE Himalayan 411 CC)' }
       ],
       notes: [
-        'Includes Royal Enfield Himalayan bike / SUV transport + Fuel.',
-        'All Inner Line Permits, Red Cross fee & Wildlife charges included.',
-        'Emergency Medical Oxygen Cylinders & Backup Support Truck onboard.'
+        'Includes Royal Enfield Himalayan 411 CC bike / Tempo Travelling seat + Fuel.',
+        'Inner Line Permits (ILP), Environmental fee & Wildlife charges included.',
+        'Backup Support Vehicle, Experienced Mechanic with tools, Safety Armours & All Meals.',
+        'Emergency Medical Oxygen Cylinders onboard.'
       ]
     },
     inclusions: {
       included: [
-        'Royal Enfield Himalayan Motorbike / SUV Transport + Fuel',
-        'Backup Support Vehicle for Luggage & Mechanical Crew',
-        'Medical Oxygen Cylinder & First Aid Support',
-        'Hotel Stays & Deluxe Campsite Tents',
-        'Daily Breakfast & Dinner Meals',
-        'All Inner Line Permits & Wildlife Fees'
+        'Bike (if opted): Himalayan 411CC (with Pillion option)',
+        'Inner Line Permit: All required ILP',
+        'Backup Vehicle: Support vehicle throughout the trip',
+        'Fuel: Fuel for the entire trip',
+        'Mechanic: Experienced mechanic with tools',
+        'Armours for Safety: Riding armours (knee, elbow) for safety',
+        'Meals: All meals (Breakfast, Lunch, Dinner) during the trip',
+        'Medical Oxygen Cylinder & First Aid Support'
       ],
       excluded: [
-        'Flights to/from Leh',
-        'Riding Gear (Helmet, Jacket, Gloves - Available for Rent)',
+        'Flights to/from destination',
         'Refundable Security Deposit for Bike',
-        'Lunch meals & personal shopping'
+        'Personal shopping, extra snacks & beverages'
       ]
     }
   },
@@ -579,8 +619,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     title: 'KODAIKANAL',
     durationShort: '4D/3N',
     durationFull: '4 Days - 3 Nights',
-    startingPrice: '₹ 6,999',
-    numericPrice: 6999,
+    startingPrice: '₹ 7,499',
+    numericPrice: 7499,
     image: '/kodai.webp',
     pdfUrl: '/kerala_catalog.pdf',
     frameColor: '#4E7063',
@@ -589,6 +629,54 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     squadSize: '6 - 12 TRAVELLERS',
     difficulty: 'INTERMEDIATE',
     bestSeason: 'YEAR-ROUND',
+    durationVariants: [
+      {
+        id: '4d3n',
+        label: 'Kodaikanal 4D3N',
+        durationShort: '4D/3N',
+        durationFull: '4 Days - 3 Nights',
+        startingPrice: '₹ 7,499',
+        numericPrice: 7499,
+        pdfUrl: '/kerala_catalog.pdf',
+        about: {
+          overview: 'Known as the Princess of Hill Stations. A misty, pine-scented highland route winding around precipitous cliff vistas, Pillar Rocks, and off-grid forest permit trails to secluded Berijam Lake.',
+          highlights: [
+            'Ride through towering dense pine forest canopy trails',
+            'Panoramic cliffside viewpoints at Pillar Rocks & Coakers Walk',
+            'Off-grid forest permit routes to secluded Berijam Lake',
+            'Cozy heritage cottage stays with campfire evenings'
+          ],
+          landscapeSummary: 'Dense Pine Forests, Cliff Views & Shola Mountain Curves',
+          bestTimeToVisit: 'Year-Round (Cool mountain climate & lush evergreen trails)'
+        },
+        itinerary: [
+          { day: 1, title: 'Ghat Climb & Pine Valley Check-in', description: 'Ascend Palani hills, visit Silver Cascade Waterfalls, check into cozy hillside resort.', highlights: ['Silver Cascade Waterfalls', 'Palani Ghat Road', 'Pine Valley Check-in'] },
+          { day: 2, title: 'Pillar Rocks, Coakers Walk & Pine Forest', description: 'Walk through dense pine tree trails, cliffside cloud views at Pillar Rocks.', highlights: ['Pillar Rocks', 'Coakers Walk', 'Pine Forest Trail'] },
+          { day: 3, title: 'Off-Grid Berijam Lake Forest Reserve Trail', description: 'Enter restricted forest permit zone to Berijam Lake surrounded by wildlife.', highlights: ['Berijam Lake', 'Forest Permit Route', 'Eco Sanctuary'] },
+          { day: 4, title: 'Kodai Lake Boating & Homemade Chocolates', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, return departure.', highlights: ['Kodai Lake Boating', 'Artisan Chocolates', 'Departure Transfer'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 7,499',
+          occupancyTypes: [
+            { type: 'Group Sharing (3-4 Person Room)', price: '₹ 7,499', note: 'Per person' },
+            { type: 'Couples Private Room (2 Person)', price: '₹ 8,999', note: 'Per person' }
+          ],
+          notes: [
+            'Includes all stays, breakfasts, dinners & forest permit entries.'
+          ]
+        },
+        inclusions: {
+          included: [
+            'Transport from Pickup Point',
+            '3 Nights Resort/Cottage Stay',
+            'Daily Breakfast & Dinner',
+            'Berijam Lake Forest Permit Fees',
+            'Campfire Evenings'
+          ],
+          excluded: ['Personal Shopping', 'Boating Fees', 'Lunch & Snacks']
+        }
+      }
+    ],
     about: {
       overview: 'Known as the Princess of Hill Stations. A misty, pine-scented highland route winding around precipitous cliff vistas, Pillar Rocks, and off-grid forest permit trails to secluded Berijam Lake.',
       highlights: [
@@ -607,10 +695,10 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       { day: 4, title: 'Kodai Lake Boating & Homemade Chocolates', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, return departure.', highlights: ['Kodai Lake Boating', 'Artisan Chocolates', 'Departure Transfer'] }
     ],
     pricing: {
-      startingPrice: '₹ 6,999',
+      startingPrice: '₹ 7,499',
       occupancyTypes: [
-        { type: 'Group Sharing (3-4 Person Room)', price: '₹ 6,999', note: 'Per person' },
-        { type: 'Couples Private Room (2 Person)', price: '₹ 8,499', note: 'Per person' }
+        { type: 'Group Sharing (3-4 Person Room)', price: '₹ 7,499', note: 'Per person' },
+        { type: 'Couples Private Room (2 Person)', price: '₹ 8,999', note: 'Per person' }
       ],
       notes: [
         'Includes all stays, breakfasts, dinners & forest permit entries.'
@@ -788,8 +876,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     title: 'CHIKMAGALUR',
     durationShort: '3D/2N',
     durationFull: '3 Days - 2 Nights',
-    startingPrice: '₹ 6,999',
-    numericPrice: 6999,
+    startingPrice: '₹ 5,999',
+    numericPrice: 5999,
     image: '/chick.webp',
     pdfUrl: '/chik.pdf',
     frameColor: '#7B6852',
@@ -798,6 +886,51 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     squadSize: '6 - 12 TRAVELLERS',
     difficulty: 'INTERMEDIATE',
     bestSeason: 'SEPTEMBER — MAY',
+    durationVariants: [
+      {
+        id: '3d2n',
+        label: 'Chikmagalur 3D2N',
+        durationShort: '3D/2N',
+        durationFull: '3 Days - 2 Nights',
+        startingPrice: '₹ 5,999',
+        numericPrice: 5999,
+        pdfUrl: '/chik.pdf',
+        about: {
+          overview: 'Chikmagalur Traverse (3 Days / 2 Nights). A refreshing escape into misty mountains, lush landscapes, waterfalls, and cultural heritage. From Belur & Halebidu temples to Karnataka\'s highest peak Mullayanagiri and Z Point sunset.',
+          highlights: [
+            'Explore historic Belur & Halebidu Temples and Yagachi Water Sports',
+            'Summit Mullayanagiri Peak, Seethalayyanagiri & Baba Budangiri',
+            'Discover Jhari Falls, Hebbe Falls & Shanthi Falls',
+            'Catch breathtaking sunset at Z Point and enjoy Bonfire & Music Night'
+          ],
+          landscapeSummary: 'Coffee Estate Roads, Mountain Switchbacks & Dirt Spurs',
+          bestTimeToVisit: 'September through May'
+        },
+        itinerary: [
+          { day: 1, title: 'Culture & Leisure (Belur & Halebidu Temples)', description: 'Blend history, culture, and leisure. Explore the magnificent Belur Temple and Halebidu Temple, head to Yagachi for water sports, and local exploration before settling into homestay.', highlights: ['Belur Temple', 'Halebidu Temple', 'Yagachi Water Sports', 'Local Exploration'] },
+          { day: 2, title: 'Peaks & Views (Mullayanagiri & Z Point Sunset)', description: 'Full day of mountain landscapes. Ascend Mullayanagiri Peak and Seethalayyanagiri, visit Jhari Falls, explore Baba Budangiri, and watch sunset at Z Point. Unwind with Bonfire & Music Night.', highlights: ['Mullayanagiri Peak', 'Seethalayyanagiri', 'Jhari Falls', 'Baba Budangiri', 'Z Point Sunset', 'Bonfire & Music Night'] },
+          { day: 3, title: 'Nature & Waterfalls (Kemmanagundi & Hebbe Falls)', description: 'Explore Kemmanagundi, trek to spectacular Hebbe Falls and Shanthi Falls, take on Z Point Trek before concluding your expedition.', highlights: ['Kemmanagundi', 'Hebbe Falls', 'Z Point Trek', 'Shanthi Falls', 'Departure Transfer'] }
+        ],
+        pricing: {
+          startingPrice: '₹ 5,999',
+          occupancyTypes: [
+            { type: 'Triple Sharing Homestay', price: '₹ 5,999', note: 'Per person (Standard Plan)' },
+            { type: 'Twin / Double Occupancy', price: '₹ 7,499', note: 'Per person (Private Room)' }
+          ],
+          notes: ['Includes 2 Nights Homestay Accommodation with Breakfast & Dinner.', 'Bonfire & Music Night included.']
+        },
+        inclusions: {
+          included: [
+            'Pickup & Drop Transport',
+            '2 Nights Homestay Accommodation (Triple Sharing)',
+            'Meals: Breakfast & Dinner Included',
+            'Sightseeing Assistance for Temples, Peaks & Waterfalls',
+            'Bonfire & Music Night'
+          ],
+          excluded: ['Entry Tickets & Activity Charges', 'Water Sports Charges at Yagachi', 'Lunch & Additional Meals', 'Personal Expenses']
+        }
+      }
+    ],
     about: {
       overview: 'Chikmagalur Traverse (3 Days / 2 Nights). A refreshing escape into misty mountains, lush landscapes, waterfalls, and cultural heritage. From Belur & Halebidu temples to Karnataka\'s highest peak Mullayanagiri and Z Point sunset.',
       highlights: [
@@ -815,10 +948,10 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       { day: 3, title: 'Nature & Waterfalls (Kemmanagundi & Hebbe Falls)', description: 'Explore Kemmanagundi, trek to spectacular Hebbe Falls and Shanthi Falls, take on Z Point Trek before concluding your expedition.', highlights: ['Kemmanagundi', 'Hebbe Falls', 'Z Point Trek', 'Shanthi Falls', 'Departure Transfer'] }
     ],
     pricing: {
-      startingPrice: '₹ 6,999',
+      startingPrice: '₹ 5,999',
       occupancyTypes: [
-        { type: 'Triple Sharing Homestay', price: '₹ 6,999', note: 'Per person (Standard Plan)' },
-        { type: 'Twin / Double Occupancy', price: '₹ 8,499', note: 'Per person (Private Room)' }
+        { type: 'Triple Sharing Homestay', price: '₹ 5,999', note: 'Per person (Standard Plan)' },
+        { type: 'Twin / Double Occupancy', price: '₹ 7,499', note: 'Per person (Private Room)' }
       ],
       notes: ['Includes 2 Nights Homestay Accommodation with Breakfast & Dinner.', 'Bonfire & Music Night included.']
     },

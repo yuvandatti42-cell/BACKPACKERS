@@ -331,13 +331,13 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
                   <div className="kerala-details-top">
                     <span className="kerala-details-brand">BACKPACKERS DESTINATIONS</span>
                     <h2 className="kerala-details-title">KERALA</h2>
-                    <div className="kerala-details-duration-tag">3 DAYS / 2 NIGHTS</div>
+                    <div className="kerala-details-duration-tag">3 — 7 DAYS • 4 CURATED TOUR PACKAGES</div>
 
                     <div className="kerala-details-heading-italic">
                       Escape into the heart of God’s Own Country!
                     </div>
                     <p className="kerala-details-desc">
-                      Cruise through serene backwaters, sip hot chai in the rain, and wake up to endless shades of green in Kerala.
+                      Cruise through serene backwaters, sip hot chai in the rain, and wake up to endless shades of green in Kerala across our 4 official tour packages.
                     </p>
                   </div>
 
@@ -345,17 +345,17 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
                   <div className="kerala-stats-cards-row">
                     
                     <div className="kerala-stat-card">
-                      <span className="stat-card-val">03</span>
+                      <span className="stat-card-val">03–07</span>
                       <span className="stat-card-label">DAYS</span>
                     </div>
 
                     <div className="kerala-stat-card">
-                      <span className="stat-card-val">02</span>
+                      <span className="stat-card-val">02–06</span>
                       <span className="stat-card-label">NIGHTS</span>
                     </div>
 
                     <div className="kerala-stat-card">
-                      <span className="stat-card-val">₹6,999/-</span>
+                      <span className="stat-card-val">₹5,999/-</span>
                       <span className="stat-card-label">STARTING FROM</span>
                     </div>
 
@@ -364,6 +364,71 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
                   {/* Dark Green Pill */}
                   <div className="kerala-included-pill">
                     STAY &nbsp;&bull;&nbsp; TRAVEL &nbsp;&bull;&nbsp; MEALS INCLUDED
+                  </div>
+
+                  {/* Official Kerala Tour Packages Showcase */}
+                  <div className="kerala-packages-showcase">
+                    <div className="kerala-packages-header">
+                      <span className="kerala-packages-badge">OFFICIAL PACKAGES & COSTS</span>
+                      <h3 className="kerala-packages-headline">KERALA TOUR PACKAGES</h3>
+                    </div>
+
+                    <div className="kerala-packages-grid">
+                      {/* Card 1: 7D/6N */}
+                      <div className="kerala-package-card">
+                        <div className="kerala-pkg-header-badge">7 DAYS / 6 NIGHTS</div>
+                        <div className="kerala-pkg-sub">2 Days Munnar, 1 Day Thekkady, 1 Day Alappuzha, 1 Day Kochi, 6 day Varkala, 7 Day Trivandrum</div>
+                        <div className="kerala-pkg-divider" />
+                        <ul className="kerala-pkg-stops">
+                          <li>Munnar</li>
+                          <li>Thekkady</li>
+                          <li>Alappuzha</li>
+                          <li>Kochi</li>
+                          <li>Varkala</li>
+                          <li>Trivandrum</li>
+                        </ul>
+                        <div className="kerala-pkg-price-badge">₹14,999</div>
+                      </div>
+
+                      {/* Card 2: 5D/4N */}
+                      <div className="kerala-package-card">
+                        <div className="kerala-pkg-header-badge">5 DAYS / 4 NIGHTS</div>
+                        <div className="kerala-pkg-sub">2 Days Munnar, 1 Day Thekkady, 1 Day Alappuzha, 1 Day Kochi</div>
+                        <div className="kerala-pkg-divider" />
+                        <ul className="kerala-pkg-stops">
+                          <li>Munnar</li>
+                          <li>Thekkady</li>
+                          <li>Allappuzha</li>
+                          <li>Kochi Transfer</li>
+                        </ul>
+                        <div className="kerala-pkg-price-badge">₹11,999</div>
+                      </div>
+
+                      {/* Card 3: 4D/3N */}
+                      <div className="kerala-package-card">
+                        <div className="kerala-pkg-header-badge">4 DAYS / 3 NIGHTS</div>
+                        <div className="kerala-pkg-sub">2 Days Munnar, 1 Day Alleppey</div>
+                        <div className="kerala-pkg-divider" />
+                        <ul className="kerala-pkg-stops">
+                          <li>Munnar</li>
+                          <li>Alleppey</li>
+                          <li>Kochi Transfer</li>
+                        </ul>
+                        <div className="kerala-pkg-price-badge">₹7,999</div>
+                      </div>
+
+                      {/* Card 4: 3D/2N */}
+                      <div className="kerala-package-card">
+                        <div className="kerala-pkg-header-badge">3 DAYS / 2 NIGHTS</div>
+                        <div className="kerala-pkg-sub">2 Days Munnar</div>
+                        <div className="kerala-pkg-divider" />
+                        <ul className="kerala-pkg-stops">
+                          <li>Munnar</li>
+                          <li>Kochi Transfer</li>
+                        </ul>
+                        <div className="kerala-pkg-price-badge">₹5,999</div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Section "A FEELING, NOT JUST A DESTINATION" */}

@@ -5,7 +5,7 @@ import './Header.css';
 
 interface HeaderProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
   currentRoute?: string;
 }
 
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             >
               <div className="brand-logo-circle">
                 <img 
-                  src="/newlgo2.webp" 
+                  src="/logof.webp" 
                   alt="Backpackers Destinations Logo" 
                   className="brand-logo-img" 
                 />

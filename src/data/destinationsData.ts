@@ -80,58 +80,58 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     number: '01',
     region: 'KERALA',
     title: 'KERALA',
-    subtitle: 'Munnar Tea Hills • Wayanad Rainforest • Alleppey Backwaters',
+    subtitle: 'Munnar • Thekkady • Alappuzha • Kochi • Varkala • Trivandrum',
     startingPrice: '₹5,999',
     numericPrice: 5999,
     tripTypes: ['weekend', 'long-expedition'],
     elevation: '8,800 FT / 2,695 M',
     difficulty: 'BEGINNER',
-    duration: '6 DAYS / 5 NIGHTS',
-    durationDays: 6,
-    distance: '620 KM',
+    duration: '3 — 7 DAYS',
+    durationDays: 3,
+    distance: '320 — 850 KM',
     bestSeason: 'SEPTEMBER — MARCH',
     squadSize: '6 - 12 TRAVELLERS',
-    terrain: 'Misty Ghat Passes, Tea Slopes & Backwater Corridors',
+    terrain: 'Misty Ghat Passes, Tea Slopes, Backwater Corridors & Coastal Cliffs',
     landscapeZone: 'South India',
     highlights: [
-      'Munnar cloud forest switchbacks & tea estate stays',
-      'Wayanad sanctuary rainforest & bamboo forest trails',
-      'Traditional Kerala houseboat overnight stay on backwaters',
-      'Malabar coast drive & local spice plantation experience'
+      '3D/2N (₹5,999): 2 Days Munnar with Kochi Transfer',
+      '4D/3N (₹7,999): 2 Days Munnar + 1 Day Alleppey Backwaters',
+      '5D/4N (₹11,999): Munnar, Thekkady, Alappuzha & Kochi',
+      '7D/6N (₹14,999): Munnar, Thekkady, Alappuzha, Kochi, Varkala & Trivandrum'
     ],
-    description: 'From misty tea gardens in Munnar to peaceful backwater lagoons, Kerala offers a deep long-tour journey combining high mountain ridges with lush tropical coastlines.',
+    description: 'Explore Kerala across 4 curated packages: from quick 3D/2N Munnar hill escapes to comprehensive 7D/6N overlands through tea hills, Thekkady wildlife, Alleppey backwaters, Varkala cliffs, and Trivandrum.',
     image: '/ke.webp',
     frameColor: '#7B8C78',
-    keywords: ['kerala', 'munnar', 'wayanad', 'alleppey', 'tea', 'plantation', 'backwaters', 'houseboat', 'south india', 'rainforest', '5999', 'cheap', 'budget', 'monsoon']
+    keywords: ['kerala', 'munnar', 'thekkady', 'alleppey', 'alappuzha', 'kochi', 'varkala', 'trivandrum', 'tea', 'plantation', 'backwaters', 'houseboat', 'south india', 'rainforest', '5999', '7999', '11999', '14999', 'cheap', 'budget', 'monsoon']
   },
   {
     id: 'ladakh',
     number: '02',
     region: 'LADAKH',
     title: 'LADAKH',
-    subtitle: 'Umling La (19,024 ft) • Khardung La • Pangong Tso • Hanle',
+    subtitle: 'Leh to Leh (7D/6N) • Srinagar to Manali via Umling La (12D/11N)',
     startingPrice: '₹23,999',
     numericPrice: 23999,
     tripTypes: ['bike-trips', 'long-expedition'],
     elevation: '19,024 FT / 5,798 M',
     difficulty: 'EXPEDITION',
-    duration: '7 DAYS / 6 NIGHTS',
+    duration: '7 — 12 DAYS',
     durationDays: 7,
-    distance: '1,250 KM',
+    distance: '1,250 — 2,200 KM',
     bestSeason: 'JUNE — SEPTEMBER',
     squadSize: '4 - 10 RIDERS',
     terrain: 'Cold Desert, World Highest Passes & Himalayan Scree',
     landscapeZone: 'North India & Ladakh',
     highlights: [
-      'Summit Umling La Pass (19,024 ft) — Highest motorable road on Earth',
-      'Cross Khardung La (17,582 ft) down to Hunder sand dunes',
-      'Lakeside camping at turquoise Pangong Tso under starry skies',
-      'Hanle Dark Sky Observatory, Rezang La War Memorial & Demchok'
+      '7D/6N (from ₹23,999): Leh to Leh — Khardung La, Nubra, Pangong, Hanle & Umling La',
+      '12D/11N (from ₹28,999): Srinagar to Manali — 11 High Passes Himalayan Circuit',
+      'Umling La Pass (19,024 FT): World’s Highest Motorable Road & Demchok LAC',
+      'Options: Himalayan 411 CC (Solo / Pillion), Own Bike & Tempo Travelling'
     ],
-    description: 'The legendary Trans-Himalayan Umling La expedition. Traverse world highest motorable passes, ancient cliffside monasteries, and high-altitude lakes.',
+    description: 'Conquer the roof of the world across 2 epic formats: the 7D/6N Leh-to-Leh circuit (from ₹23,999) or the grand 12D/11N Srinagar to Manali expedition (from ₹28,999), summiting Umling La (19,024 ft) with mechanical and backup support.',
     image: '/ladakh.webp',
     frameColor: '#768C9E',
-    keywords: ['ladakh', 'leh', 'umling la', 'khardung la', 'pangong', 'pangong tso', 'nubra', 'hanle', 'chang la', 'north india', 'cold desert', 'himalaya', 'pass', 'bike', 'motorcycle', '23999']
+    keywords: ['ladakh', 'leh', 'umling la', 'khardung la', 'pangong', 'pangong tso', 'nubra', 'hanle', 'srinagar', 'manali', 'sarchu', 'kargil', 'bike trip', 'himalayan 411', 'tempo travelling', '23999', '28999', '35999', '45999', '7d6n', '12d11n']
   },
   {
     id: 'kodaikanal',
@@ -139,8 +139,8 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'KODAIKANAL',
     title: 'KODAIKANAL',
     subtitle: 'Pillar Rocks • Berijam Lake Forest • Pine Reserve',
-    startingPrice: '₹6,999',
-    numericPrice: 6999,
+    startingPrice: '₹7,499',
+    numericPrice: 7499,
     tripTypes: ['weekend'],
     elevation: '7,000 FT / 2,133 M',
     difficulty: 'INTERMEDIATE',
@@ -160,7 +160,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     description: 'Known as the Princess of Hill Stations. A misty, pine-scented highland route winding around precipitous cliff vistas and tranquil mountain lakes.',
     image: '/kodai.webp',
     frameColor: '#4E7063',
-    keywords: ['kodaikanal', 'kodai', 'pillar rocks', 'berijam', 'pine forest', 'coaker walk', 'shola', 'south india', 'tamil nadu', 'hill station', 'weekend', '6999']
+    keywords: ['kodaikanal', 'kodai', 'pillar rocks', 'berijam', 'pine forest', 'coaker walk', 'shola', 'south india', 'tamil nadu', 'hill station', 'weekend', '7499']
   },
   {
     id: 'ooty-coonoor',
@@ -255,8 +255,8 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     region: 'CHIKMAGALUR',
     title: 'CHIKMAGALUR',
     subtitle: 'Mullayanagiri Peak • Baba Budangiri • Hebbe Waterfalls',
-    startingPrice: '₹6,999',
-    numericPrice: 6999,
+    startingPrice: '₹5,999',
+    numericPrice: 5999,
     tripTypes: ['weekend', 'bike-trips'],
     elevation: '6,317 FT / 1,930 M',
     difficulty: 'INTERMEDIATE',
@@ -276,7 +276,7 @@ export const DESTINATION_CORRIDORS: CorridorDetail[] = [
     description: 'The birthplace of Indian coffee. Ride up misty high-altitude peaks, navigate coffee plantation dirt tracks, and cool off beneath roaring waterfall cascades.',
     image: '/chick.webp',
     frameColor: '#7B6852',
-    keywords: ['chikmagalur', 'mullayanagiri', 'baba budangiri', 'hebbe', 'waterfall', 'coffee', 'plantation', 'highest peak', 'karnataka', 'south india', 'off road', '6999', 'bike']
+    keywords: ['chikmagalur', 'mullayanagiri', 'baba budangiri', 'hebbe', 'waterfall', 'coffee', 'plantation', 'highest peak', 'karnataka', 'south india', 'off road', '5999', 'bike']
   },
   {
     id: 'spiti',

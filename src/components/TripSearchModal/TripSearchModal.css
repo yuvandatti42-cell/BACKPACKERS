@@ -514,6 +514,7 @@
   font-size: 0.825rem;
   font-weight: 500;
   color: #7E7E7E;
+  white-space: nowrap;
 }
 
 .search-card-price-row .price-val {
@@ -521,6 +522,7 @@
   font-size: 1.1rem;
   font-weight: 800;
   color: #1C1C1C;
+  white-space: nowrap;
 }
 
 .btn-card-quick-book {

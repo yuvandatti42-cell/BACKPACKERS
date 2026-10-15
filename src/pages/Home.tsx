@@ -13,7 +13,7 @@ import { Footer } from '../components/Footer/Footer';
 
 interface HomeProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
 }
 
 export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {

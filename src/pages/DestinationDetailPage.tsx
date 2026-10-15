@@ -9,7 +9,7 @@ import './DestinationDetailPage.css';
 interface DestinationDetailPageProps {
   destinationId: string;
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
-  onOpenBookModal?: (title?: string) => void;
+  onOpenBookModal?: (title?: string, planDuration?: string, price?: string) => void;
 }
 
 export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
@@ -17,13 +17,14 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   onNavigate,
   onOpenBookModal
 }) => {
-  const [activeTab, setActiveTab] = useState<'about' | 'itinerary' | 'inclusions'>('about');
+  const [activeTab, setActiveTab] = useState<'about' | 'itinerary' | 'pricing' | 'inclusions'>('about');
   const [isKeralaCatalogOpen, setIsKeralaCatalogOpen] = useState<boolean>(false);
   const [isOotyCatalogOpen, setIsOotyCatalogOpen] = useState<boolean>(false);
   const [isGenericPdfLeadOpen, setIsGenericPdfLeadOpen] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveTab('about');
   }, [destinationId]);
 
   // Lookup destination details or fallback to Kerala
@@ -79,6 +80,8 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   const currentPdfUrl = activeVariant ? activeVariant.pdfUrl : (detail.pdfUrl || '/kerala_catalog.pdf');
   const currentAbout = (activeVariant && activeVariant.about) ? activeVariant.about : detail.about;
   const currentItinerary = (activeVariant && activeVariant.itinerary) ? activeVariant.itinerary : detail.itinerary;
+  const currentPricing = (activeVariant && activeVariant.pricing) ? activeVariant.pricing : detail.pricing;
+  const currentInclusions = (activeVariant && activeVariant.inclusions) ? activeVariant.inclusions : detail.inclusions;
 
   const handleBack = () => {
     if (onNavigate) {
@@ -125,12 +128,12 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   };
 
   const handleBookClick = () => {
-    const bookingTitle = `${detail.title} ${currentDurationShort}`;
+    const planText = currentDurationFull ? `${currentDurationFull} (${currentDurationShort})` : currentDurationShort;
     if (onOpenBookModal) {
-      onOpenBookModal(bookingTitle);
+      onOpenBookModal(detail.title, planText, currentStartingPrice);
     } else {
       const whatsappUrl = `https://wa.me/917207681067?text=${encodeURIComponent(
-        `Hi Backpackers Destinations! I want to book the ${detail.title} (${currentDurationShort}) trip.`
+        `Hi Backpackers Destinations! I want to book the ${detail.title} (${planText}) trip starting at ${currentStartingPrice}.`
       )}`;
       window.open(whatsappUrl, '_blank');
     }
@@ -212,21 +215,21 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                   {variants.length > 0 && (
                     <div className="dest-duration-dropdown-container">
                       <label className="dest-duration-dropdown-label">
-                        PLAN DURATION
+                        SELECT YOUR PLAN
                       </label>
                       <GlideSelect
                         options={glideOptions}
                         value={selectedVariantId}
                         onChange={(val) => setSelectedVariantId(val)}
-                        ariaLabel="Plan duration"
+                        ariaLabel="Select your plan"
                         showTags={true}
                         accentColor="#F5BA24"
                         surfaceColor="#1C1C18"
                         highlightColor="#2E2E28"
                         textColor="#FAF8F5"
-                        size="sm"
-                        radius={10}
-                        menuWidth={180}
+                        size="md"
+                        radius={12}
+                        menuWidth={200}
                         placement="bottom"
                         align="right"
                         popDuration={180}
@@ -268,6 +271,18 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                 >
                   Itinerary
                 </button>
+
+                {destinationId === 'ladakh' && currentPricing && (
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={activeTab === 'pricing'}
+                    className={`sheet-tab-btn ${activeTab === 'pricing' ? 'is-active' : ''}`}
+                    onClick={() => setActiveTab('pricing')}
+                  >
+                    Pricing
+                  </button>
+                )}
 
                 <button
                   type="button"
@@ -333,6 +348,42 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                   </div>
                 )}
 
+                {/* TAB 3: PRICING (LADAKH ONLY) */}
+                {destinationId === 'ladakh' && activeTab === 'pricing' && currentPricing && (
+                  <div className="tab-panel tab-pricing-panel">
+                    <div className="dest-pricing-overview">
+                      <div className="dest-pricing-starting-box">
+                        <span className="dest-pricing-label">STARTING PRICE ({currentDurationShort})</span>
+                        <span className="dest-pricing-val">{currentStartingPrice}</span>
+                      </div>
+                    </div>
+
+                    <div className="dest-occupancy-list">
+                      <h4 className="dest-occupancy-heading">ROOM OCCUPANCY & PRICING PLANS</h4>
+                      <div className="dest-occupancy-grid">
+                        {currentPricing.occupancyTypes.map((occ, oIdx) => (
+                          <div key={oIdx} className="dest-occupancy-card">
+                            <div className="dest-occ-type">{occ.type}</div>
+                            <div className="dest-occ-price">{occ.price}</div>
+                            {occ.note && <div className="dest-occ-note">{occ.note}</div>}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {currentPricing.notes && currentPricing.notes.length > 0 && (
+                      <div className="dest-pricing-notes-box">
+                        <h4 className="dest-pricing-notes-title">BOOKING & PRICING NOTES</h4>
+                        <ul className="dest-pricing-notes-list">
+                          {currentPricing.notes.map((note, nIdx) => (
+                            <li key={nIdx}>{note}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+
 
 
                 {/* TAB 4: INCLUSIONS */}
@@ -346,7 +397,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                           <span className="icon-check">✓</span> WHAT'S INCLUDED
                         </h4>
                         <ul className="inc-list">
-                          {detail.inclusions.included.map((item, iIdx) => (
+                          {currentInclusions.included.map((item, iIdx) => (
                             <li key={iIdx}>
                               <span className="bullet-green">✓</span>
                               <span>{item}</span>
@@ -361,7 +412,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
                           <span className="icon-cross">✕</span> WHAT'S EXCLUDED
                         </h4>
                         <ul className="inc-list">
-                          {detail.inclusions.excluded.map((item, eIdx) => (
+                          {currentInclusions.excluded.map((item, eIdx) => (
                             <li key={eIdx}>
                               <span className="bullet-red">✕</span>
                               <span>{item}</span>

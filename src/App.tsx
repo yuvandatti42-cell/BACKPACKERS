@@ -30,9 +30,13 @@ export const App: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [isBookModalOpen, setIsBookModalOpen] = useState<boolean>(false);
   const [bookModalTitle, setBookModalTitle] = useState<string | undefined>(undefined);
+  const [bookModalPlan, setBookModalPlan] = useState<string | undefined>(undefined);
+  const [bookModalPrice, setBookModalPrice] = useState<string | undefined>(undefined);
 
-  const openBookModal = (tripTitle?: string) => {
+  const openBookModal = (tripTitle?: string, planDuration?: string, price?: string) => {
     setBookModalTitle(tripTitle);
+    setBookModalPlan(planDuration);
+    setBookModalPrice(price);
     setIsBookModalOpen(true);
   };
 
@@ -140,6 +144,8 @@ export const App: React.FC = () => {
         isOpen={isBookModalOpen} 
         onClose={closeBookModal} 
         tripTitle={bookModalTitle} 
+        planDuration={bookModalPlan}
+        startingPrice={bookModalPrice}
       />
 
       <FloatingSocialButtons />

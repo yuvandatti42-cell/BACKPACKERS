@@ -78,6 +78,36 @@
   text-transform: uppercase;
 }
 
+.notify-plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  margin-top: 0.35rem;
+  width: fit-content;
+}
+
+.notify-plan-badge .badge-sparkle {
+  color: #D97706;
+  font-size: 0.75rem;
+}
+
+.notify-plan-badge .badge-duration strong {
+  color: #1C1917;
+}
+
+.notify-plan-badge .badge-price {
+  color: #B45309;
+  font-weight: 800;
+}
+
 .notify-modal-close-btn {
   background: #F0F2F1;
   border: 1px solid #E0E4E2;
@@ -358,6 +388,52 @@
 
 .notify-success-box strong {
   color: #0D5C46;
+}
+
+.btn-whatsapp-reopen {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #25D366 0%, #1EBE5D 100%);
+  color: #FFFFFF;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  margin-top: 1.25rem;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp-reopen:hover {
+  background: linear-gradient(135deg, #1EBE5D 0%, #17A34E 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF;
+}
+
+.btn-notify-close-window {
+  background: transparent;
+  border: 1px solid #DDE2E0;
+  color: #55605C;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.btn-notify-close-window:hover {
+  background: #F0F2F1;
+  color: #111816;
 }
 
 /* Responsive Mobile Adjustments — Compact Centered Card */

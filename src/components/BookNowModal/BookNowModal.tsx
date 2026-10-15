@@ -5,15 +5,24 @@ interface BookNowModalProps {
   isOpen: boolean;
   onClose: () => void;
   tripTitle?: string;
+  planDuration?: string;
+  startingPrice?: string;
 }
 
-export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tripTitle }) => {
+export const BookNowModal: React.FC<BookNowModalProps> = ({ 
+  isOpen, 
+  onClose, 
+  tripTitle,
+  planDuration,
+  startingPrice
+}) => {
   const [fullName, setFullName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [expectingCallback, setExpectingCallback] = useState<boolean>(false);
   const [errors, setErrors] = useState<{ fullName?: string; phone?: string; email?: string }>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [lastWhatsappUrl, setLastWhatsappUrl] = useState<string>('');
 
   useEffect(() => {
     if (isOpen) {
@@ -53,35 +62,29 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
     e.preventDefault();
     if (!validate()) return;
 
-    const callbackText = expectingCallback ? 'Yes' : 'No';
-    const tripText = tripTitle || 'General Expedition Notification Request';
+    const callbackText = expectingCallback ? 'Yes, please call me' : 'No, WhatsApp chat is fine';
+    const tripText = tripTitle || 'Backpackers Expedition';
+    const planText = planDuration ? `\n• *Selected Plan Duration:* ${planDuration}` : '';
+    const priceText = startingPrice ? `\n• *Starting Price:* ${startingPrice}` : '';
 
     const messageText = 
-`Hi Backpackers Destinations,
+`Hi Backpackers Destinations! 👋
 
-*New Expedition Booking / Notification:*
-• *Full Name:* ${fullName}
-• *Phone Number (WhatsApp):* ${phone}
-• *Email:* ${email}
+*New Trip Booking Request:*
+• *Full Name:* ${fullName.trim()}
+• *Phone Number (WhatsApp):* ${phone.trim()}
+• *Email:* ${email.trim()}
+• *Trip / Destination:* ${tripText}${planText}${priceText}
 • *Expecting a Callback?:* ${callbackText}
-• *Target Expedition:* ${tripText}`;
 
-    // 1. Send via WhatsApp
+I would like more information and to book this plan. Please share the details!`;
+
     const encodedWhatsapp = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/917207681067?text=${encodedWhatsapp}`;
+    setLastWhatsappUrl(whatsappUrl);
 
-    // 2. Send via Email
-    const emailSubject = encodeURIComponent(`Booking Inquiry - ${fullName}`);
-    const emailBody = encodeURIComponent(messageText);
-    const mailtoUrl = `mailto:contact@backpackersdestinations.com?subject=${emailSubject}&body=${emailBody}`;
-
-    // Trigger Email Client
-    window.open(mailtoUrl, '_blank');
-
-    // Trigger WhatsApp
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
-    }, 400);
+    // Open WhatsApp directly without delay
+    window.open(whatsappUrl, '_blank');
 
     setIsSubmitted(true);
   };
@@ -95,8 +98,15 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
           <div className="notify-header-text">
             <span className="notify-eyebrow">BACKPACKERS DESTINATIONS</span>
             <h3 className="notify-modal-title">
-              {tripTitle ? `BOOK: ${tripTitle.toUpperCase()}` : 'NO UPCOMING DATES'}
+              {tripTitle ? `BOOK: ${tripTitle.toUpperCase()}` : 'EXPEDITION BOOKING'}
             </h3>
+            {(planDuration || startingPrice) && (
+              <div className="notify-plan-badge">
+                <span className="badge-sparkle">✦</span>
+                {planDuration && <span className="badge-duration">PLAN: <strong>{planDuration}</strong></span>}
+                {startingPrice && <span className="badge-price">• {startingPrice}</span>}
+              </div>
+            )}
           </div>
           <button className="notify-modal-close-btn" onClick={onClose} aria-label="Close modal" title="Close">
             &times;
@@ -108,17 +118,28 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
         {isSubmitted ? (
           <div className="notify-success-box">
             <div className="success-icon-wrap">✓</div>
-            <h4>INQUIRY DISPATCHED</h4>
+            <h4>REQUEST SENT TO WHATSAPP!</h4>
             <p>
-              Thank you, <strong>{fullName}</strong>. Your expedition request details have been opened on WhatsApp and sent to <strong>contact@backpackersdestinations.com</strong>.
+              Thank you, <strong>{fullName}</strong>! We've prepared your booking details for <strong>{tripTitle || 'your trip'}</strong> {planDuration ? `(${planDuration})` : ''} and opened WhatsApp.
             </p>
-            <button className="btn-notify-submit" onClick={onClose} style={{ marginTop: '1.5rem' }}>
+            {lastWhatsappUrl && (
+              <a 
+                href={lastWhatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-whatsapp-reopen"
+              >
+                <span>OPEN IN WHATSAPP NOW</span>
+                <span>&rarr;</span>
+              </a>
+            )}
+            <button className="btn-notify-close-window" onClick={onClose}>
               <span>CLOSE WINDOW</span>
             </button>
           </div>
         ) : (
           <form className="notify-modal-body" onSubmit={handleSubmit} noValidate>
-            <p className="notify-subtext">ENTER YOUR DETAILS TO GET NOTIFIED</p>
+            <p className="notify-subtext">ENTER YOUR DETAILS TO CONFIRM ON WHATSAPP</p>
 
             {/* Full Name */}
             <div className="notify-field-group">
@@ -126,7 +147,7 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
               <input
                 type="text"
                 className={`notify-input ${errors.fullName ? 'input-error' : ''}`}
-                placeholder="Full Name"
+                placeholder="Your full name"
                 value={fullName}
                 onChange={(e) => {
                   setFullName(e.target.value);
@@ -142,7 +163,7 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
               <input
                 type="tel"
                 className={`notify-input ${errors.phone ? 'input-error' : ''}`}
-                placeholder="Phone Number (WhatsApp)"
+                placeholder="+91 98765 43210"
                 value={phone}
                 onChange={(e) => {
                   setPhone(e.target.value);
@@ -158,7 +179,7 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
               <input
                 type="email"
                 className={`notify-input ${errors.email ? 'input-error' : ''}`}
-                placeholder="Email"
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -177,13 +198,13 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
                   onChange={(e) => setExpectingCallback(e.target.checked)}
                 />
                 <span className="checkbox-custom" />
-                <span className="checkbox-label-text">Expecting a callback?</span>
+                <span className="checkbox-label-text">Request a callback from our trip leader?</span>
               </label>
             </div>
 
             {/* Submit Button */}
             <button type="submit" className="btn-notify-submit">
-              <span>NOTIFY ME</span>
+              <span>SEND TO WHATSAPP</span>
               <span className="btn-icon-arrow" aria-hidden="true">&rarr;</span>
             </button>
           </form>
@@ -205,4 +226,3 @@ export const BookNowModal: React.FC<BookNowModalProps> = ({ isOpen, onClose, tri
 };
 
 export default BookNowModal;
-
