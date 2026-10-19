@@ -131,6 +131,32 @@
   margin-top: 0.25rem;
 }
 
+.view-all-reviews-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(230, 168, 23, 0.4);
+  color: #E6A817;
+  font-family: var(--font-body);
+  font-size: 0.775rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.view-all-reviews-link-btn:hover {
+  background: #E6A817;
+  color: #121212;
+  border-color: #E6A817;
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(230, 168, 23, 0.3);
+}
+
 .testimonial-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;

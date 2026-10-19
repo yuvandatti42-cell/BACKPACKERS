@@ -1075,22 +1075,26 @@
     overflow-x: hidden;
   }
 
+  .dest-card:hover,
+  .dest-card.is-selected {
+    transform: none;
+  }
+
   .dest-card-frame {
-    padding: 8px;
-    border-radius: 16px;
+    padding: 10px;
+    border-radius: 18px;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   .dest-card-inner-canvas {
-    border-radius: 11px;
+    border-radius: 12px;
     width: 100%;
     overflow: hidden;
   }
 
   .dest-card-img-wrap {
-    border-radius: 11px 11px 0 0;
+    border-radius: 12px 12px 0 0;
     width: 100%;
     max-width: 100%;
     aspect-ratio: 16 / 10;

@@ -8,7 +8,10 @@ export const scrollToSection = (sectionId: string, extraOffset: number = 14) => 
     return;
   }
 
-  const target = document.getElementById(sectionId);
+  let target = document.getElementById(sectionId);
+  if (!target && (sectionId === 'reviews' || sectionId === 'stories')) {
+    target = document.getElementById('reviews') || document.getElementById('stories');
+  }
   if (!target) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;

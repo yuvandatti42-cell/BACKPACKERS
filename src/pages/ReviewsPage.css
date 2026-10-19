@@ -1,0 +1,679 @@
+/* ==========================================================================
+   BACKPACKERS — PREMIUM REVIEWS EXPERIENCE (EXACT REFERENCE DESIGN)
+   Hero preserved + Section 1 Featured Gallery + Section 2 Panoramic Stories
+   + Section 3 Split Story with Topographic Contours & Carousel Controls
+   ========================================================================== */
+
+.reviews-page-root {
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #FAF8F5;
+  color: #1C1C1C;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.reviews-page-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* ==========================================================================
+   HERO SECTION (Preserved as requested: "leave the hero section as same")
+   Full-bleed travel photograph extending edge-to-edge behind the header
+   ========================================================================== */
+.reviews-hero-fullbleed {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
+  max-height: 100svh;
+  overflow: hidden;
+  background-color: #121413;
+}
+
+.reviews-hero-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.reviews-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+}
+
+.reviews-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(14, 18, 16, 0.58) 0%, transparent 75%),
+    linear-gradient(
+      180deg,
+      rgba(14, 18, 16, 0.48) 0%,
+      rgba(14, 18, 16, 0.16) 30%,
+      rgba(14, 18, 16, 0.22) 58%,
+      rgba(14, 18, 16, 0.88) 100%
+    );
+  pointer-events: none;
+}
+
+.reviews-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: clamp(20px, 4.5vw, 40px);
+  padding-right: clamp(20px, 4.5vw, 40px);
+  padding-top: calc(var(--mobile-header-height, 82px) + 1.25rem);
+  padding-bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px));
+}
+
+.reviews-hero-center-block {
+  margin-top: 0;
+  margin-bottom: auto;
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 520px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.reviews-hero-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  text-align: left;
+}
+
+.reviews-hero-headline {
+  font-family: var(--font-display, 'Bebas Neue', -apple-system, sans-serif);
+  font-size: clamp(4.2rem, 11vw, 7.2rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #E6A817);
+  margin: 0 0 1rem 0;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+  text-align: left;
+}
+
+.reviews-hero-subtext {
+  font-family: var(--font-body);
+  font-size: clamp(0.925rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0;
+  max-width: 440px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: left;
+}
+
+/* Hero Bottom Bar */
+.reviews-hero-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.reviews-hero-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.reviews-hero-scroll-btn:hover {
+  opacity: 0.85;
+}
+
+.hero-mouse-pill {
+  width: 20px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+.hero-mouse-wheel {
+  width: 2px;
+  height: 6px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  animation: mouseWheelScroll 1.8s infinite ease-in-out;
+}
+
+@keyframes mouseWheelScroll {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+.reviews-hero-scroll-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.reviews-hero-indicator-group {
+  display: none !important;
+}
+
+/* ==========================================================================
+   WARM IVORY CANVAS (#FAF8F5) FOR ALL REMAINING SECTIONS
+   ========================================================================== */
+.reviews-editorial-stream {
+  background-color: #FAF8F5;
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.editorial-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: clamp(18px, 4.5vw, 28px);
+  padding-right: clamp(18px, 4.5vw, 28px);
+}
+
+/* ==========================================================================
+   SECTION 1: FEATURED GALLERY (Rahul K. / Munnar, Kerala)
+   ========================================================================== */
+.review-editorial-card-block {
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.featured-gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.featured-main-photo-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #ECE7DE;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.05);
+}
+
+.featured-main-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border-radius: 14px;
+  transition: opacity 0.25s ease-in-out, transform 0.4s ease;
+}
+
+.featured-main-photo.is-fading {
+  opacity: 0.7;
+  transform: scale(0.995);
+}
+
+/* Quote with double-quote icon */
+.featured-quote-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.quote-mark-icon {
+  color: #1A2836;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.featured-quote-text {
+  font-family: var(--font-quote, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #1A2836;
+  margin: 0;
+}
+
+/* Reviewer Profile & Mountain Skyline Divider */
+.reviewer-skyline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.reviewer-profile-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.reviewer-circle-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #E2DDD3;
+}
+
+.reviewer-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.reviewer-name-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1C1C1C;
+  line-height: 1.2;
+}
+
+.reviewer-meta-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #78746D;
+  line-height: 1.2;
+}
+
+.skyline-divider-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 0.75rem;
+}
+
+.skyline-line-left {
+  height: 1px;
+  background-color: #E2DDD3;
+  flex: 1;
+}
+
+.skyline-mountain-svg {
+  width: 68px;
+  height: 18px;
+  stroke: #B5AEA4;
+  flex-shrink: 0;
+  display: block;
+}
+
+.skyline-line-right {
+  height: 1px;
+  background-color: #E2DDD3;
+  width: 32px;
+}
+
+/* Thumbnails Row */
+.thumbnails-row-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.thumbnail-btn {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  background-color: #EFECE6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.thumbnail-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.thumbnail-btn.is-selected {
+  border-color: #1C1C1C;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.thumbnail-btn:not(.is-selected) {
+  opacity: 0.75;
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+/* ==========================================================================
+   SECTION 3: SPLIT STORY WITH TOPOGRAPHIC CONTOURS & CAROUSEL
+   ========================================================================== */
+.split-story-topographic-section {
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+.split-story-card-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 1.25rem;
+}
+
+.paper-plane-doodle {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  z-index: 4;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+
+.topographic-contours-svg {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 380px;
+  height: 260px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.split-story-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.split-story-photo-col {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  max-height: clamp(420px, 68vh, 560px);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  background-color: #0E141D;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: aspect-ratio 0.35s ease;
+}
+
+.split-story-backdrop-blur {
+  position: absolute;
+  inset: -24px;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  object-fit: cover;
+  object-position: center center;
+  filter: blur(28px) brightness(0.65) saturate(1.3);
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.split-story-featured-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  border-radius: 14px;
+  transition: opacity 0.25s ease, transform 0.4s ease;
+}
+
+.split-story-featured-img.fit-contain {
+  object-fit: contain;
+  border-radius: 8px;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+}
+
+.split-story-featured-img.is-fading {
+  opacity: 0.65;
+  transform: scale(0.995);
+}
+
+.split-story-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.split-story-quote {
+  font-family: var(--font-quote, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1.52;
+  color: #1A2836;
+  margin: 0;
+  transition: opacity 0.25s ease;
+}
+
+.split-story-quote.is-fading {
+  opacity: 0.4;
+}
+
+.split-story-reviewer-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Bottom Bar: Progress Indicator + [ ← ] [ → ] Navigation Arrows */
+.split-story-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 3;
+}
+
+.split-story-counter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.split-story-counter-num {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #1C1C1C;
+}
+
+.split-story-progress-track {
+  width: 90px;
+  height: 2px;
+  background-color: #E2DDD3;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.split-story-progress-fill {
+  height: 100%;
+  background-color: #1C1C1C;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.split-story-arrow-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.carousel-circle-arrow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #1C1C1C;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1C1C1C;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.carousel-circle-arrow-btn:hover {
+  background-color: #1C1C1C;
+  color: #FAF8F5;
+  transform: scale(1.06);
+}
+
+.carousel-circle-arrow-btn:focus-visible {
+  outline: 2px solid #E6A817;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   DESKTOP RESPONSIVE ADJUSTMENTS (>= 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .split-story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .travel-stories-card {
+    min-height: 420px;
+    padding: 3.5rem 3rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE SCREEN OPTIMIZATIONS (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .reviews-hero-inner {
+    padding-top: calc(var(--mobile-header-height, 74px) + 0.85rem);
+  }
+
+  .reviews-hero-center-block {
+    max-width: 300px;
+  }
+
+  .reviews-hero-headline {
+    font-size: clamp(3.4rem, 14vw, 4.4rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .reviews-hero-subtext {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .thumbnails-row-grid {
+    gap: 6px;
+  }
+
+  .travel-stories-gradient-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 20, 24, 0.92) 0%,
+      rgba(14, 20, 24, 0.65) 55%,
+      rgba(14, 20, 24, 0.25) 100%
+    );
+  }
+
+  .travel-stories-card {
+    min-height: 420px;
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .travel-stories-headline {
+    font-size: 2.1rem;
+  }
+
+  .topographic-contours-svg {
+    width: 240px;
+    height: 180px;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .featured-main-photo,
+  .thumbnail-btn,
+  .split-story-featured-img,
+  .carousel-circle-arrow-btn,
+  .travel-stories-circle-arrow-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}

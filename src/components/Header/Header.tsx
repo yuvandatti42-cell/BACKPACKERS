@@ -17,7 +17,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
 
   const isNotHome = currentRoute !== 'home' || 
                     window.location.hash === '#destinations' || 
+                    window.location.hash === '#reviews' || 
                     window.location.hash.startsWith('#region');
+
+  const isHeroTransparent = (currentRoute === 'home' || currentRoute === 'reviews') && 
+                            window.location.hash !== '#destinations';
+  const hasScrolledBackground = isScrolled || !isHeroTransparent;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,6 +85,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
       if (route === 'destinations') {
         window.location.hash = 'destinations';
         scrollToSection('destinations');
+      } else if (route === 'reviews') {
+        window.location.hash = 'reviews';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         const targetSection = sectionId ? sectionId : 'hero';
         window.location.hash = targetSection;
@@ -90,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
 
   return (
     <>
-      <header className={`site-header ${(isScrolled || isNotHome) ? 'nav-scrolled' : ''}`} role="banner">
+      <header className={`site-header ${hasScrolledBackground ? 'nav-scrolled' : ''}`} role="banner">
         <div className="container nav-container">
           
           {/* Left Column: Symmetrical Navigation with Hover Dropdown */}
@@ -194,6 +202,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
                 </div>
               </div>
             )}
+
+            <a 
+              href="#reviews" 
+              className={`nav-link ${currentRoute === 'reviews' ? 'is-active' : ''}`}
+              onClick={(e) => handleNavClick(e, 'reviews')}
+            >
+              REVIEWS
+            </a>
           </div>
 
           {/* Centered Brand Logo */}
@@ -317,6 +333,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             DESTINATIONS
           </a>
           <a 
+            href="#reviews" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'reviews')}
+          >
+            REVIEWS
+          </a>
+          <a 
+            href="#planner" 
+            className="mobile-nav-link" 
+            onClick={(e) => handleNavClick(e, 'home', 'planner')}
+          >
+            CONTACT US
+          </a>
+          <a 
             href="https://gearstation.co" 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -332,13 +362,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             </div>
             <span className="mobile-gear-station-text">GET YOUR GEAR</span>
             <span className="mobile-ext-icon">↗</span>
-          </a>
-          <a 
-            href="#planner" 
-            className="mobile-nav-link" 
-            onClick={(e) => handleNavClick(e, 'home', 'planner')}
-          >
-            CONTACT US
           </a>
         </div>
         <div>

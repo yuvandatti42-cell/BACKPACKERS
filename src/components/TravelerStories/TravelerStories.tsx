@@ -17,7 +17,11 @@ const LOOPED_REVIEWS = [
   ...REVIEWS_DATA,
 ];
 
-export const TravelerStories: React.FC = () => {
+interface TravelerStoriesProps {
+  onNavigate?: (route: string) => void;
+}
+
+export const TravelerStories: React.FC<TravelerStoriesProps> = ({ onNavigate }) => {
   const [trackIndex, setTrackIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [isInView, setIsInView] = useState<boolean>(false);
@@ -127,11 +131,12 @@ export const TravelerStories: React.FC = () => {
 
   return (
     <section 
-      id="stories" 
+      id="reviews" 
       ref={sectionRef}
       className={`traveler-stories-editorial ${isInView ? 'is-in-view' : ''}`} 
       aria-labelledby="stories-heading"
     >
+      <span id="stories" style={{ position: 'absolute', pointerEvents: 'none', opacity: 0 }} aria-hidden="true" />
       {/* DESKTOP VIEW: Rich Editorial Layout */}
       <div className="desktop-only-stories">
         <div className="stories-paper-texture" aria-hidden="true" />
@@ -144,6 +149,16 @@ export const TravelerStories: React.FC = () => {
               <span className="text-meta">CLIENT REVIEWS</span>
               <span className="plus-indicator">+</span>
             </div>
+            {onNavigate && (
+              <button 
+                type="button"
+                className="view-all-reviews-link-btn"
+                onClick={() => onNavigate('reviews')}
+              >
+                <span>EXPLORE ALL REVIEWS &amp; SADDLE STORIES</span>
+                <span>&rarr;</span>
+              </button>
+            )}
           </div>
 
           <div className="testimonial-grid">
@@ -286,6 +301,19 @@ export const TravelerStories: React.FC = () => {
               NEXT &rarr;
             </button>
           </div>
+
+          {onNavigate && (
+            <div style={{ marginTop: '1.25rem', textAlign: 'center' }}>
+              <button 
+                type="button"
+                className="btn btn-secondary" 
+                style={{ width: '100%', fontSize: '0.8rem', padding: '0.75rem 1rem' }}
+                onClick={() => onNavigate('reviews')}
+              >
+                VIEW ALL REVIEWS &amp; EXPEDITION PHOTOS &rarr;
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

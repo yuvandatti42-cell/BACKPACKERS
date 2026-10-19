@@ -29,7 +29,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {
         <FeaturedExpedition onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
         <FeaturedExpeditions onOpenBookModal={onOpenBookModal} />
         <OurStory />
-        <TravelerStories />
+        <TravelerStories onNavigate={onNavigate} />
         <EditorialIntro />
         <TripPlanner onOpenBookModal={onOpenBookModal} />
       </main>

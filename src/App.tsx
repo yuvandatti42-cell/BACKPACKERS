@@ -3,6 +3,7 @@ import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { RegionExplorePage } from './pages/RegionExplorePage';
 import { DestinationDetailPage } from './pages/DestinationDetailPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { BookNowModal } from './components/BookNowModal/BookNowModal';
 import { FloatingSocialButtons } from './components/FloatingSocialButtons/FloatingSocialButtons';
 import { scrollToSection } from './utils/scrollUtils';
@@ -17,6 +18,9 @@ export const App: React.FC = () => {
     const pathname = window.location.pathname;
     if (pathname === '/destinations' || hash === 'destinations') {
       return 'destinations';
+    }
+    if (pathname === '/reviews' || hash === 'reviews') {
+      return 'reviews';
     }
     if (hash.startsWith('destination/') || hash.startsWith('destination:')) {
       return 'destination:' + hash.replace(/^destination[\/:]/, '');
@@ -50,6 +54,8 @@ export const App: React.FC = () => {
       const pathname = window.location.pathname;
       if (pathname === '/destinations' || hash === 'destinations') {
         setCurrentRoute('destinations');
+      } else if (pathname === '/reviews' || hash === 'reviews') {
+        setCurrentRoute('reviews');
       } else if (hash.startsWith('destination/') || hash.startsWith('destination:')) {
         setCurrentRoute('destination:' + hash.replace(/^destination[\/:]/, ''));
       } else if (hash.startsWith('region/') || hash.startsWith('region:')) {
@@ -96,6 +102,10 @@ export const App: React.FC = () => {
       setCurrentRoute('destinations');
       window.location.hash = 'destinations';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (route === 'reviews') {
+      setCurrentRoute('reviews');
+      window.location.hash = 'reviews';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentRoute('home');
       if (sectionId) {
@@ -131,6 +141,11 @@ export const App: React.FC = () => {
         <DestinationsPage 
           onNavigate={navigateTo} 
           initialFilter={activeFilter} 
+          onOpenBookModal={openBookModal}
+        />
+      ) : currentRoute === 'reviews' ? (
+        <ReviewsPage 
+          onNavigate={navigateTo} 
           onOpenBookModal={openBookModal}
         />
       ) : (
