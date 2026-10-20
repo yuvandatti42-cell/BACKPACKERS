@@ -51,8 +51,8 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
     },
     {
       id: 'thumb-3',
-      url: '/sunset_mountain_lake.webp',
-      alt: 'Golden orange sunset over tranquil mountain lake',
+      url: '/r5.webp',
+      alt: 'Travelers on high mountain pass exploring scenic vistas',
       objectPosition: 'center center'
     },
     {
