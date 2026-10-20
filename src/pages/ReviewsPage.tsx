@@ -57,13 +57,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       alt: 'Backpacker group standing on mountain pass road overlooking dramatic high-altitude peaks',
       caption: 'Himalayan Pass · North India',
       objectPosition: 'center 68%'
-    },
-    {
-      id: 'slide-4',
-      url: '/r5.webp',
-      alt: 'Motorcycle convoy riding on scenic winding mountain road under vast rocky cliffs and blue skies',
-      caption: 'Canyon Pass · Himalayas',
-      objectPosition: 'center center'
     }
   ];
 
