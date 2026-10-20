@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { TravelCollage } from '../components/TravelCollage/TravelCollage';
+import { RiderSpotlight } from '../components/RiderSpotlight/RiderSpotlight';
 import { scrollToSection } from '../utils/scrollUtils';
 import './ReviewsPage.css';
 
@@ -41,21 +42,18 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       id: 'slide-1',
       url: '/r1.webp',
       alt: 'Three backpacker friends smiling by Pangong Lake in Ladakh',
-      caption: 'Pangong Lake · Ladakh',
       objectPosition: 'center 42%'
     },
     {
       id: 'slide-2',
       url: '/r3.webp',
       alt: 'Traveler group and motorcycle posing in front of Gonbo Rangjon mountain in Zanskar Ladakh',
-      caption: 'Gonbo Rangjon · Zanskar',
       objectPosition: 'center 52%'
     },
     {
       id: 'slide-3',
       url: '/r4.webp',
       alt: 'Backpacker group standing on mountain pass road overlooking dramatic high-altitude peaks',
-      caption: 'Himalayan Pass · North India',
       objectPosition: 'center 68%'
     }
   ];
@@ -268,6 +266,12 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
         <TravelCollage onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
 
         {/* ==================================================================
+            CREATOR & INFLUENCER GUEST RIDER SPOTLIGHT
+            Bobbie Dhanush (@bobbiedhanush)
+            ================================================================== */}
+        <RiderSpotlight />
+
+        {/* ==================================================================
             WARM IVORY CANVAS (#FAF8F5) FOR ALL REMAINING REVIEWS
             ================================================================== */}
         <div className="reviews-editorial-stream">
@@ -317,9 +321,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                           style={{ objectPosition: slide.objectPosition || 'center center' }}
                           loading={idx === 0 ? 'eager' : 'lazy'}
                         />
-                        {slide.caption && (
-                          <span className="featured-slide-tag">{slide.caption}</span>
-                        )}
                       </div>
                     ))}
                   </div>
@@ -354,7 +355,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                         type="button"
                         role="tab"
                         aria-selected={idx === currentSlideIdx}
-                        aria-label={`Go to slide ${idx + 1}: ${slide.caption || ''}`}
+                        aria-label={`Go to slide ${idx + 1}`}
                         className={`slider-dot-btn ${idx === currentSlideIdx ? 'is-active' : ''}`}
                         onClick={() => handleGoToSlide(idx)}
                       />

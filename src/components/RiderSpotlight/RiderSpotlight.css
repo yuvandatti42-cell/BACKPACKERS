@@ -1,0 +1,335 @@
+/* ==========================================================================
+   RIDER SPOTLIGHT — INFLUENCER & GUEST RIDER EDITORIAL SHOWCASE
+   Bobbie Dhanush (@bobbiedhanush)
+   ========================================================================== */
+
+.rider-spotlight-root {
+  position: relative;
+  width: 100%;
+  background-color: #FAF8F5;
+  color: #1C1C1C;
+  border-top: 1px solid #E5E0D5;
+  border-bottom: 1px solid #E5E0D5;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.rider-spotlight-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* 2-Column Grid */
+.rider-spotlight-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photo Column */
+.rider-photo-col {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.rider-photo-frame {
+  position: relative;
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: 
+    0 10px 30px rgba(28, 26, 22, 0.08),
+    0 24px 60px rgba(28, 26, 22, 0.06);
+  border: 1px solid #EAE5DB;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.rider-photo-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 16px 40px rgba(28, 26, 22, 0.12),
+    0 32px 70px rgba(28, 26, 22, 0.09);
+}
+
+.rider-photo-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #1A1A18;
+}
+
+.rider-spotlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rider-photo-frame:hover .rider-spotlight-img {
+  transform: scale(1.035);
+}
+
+
+/* Content Column */
+.rider-content-col {
+  position: relative;
+}
+
+.rider-content-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.rider-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #C58C0E;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.rider-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  line-height: 0.96;
+  letter-spacing: 0.02em;
+  color: #1A1A18;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+}
+
+.rider-title-accent {
+  color: #C85A32;
+  display: inline;
+}
+
+/* Creator Card */
+.rider-creator-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #FFFFFF;
+  border: 1px solid #E2DDD3;
+  border-radius: 14px;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(28, 26, 22, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rider-creator-card:hover {
+  border-color: #E1306C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.12);
+}
+
+.creator-card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.creator-avatar-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
+}
+
+.creator-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.creator-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.creator-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1A1A18;
+}
+
+.creator-handle {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #E1306C;
+  letter-spacing: 0.02em;
+}
+
+.creator-card-arrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #8C887E;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rider-creator-card:hover .creator-card-arrow {
+  color: #E1306C;
+  transform: translate(2px, -2px);
+}
+
+/* Story Narrative */
+.rider-story-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #4A463F;
+  margin: 0 0 1.5rem 0;
+}
+
+.rider-story-desc strong {
+  color: #1C1C1C;
+  font-weight: 700;
+}
+
+
+/* Action Button */
+.rider-actions-row {
+  margin-bottom: 2rem;
+}
+
+.btn-rider-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1A1A18;
+  color: #FFFFFF;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(26, 26, 24, 0.25);
+}
+
+.btn-rider-instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 39, 67, 0.35);
+}
+
+.btn-rider-instagram .btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-rider-instagram:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Specs List */
+.rider-specs-list {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 1.25rem;
+  border-top: 1px solid #E2DDD3;
+  flex-wrap: wrap;
+}
+
+.rider-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rider-spec-item .spec-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #8C887E;
+  text-transform: uppercase;
+}
+
+.rider-spec-item .spec-val {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #1A1A18;
+  letter-spacing: 0.04em;
+}
+
+.rider-spec-divider {
+  width: 1px;
+  height: 24px;
+  background: #D8D2C5;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 960px) {
+  .rider-spotlight-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .rider-photo-col {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .rider-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .rider-spotlight-root {
+    padding: 3rem 1.25rem;
+  }
+
+  .rider-photo-frame {
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .rider-title {
+    font-size: 2rem;
+  }
+
+  .btn-rider-instagram {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rider-specs-divider {
+    display: none;
+  }
+
+  .rider-specs-list {
+    gap: 12px;
+  }
+}

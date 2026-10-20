@@ -92,18 +92,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   };
 
   const handlePdfClick = () => {
-    const targetPdfUrl = currentPdfUrl || '/kerala_3d2n_catalog.pdf';
-
-    // 1. Open the PDF directly in a new browser tab
-    window.open(targetPdfUrl, '_blank');
-
-    // 2. Trigger direct file download
-    const link = document.createElement('a');
-    link.href = targetPdfUrl;
-    link.download = `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setIsGenericPdfLeadOpen(true);
   };
 
   const executeGenericDownload = () => {
@@ -479,13 +468,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
         pdfUrl={currentPdfUrl}
         downloadFilename={`${detail.id}_${activeVariant ? activeVariant.id : 'catalog'}.pdf`}
         onDirectDownload={() => {
-          if (detail.id === 'kerala') {
-            setIsKeralaCatalogOpen(true);
-          } else if (detail.id === 'ooty-coonoor') {
-            setIsOotyCatalogOpen(true);
-          } else {
-            executeGenericDownload();
-          }
+          executeGenericDownload();
         }}
       />
     </div>

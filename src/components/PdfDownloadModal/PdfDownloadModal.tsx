@@ -96,15 +96,17 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     localStorage.setItem('bp_user_name', cleanName);
     localStorage.setItem('bp_user_phone', cleanPhone);
 
-    const callbackText = expectingCallback ? 'Yes' : 'No';
+    const callbackText = expectingCallback ? 'Yes, please call me' : 'No, WhatsApp chat is fine';
     const messageText = 
-`Hi Backpackers Destinations,
+`Hi Backpackers Destinations! 👋
 
-*New PDF Download Lead:*
+*New Catalog PDF Download Request:*
 • *Full Name:* ${cleanName}
 • *Phone Number (WhatsApp):* ${cleanPhone}
 • *Expecting a Callback?:* ${callbackText}
-• *PDF Document:* ${title}`;
+• *Catalog / Trip:* ${title}
+
+Please share more details and trip dates!`;
 
     // Open WhatsApp lead chat
     const whatsappUrl = `https://wa.me/917207681067?text=${encodeURIComponent(messageText)}`;

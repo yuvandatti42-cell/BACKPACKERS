@@ -24,7 +24,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {
       <SplashScreen onComplete={() => setIsReady(true)} />
       <Header onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} currentRoute="home" />
       <main id="main-content">
-        <HeroSection onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
+        <HeroSection onNavigate={onNavigate} />
         <TripCategories onNavigate={onNavigate} />
         <FeaturedExpedition onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} />
         <FeaturedExpeditions onOpenBookModal={onOpenBookModal} />
