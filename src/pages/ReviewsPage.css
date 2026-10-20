@@ -230,28 +230,150 @@
   width: 100%;
 }
 
-.featured-main-photo-wrap {
+/* Featured Image Sliding Carousel (3-second auto-slide with interaction pause) */
+.featured-slider-container {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
   background-color: #ECE7DE;
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  touch-action: pan-y;
 }
 
-.featured-main-photo {
+.featured-slider-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.featured-slider-slide {
+  position: relative;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.featured-slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
   display: block;
-  border-radius: 14px;
-  transition: opacity 0.25s ease-in-out, transform 0.4s ease;
 }
 
-.featured-main-photo.is-fading {
-  opacity: 0.7;
-  transform: scale(0.995);
+.featured-slide-tag {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Arrow Navigation Buttons */
+.slider-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1A1A18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+  z-index: 3;
+}
+
+.featured-slider-container:hover .slider-arrow-btn {
+  opacity: 1;
+}
+
+.slider-arrow-btn.prev {
+  left: 14px;
+}
+
+.slider-arrow-btn.next {
+  right: 14px;
+}
+
+.slider-arrow-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider-arrow-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Touch & Mobile View: Always gently visible arrows */
+@media (max-width: 768px) {
+  .slider-arrow-btn {
+    opacity: 0.85;
+    width: 32px;
+    height: 32px;
+  }
+  .slider-arrow-btn.prev { left: 8px; }
+  .slider-arrow-btn.next { right: 8px; }
+}
+
+/* Slide Indicator Dots Bar */
+.slider-dots-bar {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.slider-dot-btn {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  outline: none;
+}
+
+.slider-dot-btn.is-active {
+  width: 20px;
+  background: #FFFFFF;
 }
 
 /* Quote with double-quote icon */
@@ -354,48 +476,7 @@
   width: 32px;
 }
 
-/* Thumbnails Row */
-.thumbnails-row-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  width: 100%;
-  margin-top: 0.5rem;
-}
 
-.thumbnail-btn {
-  aspect-ratio: 16 / 10;
-  border-radius: 8px;
-  overflow: hidden;
-  padding: 0;
-  border: 2px solid transparent;
-  background-color: #EFECE6;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.thumbnail-btn:hover {
-  opacity: 0.95;
-  transform: translateY(-2px);
-}
-
-.thumbnail-btn.is-selected {
-  border-color: #1C1C1C;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: 1;
-}
-
-.thumbnail-btn:not(.is-selected) {
-  opacity: 0.75;
-}
-
-.thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
 
 

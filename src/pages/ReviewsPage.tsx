@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { TravelCollage } from '../components/TravelCollage/TravelCollage';
@@ -35,44 +35,94 @@ interface CarouselStory {
 }
 
 export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBookModal }) => {
-  // Section 1: Gallery Thumbnails State (4 photos)
-  const galleryThumbnails: GalleryThumb[] = [
+  // Section 1: Auto-sliding Featured Gallery Photos (3-second timer, pause on interaction, resume)
+  const featuredSlides: GalleryThumb[] = [
     {
-      id: 'thumb-1',
+      id: 'slide-1',
       url: '/r1.webp',
       alt: 'Three backpacker friends smiling by Pangong Lake in Ladakh',
+      caption: 'Pangong Lake · Ladakh',
       objectPosition: 'center 42%'
     },
     {
-      id: 'thumb-2',
+      id: 'slide-2',
       url: '/r3.webp',
       alt: 'Traveler group and motorcycle posing in front of Gonbo Rangjon mountain in Zanskar Ladakh',
+      caption: 'Gonbo Rangjon · Zanskar',
       objectPosition: 'center 52%'
     },
     {
-      id: 'thumb-3',
-      url: '/r5.webp',
-      alt: 'Travelers on high mountain pass exploring scenic vistas',
-      objectPosition: 'center center'
-    },
-    {
-      id: 'thumb-4',
+      id: 'slide-3',
       url: '/r4.webp',
       alt: 'Backpacker group standing on mountain pass road overlooking dramatic high-altitude peaks',
+      caption: 'Himalayan Pass · North India',
       objectPosition: 'center 68%'
+    },
+    {
+      id: 'slide-4',
+      url: '/r5.webp',
+      alt: 'Motorcycle convoy riding on scenic winding mountain road under vast rocky cliffs and blue skies',
+      caption: 'Canyon Pass · Himalayas',
+      objectPosition: 'center center'
     }
   ];
 
-  const [activeThumbIdx, setActiveThumbIdx] = useState<number>(0);
-  const [isThumbFading, setIsThumbFading] = useState<boolean>(false);
+  const [currentSlideIdx, setCurrentSlideIdx] = useState<number>(0);
+  const [isSlidePaused, setIsSlidePaused] = useState<boolean>(false);
+  const autoPlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
 
-  const handleSelectThumbnail = (index: number) => {
-    if (index === activeThumbIdx) return;
-    setIsThumbFading(true);
-    setTimeout(() => {
-      setActiveThumbIdx(index);
-      setIsThumbFading(false);
-    }, 150);
+  const handleNextFeaturedSlide = useCallback(() => {
+    setCurrentSlideIdx((prev) => (prev + 1) % featuredSlides.length);
+  }, [featuredSlides.length]);
+
+  const handlePrevFeaturedSlide = useCallback(() => {
+    setCurrentSlideIdx((prev) => (prev - 1 + featuredSlides.length) % featuredSlides.length);
+  }, [featuredSlides.length]);
+
+  const handleUserInteraction = () => {
+    setIsSlidePaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      setIsSlidePaused(false);
+    }, 3500);
+  };
+
+  const handleGoToSlide = (index: number) => {
+    setCurrentSlideIdx(index);
+    handleUserInteraction();
+  };
+
+  // Auto-slide every 3 seconds (3000ms), pauses upon user interaction, resumes afterwards
+  useEffect(() => {
+    if (isSlidePaused) {
+      if (autoPlayTimerRef.current) clearInterval(autoPlayTimerRef.current);
+      return;
+    }
+    autoPlayTimerRef.current = setInterval(() => {
+      handleNextFeaturedSlide();
+    }, 3000);
+
+    return () => {
+      if (autoPlayTimerRef.current) clearInterval(autoPlayTimerRef.current);
+    };
+  }, [isSlidePaused, handleNextFeaturedSlide]);
+
+  const handleSlideTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    handleUserInteraction();
+  };
+
+  const handleSlideTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (diff > 40) {
+      handleNextFeaturedSlide();
+    } else if (diff < -40) {
+      handlePrevFeaturedSlide();
+    }
+    touchStartXRef.current = null;
   };
 
   // Section 3: Interactive Carousel Stories (4 authentic stories matching 4 images)
@@ -158,7 +208,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
     }, 150);
   };
 
-  const currentFeaturedPhoto = galleryThumbnails[activeThumbIdx] || galleryThumbnails[0];
   const currentStory = carouselStories[activeStoryIdx] || carouselStories[0];
 
   const handleScrollToFirstSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -247,16 +296,78 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
             <div className="editorial-container">
               <div className="featured-gallery-card">
 
-                {/* 1. Large Travel Photograph */}
-                <div className="featured-main-photo-wrap">
-                  <img
-                    src={currentFeaturedPhoto.url}
-                    alt={currentFeaturedPhoto.alt}
-                    className={`featured-main-photo ${isThumbFading ? 'is-fading' : ''}`}
-                    style={{ objectPosition: currentFeaturedPhoto.objectPosition || 'center center' }}
-                    loading="eager"
-                    decoding="async"
-                  />
+                {/* 1. Auto-sliding Travel Photo Carousel (Slides every 3s, pauses on interaction, resumes afterwards) */}
+                <div 
+                  className="featured-slider-container"
+                  onMouseEnter={() => setIsSlidePaused(true)}
+                  onMouseLeave={() => setIsSlidePaused(false)}
+                  onTouchStart={handleSlideTouchStart}
+                  onTouchEnd={handleSlideTouchEnd}
+                  aria-roledescription="carousel"
+                  aria-label="Featured Travel Experience Gallery"
+                >
+                  <div 
+                    className="featured-slider-track"
+                    style={{ transform: `translateX(-${currentSlideIdx * 100}%)` }}
+                  >
+                    {featuredSlides.map((slide, idx) => (
+                      <div
+                        key={slide.id}
+                        className="featured-slider-slide"
+                        role="group"
+                        aria-roledescription="slide"
+                        aria-label={`Slide ${idx + 1} of ${featuredSlides.length}`}
+                      >
+                        <img
+                          src={slide.url}
+                          alt={slide.alt}
+                          className="featured-slide-img"
+                          style={{ objectPosition: slide.objectPosition || 'center center' }}
+                          loading={idx === 0 ? 'eager' : 'lazy'}
+                        />
+                        {slide.caption && (
+                          <span className="featured-slide-tag">{slide.caption}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Left & Right Arrow Controls */}
+                  <button 
+                    type="button" 
+                    className="slider-arrow-btn prev"
+                    onClick={() => { handlePrevFeaturedSlide(); handleUserInteraction(); }}
+                    aria-label="Previous slide"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <button 
+                    type="button" 
+                    className="slider-arrow-btn next"
+                    onClick={() => { handleNextFeaturedSlide(); handleUserInteraction(); }}
+                    aria-label="Next slide"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+
+                  {/* Slide Indicators / Dots */}
+                  <div className="slider-dots-bar" role="tablist" aria-label="Slide indicators">
+                    {featuredSlides.map((slide, idx) => (
+                      <button
+                        key={slide.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={idx === currentSlideIdx}
+                        aria-label={`Go to slide ${idx + 1}: ${slide.caption || ''}`}
+                        className={`slider-dot-btn ${idx === currentSlideIdx ? 'is-active' : ''}`}
+                        onClick={() => handleGoToSlide(idx)}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* 2. Review Quote with Double Quotation Mark */}
@@ -279,7 +390,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                       alt="Rahul K."
                       className="reviewer-circle-img"
                       loading="lazy"
-                      decoding="async"
                     />
                     <div className="reviewer-details-col">
                       <span className="reviewer-name-label">Rahul K.</span>
@@ -303,37 +413,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                     </svg>
                     <span className="skyline-line-right" />
                   </div>
-                </div>
-
-                {/* 4. Horizontal Row of 4 Small Travel-Photo Thumbnails */}
-                <div
-                  className="thumbnails-row-grid"
-                  role="tablist"
-                  aria-label="Trip photo gallery thumbnails"
-                >
-                  {galleryThumbnails.map((thumb, idx) => {
-                    const isActive = idx === activeThumbIdx;
-                    return (
-                      <button
-                        key={thumb.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isActive}
-                        aria-label={`View photo ${idx + 1}`}
-                        className={`thumbnail-btn ${isActive ? 'is-selected' : ''}`}
-                        onClick={() => handleSelectThumbnail(idx)}
-                      >
-                        <img
-                          src={thumb.url}
-                          alt={thumb.alt}
-                          className="thumbnail-img"
-                          style={{ objectPosition: thumb.objectPosition || 'center center' }}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </button>
-                    );
-                  })}
                 </div>
 
               </div>
