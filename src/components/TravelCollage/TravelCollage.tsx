@@ -39,7 +39,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/ooty.webp"
               alt="Misty tea plantations and winding hairpin mountain curves in Ooty Nilgiris"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -49,7 +49,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/dest_kerala.webp"
               alt="Scenic misty valley with tropical mountain curves in Western Ghats"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -59,7 +59,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/meghalaya.webp"
               alt="Crystal clear emerald river and living root bridges in Cherrapunji Meghalaya"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -69,7 +69,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/chick.webp"
               alt="Backpacker on cliff ledge overlooking misty green mountain valleys in Chikmagalur"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -79,7 +79,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/trek.webp"
               alt="Backpackers hiking along remote mountain wilderness trails"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -89,7 +89,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/pic.webp"
               alt="Motorcycle rider looking out over Spiti high desert canyons and mountain roads"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -99,7 +99,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/gokarna.webp"
               alt="Dramatic ocean cliffs and golden beaches in Gokarna"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -109,17 +109,17 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/sty.webp"
               alt="Backpacker traveler gazing over dramatic mountain river valley"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
-          {/* Tile 9: Bottom Mid-Right - Tawang High Himalayan Passes & Monasteries */}
+          {/* Tile 9: Bottom Mid-Right - Backpacker Friends at Pangong Lake */}
           <div className="collage-tile tile-friends-ledge">
             <img
-              src="/tawang.webp"
-              alt="High-altitude Himalayan pass and sacred monasteries in Tawang"
+              src="/r1.webp"
+              alt="Backpacker friends smiling together at Pangong Lake in Ladakh"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -129,7 +129,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/kodai.webp"
               alt="Misty pine forests and mountain lakes in Kodaikanal"
               className="collage-tile-img"
-              loading="lazy" decoding="async"
+              loading="eager"
             />
           </div>
 
@@ -249,7 +249,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/ooty.webp"
                   alt="Ooty Nilgiri Tea Hills"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-top-2">
@@ -257,7 +257,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/dest_kerala.webp"
                   alt="Western Ghats Valley"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-top-3">
@@ -265,7 +265,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/meghalaya.webp"
                   alt="Cherrapunji Waterfalls"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-top-4">
@@ -273,7 +273,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/chick.webp"
                   alt="Chikmagalur Ridge"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
 
@@ -283,7 +283,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/trek.webp"
                   alt="Mountain Wilderness Trek"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
 
@@ -336,7 +336,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/pic.webp"
                   alt="Spiti Overland Pass"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
 
@@ -346,7 +346,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/gokarna.webp"
                   alt="Gokarna Cliff Trails"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-bottom-2">
@@ -354,15 +354,15 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/sty.webp"
                   alt="Mountain Canyon Valley"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-bottom-3">
                 <img
-                  src="/tawang.webp"
-                  alt="Tawang Himalayan Pass"
+                  src="/r1.webp"
+                  alt="Friends at Pangong Lake"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
               <div className="m-tile m-tile-bottom-4">
@@ -370,7 +370,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/kodai.webp"
                   alt="Kodaikanal Lake & Pines"
                   className="m-tile-img"
-                  loading="lazy" decoding="async"
+                  loading="eager"
                 />
               </div>
 
