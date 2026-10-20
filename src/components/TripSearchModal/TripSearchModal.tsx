@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { DESTINATION_CORRIDORS, CorridorDetail, TripTypeCategory } from '../../data/destinationsData';
 import './TripSearchModal.css';
 
@@ -56,7 +56,7 @@ const TYPEWRITER_PROMPTS = [
   "Search for South India or North India & Ladakh...",
   "Search by budget: Under ₹10k or ₹10k+ Overlands...",
   "Search for Gokarna Beach & Dandeli River Rafting...",
-  "Search for Spiti Valley Desert Mountain Circuit...",
+  "Search for Spiti Valley, Kaza & Chandratal Lake...",
   "Search for Ooty 36 Hairpin Bends & Kodaikanal Pine Trails..."
 ];
 
@@ -72,10 +72,9 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
   const [selectedPrice, setSelectedPrice] = useState<string>('all');
   const [selectedDuration, setSelectedDuration] = useState<string>('all');
   const [showFilterDrawer, setShowFilterDrawer] = useState<boolean>(false);
-  const [placeholderText, setPlaceholderText] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Typewriter effect for search input placeholder
+  // Smooth typewriter effect on the input placeholder without triggering React re-renders
   useEffect(() => {
     if (!isOpen) return;
 
@@ -89,7 +88,9 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
 
       if (isDeleting) {
         charIndex--;
-        setPlaceholderText(currentPrompt.substring(0, charIndex));
+        if (inputRef.current) {
+          inputRef.current.placeholder = currentPrompt.substring(0, charIndex);
+        }
         if (charIndex === 0) {
           isDeleting = false;
           promptIndex = (promptIndex + 1) % TYPEWRITER_PROMPTS.length;
@@ -99,7 +100,9 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
         timeoutId = setTimeout(typeEffect, 25);
       } else {
         charIndex++;
-        setPlaceholderText(currentPrompt.substring(0, charIndex));
+        if (inputRef.current) {
+          inputRef.current.placeholder = currentPrompt.substring(0, charIndex);
+        }
         if (charIndex === currentPrompt.length) {
           isDeleting = true;
           timeoutId = setTimeout(typeEffect, 2400);
@@ -146,59 +149,59 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     setShowFilterDrawer(false);
   };
 
-  if (!isOpen) return null;
-
   const query = searchTerm.toLowerCase().trim();
 
   // Multi-factor filtering over DESTINATION_CORRIDORS
-  const filteredTrips: CorridorDetail[] = DESTINATION_CORRIDORS.filter((trip) => {
-    // 1. Text Search Filter
-    if (query) {
-      const matchTitle = trip.title.toLowerCase().includes(query);
-      const matchSub = (trip.subtitle || '').toLowerCase().includes(query);
-      const matchRegion = trip.region.toLowerCase().includes(query);
-      const matchLandscape = trip.landscapeZone.toLowerCase().includes(query);
-      const matchDesc = trip.description.toLowerCase().includes(query);
-      const matchTerrain = trip.terrain.toLowerCase().includes(query);
-      const matchElevation = trip.elevation.toLowerCase().includes(query);
-      const matchPrice = trip.startingPrice.toLowerCase().includes(query);
-      const matchDifficulty = trip.difficulty.toLowerCase().includes(query);
-      const matchHighlights = trip.highlights.some(h => h.toLowerCase().includes(query));
-      const matchKeywords = trip.keywords.some(k => k.toLowerCase().includes(query));
+  const filteredTrips: CorridorDetail[] = useMemo(() => {
+    return DESTINATION_CORRIDORS.filter((trip) => {
+      // 1. Text Search Filter
+      if (query) {
+        const matchTitle = trip.title.toLowerCase().includes(query);
+        const matchSub = (trip.subtitle || '').toLowerCase().includes(query);
+        const matchRegion = trip.region.toLowerCase().includes(query);
+        const matchLandscape = trip.landscapeZone.toLowerCase().includes(query);
+        const matchDesc = trip.description.toLowerCase().includes(query);
+        const matchTerrain = trip.terrain.toLowerCase().includes(query);
+        const matchElevation = trip.elevation.toLowerCase().includes(query);
+        const matchPrice = trip.startingPrice.toLowerCase().includes(query);
+        const matchDifficulty = trip.difficulty.toLowerCase().includes(query);
+        const matchHighlights = trip.highlights.some(h => h.toLowerCase().includes(query));
+        const matchKeywords = trip.keywords.some(k => k.toLowerCase().includes(query));
 
-      const textMatches = 
-        matchTitle || matchSub || matchRegion || matchLandscape ||
-        matchDesc || matchTerrain || matchElevation || matchPrice ||
-        matchDifficulty || matchHighlights || matchKeywords;
+        const textMatches = 
+          matchTitle || matchSub || matchRegion || matchLandscape ||
+          matchDesc || matchTerrain || matchElevation || matchPrice ||
+          matchDifficulty || matchHighlights || matchKeywords;
 
-      if (!textMatches) return false;
-    }
+        if (!textMatches) return false;
+      }
 
-    // 2. Landscape Zone Area Filter
-    if (selectedLandscape !== 'All Regions') {
-      if (trip.landscapeZone !== selectedLandscape) return false;
-    }
+      // 2. Landscape Zone Area Filter
+      if (selectedLandscape !== 'All Regions') {
+        if (trip.landscapeZone !== selectedLandscape) return false;
+      }
 
-    // 3. Trip Style / Category Filter
-    if (selectedStyle !== 'all') {
-      if (!trip.tripTypes.includes(selectedStyle as TripTypeCategory)) return false;
-    }
+      // 3. Trip Style / Category Filter
+      if (selectedStyle !== 'all') {
+        if (!trip.tripTypes.includes(selectedStyle as TripTypeCategory)) return false;
+      }
 
-    // 4. Price Filter
-    if (selectedPrice !== 'all') {
-      if (selectedPrice === 'budget' && trip.numericPrice > 10000) return false;
-      if (selectedPrice === 'premium' && trip.numericPrice <= 10000) return false;
-    }
+      // 4. Price Filter
+      if (selectedPrice !== 'all') {
+        if (selectedPrice === 'budget' && trip.numericPrice > 10000) return false;
+        if (selectedPrice === 'premium' && trip.numericPrice <= 10000) return false;
+      }
 
-    // 5. Duration Filter
-    if (selectedDuration !== 'all') {
-      if (selectedDuration === 'short' && trip.durationDays > 4) return false;
-      if (selectedDuration === 'medium' && (trip.durationDays < 5 || trip.durationDays > 7)) return false;
-      if (selectedDuration === 'long' && trip.durationDays < 8) return false;
-    }
+      // 5. Duration Filter
+      if (selectedDuration !== 'all') {
+        if (selectedDuration === 'short' && trip.durationDays > 4) return false;
+        if (selectedDuration === 'medium' && (trip.durationDays < 5 || trip.durationDays > 7)) return false;
+        if (selectedDuration === 'long' && trip.durationDays < 8) return false;
+      }
 
-    return true;
-  });
+      return true;
+    });
+  }, [query, selectedLandscape, selectedStyle, selectedPrice, selectedDuration]);
 
   const handleCardClick = (destId: string) => {
     onClose();
@@ -237,6 +240,8 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
     }
     return durationStr;
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="search-page-overlay" role="dialog" aria-modal="true">
@@ -277,7 +282,7 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
                 ref={inputRef}
                 type="text"
                 className="search-hero-input"
-                placeholder={placeholderText || "Search by destination, pass, landscape or budget..."}
+                placeholder="Search by destination, pass, landscape or budget..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -304,6 +309,20 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
                   <span>Filter{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}</span>
                 </button>
               </div>
+            </div>
+
+            {/* Popular Quick Search Chips */}
+            <div className="search-quick-chips-row">
+              {POPULAR_QUICK_SEARCHES.map((chip) => (
+                <button
+                  key={chip.label}
+                  type="button"
+                  className={`search-quick-chip ${searchTerm === chip.query ? 'is-active' : ''}`}
+                  onClick={() => setSearchTerm(chip.query)}
+                >
+                  {chip.label}
+                </button>
+              ))}
             </div>
 
             {/* Multi-Factor Filter Drawer */}
@@ -419,6 +438,7 @@ export const TripSearchModal: React.FC<TripSearchModalProps> = ({
                             alt={item.title} 
                             className="search-card-img" 
                             loading="lazy" 
+                            decoding="async"
                           />
                         </div>
 

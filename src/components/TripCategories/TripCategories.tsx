@@ -116,6 +116,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                   alt={dest.alt}
                   className={`dest-main-img ${index === activeIndex ? 'is-visible' : ''}`}
                   loading="lazy"
+                  decoding="async"
                 />
               ))}
               <div className="dest-img-shimmer" />
@@ -144,6 +145,7 @@ export const TripCategories: React.FC<TripCategoriesProps> = ({ onNavigate }) =>
                     alt={supportImg.alt}
                     className={`dest-supporting-img ${index === activeIndex ? 'is-visible' : ''}`}
                     loading="lazy"
+                    decoding="async"
                   />
                 );
               })}

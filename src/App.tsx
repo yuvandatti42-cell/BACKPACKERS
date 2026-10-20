@@ -107,16 +107,18 @@ export const App: React.FC = () => {
       window.location.hash = 'reviews';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setCurrentRoute('home');
       if (sectionId) {
         window.location.hash = sectionId;
-        const scrollToTarget = () => {
+        if (currentRoute === 'home') {
           scrollToSection(sectionId);
-        };
-        scrollToTarget();
-        setTimeout(scrollToTarget, 50);
-        setTimeout(scrollToTarget, 200);
+        } else {
+          setCurrentRoute('home');
+          setTimeout(() => {
+            scrollToSection(sectionId);
+          }, 80);
+        }
       } else {
+        setCurrentRoute('home');
         window.location.hash = 'hero';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }

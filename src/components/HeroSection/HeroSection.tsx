@@ -6,10 +6,12 @@ interface HeroSectionProps {
   onOpenBookModal?: (title?: string) => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenBookModal }) => {
   const handleBookClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (onNavigate) {
+    if (onOpenBookModal) {
+      onOpenBookModal();
+    } else if (onNavigate) {
       onNavigate('destinations');
     } else {
       window.location.hash = 'destinations';

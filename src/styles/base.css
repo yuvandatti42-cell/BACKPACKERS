@@ -12,6 +12,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--mobile-header-height, 84px) + var(--scroll-safe-gap, 14px));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -19,7 +20,7 @@ html {
   color: var(--text-primary);
 }
 
-/* Global Mobile Scroll Offset: Ensures anchor links and scroll targets always stop below fixed navbar */
+/* Global Scroll Offset: Ensures anchor links and scroll targets always stop below fixed navbar */
 section[id],
 main[id],
 div[id],
@@ -29,6 +30,7 @@ article[id],
 [id]:not(defs *):not(svg *) {
   scroll-margin-top: calc(var(--mobile-header-height, 84px) + var(--scroll-safe-gap, 14px));
 }
+
 
 body {
   font-family: var(--font-body);
@@ -165,3 +167,28 @@ button {
 .back-btn-text {
   text-transform: uppercase;
 }
+
+/* ==========================================================================
+   HIGH-PERFORMANCE RENDERING OPTIMIZATIONS
+   - content-visibility: auto skips layout/paint of offscreen sections until near viewport
+   - translateZ(0) promotes critical surfaces to GPU compositor layers
+   ========================================================================== */
+.destinations-editorial,
+.featured-expeditions,
+.our-story-section,
+.traveler-stories-editorial,
+.editorial-mission-section,
+.planner-section,
+.travel-collage-root,
+.review-editorial-card-block {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
+.hero-alpine,
+.featured-expedition-media,
+.expeditions-carousel-track,
+.dest-main-frame {
+  transform: translateZ(0);
+}
+

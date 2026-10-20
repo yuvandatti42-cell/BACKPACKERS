@@ -25,8 +25,6 @@ export const TravelerStories: React.FC<TravelerStoriesProps> = ({ onNavigate }) 
   const [trackIndex, setTrackIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [isInView, setIsInView] = useState<boolean>(false);
-  const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [isImageHovered, setIsImageHovered] = useState<boolean>(false);
   
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -112,21 +110,24 @@ export const TravelerStories: React.FC<TravelerStoriesProps> = ({ onNavigate }) 
     }
   }, [trackIndex, activeIndex]);
 
-  // Subtle tactile cursor depth parallax for the photograph
+  // Subtle tactile cursor depth parallax for the photograph (CSS variables avoid React re-renders)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    setTilt({ x: x * 3.5, y: y * 3.5 });
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+    el.style.setProperty('--tilt-x', `${x.toFixed(1)}px`);
+    el.style.setProperty('--tilt-y', `${y.toFixed(1)}px`);
   };
 
-  const handleMouseEnter = () => {
-    setIsImageHovered(true);
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--tilt-scale', '1.03');
   };
 
-  const handleMouseLeave = () => {
-    setIsImageHovered(false);
-    setTilt({ x: 0, y: 0 });
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--tilt-scale', '1');
+    e.currentTarget.style.setProperty('--tilt-x', '0px');
+    e.currentTarget.style.setProperty('--tilt-y', '0px');
   };
 
   return (
@@ -220,11 +221,12 @@ export const TravelerStories: React.FC<TravelerStoriesProps> = ({ onNavigate }) 
                         src={review.image} 
                         alt={`Photo of ${review.reviewer}`} 
                         className="testimonial-photo"
+                        loading="lazy"
+                        decoding="async"
                         style={{ 
                           objectPosition: review.imagePosition || 'center bottom',
-                          transform: (isImageHovered && activeIndex === (idx % totalReviews))
-                            ? `scale(1.03) translate3d(${tilt.x}px, ${tilt.y}px, 0)` 
-                            : 'scale(1) translate3d(0, 0, 0)',
+                          transform: 'scale(var(--tilt-scale, 1)) translate3d(var(--tilt-x, 0px), var(--tilt-y, 0px), 0)',
+                          transition: 'transform 0.18s ease-out'
                         }}
                       />
                     </div>
@@ -261,7 +263,7 @@ export const TravelerStories: React.FC<TravelerStoriesProps> = ({ onNavigate }) 
           <div className="minimal-reviews-mobile-card">
             <div className="review-card-header">
               <div className="review-avatar-wrap">
-                <img src={activeReview.image} alt={activeReview.reviewer} className="review-avatar-img" />
+                <img src={activeReview.image} alt={activeReview.reviewer} className="review-avatar-img" loading="lazy" decoding="async" />
               </div>
               <div className="review-meta-info">
                 <h3 className="review-title-text">{activeReview.title}</h3>

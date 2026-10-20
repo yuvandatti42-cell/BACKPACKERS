@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { TravelCollage } from '../components/TravelCollage/TravelCollage';
+import { scrollToSection } from '../utils/scrollUtils';
 import './ReviewsPage.css';
 
 interface ReviewsPageProps {
@@ -38,25 +39,25 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
   const galleryThumbnails: GalleryThumb[] = [
     {
       id: 'thumb-1',
-      url: '/r1.jpeg',
+      url: '/r1.webp',
       alt: 'Three backpacker friends smiling by Pangong Lake in Ladakh',
       objectPosition: 'center 42%'
     },
     {
       id: 'thumb-2',
-      url: '/r3.jpeg',
+      url: '/r3.webp',
       alt: 'Traveler group and motorcycle posing in front of Gonbo Rangjon mountain in Zanskar Ladakh',
       objectPosition: 'center 52%'
     },
     {
       id: 'thumb-3',
-      url: '/sunset_mountain_lake.jpg',
+      url: '/sunset_mountain_lake.webp',
       alt: 'Golden orange sunset over tranquil mountain lake',
       objectPosition: 'center center'
     },
     {
       id: 'thumb-4',
-      url: '/r4.jpeg',
+      url: '/r4.webp',
       alt: 'Backpacker group standing on mountain pass road overlooking dramatic high-altitude peaks',
       objectPosition: 'center 68%'
     }
@@ -80,7 +81,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       id: 'story-01',
       counter: '01 / 04',
       progressPercent: 25,
-      image: '/r2.jpeg',
+      image: '/r2.webp',
       alt: 'Two backpacker friends looking down into the camera under clear blue sky',
       quote: '“Ooty was everything I imagined and more. The cool weather, beautiful roads and amazing company made it unforgettable.”',
       reviewer: 'Sneha P.',
@@ -95,7 +96,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       id: 'story-02',
       counter: '02 / 04',
       progressPercent: 50,
-      image: '/r6.jpeg',
+      image: '/r6.webp',
       alt: 'Ancient Buddhist cliffside monastery nestled against towering Himalayan mountain peaks',
       quote: '“Seeing this ancient monastery clinging to the mountain cliffs at sunrise was utterly spiritual and unforgettable.”',
       reviewer: 'Arjun & Pooja Mehta',
@@ -110,7 +111,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       id: 'story-03',
       counter: '03 / 04',
       progressPercent: 75,
-      image: '/r7.jpeg',
+      image: '/r7.webp',
       alt: 'Royal Enfield motorcycle and helmet parked above Pangong Lake in Ladakh overlooking azure waters',
       quote: '“Reaching Pangong Lake on my motorcycle and taking in this endless blue view was pure magic. An unforgettable Himalayan journey.”',
       reviewer: 'David Lindqvist',
@@ -125,7 +126,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
       id: 'story-04',
       counter: '04 / 04',
       progressPercent: 100,
-      image: '/r5.jpeg',
+      image: '/r5.webp',
       alt: 'Motorcycle convoy riding on scenic winding mountain road under vast rocky cliffs and blue skies',
       quote: '“Riding along winding mountain canyons with the group was an absolute rush. Every curve opened up a view grander than the last.”',
       reviewer: 'Vikram & Kabir',
@@ -162,10 +163,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
 
   const handleScrollToFirstSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const target = document.getElementById('travel-collage-section') || document.getElementById('review-featured-section');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSection('travel-collage-section', 20);
   };
 
 
@@ -184,10 +182,11 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
         <section className="reviews-hero-fullbleed" aria-label="Backpackers Reviews Hero">
           <div className="reviews-hero-bg-wrap">
             <img
-              src="/r.jpeg"
+              src="/r.webp"
               alt="Motorcycle rider waving on scenic mountain highway"
               className="reviews-hero-bg-img"
               loading="eager"
+              decoding="async"
             />
             <div className="reviews-hero-scrim" />
           </div>
@@ -256,6 +255,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                     className={`featured-main-photo ${isThumbFading ? 'is-fading' : ''}`}
                     style={{ objectPosition: currentFeaturedPhoto.objectPosition || 'center center' }}
                     loading="eager"
+                    decoding="async"
                   />
                 </div>
 
@@ -279,6 +279,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                       alt="Rahul K."
                       className="reviewer-circle-img"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="reviewer-details-col">
                       <span className="reviewer-name-label">Rahul K.</span>
@@ -328,6 +329,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                           className="thumbnail-img"
                           style={{ objectPosition: thumb.objectPosition || 'center center' }}
                           loading="lazy"
+                          decoding="async"
                         />
                       </button>
                     );
@@ -408,6 +410,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                         alt=""
                         className="split-story-backdrop-blur"
                         aria-hidden="true"
+                        decoding="async"
                       />
                     )}
                     <img
@@ -418,6 +421,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                         objectPosition: currentStory.objectPosition || 'center center'
                       }}
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -435,6 +439,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
                         alt={currentStory.reviewer}
                         className="reviewer-circle-img"
                         loading="lazy"
+                        decoding="async"
                       />
                       <div className="reviewer-details-col">
                         <span className="reviewer-name-label">{currentStory.reviewer}</span>

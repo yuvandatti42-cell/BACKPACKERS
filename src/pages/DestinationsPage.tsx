@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import { TravellerCharacterSVG } from '../components/TravellerTransition/TravellerCharacterSVG';
 import './DestinationsPage.css';
-
-
 
 import { 
   DESTINATION_CORRIDORS, 
@@ -16,6 +14,19 @@ import {
 
 export type { CorridorDetail, TripTypeCategory, TripTypeInfo };
 export { DESTINATION_CORRIDORS, TRIP_TYPES };
+
+const formatDurationShort = (durationStr: string, corridorId?: string): string => {
+  if (!durationStr || corridorId === 'kerala' || corridorId === 'ladakh' || durationStr.includes('—') || durationStr.includes('-')) return '';
+  const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
+  if (match) {
+    return `${match[1]}D/${match[2]}N`;
+  }
+  const daysOnly = durationStr.match(/(\d+)\s*DAYS?/i);
+  if (daysOnly) {
+    return `${daysOnly[1]}D`;
+  }
+  return durationStr;
+};
 
 interface DestinationsPageProps {
   onNavigate?: (route: string, sectionId?: string, categoryFilter?: string) => void;
@@ -31,33 +42,35 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
   const [selectedFilter, setSelectedFilter] = useState<string>(initialFilter);
   const [activeCorridorId, setActiveCorridorId] = useState<string>('kerala');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (initialFilter) {
       setSelectedFilter(initialFilter);
     }
   }, [initialFilter]);
 
-  const filteredCorridors = DESTINATION_CORRIDORS.filter(c => {
-    let matchesCategory = selectedFilter === 'all';
-    if (!matchesCategory) {
-      if (selectedFilter === 'south-india') {
-        matchesCategory = c.landscapeZone === 'South India' || c.region.toLowerCase().includes('south');
-      } else if (selectedFilter === 'north-india') {
-        matchesCategory = c.landscapeZone === 'North India & Ladakh' || c.region.toLowerCase().includes('north');
-      } else if (selectedFilter === 'ladakh') {
-        matchesCategory = c.region.toLowerCase().includes('ladakh') || c.id === 'ladakh';
-      } else if (selectedFilter === 'north-east') {
-        matchesCategory = c.region.toLowerCase().includes('east') || c.tripTypes.includes('off-beaten');
-      } else {
-        matchesCategory = 
-          c.tripTypes.includes(selectedFilter as TripTypeCategory) ||
-          c.region.toLowerCase().includes(selectedFilter.toLowerCase()) ||
-          c.keywords.some(k => k.toLowerCase() === selectedFilter.toLowerCase());
+  const filteredCorridors = useMemo(() => {
+    return DESTINATION_CORRIDORS.filter(c => {
+      let matchesCategory = selectedFilter === 'all';
+      if (!matchesCategory) {
+        if (selectedFilter === 'south-india') {
+          matchesCategory = c.landscapeZone === 'South India' || c.region.toLowerCase().includes('south');
+        } else if (selectedFilter === 'north-india') {
+          matchesCategory = c.landscapeZone === 'North India & Ladakh' || c.region.toLowerCase().includes('north');
+        } else if (selectedFilter === 'ladakh') {
+          matchesCategory = c.region.toLowerCase().includes('ladakh') || c.id === 'ladakh';
+        } else if (selectedFilter === 'north-east') {
+          matchesCategory = c.region.toLowerCase().includes('east') || c.tripTypes.includes('off-beaten');
+        } else {
+          matchesCategory = 
+            c.tripTypes.includes(selectedFilter as TripTypeCategory) ||
+            c.region.toLowerCase().includes(selectedFilter.toLowerCase()) ||
+            c.keywords.some(k => k.toLowerCase() === selectedFilter.toLowerCase());
+        }
       }
-    }
 
-    return matchesCategory;
-  });
+      return matchesCategory;
+    });
+  }, [selectedFilter]);
 
   return (
     <div className="destinations-page-wrapper">
@@ -121,19 +134,6 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({
             ) : (
               <div className="dest-cards-grid">
                 {filteredCorridors.map((item) => {
-                  const formatDurationShort = (durationStr: string, corridorId?: string): string => {
-                    if (!durationStr || corridorId === 'kerala' || corridorId === 'ladakh' || durationStr.includes('—') || durationStr.includes('-')) return '';
-                    const match = durationStr.match(/(\d+)\s*DAYS?\s*\/\s*(\d+)\s*NIGHTS?/i);
-                    if (match) {
-                      return `${match[1]}D/${match[2]}N`;
-                    }
-                    const daysOnly = durationStr.match(/(\d+)\s*DAYS?/i);
-                    if (daysOnly) {
-                      return `${daysOnly[1]}D`;
-                    }
-                    return durationStr;
-                  };
-
                   const durationShort = formatDurationShort(item.duration, item.id);
 
                   return (

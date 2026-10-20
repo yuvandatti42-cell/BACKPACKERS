@@ -152,7 +152,7 @@
 
 /* Action panel CTA — Anchored in the lower-left area relative to container */
 .hero-action-panel {
-  display: none; /* Only visible in mobile responsive webpage */
+  display: flex;
   margin-bottom: 0.25rem;
   z-index: 5;
   flex-shrink: 0;

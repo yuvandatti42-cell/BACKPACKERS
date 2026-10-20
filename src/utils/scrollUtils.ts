@@ -20,10 +20,12 @@ export const scrollToSection = (sectionId: string, extraOffset: number = 14) => 
   const header = document.querySelector('.site-header, .dest-detail-top-bar, header');
   const headerHeight = header ? header.getBoundingClientRect().height : 80;
   
-  const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+  const y = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset);
   
   window.scrollTo({
-    top: Math.max(0, y),
+    top: y,
     behavior: 'smooth'
   });
 };
+
+export default scrollToSection;

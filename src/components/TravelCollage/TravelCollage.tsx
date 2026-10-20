@@ -36,10 +36,10 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
           {/* Tile 1: Top-Left Landscape - Scenic Ghats Road in Munnar, Kerala */}
           <div className="collage-tile tile-munnar-road">
             <img
-              src="/traveler_munnar_road.jpg"
+              src="/traveler_munnar_road.webp"
               alt="Traveler sitting on rocky cliff overlooking winding mountain road in Munnar Kerala"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -49,7 +49,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/dest_kerala.webp"
               alt="Scenic misty valley with tropical mountain curves in Western Ghats"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -59,7 +59,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/meghalaya.webp"
               alt="Crystal clear emerald river and living root bridges in Cherrapunji Meghalaya"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -69,17 +69,17 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/chick.webp"
               alt="Backpacker on cliff ledge overlooking misty green mountain valleys in Chikmagalur"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
           {/* Tile 5: Far-Left Tall Portrait - Pine Forest Hiking Trail in Nilgiris */}
           <div className="collage-tile tile-pine-trail">
             <img
-              src="/pine_forest_trail.jpg"
+              src="/pine_forest_trail.webp"
               alt="Three backpackers walking on forest trail surrounded by tall pine trees in Ooty"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -89,7 +89,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/pic.webp"
               alt="Motorcycle rider looking out over Spiti high desert canyons and mountain roads"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -99,7 +99,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/gokarna.webp"
               alt="Dramatic ocean cliffs and golden beaches in Gokarna"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -109,27 +109,27 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               src="/sty.webp"
               alt="Camping under mountain night skies with warm campfire glow"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
           {/* Tile 9: Bottom Mid-Right - Four Friends Candid Moment at Ooty Valley Overlook */}
           <div className="collage-tile tile-friends-ledge">
             <img
-              src="/friends_mountain_overlook.jpg"
+              src="/friends_mountain_overlook.webp"
               alt="Four traveler friends sitting on stone ledge with arms around each other looking at misty Ooty valleys"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
           {/* Tile 10: Bottom Right - Golden Sunset Lake in Kodaikanal */}
           <div className="collage-tile tile-kodai-sunset">
             <img
-              src="/sunset_mountain_lake.jpg"
+              src="/sunset_mountain_lake.webp"
               alt="Golden orange sunset over tranquil mountain lake in Kodaikanal"
               className="collage-tile-img"
-              loading="lazy"
+              loading="lazy" decoding="async"
             />
           </div>
 
@@ -246,10 +246,10 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
               {/* Row 1: 4 small photos across top */}
               <div className="m-tile m-tile-top-1">
                 <img
-                  src="/traveler_munnar_road.jpg"
+                  src="/traveler_munnar_road.webp"
                   alt="Munnar Ghat Road"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-top-2">
@@ -257,7 +257,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/dest_kerala.webp"
                   alt="Western Ghats Valley"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-top-3">
@@ -265,7 +265,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/meghalaya.webp"
                   alt="Cherrapunji Waterfalls"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-top-4">
@@ -273,17 +273,17 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/chick.webp"
                   alt="Chikmagalur Ridge"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
 
               {/* Left Flank: Vertical Nilgiris Pine Trail */}
               <div className="m-tile m-tile-left">
                 <img
-                  src="/pine_forest_trail.jpg"
+                  src="/pine_forest_trail.webp"
                   alt="Nilgiris Pine Trail"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
 
@@ -336,7 +336,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/pic.webp"
                   alt="Spiti Overland Pass"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
 
@@ -346,7 +346,7 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/gokarna.webp"
                   alt="Gokarna Cliff Trails"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-bottom-2">
@@ -354,23 +354,23 @@ export const TravelCollage: React.FC<TravelCollageProps> = ({ onNavigate, onOpen
                   src="/sty.webp"
                   alt="Highland Starlit Camp"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-bottom-3">
                 <img
-                  src="/friends_mountain_overlook.jpg"
+                  src="/friends_mountain_overlook.webp"
                   alt="Friends at Overlook"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
               <div className="m-tile m-tile-bottom-4">
                 <img
-                  src="/sunset_mountain_lake.jpg"
+                  src="/sunset_mountain_lake.webp"
                   alt="Kodaikanal Lake Sunset"
                   className="m-tile-img"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                 />
               </div>
 

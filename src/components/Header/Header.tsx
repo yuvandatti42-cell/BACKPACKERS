@@ -12,7 +12,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, currentRoute }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isDropdownHovered, setIsDropdownHovered] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
   const isNotHome = currentRoute !== 'home' || 
@@ -25,8 +24,22 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
   const hasScrolledBackground = isScrolled || !isHeroTransparent;
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrolled = window.scrollY > 40;
+    setIsScrolled(lastScrolled);
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const nextScrolled = window.scrollY > 40;
+          if (nextScrolled !== lastScrolled) {
+            lastScrolled = nextScrolled;
+            setIsScrolled(nextScrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -77,7 +90,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
   ) => {
     e.preventDefault();
     closeMenu();
-    setIsDropdownHovered(false);
 
     if (onNavigate) {
       onNavigate(route, sectionId, categoryFilter);
@@ -101,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
       <header className={`site-header ${hasScrolledBackground ? 'nav-scrolled' : ''}`} role="banner">
         <div className="container nav-container">
           
-          {/* Left Column: Symmetrical Navigation with Hover Dropdown */}
+          {/* Left Column: Navigation Links */}
           <div className="nav-col-left">
             {isNotHome && (
               <a 
@@ -115,93 +127,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
               </a>
             )}
 
-            {isNotHome ? (
-              <a 
-                href="#destinations" 
-                className="nav-link"
-                onClick={(e) => handleNavClick(e, 'destinations')}
-              >
-                DESTINATIONS
-              </a>
-            ) : (
-              <div 
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => setIsDropdownHovered(true)}
-                onMouseLeave={() => setIsDropdownHovered(false)}
-              >
-                <a 
-                  href="#destinations" 
-                  className="nav-link nav-dropdown-trigger"
-                  onClick={(e) => handleNavClick(e, 'destinations')}
-                >
-                  DESTINATIONS <span className="dropdown-caret">▾</span>
-                </a>
-
-                {/* Hover Dropdown Menu */}
-                <div className={`nav-dropdown-menu ${isDropdownHovered ? 'is-visible' : ''}`}>
-                  <div className="dropdown-header-tag">EXPLORE BY TRIP TYPE</div>
-                  
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-item-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'weekend')}
-                  >
-                    <img src="/wkndtp.webp" alt="" className="dropdown-thumb-img" />
-                    <div className="dropdown-item-text">
-                      <span className="item-title">Weekend Trips</span>
-                      <span className="item-sub">Quick 2–3 Day Escapes</span>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-item-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'long-expedition')}
-                  >
-                    <img src="/long.webp" alt="" className="dropdown-thumb-img" />
-                    <div className="dropdown-item-text">
-                      <span className="item-title">Long Expedition</span>
-                      <span className="item-sub">6–14 Day Overlands</span>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-item-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'bike-trips')}
-                  >
-                    <img src="/bike.webp" alt="" className="dropdown-thumb-img" />
-                    <div className="dropdown-item-text">
-                      <span className="item-title">Bike Trips</span>
-                      <span className="item-sub">Motorcycle &amp; MTB Traverses</span>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-item-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'off-beaten')}
-                  >
-                    <img src="/off.webp" alt="" className="dropdown-thumb-img" />
-                    <div className="dropdown-item-text">
-                      <span className="item-title">Off Beaten Places</span>
-                      <span className="item-sub">Raw Backcountry Routes</span>
-                    </div>
-                  </a>
-
-
-
-                  <a 
-                    href="#destinations" 
-                    className="dropdown-footer-link"
-                    onClick={(e) => handleNavClick(e, 'destinations', undefined, 'all')}
-                  >
-                    <span>VIEW ALL DESTINATIONS</span>
-                    <span>&rarr;</span>
-                  </a>
-                </div>
-              </div>
-            )}
+            <a 
+              href="#destinations" 
+              className={`nav-link ${currentRoute === 'destinations' ? 'is-active' : ''}`}
+              onClick={(e) => handleNavClick(e, 'destinations')}
+            >
+              DESTINATIONS
+            </a>
 
             <a 
               href="#reviews" 

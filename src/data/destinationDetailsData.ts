@@ -617,8 +617,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   kodaikanal: {
     id: 'kodaikanal',
     title: 'KODAIKANAL',
-    durationShort: '4D/3N',
-    durationFull: '4 Days - 3 Nights',
+    durationShort: '3D/2N',
+    durationFull: '3 Days - 2 Nights',
     startingPrice: '₹ 7,499',
     numericPrice: 7499,
     image: '/kodai.webp',
@@ -631,10 +631,10 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     bestSeason: 'YEAR-ROUND',
     durationVariants: [
       {
-        id: '4d3n',
-        label: 'Kodaikanal 4D3N',
-        durationShort: '4D/3N',
-        durationFull: '4 Days - 3 Nights',
+        id: '3d2n',
+        label: 'Kodaikanal 3D2N',
+        durationShort: '3D/2N',
+        durationFull: '3 Days - 2 Nights',
         startingPrice: '₹ 7,499',
         numericPrice: 7499,
         pdfUrl: '/kerala_catalog.pdf',
@@ -650,10 +650,9 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
           bestTimeToVisit: 'Year-Round (Cool mountain climate & lush evergreen trails)'
         },
         itinerary: [
-          { day: 1, title: 'Ghat Climb & Pine Valley Check-in', description: 'Ascend Palani hills, visit Silver Cascade Waterfalls, check into cozy hillside resort.', highlights: ['Silver Cascade Waterfalls', 'Palani Ghat Road', 'Pine Valley Check-in'] },
-          { day: 2, title: 'Pillar Rocks, Coakers Walk & Pine Forest', description: 'Walk through dense pine tree trails, cliffside cloud views at Pillar Rocks.', highlights: ['Pillar Rocks', 'Coakers Walk', 'Pine Forest Trail'] },
-          { day: 3, title: 'Off-Grid Berijam Lake Forest Reserve Trail', description: 'Enter restricted forest permit zone to Berijam Lake surrounded by wildlife.', highlights: ['Berijam Lake', 'Forest Permit Route', 'Eco Sanctuary'] },
-          { day: 4, title: 'Kodai Lake Boating & Homemade Chocolates', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, return departure.', highlights: ['Kodai Lake Boating', 'Artisan Chocolates', 'Departure Transfer'] }
+          { day: 1, title: 'Ghat Climb & Pine Valley Check-in', description: 'Ascend Palani hills, visit Silver Cascade Waterfalls, check into cozy hillside resort and explore pine trails.', highlights: ['Silver Cascade Waterfalls', 'Palani Ghat Road', 'Pine Valley Check-in'] },
+          { day: 2, title: 'Pillar Rocks, Coakers Walk & Berijam Lake Trail', description: 'Walk through dense pine tree trails, cliffside cloud views at Pillar Rocks, and off-grid forest permit route to Berijam Lake.', highlights: ['Pillar Rocks', 'Coakers Walk', 'Berijam Lake Trail'] },
+          { day: 3, title: 'Kodai Lake Boating, Artisan Chocolates & Departure', description: 'Boating on star-shaped Kodai Lake, artisan chocolate tasting, and return departure.', highlights: ['Kodai Lake Boating', 'Artisan Chocolates', 'Departure Transfer'] }
         ],
         pricing: {
           startingPrice: '₹ 7,499',
@@ -771,8 +770,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
   'arunachalam-pondicherry': {
     id: 'arunachalam-pondicherry',
     title: 'ARUNACHALAM X PONDICHERRY',
-    durationShort: '5D/4N',
-    durationFull: '5 Days - 4 Nights',
+    durationShort: '3D/2N',
+    durationFull: '3 Days - 2 Nights',
     startingPrice: '₹ 7,499',
     numericPrice: 7499,
     image: '/pondi.webp',
@@ -795,11 +794,9 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       bestTimeToVisit: 'October through March'
     },
     itinerary: [
-      { day: 1, title: 'Transfer to Tiruvannamalai & Ashram Visit', description: 'Arrive in sacred Arunachalam, visit Sri Ramana Ashram.', highlights: ['Tiruvannamalai Arrival', 'Sri Ramana Ashram', 'Evening Aarti'] },
-      { day: 2, title: 'Barefoot Girivalam Circuit & Temple Trail', description: 'Walk 14 km Girivalam path around sacred hill and visit Arunachaleswarar Temple.', highlights: ['Barefoot Girivalam 14km', 'Arunachaleswarar Temple', 'Sacred Hill Trail'] },
-      { day: 3, title: 'Coastal Drive to Pondicherry & Promenade Walk', description: 'Drive to Pondicherry, explore French Quarter streetscapes and seaside promenade.', highlights: ['French Town White Town', 'Rock Beach Promenade', 'Coastal Sunset'] },
-      { day: 4, title: 'Auroville & Paradise Beach Exploration', description: 'Visit Matrimandir viewpoint in Auroville, boat ride to Paradise Beach.', highlights: ['Auroville Matrimandir', 'Paradise Beach Boat Ride', 'Chunnambar Backwaters'] },
-      { day: 5, title: 'French Cafe Crawl & Departure', description: 'Morning croissant & coffee walk in White Town before return transit.', highlights: ['French Bakery Walk', 'Souvenir Shopping', 'Departure Transfer'] }
+      { day: 1, title: 'Transfer to Tiruvannamalai, Ashram Visit & Barefoot Girivalam', description: 'Arrive in sacred Arunachalam, visit Sri Ramana Ashram, and embark on the holy 14 km Girivalam barefoot path around Arunachala hill.', highlights: ['Tiruvannamalai Arrival', 'Sri Ramana Ashram', 'Barefoot Girivalam 14km'] },
+      { day: 2, title: 'Arunachaleswarar Temple, Coastal Drive to Pondicherry & Promenade Walk', description: 'Visit historic Arunachaleswarar Temple, drive to Pondicherry, and explore French Town White Town streetscapes and Rock Beach seaside promenade.', highlights: ['Arunachaleswarar Temple', 'Drive to Pondicherry', 'French Town & Promenade'] },
+      { day: 3, title: 'Auroville Matrimandir, French Cafe Crawl & Departure', description: 'Morning visit to Matrimandir viewpoint in Auroville, croissant & coffee walk in White Town, followed by return departure.', highlights: ['Auroville Matrimandir', 'French Bakery Walk', 'Departure Transfer'] }
     ],
     pricing: {
       startingPrice: '₹ 7,499',
@@ -969,7 +966,7 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
 
   spiti: {
     id: 'spiti',
-    title: 'DESERT MOUNTAIN CIRCUIT',
+    title: 'SPITI VALLEY',
     durationShort: '9D/8N',
     durationFull: '9 Days - 8 Nights',
     startingPrice: '₹ 21,999',
@@ -1297,8 +1294,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     title: 'BIR BILLING',
     durationShort: '7D/6N',
     durationFull: '7 Days - 6 Nights',
-    startingPrice: '₹ 49,499',
-    numericPrice: 49499,
+    startingPrice: '₹ 39,000',
+    numericPrice: 39000,
     image: '/bir_billing.webp',
     pdfUrl: '/bir.pdf',
     frameColor: '#4B6B46',
@@ -1313,8 +1310,8 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
         label: 'Bir Billing 7D6N',
         durationShort: '7D/6N',
         durationFull: '7 Days - 6 Nights',
-        startingPrice: '₹ 49,499',
-        numericPrice: 49499,
+        startingPrice: '₹ 39,000',
+        numericPrice: 39000,
         pdfUrl: '/bir.pdf',
         about: {
           overview: 'Bir Billing Paragliding Solo Flight Course & Expedition (7 Days / 6 Nights). Transform your passion for flight into reality with an immersive 7-day certified paragliding course in the world\'s second highest takeoff site. Move from ground school fundamentals to soaring solo over the spectacular Dhauladhar ranges of Himachal.',
@@ -1338,9 +1335,9 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
           { day: 7, title: 'Exploration & Departure (Until the Next Flight)', description: 'Morning visit to Palpung Sherabling Monastery nestled in dense pine forests. Final souvenir shopping in Bir Tibetan market before boarding evening transit back to Delhi.', highlights: ['Sherabling Monastery Tour', 'Souvenir Shopping', 'Farewell to Flying Squad', 'Evening Departure to Delhi'] }
         ],
         pricing: {
-          startingPrice: '₹ 49,499',
+          startingPrice: '₹ 39,000',
           occupancyTypes: [
-            { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 49,499', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
+            { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 39,000', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
             { type: 'Advance Seat Reservation', price: '₹ 10,000', note: 'Per Person (Remaining balance due before departure)' }
           ],
           notes: ['Advance booking amount: ₹ 10,000/- per person. Solo flights are subject to clear wind and weather conditions for participant safety.']
@@ -1369,9 +1366,9 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       { day: 7, title: 'Exploration & Departure (Until the Next Flight)', description: 'Morning visit to Palpung Sherabling Monastery nestled in dense pine forests. Final souvenir shopping in Bir Tibetan market before boarding evening transit back to Delhi.', highlights: ['Sherabling Monastery Tour', 'Souvenir Shopping', 'Farewell to Flying Squad', 'Evening Departure to Delhi'] }
     ],
     pricing: {
-      startingPrice: '₹ 49,499',
+      startingPrice: '₹ 39,000',
       occupancyTypes: [
-        { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 49,499', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
+        { type: 'Complete Paragliding Course Package (7D/6N)', price: '₹ 39,000', note: 'All-inclusive (Training + Equipment + Stays + Delhi Transit)' },
         { type: 'Advance Seat Reservation', price: '₹ 10,000', note: 'Per Person (Remaining balance due before departure)' }
       ],
       notes: ['Advance booking amount: ₹ 10,000/- per person. Solo flights are subject to clear wind and weather conditions for participant safety.']

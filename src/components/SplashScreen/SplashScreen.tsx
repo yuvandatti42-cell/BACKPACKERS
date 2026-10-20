@@ -33,19 +33,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     // Check session storage if not forcing
     const hasSeenSplash = sessionStorage.getItem('bd_splash_seen');
     if (hasSeenSplash && !forceSplash) {
-      // In development or normal browsing, if user explicitly refreshes with F5 or Cmd+R,
-      // performance navigation check allows showing it, or allow session-based skip
-      const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-      const isReload = navEntry?.type === 'reload';
-      if (!isReload) {
-        setIsHidden(true);
-        if (onComplete) onComplete();
-        return;
-      }
+      setIsHidden(true);
+      if (onComplete) onComplete();
+      return;
     }
 
-    // Target journey duration: 2400ms for 0 -> 100%
-    const JOURNEY_DURATION = 2400;
+    // Snappy, cinematic journey duration: 1300ms for 0 -> 100%
+    const JOURNEY_DURATION = 1300;
 
     const animateProgress = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -67,20 +61,20 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         // Reached 100%!
         setProgress(100);
         
-        // 1. Motorcycle glides forward and disappears slowly after passing the loading bar
+        // 1. Motorcycle glides forward and disappears smoothly
         setIsAccelerating(true);
 
         // 2. Loading screen begins smooth fade-out as the bike fades away
         const exitTimeout = setTimeout(() => {
           setIsExiting(true);
-        }, 650);
+        }, 320);
 
         // 3. Complete and reveal homepage
         const completeTimeout = setTimeout(() => {
           setIsHidden(true);
           sessionStorage.setItem('bd_splash_seen', 'true');
           if (onComplete) onComplete();
-        }, 1250);
+        }, 750);
 
         return () => {
           clearTimeout(exitTimeout);

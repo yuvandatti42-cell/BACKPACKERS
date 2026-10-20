@@ -44,12 +44,14 @@ export const OurStory: React.FC = () => {
             alt="Backpackers Destinations adventure motorcyclist in Himalayan valley" 
             className="story-collage-img main-img"
             loading="lazy"
+            decoding="async"
           />
           <img 
             src="/ostt.webp" 
             alt="Overland adventure motorcyclist navigating desert terrain" 
             className="story-collage-img secondary-img"
             loading="lazy"
+            decoding="async"
           />
         </div>
 

@@ -16,6 +16,7 @@ export const FeaturedExpedition: React.FC<FeaturedExpeditionProps> = ({ onNaviga
           alt="A long, lonely winding asphalt highway heading into the colossal mountains of Ladakh" 
           className="featured-expedition-img"
           loading="lazy"
+          decoding="async"
         />
         <div className="featured-expedition-overlay" />
       </div>
