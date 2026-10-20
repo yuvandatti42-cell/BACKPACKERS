@@ -236,7 +236,6 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ onNavigate, onOpenBook
           <div className="reviews-hero-inner">
             {/* Upper-Middle Editorial Block */}
             <div className="reviews-hero-center-block">
-              <span className="reviews-hero-eyebrow">REAL PEOPLE — REAL JOURNEYS</span>
               <h1 className="reviews-hero-headline">REVIEWS</h1>
               <p className="reviews-hero-subtext">
                 Real experiences. Unfiltered moments. Here's what our travelers have to say about their adventures with Backpackers.
