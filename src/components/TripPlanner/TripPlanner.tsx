@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InquiryFormData } from '../../types';
 import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
+import { openAndDownloadPdf } from '../../utils/pdfUtils';
 import './TripPlanner.css';
 
 const INITIAL_FORM_STATE: InquiryFormData = {
@@ -236,7 +237,7 @@ export const TripPlanner: React.FC<TripPlannerProps> = () => {
                     <span>Mandatory Participant Form: </span>
                     <button 
                       type="button"
-                      onClick={() => setIsPdfLeadOpen(true)}
+                      onClick={() => openAndDownloadPdf('/terms_and_conditions.pdf', 'Backpackers_Destinations_Terms_and_Liability_Waiver.pdf')}
                       className="cute-pdf-link"
                       style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                     >

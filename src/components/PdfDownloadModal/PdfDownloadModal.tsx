@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { openAndDownloadPdf } from '../../utils/pdfUtils';
 import './PdfDownloadModal.css';
 
 export interface PdfDownloadModalProps {
@@ -74,13 +75,7 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     if (onDirectDownload) {
       onDirectDownload();
     } else if (pdfUrl) {
-      window.open(pdfUrl, '_blank');
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = downloadFilename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      openAndDownloadPdf(pdfUrl, downloadFilename);
     }
   };
 
@@ -109,12 +104,12 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
 
 Please share more details and trip dates!`;
 
-    // Open WhatsApp lead chat
+    // 1. Immediately open PDF in new tab and download
+    triggerDownload();
+
+    // 2. Open WhatsApp lead chat in new tab
     const whatsappUrl = `https://wa.me/917207681067?text=${encodeURIComponent(messageText)}`;
     window.open(whatsappUrl, '_blank');
-
-    // Trigger PDF download
-    triggerDownload();
 
     setIsSubmitting(false);
     setIsSubmitted(true);

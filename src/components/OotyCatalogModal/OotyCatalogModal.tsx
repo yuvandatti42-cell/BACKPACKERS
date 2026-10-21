@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
+import { openAndDownloadPdf } from '../../utils/pdfUtils';
 import './OotyCatalogModal.css';
 
 interface OotyCatalogModalProps {
@@ -144,15 +145,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
             
             <button 
               type="button"
-              onClick={() => {
-                window.open('/ootycoo.pdf', '_blank');
-                const link = document.createElement('a');
-                link.href = '/ootycoo.pdf';
-                link.download = 'ootycoo.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              onClick={() => openAndDownloadPdf('/ootycoo.pdf', 'ootycoo.pdf')}
               className="catalog-tab-btn link-btn"
               title="Open PDF in new tab"
             >
@@ -161,15 +154,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
 
             <button 
               type="button"
-              onClick={() => {
-                window.open('/ootycoo.pdf', '_blank');
-                const link = document.createElement('a');
-                link.href = '/ootycoo.pdf';
-                link.download = 'ootycoo.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              onClick={() => openAndDownloadPdf('/ootycoo.pdf', 'ootycoo.pdf')}
               className="catalog-tab-btn download-btn"
               title="Download exact PDF document"
             >
@@ -213,15 +198,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
                     </a>
                     <button 
                       type="button" 
-                      onClick={() => {
-                        window.open('/ootycoo.pdf', '_blank');
-                        const link = document.createElement('a');
-                        link.href = '/ootycoo.pdf';
-                        link.download = 'ootycoo.pdf';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                      }} 
+                      onClick={() => openAndDownloadPdf('/ootycoo.pdf', 'ootycoo.pdf')} 
                       className="btn-fallback-secondary"
                     >
                       ⬇ Download PDF

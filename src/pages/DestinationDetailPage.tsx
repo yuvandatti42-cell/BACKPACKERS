@@ -4,6 +4,7 @@ import { KeralaCatalogModal } from '../components/KeralaCatalogModal/KeralaCatal
 import { OotyCatalogModal } from '../components/OotyCatalogModal/OotyCatalogModal';
 import { PdfDownloadModal } from '../components/PdfDownloadModal/PdfDownloadModal';
 import { GlideSelect } from '../components/GlideSelect/GlideSelect';
+import { openAndDownloadPdf } from '../utils/pdfUtils';
 import './DestinationDetailPage.css';
 
 interface DestinationDetailPageProps {
@@ -97,14 +98,8 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
 
   const executeGenericDownload = () => {
     if (currentPdfUrl && currentPdfUrl.endsWith('.pdf')) {
-      window.open(currentPdfUrl, '_blank');
-      const link = document.createElement('a');
-      link.href = currentPdfUrl;
       const pdfBaseName = currentPdfUrl.split('/').pop() || `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
-      link.download = pdfBaseName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      openAndDownloadPdf(currentPdfUrl, pdfBaseName);
       return;
     }
     const content = `${detail.title} - ${currentDurationFull}\nStarting Price: ${currentStartingPrice}\n\nOverview:\n${currentAbout.overview}\n\nHighlights:\n${currentAbout.highlights.join('\n')}\n\nItinerary:\n${currentItinerary.map(i => `Day ${i.day}: ${i.title}\n${i.description}`).join('\n\n')}`;

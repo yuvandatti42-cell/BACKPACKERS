@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
+import { openAndDownloadPdf } from '../../utils/pdfUtils';
 import './Footer.css';
 
 export const Footer: React.FC = () => {
@@ -65,7 +66,7 @@ export const Footer: React.FC = () => {
           <div className="footer-legal-links">
             <button 
               type="button"
-              onClick={() => setIsPdfLeadOpen(true)}
+              onClick={() => openAndDownloadPdf('/terms_and_conditions.pdf', 'Backpackers_Destinations_Terms_and_Liability_Waiver.pdf')}
               className="footer-waiver-link"
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
             >

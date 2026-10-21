@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PdfDownloadModal } from '../PdfDownloadModal/PdfDownloadModal';
+import { openAndDownloadPdf } from '../../utils/pdfUtils';
 import './KeralaCatalogModal.css';
 
 interface KeralaCatalogModalProps {
@@ -165,7 +166,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
             
             <button 
               type="button"
-              onClick={() => window.open(pdfUrl, '_blank')}
+              onClick={() => openAndDownloadPdf(pdfUrl, `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`)}
               className="catalog-tab-btn link-btn"
               title="Open PDF in new browser tab"
             >
@@ -174,15 +175,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
 
             <button 
               type="button"
-              onClick={() => {
-                window.open(pdfUrl, '_blank');
-                const link = document.createElement('a');
-                link.href = pdfUrl;
-                link.download = `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              onClick={() => openAndDownloadPdf(pdfUrl, `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`)}
               className="catalog-tab-btn download-btn"
               title="Download official PDF document"
             >
@@ -486,15 +479,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
                     </a>
                     <button 
                       type="button" 
-                      onClick={() => {
-                        window.open(pdfUrl, '_blank');
-                        const link = document.createElement('a');
-                        link.href = pdfUrl;
-                        link.download = `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`;
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                      }} 
+                      onClick={() => openAndDownloadPdf(pdfUrl, `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`)} 
                       className="btn-fallback-secondary"
                     >
                       ⬇ Download PDF
