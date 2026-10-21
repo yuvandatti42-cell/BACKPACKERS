@@ -723,7 +723,7 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
     startingPrice: '₹ 6,999',
     numericPrice: 6999,
     image: '/ooty.webp',
-    pdfUrl: '/ooty_catalog.pdf',
+    pdfUrl: '/ootycoo.pdf',
     frameColor: '#5C745A',
     region: 'OOTY / COONOOR',
     elevation: '7,350 FT / 2,240 M',
@@ -1393,4 +1393,16 @@ export const DESTINATION_DETAILS_MAP: Record<string, DestinationDetail> = {
       ]
     }
   }
+};
+
+// Aliases so both individual 'ooty' and 'coonoor' options route cleanly to Ooty/Coonoor traverse with ootycoo.pdf
+DESTINATION_DETAILS_MAP['ooty'] = {
+  ...DESTINATION_DETAILS_MAP['ooty-coonoor'],
+  id: 'ooty',
+  pdfUrl: '/ootycoo.pdf'
+};
+DESTINATION_DETAILS_MAP['coonoor'] = {
+  ...DESTINATION_DETAILS_MAP['ooty-coonoor'],
+  id: 'coonoor',
+  pdfUrl: '/ootycoo.pdf'
 };

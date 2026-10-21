@@ -154,7 +154,7 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
   const handleOpenTripDetails = (trip: ConsolidatedTrip) => {
     if (trip.id === 'kerala' || trip.id === 'tour-kerala') {
       setIsKeralaModalOpen(true);
-    } else if (trip.id === 'ooty-coonoor' || trip.id === 'tour-ooty-coonoor') {
+    } else if (trip.id === 'ooty-coonoor' || trip.id === 'tour-ooty-coonoor' || trip.id === 'ooty' || trip.id === 'coonoor' || trip.id.includes('ooty') || trip.id.includes('coonoor')) {
       setIsOotyModalOpen(true);
     } else {
       setActiveDetailTrip(trip);

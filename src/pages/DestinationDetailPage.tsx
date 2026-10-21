@@ -100,7 +100,8 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
       window.open(currentPdfUrl, '_blank');
       const link = document.createElement('a');
       link.href = currentPdfUrl;
-      link.download = `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
+      const pdfBaseName = currentPdfUrl.split('/').pop() || `${detail.title}_${currentDurationShort.replace('/', '_')}_Catalog.pdf`;
+      link.download = pdfBaseName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -466,7 +467,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
         onClose={() => setIsGenericPdfLeadOpen(false)}
         title={`${detail.title} (${currentDurationShort}) PDF Catalog`}
         pdfUrl={currentPdfUrl}
-        downloadFilename={`${detail.id}_${activeVariant ? activeVariant.id : 'catalog'}.pdf`}
+        downloadFilename={currentPdfUrl.endsWith('.pdf') ? (currentPdfUrl.split('/').pop() || 'catalog.pdf') : `${detail.id}_${activeVariant ? activeVariant.id : 'catalog'}.pdf`}
         onDirectDownload={() => {
           executeGenericDownload();
         }}

@@ -59,7 +59,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
         const pdfjsLib = (window as any).pdfjsLib;
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-        const pdf = await pdfjsLib.getDocument('/ooty_catalog.pdf').promise;
+        const pdf = await pdfjsLib.getDocument('/ootycoo.pdf').promise;
         if (isCancelled) return;
 
         const container = canvasContainerRef.current;
@@ -192,7 +192,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
                 <div className="pdf-fallback-box">
                   <p>Could not render PDF pages on canvas. You can open or download the exact PDF file directly below:</p>
                   <div className="fallback-actions">
-                    <a href="/ooty_catalog.pdf" target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
+                    <a href="/ootycoo.pdf" target="_blank" rel="noopener noreferrer" className="btn-fallback-primary">
                       📄 Open PDF Document
                     </a>
                     <button 
@@ -209,7 +209,7 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
           ) : (
             <div className="pdf-embed-wrap">
               <iframe 
-                src="/ooty_catalog.pdf#toolbar=1&navpanes=0&view=FitH" 
+                src="/ootycoo.pdf#toolbar=1&navpanes=0&view=FitH" 
                 title="Ooty & Coonoor Official PDF Brochure"
                 className="pdf-iframe-element"
               />
@@ -223,8 +223,8 @@ export const OotyCatalogModal: React.FC<OotyCatalogModalProps> = ({ isOpen, onCl
         isOpen={isPdfLeadOpen}
         onClose={() => setIsPdfLeadOpen(false)}
         title="Ooty & Coonoor Tour Catalog"
-        pdfUrl="/ooty_catalog.pdf"
-        downloadFilename="Ooty_Coonoor_Catalog.pdf"
+        pdfUrl="/ootycoo.pdf"
+        downloadFilename="ootycoo.pdf"
       />
     </div>
   );
