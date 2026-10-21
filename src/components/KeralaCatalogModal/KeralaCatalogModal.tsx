@@ -175,6 +175,7 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
             <button 
               type="button"
               onClick={() => {
+                window.open(pdfUrl, '_blank');
                 const link = document.createElement('a');
                 link.href = pdfUrl;
                 link.download = `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`;
@@ -485,7 +486,15 @@ export const KeralaCatalogModal: React.FC<KeralaCatalogModalProps> = ({
                     </a>
                     <button 
                       type="button" 
-                      onClick={() => setIsPdfLeadOpen(true)} 
+                      onClick={() => {
+                        window.open(pdfUrl, '_blank');
+                        const link = document.createElement('a');
+                        link.href = pdfUrl;
+                        link.download = `${durationLabel.replace(/\s+/g, '_')}_Catalog.pdf`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      }} 
                       className="btn-fallback-secondary"
                     >
                       ⬇ Download PDF

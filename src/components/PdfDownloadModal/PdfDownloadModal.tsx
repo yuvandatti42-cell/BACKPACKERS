@@ -74,6 +74,7 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     if (onDirectDownload) {
       onDirectDownload();
     } else if (pdfUrl) {
+      window.open(pdfUrl, '_blank');
       const link = document.createElement('a');
       link.href = pdfUrl;
       link.download = downloadFilename;

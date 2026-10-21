@@ -92,7 +92,7 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
   };
 
   const handlePdfClick = () => {
-    setIsGenericPdfLeadOpen(true);
+    executeGenericDownload();
   };
 
   const executeGenericDownload = () => {
