@@ -246,8 +246,6 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                         <span className="diff-badge">{trip.difficulty}</span>
                         <span className="meta-dot">•</span>
                         <span className="duration-badge">{trip.duration}</span>
-                        <span className="meta-dot">•</span>
-                        <span className="distance-badge">{trip.distance}</span>
                       </div>
 
                       <h2 className="trip-card-title">{trip.title}</h2>
@@ -300,10 +298,6 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                 <div className="d-spec">
                   <span className="d-label">DURATION</span>
                   <span className="d-val">{activeDetailTrip.duration}</span>
-                </div>
-                <div className="d-spec">
-                  <span className="d-label">DISTANCE</span>
-                  <span className="d-val">{activeDetailTrip.distance}</span>
                 </div>
                 <div className="d-spec">
                   <span className="d-label">MAX ALTITUDE</span>

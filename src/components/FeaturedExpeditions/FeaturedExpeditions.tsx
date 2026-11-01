@@ -273,12 +273,6 @@ export const FeaturedExpeditions: React.FC<FeaturedExpeditionsProps> = () => {
                         <span className="difficulty-tag">{exp.difficulty}</span>
                         <span className="meta-dot">&bull;</span>
                         <span className="duration-tag">{exp.duration}</span>
-                        {exp.distance && (
-                          <>
-                            <span className="meta-dot">&bull;</span>
-                            <span className="distance-tag">{exp.distance}</span>
-                          </>
-                        )}
                       </div>
 
                       <hr className="card-divider" />
