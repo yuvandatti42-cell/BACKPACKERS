@@ -38,8 +38,8 @@ export interface LaunchConfig {
 export const LAUNCH_CONFIG: LaunchConfig = {
   // Set to true to enable the countdown lock screen
   isEnabled: true,
-  targetDate: '2026-11-08T15:35:00+05:30',
-  startDate: '2026-11-08T15:25:00+05:30',
+  targetDate: '2026-11-08T15:47:00+05:30',
+  startDate: '2026-11-08T15:40:00+05:30',
   title: 'BACKPACKERS GOES LIVE',
-  announcement: 'Launching today at 3:35 PM IST'
+  announcement: 'Launching today at 3:47 PM IST'
 };
