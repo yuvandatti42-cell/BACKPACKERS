@@ -916,17 +916,17 @@
   z-index: 10;
 }
 
-/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (100% FULLY VISIBLE SHOWCASE) */
+/* 1. AUTHENTIC ROYAL ENFIELD ADVENTURE MOTORCYCLE SHOWCASE */
 .roadster-bike-showcase {
   position: relative;
-  width: clamp(280px, 44vw, 390px);
+  width: clamp(260px, 38vw, 345px);
   max-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 2;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.1));
   animation: roadsterEngineIdle 3.5s ease-in-out infinite;
 }
 
@@ -939,31 +939,41 @@
   }
 }
 
-.roadster-side-bike-svg {
+.launch-stage-enfield-bike {
   width: 100%;
   height: auto;
   display: block;
   overflow: visible;
 }
 
+/* While parked before tapping button, wheels remain still */
+.launch-stage-enfield-bike:not(.is-moving) .motorcycle-wheel {
+  animation: none !important;
+}
+
+/* Ground horizon track line aligned right under the tires */
 .roadster-ground-track {
-  width: 96%;
+  width: 92%;
   height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(120, 113, 108, 0.25) 20%, rgba(120, 113, 108, 0.45) 50%, rgba(120, 113, 108, 0.25) 80%, transparent 100%);
-  margin-top: -6px;
+  margin-top: -10px;
   border-radius: 2px;
 }
 
 /* Launch Activation Animation */
 .splash-roadster-launch-stage.is-launching .roadster-bike-showcase {
-  transform: scale(1.03) translateX(10px);
+  transform: scale(1.03) translateX(12px);
   filter: drop-shadow(0 12px 24px rgba(200, 90, 50, 0.35));
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.splash-roadster-launch-stage.is-launching .roadster-side-headlight {
-  filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.95));
-  transition: filter 0.3s ease;
+.splash-roadster-launch-stage.is-launching .launch-stage-enfield-bike .motorcycle-wheel {
+  animation: wheelSpin 0.22s linear infinite !important;
+}
+
+.splash-roadster-launch-stage.is-launching .launch-stage-enfield-bike .headlight-beam {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 16px rgba(255, 229, 127, 0.95));
 }
 
 /* 2. COMPACT RUSTY METAL STARTER PANEL & FLOOR GEAR ROW */
