@@ -339,94 +339,136 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         {/* ====================================================================
             VINTAGE ROADSTER LAUNCH SCENE
             Features:
-            1. Classic Roadster Bike sitting BEHIND the box (headlight, handlebars & tire peeking out)
-            2. Rusty Metal Framed Rectangle Box with corner rivets (Main Focus)
+            1. Classic Roadster Bike in SIDE PROFILE sitting BEHIND the box
+               (front wheel, headlight, handlebars, tank, seat, and rear wheel visible)
+            2. Compact Rusty Metal Framed Box with 4 corner rivets (Main Focus)
             3. Classical Vintage Roadster Starter Button
             4. Biker Gear (Vintage Helmet, Gloves, Tool Roll, Canteen) on the floor in front of the box
             ==================================================================== */}
         {isLaunchReady && (
           <div className={`splash-roadster-launch-stage ${isLaunching ? 'is-launching' : ''}`}>
             
-            {/* 1. CLASSIC ROADSTER MOTORCYCLE (BEHIND THE BOX) */}
+            {/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (BEHIND THE BOX) */}
             <div className="roadster-bike-backdrop" aria-hidden="true">
-              <svg className="roadster-bike-peeking-svg" viewBox="0 0 460 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Front Wheel & Tire peeking out behind bottom/sides */}
+              <svg className="roadster-side-bike-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Ground contact shadows */}
+                <ellipse cx="85" cy="188" rx="42" ry="7" fill="rgba(0,0,0,0.25)" />
+                <ellipse cx="375" cy="188" rx="42" ry="7" fill="rgba(0,0,0,0.25)" />
+                <ellipse cx="230" cy="190" rx="140" ry="8" fill="rgba(0,0,0,0.18)" />
+
+                {/* REAR WHEEL & SPROCKET (LEFT) */}
+                <g className="roadster-rear-wheel">
+                  <circle cx="85" cy="142" r="44" stroke="#1C1A18" strokeWidth="18" fill="#141312" />
+                  <circle cx="85" cy="142" r="39" stroke="#383430" strokeWidth="2" strokeDasharray="5 3" />
+                  <circle cx="85" cy="142" r="31" stroke="#A8A29E" strokeWidth="4" fill="#1A1816" />
+                  <line x1="85" y1="113" x2="85" y2="171" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="56" y1="142" x2="114" y2="142" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="64" y1="121" x2="106" y2="163" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="106" y1="121" x2="64" y2="163" stroke="#78716C" strokeWidth="1.2" />
+                  <circle cx="85" cy="142" r="13" fill="#44403C" stroke="#78716C" strokeWidth="1.5" />
+                  <circle cx="85" cy="142" r="5" fill="#A8A29E" />
+                  {/* Rear Fender */}
+                  <path d="M44 140 C44 105, 75 92, 115 92" stroke="#D6D3D1" strokeWidth="7" strokeLinecap="round" fill="none" />
+                  <path d="M46 138 C46 108, 76 94, 113 94" stroke="#C85A32" strokeWidth="3" strokeLinecap="round" fill="none" />
+                </g>
+
+                {/* CHROME EXHAUST SYSTEM */}
+                <g className="roadster-exhaust">
+                  <path d="M225 155 Q160 160 130 156 L65 146" stroke="#E7E5E4" strokeWidth="7" strokeLinecap="round" />
+                  <path d="M225 155 Q160 160 130 156 L65 146" stroke="#A8A29E" strokeWidth="4" strokeLinecap="round" />
+                  <path d="M85 149 L55 145" stroke="#D6D3D1" strokeWidth="9" strokeLinecap="round" />
+                  <circle cx="53" cy="145" r="3.5" fill="#1C1917" />
+                </g>
+
+                {/* REAR DUAL SHOCK */}
+                <g className="roadster-rear-shock">
+                  <line x1="88" y1="140" x2="120" y2="98" stroke="#D6D3D1" strokeWidth="4.5" strokeLinecap="round" />
+                  <line x1="90" y1="136" x2="118" y2="100" stroke="#C85A32" strokeWidth="6" strokeDasharray="3 3" />
+                </g>
+
+                {/* CHASSIS FRAME & ENGINE (Behind Box) */}
+                <g className="roadster-chassis">
+                  <path d="M85 142 L145 142 L185 110 L230 110 L290 85" stroke="#292524" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M145 142 L175 88 L275 85" stroke="#292524" strokeWidth="5" />
+                  <rect x="180" y="112" width="70" height="42" rx="4" fill="#262320" stroke="#44403C" strokeWidth="1.5" />
+                  <line x1="185" y1="120" x2="245" y2="120" stroke="#78716C" strokeWidth="2" />
+                  <line x1="185" y1="126" x2="245" y2="126" stroke="#78716C" strokeWidth="2" />
+                  <line x1="185" y1="132" x2="245" y2="132" stroke="#78716C" strokeWidth="2" />
+                  <line x1="185" y1="138" x2="245" y2="138" stroke="#78716C" strokeWidth="2" />
+                  <circle cx="195" cy="142" r="14" fill="#3E3A36" stroke="#A8A29E" strokeWidth="2" />
+                  <circle cx="195" cy="142" r="5" fill="#C85A32" />
+                </g>
+
+                {/* VINTAGE TUCK-AND-ROLL SEAT */}
+                <g className="roadster-seat">
+                  <path d="M125 90 C140 88, 195 88, 220 92 C218 97, 195 99, 130 98 Z" fill="#3D2619" stroke="#1F130B" strokeWidth="2" />
+                  <line x1="140" y1="89" x2="142" y2="98" stroke="#7A4E38" strokeWidth="1.2" />
+                  <line x1="155" y1="89" x2="157" y2="98" stroke="#7A4E38" strokeWidth="1.2" />
+                  <line x1="170" y1="89" x2="172" y2="98" stroke="#7A4E38" strokeWidth="1.2" />
+                  <line x1="185" y1="89" x2="187" y2="98" stroke="#7A4E38" strokeWidth="1.2" />
+                  <line x1="200" y1="90" x2="202" y2="97" stroke="#7A4E38" strokeWidth="1.2" />
+                </g>
+
+                {/* CLASSIC TEARDROP TANK */}
+                <g className="roadster-tank">
+                  <path d="M215 92 C225 82, 265 78, 290 85 C296 90, 285 106, 225 106 Z" fill="#24211E" stroke="#383430" strokeWidth="2.5" />
+                  <path d="M232 91 C242 85, 270 82, 282 87 C280 97, 260 101, 235 100 Z" fill="#C85A32" />
+                  <path d="M238 93 L276 90" stroke="#FAF8F5" strokeWidth="1" strokeDasharray="3 2" />
+                  <ellipse cx="265" cy="80" rx="6" ry="3.5" fill="#E7E5E4" stroke="#78716C" strokeWidth="1.2" />
+                </g>
+
+                {/* FRONT WHEEL (RIGHT) */}
                 <g className="roadster-front-wheel">
-                  <ellipse cx="230" cy="180" rx="38" ry="75" stroke="#1F1D1B" strokeWidth="22" fill="#121110" />
-                  <ellipse cx="230" cy="180" rx="32" ry="68" stroke="#383430" strokeWidth="2" strokeDasharray="6 4" />
-                  <ellipse cx="230" cy="180" rx="24" ry="52" stroke="#A8A29E" strokeWidth="5" fill="#181716" />
-                  <line x1="230" y1="130" x2="230" y2="230" stroke="#78716C" strokeWidth="1.5" />
-                  <line x1="210" y1="145" x2="250" y2="215" stroke="#78716C" strokeWidth="1.2" />
-                  <line x1="250" y1="145" x2="210" y2="215" stroke="#78716C" strokeWidth="1.2" />
-                  <path d="M196 145 C205 118, 255 118, 264 145" stroke="#D6D3D1" strokeWidth="8" strokeLinecap="round" />
-                  <path d="M200 143 C208 122, 252 122, 260 143" stroke="#C85A32" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="375" cy="142" r="44" stroke="#1C1A18" strokeWidth="18" fill="#141312" />
+                  <circle cx="375" cy="142" r="39" stroke="#383430" strokeWidth="2" strokeDasharray="5 3" />
+                  <circle cx="375" cy="142" r="31" stroke="#A8A29E" strokeWidth="4" fill="#1A1816" />
+                  <line x1="375" y1="113" x2="375" y2="171" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="346" y1="142" x2="404" y2="142" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="354" y1="121" x2="396" y2="163" stroke="#78716C" strokeWidth="1.2" />
+                  <line x1="396" y1="121" x2="354" y2="163" stroke="#78716C" strokeWidth="1.2" />
+                  <circle cx="375" cy="142" r="14" fill="#3E3A36" stroke="#78716C" strokeWidth="1.5" />
+                  <circle cx="375" cy="142" r="6" fill="#C85A32" />
+                  <path d="M345 105 C370 94, 405 102, 412 135" stroke="#D6D3D1" strokeWidth="7" strokeLinecap="round" fill="none" />
+                  <path d="M348 107 C370 96, 403 104, 410 133" stroke="#C85A32" strokeWidth="3" strokeLinecap="round" fill="none" />
                 </g>
 
-                {/* Front Suspension Fork Tubes */}
-                <g className="roadster-forks">
-                  <rect x="188" y="55" width="10" height="95" rx="3" fill="#292524" />
-                  <rect x="189" y="85" width="8" height="60" fill="#78716C" />
-                  <path d="M187 62 H199 M187 68 H199 M187 74 H199 M187 80 H199" stroke="#1C1917" strokeWidth="3" />
-                  <rect x="262" y="55" width="10" height="95" rx="3" fill="#292524" />
-                  <rect x="263" y="85" width="8" height="60" fill="#78716C" />
-                  <path d="M261 62 H273 M261 68 H273 M261 74 H273 M261 80 H273" stroke="#1C1917" strokeWidth="3" />
+                {/* FRONT FORKS */}
+                <g className="roadster-front-forks">
+                  <line x1="375" y1="142" x2="305" y2="65" stroke="#E7E5E4" strokeWidth="7" strokeLinecap="round" />
+                  <line x1="375" y1="142" x2="305" y2="65" stroke="#A8A29E" strokeWidth="4" strokeLinecap="round" />
+                  <line x1="345" y1="108" x2="325" y2="86" stroke="#1C1917" strokeWidth="10" strokeDasharray="3 3" />
                 </g>
 
-                {/* Classic Wide Handlebars with Bar-End Mirrors */}
-                <g className="roadster-handlebars">
-                  <path d="M85 45 Q160 38 230 42 Q300 38 375 45" stroke="#E7E5E4" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M85 45 Q160 38 230 42 Q300 38 375 45" stroke="#A8A29E" strokeWidth="3" strokeLinecap="round" />
-                  <rect x="75" y="40" width="40" height="11" rx="4" fill="#1C1917" stroke="#44403C" strokeWidth="1" />
-                  <rect x="345" y="40" width="40" height="11" rx="4" fill="#1C1917" stroke="#44403C" strokeWidth="1" />
-                  <path d="M110 52 C95 55, 75 50, 68 47" stroke="#D6D3D1" strokeWidth="3.5" strokeLinecap="round" />
-                  <path d="M350 52 C365 55, 385 50, 392 47" stroke="#D6D3D1" strokeWidth="3.5" strokeLinecap="round" />
+                {/* COCKPIT & HEADLIGHT */}
+                <g className="roadster-cockpit">
+                  <path d="M298 62 L306 58 L320 60" stroke="#E7E5E4" strokeWidth="5" strokeLinecap="round" />
+                  <rect x="312" y="56" width="16" height="7" rx="2.5" fill="#1C1917" stroke="#44403C" strokeWidth="1" />
+                  <line x1="328" y1="59" x2="338" y2="52" stroke="#A8A29E" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="342" cy="48" r="9" fill="#292524" stroke="#D6D3D1" strokeWidth="2" />
+                  <circle cx="342" cy="48" r="6.5" fill="#78716C" opacity="0.4" />
 
-                  {/* Left & Right Bar-End Mirrors */}
-                  <line x1="75" y1="45" x2="52" y2="42" stroke="#A8A29E" strokeWidth="4" strokeLinecap="round" />
-                  <circle cx="45" cy="40" r="14" fill="#292524" stroke="#D6D3D1" strokeWidth="3" />
-                  <circle cx="45" cy="40" r="11" fill="#78716C" opacity="0.4" />
+                  <circle cx="304" cy="54" r="8" fill="#1C1917" stroke="#D6D3D1" strokeWidth="2" />
+                  <circle cx="304" cy="54" r="6" fill="#FAF8F5" />
+                  <line x1="304" y1="54" x2="307" y2="50" stroke="#C85A32" strokeWidth="1.2" strokeLinecap="round" />
 
-                  <line x1="385" y1="45" x2="408" y2="42" stroke="#A8A29E" strokeWidth="4" strokeLinecap="round" />
-                  <circle cx="415" cy="40" r="14" fill="#292524" stroke="#D6D3D1" strokeWidth="3" />
-                  <circle cx="415" cy="40" r="11" fill="#78716C" opacity="0.4" />
-
-                  {/* Twin Clocks (Speedo & Tach) */}
-                  <circle cx="205" cy="30" r="14" fill="#1C1917" stroke="#D6D3D1" strokeWidth="3" />
-                  <circle cx="205" cy="30" r="11" fill="#FAF8F5" />
-                  <line x1="205" y1="30" x2="211" y2="25" stroke="#C85A32" strokeWidth="1.5" strokeLinecap="round" />
-
-                  <circle cx="255" cy="30" r="14" fill="#1C1917" stroke="#D6D3D1" strokeWidth="3" />
-                  <circle cx="255" cy="30" r="11" fill="#FAF8F5" />
-                  <line x1="255" y1="30" x2="250" y2="24" stroke="#C85A32" strokeWidth="1.5" strokeLinecap="round" />
-                </g>
-
-                {/* Big Classic Round Chrome Headlight (Peeking over top center) */}
-                <g className="roadster-headlight">
-                  <circle cx="230" cy="56" r="32" fill="#1C1917" stroke="#E7E5E4" strokeWidth="5" />
-                  <circle cx="230" cy="56" r="27" fill="#FEF3C7" fillOpacity="0.85" stroke="#B45309" strokeWidth="1.5" />
-                  <circle cx="230" cy="56" r="20" stroke="#F59E0B" strokeWidth="1" strokeDasharray="3 2" fillOpacity="0" />
-                  <circle cx="230" cy="56" r="12" stroke="#D97706" strokeWidth="1.2" fillOpacity="0" />
-                  <line x1="205" y1="56" x2="255" y2="56" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.6" />
-                  <line x1="230" y1="31" x2="230" y2="81" stroke="#F59E0B" strokeWidth="1" strokeOpacity="0.6" />
-                  <circle cx="230" cy="56" r="6" fill="#D97706" stroke="#FFFFFF" strokeWidth="1.2" />
-                  <circle cx="228" cy="54" r="2" fill="#FFFFFF" />
+                  <g className="roadster-side-headlight">
+                    <path d="M312 68 C312 60, 322 55, 332 55 L332 85 C322 85, 312 80, 312 72 Z" fill="#1C1A18" stroke="#E7E5E4" strokeWidth="3" />
+                    <path d="M332 55 C338 60, 338 80, 332 85 Z" fill="#F59E0B" fillOpacity="0.9" stroke="#D97706" strokeWidth="2" />
+                    <line x1="333" y1="62" x2="335" y2="62" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="333" y1="70" x2="336" y2="70" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="333" y1="78" x2="335" y2="78" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" />
+                  </g>
                 </g>
               </svg>
             </div>
 
-            {/* 2. RUSTY METAL FRAMED RECTANGLE BOX (MAIN FOCUS) */}
+            {/* 2. COMPACT RUSTY METAL FRAMED RECTANGLE BOX (MAIN FOCUS - NO EXTRA TEXTS) */}
             <div className="vintage-rusty-box">
               {/* 4 Corner Heavy Metal Rivets */}
               <span className="metal-rivet rivet-tl"></span>
               <span className="metal-rivet rivet-tr"></span>
               <span className="metal-rivet rivet-bl"></span>
               <span className="metal-rivet rivet-br"></span>
-
-              {/* Top Stencil Header */}
-              <div className="vintage-box-header">
-                <span className="header-status-dot"></span>
-                <span className="header-stencil-text">ROADSTER SERIES • ALL SYSTEMS READY</span>
-              </div>
 
               {/* Classical Vintage Launch Button */}
               <button 
@@ -451,33 +493,25 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                   <span className="indicator-label">PUSH TO START</span>
                 </div>
               </button>
-
-              {/* Subtext on bottom of plate */}
-              <p className="vintage-box-subtext">
-                START ENGINE // 2026 ROADSTER OVERLAND
-              </p>
             </div>
 
-            {/* 3. BIKER GEAR ON THE FLOOR (IN FRONT OF BOX, NOT COVERING TEXTS) */}
+            {/* 3. BIKER GEAR ON THE FLOOR (IN FRONT OF BOX AT BOTTOM CORNERS, CLEAR OF BUTTON) */}
             <div className="floor-gear-container" aria-hidden="true">
               {/* Left Floor: Vintage 3/4 Helmet & Leather Riding Gloves */}
               <div className="floor-gear-left">
                 <svg className="floor-gear-left-svg" viewBox="0 0 140 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <ellipse cx="65" cy="76" rx="60" ry="6" fill="rgba(0,0,0,0.3)" />
-                  {/* Leather Gloves */}
+                  <ellipse cx="65" cy="76" rx="60" ry="6" fill="rgba(0,0,0,0.25)" />
                   <g className="gear-gloves">
                     <path d="M12 68 C15 62, 28 62, 36 65 C42 67, 46 72, 44 75 C41 78, 22 79, 14 76 Z" fill="#44281D" stroke="#2B1810" strokeWidth="1.5" />
                     <path d="M16 66 L22 74 M24 66 L29 74" stroke="#7A4E38" strokeWidth="1" strokeLinecap="round" />
                     <path d="M26 64 C32 58, 48 59, 54 63 C58 66, 58 72, 54 75 C48 78, 32 77, 26 73 Z" fill="#5A3525" stroke="#2B1810" strokeWidth="1.5" />
                     <rect x="42" y="65" width="8" height="3" rx="1" fill="#D99B26" />
                   </g>
-                  {/* Classic Vintage Helmet with Aviator Goggles */}
                   <g className="gear-helmet">
                     <path d="M52 64 C48 42, 60 22, 85 20 C110 18, 128 34, 126 56 C125 68, 114 74, 98 75 C82 76, 56 75, 52 64 Z" fill="#1C1A18" stroke="#383430" strokeWidth="2" />
                     <path d="M72 21 C82 20, 94 20, 102 21 C98 55, 92 68, 88 75 C82 75, 78 68, 76 55 Z" fill="#C85A32" opacity="0.9" />
                     <path d="M84 20 L82 75" stroke="#FAF8F5" strokeWidth="1.2" strokeDasharray="3 3" opacity="0.8" />
                     <path d="M54 62 C58 66, 75 70, 88 71 C84 74, 60 74, 54 68 Z" fill="#6A422D" stroke="#3A2014" strokeWidth="1.2" />
-                    {/* Aviator Goggles */}
                     <path d="M52 46 C68 44, 110 44, 126 44" stroke="#3D281D" strokeWidth="5" strokeLinecap="round" />
                     <path d="M52 46 C68 44, 110 44, 126 44" stroke="#8C5E43" strokeWidth="2" strokeLinecap="round" />
                     <ellipse cx="78" cy="45" rx="11" ry="9" fill="#1C1917" stroke="#D99B26" strokeWidth="2.5" />
@@ -494,8 +528,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               {/* Right Floor: Leather Overland Tool Roll & Roadster Canteen */}
               <div className="floor-gear-right">
                 <svg className="floor-gear-right-svg" viewBox="0 0 135 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <ellipse cx="70" cy="76" rx="55" ry="6" fill="rgba(0,0,0,0.3)" />
-                  {/* Leather Rolled Toolkit */}
+                  <ellipse cx="70" cy="76" rx="55" ry="6" fill="rgba(0,0,0,0.25)" />
                   <g className="gear-tool-roll">
                     <rect x="25" y="55" width="75" height="18" rx="7" fill="#4B3322" stroke="#2B1B10" strokeWidth="1.5" />
                     <ellipse cx="28" cy="64" rx="6" ry="9" fill="#3D2617" stroke="#2B1B10" strokeWidth="1.2" />
@@ -505,7 +538,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                     <rect x="74" y="59" width="9" height="6" rx="1" stroke="#D99B26" strokeWidth="1.5" fill="none" />
                     <path d="M88 56 L104 50 M104 48 L108 52" stroke="#A8A29E" strokeWidth="2.2" strokeLinecap="round" />
                   </g>
-                  {/* Roadster Canteen Flask */}
                   <g className="gear-canteen">
                     <ellipse cx="102" cy="62" rx="16" ry="14" fill="#3A3632" stroke="#A8A29E" strokeWidth="2" />
                     <ellipse cx="100" cy="60" rx="12" ry="10" stroke="#78716C" strokeWidth="1" strokeDasharray="3 2" fill="none" />
