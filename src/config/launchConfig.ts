@@ -1,10 +1,10 @@
 /**
- * BACKPACKERS DESTINATIONS — WEBSITE LAUNCH COUNTDOWN CONFIGURATION
- * 
- * Edit this file to set the exact date and time the website goes live.
- * The loading screen motorcycle will advance as the countdown progresses,
- * and automatically launch the website when the timer hits zero!
- */
+* BACKPACKERS DESTINATIONS — WEBSITE LAUNCH COUNTDOWN CONFIGURATION
+* 
+* Edit this file to set the exact date and time the website goes live.
+* The loading screen motorcycle will advance as the countdown progresses,
+* and automatically launch the website when the timer hits zero!
+*/
 
 export interface LaunchConfig {
   /**

@@ -863,278 +863,328 @@
 }
 
 /* ==========================================================================
-   PROFESSIONAL OVERLAND ADVENTURE LAUNCH MODULE
-   Features: Royal Enfield Adventure Bike, Overland Helmet Crest,
-   and High-Contrast Tactile "TAP TO LAUNCH" Expedition Button!
+   CLASSICAL VINTAGE ROADSTER LAUNCH SYSTEM
+   Features:
+   1. Classic Roadster Motorcycle BEHIND the box (handlebars, headlight & tire peeking out)
+   2. Rusty Metal Framed Rectangle Box with 4 corner rivets (Main Focus)
+   3. Heavy Tactile Vintage Roadster Starter Push Button
+   4. Biker Gear (Vintage Helmet, Gloves, Tool Roll, Canteen) on the floor in front of the box
    ========================================================================== */
 
-.splash-launch-container {
+.splash-roadster-launch-stage {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 2.25rem 0 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 520px;
-  margin: 1rem 0 0.5rem;
-  animation: launchFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  position: relative;
+  animation: roadsterStageFadeIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 10;
 }
 
-.splash-launch-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-}
-
-/* Status Pill */
-.launch-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.35rem 0.95rem;
-  border-radius: 999px;
-  background-color: rgba(200, 90, 50, 0.08);
-  border: 1px solid rgba(200, 90, 50, 0.28);
-  color: #C85A32;
-  font-family: var(--font-body, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-
-.launch-live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #C85A32;
-  box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.7);
-  animation: launchPulse 1.8s infinite;
-}
-
-@keyframes launchPulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.7);
-  }
-  70% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 8px rgba(200, 90, 50, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(200, 90, 50, 0);
-  }
-}
-
-/* Overland Motorcycle & Helmet Scene Container */
-.launch-scene-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  height: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 0.75rem 0 1.25rem;
-}
-
-/* Topographic Contour Lines Accent */
-.launch-topo-background {
+/* 1. CLASSIC ROADSTER MOTORCYCLE (BEHIND THE BOX) */
+.roadster-bike-backdrop {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  top: -82px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(340px, 48vw, 440px);
+  height: 200px;
   z-index: 1;
+  pointer-events: none;
 }
 
-.launch-topo-background svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Adventure Helmet Crest */
-.launch-helmet-crest {
-  position: absolute;
-  top: 4px;
-  right: 24px;
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  transition: transform 0.25s ease;
-}
-
-.launch-helmet-crest:hover {
-  transform: translateY(-2px) scale(1.08);
-}
-
-.overland-helmet-svg {
-  width: 42px;
-  height: 42px;
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
-}
-
-.helmet-label {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.52rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: #8C8273;
-  text-transform: uppercase;
-}
-
-/* The Royal Enfield Adventure Motorcycle standing ready */
-.launch-bike-stand {
-  position: relative;
-  z-index: 3;
-  width: clamp(140px, 20vw, 175px);
-  height: auto;
-  margin-bottom: 7px;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
-}
-
-.launch-adventure-bike {
+.roadster-bike-peeking-svg {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.14));
-  animation: bikeChassisRumble 0.45s ease-in-out infinite alternate;
+  overflow: visible;
 }
 
-/* Acceleration on tap */
-.launch-bike-stand.is-accelerating {
-  transform: translateX(140px) scale(0.95);
-  opacity: 0;
+.splash-roadster-launch-stage.is-launching .roadster-headlight {
+  filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.85));
+  transition: filter 0.3s ease;
 }
 
-.launch-bike-stand.is-accelerating .splash-dust-container {
-  opacity: 1;
-}
-
-/* Ground Road Bed Line */
-.launch-road-bed {
-  position: absolute;
-  bottom: 7px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #ECECEC;
-  z-index: 2;
-  border-radius: 1px;
-}
-
-.launch-road-line {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent 0%, #111111 25%, #C85A32 50%, #111111 75%, transparent 100%);
-}
-
-/* Main Professional Overland Launch Button */
-.splash-overland-launch-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  background-color: #121212;
-  color: #FAF8F5;
-  border: 1.5px solid #C85A32;
-  border-radius: 999px;
-  padding: 0.8rem 2.4rem;
-  font-family: var(--font-display, 'Bebas Neue', sans-serif);
-  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
-  letter-spacing: 0.14em;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 
-    0 10px 28px rgba(0, 0, 0, 0.16),
-    0 0 0 1px rgba(200, 90, 50, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* 2. RUSTY METAL FRAMED RECTANGLE BOX (MAIN FOCUS) */
+.vintage-rusty-box {
   position: relative;
-  z-index: 5;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.splash-overland-launch-btn:hover {
-  background-color: #C85A32;
-  border-color: #E6A817;
-  color: #FFFFFF;
-  transform: translateY(-2px) scale(1.03);
+  z-index: 3;
+  width: clamp(310px, 46vw, 410px);
+  background-color: #1C1A18;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(200, 90, 50, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(141, 54, 24, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #24211E 0%, #1A1816 100%);
+  border-radius: 6px;
+  padding: 1.5rem 1.6rem 1.35rem;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3.5px solid #6E3B24;
+  border-color: #7A3F24 #4A281A #331A10 #8D4323;
   box-shadow: 
-    0 14px 34px rgba(200, 90, 50, 0.35),
-    0 0 20px rgba(230, 168, 23, 0.25);
+    0 0 0 1px #20130E,
+    0 18px 42px rgba(0, 0, 0, 0.38),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.6);
 }
 
-.splash-overland-launch-btn:hover .btn-arrow-icon {
-  transform: translateX(4px);
+/* 4 Corner Heavy Metallic Rivets */
+.metal-rivet {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  z-index: 5;
+  background: radial-gradient(circle at 35% 35%, #E5E0D8 0%, #78716C 55%, #292524 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
-.splash-overland-launch-btn:active {
-  transform: translateY(1px) scale(0.98);
+.metal-rivet::after {
+  content: '+';
+  font-size: 8px;
+  color: #1C1917;
+  font-weight: 900;
+  line-height: 11px;
+  text-align: center;
+  display: block;
 }
 
-.btn-ignition-icon {
-  width: 20px;
-  height: 20px;
+.rivet-tl {
+  top: 7px;
+  left: 8px;
+}
+
+.rivet-tr {
+  top: 7px;
+  right: 8px;
+}
+
+.rivet-bl {
+  bottom: 7px;
+  left: 8px;
+}
+
+.rivet-br {
+  bottom: 7px;
+  right: 8px;
+}
+
+/* Box Stencil Header */
+.vintage-box-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #E6A817;
-}
-
-.btn-ignition-icon svg {
+  gap: 0.5rem;
+  margin-bottom: 1.15rem;
   width: 100%;
-  height: 100%;
 }
 
-.btn-arrow-icon {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s ease;
-  color: currentColor;
-}
-
-.btn-arrow-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.splash-launch-container.is-launching .splash-overland-launch-btn {
+.header-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
   background-color: #C85A32;
-  color: #FFFFFF;
-  border-color: #FFFFFF;
-  transform: scale(0.97);
-  box-shadow: 0 0 28px rgba(200, 90, 50, 0.6);
+  box-shadow: 0 0 6px rgba(200, 90, 50, 0.85);
+  animation: vintageDotPulse 1.8s infinite;
 }
 
-.splash-launch-subtext {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: #71717A;
-  margin: 0.75rem 0 0;
+.header-stencil-text {
+  font-family: var(--font-body, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #A8A29E;
   text-transform: uppercase;
 }
 
+@keyframes vintageDotPulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(200, 90, 50, 1);
+  }
+}
+
+/* Classical Vintage Roadster Starter Push Button */
+.vintage-roadster-starter-btn {
+  width: 100%;
+  max-width: 310px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, filter 0.2s ease;
+}
+
+.btn-starter-core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(180deg, #D96538 0%, #B84720 50%, #8D3214 100%);
+  border: 2px solid #3A2218;
+  border-radius: 6px;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.55),
+    0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s ease;
+}
+
+.btn-ignition-symbol {
+  width: 22px;
+  height: 22px;
+  color: #FAF8F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.btn-ignition-symbol svg {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-starter-text {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(1.45rem, 2.8vw, 1.85rem);
+  letter-spacing: 0.16em;
+  color: #FAF8F5;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-starter-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.indicator-glow {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
+}
+
+.indicator-label {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #78716C;
+  text-transform: uppercase;
+}
+
+/* Hover & Active States */
+.vintage-roadster-starter-btn:hover {
+  transform: translateY(-1px);
+}
+
+.vintage-roadster-starter-btn:hover .btn-starter-core {
+  background: linear-gradient(180deg, #E27244 0%, #C85A32 50%, #9C3817 100%);
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.55),
+    0 6px 18px rgba(200, 90, 50, 0.45);
+}
+
+.vintage-roadster-starter-btn:active {
+  transform: translateY(3px) !important;
+}
+
+.vintage-roadster-starter-btn:active .btn-starter-core {
+  background: linear-gradient(180deg, #9C3817 0%, #7D2C11 100%);
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.7),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.splash-roadster-launch-stage.is-launching .vintage-roadster-starter-btn {
+  transform: translateY(3px);
+}
+
+.splash-roadster-launch-stage.is-launching .btn-starter-core {
+  background: #7D2C11;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.75);
+}
+
+/* Box Bottom Subtext */
+.vintage-box-subtext {
+  font-family: var(--font-body, monospace);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #57534E;
+  margin: 0.85rem 0 0;
+  text-transform: uppercase;
+}
+
+/* 3. BIKER GEAR ON THE FLOOR (RESTING AT BOTTOM CORNERS IN FRONT OF BOX) */
+.floor-gear-container {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.floor-gear-left {
+  width: 110px;
+  height: auto;
+  transform: translateY(4px);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.floor-gear-left-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floor-gear-right {
+  width: 105px;
+  height: auto;
+  transform: translateY(4px);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.floor-gear-right-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Keyframes */
-@keyframes launchFadeUp {
+@keyframes roadsterStageFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   100% {
     opacity: 1;
@@ -1142,48 +1192,60 @@
   }
 }
 
+/* Responsive Mobile Optimizations */
 @media (max-width: 480px) {
-  .splash-launch-container {
-    margin: 0.75rem 0 0.25rem;
+  .splash-roadster-launch-stage {
+    margin: 1.75rem 0 1.25rem;
   }
 
-  .launch-scene-wrapper {
-    height: 125px;
-    margin: 0.5rem 0 1rem;
+  .roadster-bike-backdrop {
+    width: 320px;
+    top: -62px;
   }
 
-  .launch-helmet-crest {
-    top: 2px;
-    right: 12px;
+  .vintage-rusty-box {
+    width: calc(100% - 20px);
+    max-width: 330px;
+    padding: 1.25rem 1rem 1.15rem;
   }
 
-  .overland-helmet-svg {
-    width: 32px;
-    height: 32px;
+  .vintage-roadster-starter-btn {
+    max-width: 260px;
   }
 
-  .helmet-label {
-    font-size: 0.46rem;
+  .btn-starter-text {
+    font-size: 1.35rem;
   }
 
-  .launch-bike-stand {
-    width: 125px;
+  .btn-starter-core {
+    padding: 0.75rem 1.15rem;
+    gap: 0.6rem;
   }
 
-  .splash-overland-launch-btn {
-    font-size: 1.25rem;
-    padding: 0.7rem 1.85rem;
-    gap: 0.65rem;
+  .btn-ignition-symbol {
+    width: 18px;
+    height: 18px;
   }
 
-  .btn-ignition-icon,
-  .btn-arrow-icon {
-    width: 17px;
-    height: 17px;
+  .floor-gear-container {
+    bottom: -16px;
+    padding: 0 4px;
   }
 
-  .splash-launch-subtext {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+  .floor-gear-left {
+    width: 82px;
+  }
+
+  .floor-gear-right {
+    width: 76px;
+  }
+
+  .header-stencil-text {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .vintage-box-subtext {
+    font-size: 0.56rem;
   }
 }
