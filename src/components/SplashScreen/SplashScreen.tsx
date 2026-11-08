@@ -54,6 +54,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     if (wasLiveLaunch) {
       // One-time launch completed: permanently mark as launched so timer never runs again
       localStorage.setItem('bd_site_has_launched', 'true');
+      localStorage.setItem('bd_site_has_launched_target', LAUNCH_CONFIG.targetDate);
     }
 
     if (skipAnimation) {
@@ -110,6 +111,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     // Admin option to reset launch state for testing: ?resetLaunch
     if (urlParams.has('resetLaunch')) {
       localStorage.removeItem('bd_site_has_launched');
+      localStorage.removeItem('bd_site_has_launched_target');
       sessionStorage.removeItem('bd_splash_seen');
     }
 
@@ -120,8 +122,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
       return;
     }
 
-    // Check if the site has already executed its one-time launch
-    const hasAlreadyLaunched = localStorage.getItem('bd_site_has_launched') === 'true';
+    // Check if the site has already executed its one-time launch for this target date
+    const hasAlreadyLaunched = 
+      localStorage.getItem('bd_site_has_launched_target') === LAUNCH_CONFIG.targetDate;
 
     // If bypassing or testing celebrate directly, dismiss splash immediately
     if (urlParams.has('celebrate')) {
@@ -148,6 +151,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     // Once target launch time has passed, permanently mark site as launched
     if (hasPassedLaunchTime && !hasAlreadyLaunched) {
       localStorage.setItem('bd_site_has_launched', 'true');
+      localStorage.setItem('bd_site_has_launched_target', LAUNCH_CONFIG.targetDate);
     }
 
     // 2. Resolve starting timestamp for journey progress calculation
@@ -215,6 +219,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
       // ====================================================================
       setIsCountdownMode(false);
       localStorage.setItem('bd_site_has_launched', 'true');
+      localStorage.setItem('bd_site_has_launched_target', LAUNCH_CONFIG.targetDate);
 
       const hasSeenSplash = sessionStorage.getItem('bd_splash_seen');
       if (hasSeenSplash && !forceSplash) {
