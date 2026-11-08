@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MotorcycleSVG } from './MotorcycleSVG';
 import { LAUNCH_CONFIG } from '../../config/launchConfig';
 import './SplashScreen.css';
 
@@ -350,7 +349,12 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             
             {/* 1. AUTHENTIC ROYAL ENFIELD ADVENTURE MOTORCYCLE (100% VISIBLE ORIGINAL SHOWCASE) */}
             <div className="roadster-bike-showcase" aria-hidden="true">
-              <MotorcycleSVG isMoving={isLaunching} className="launch-stage-enfield-bike" />
+              <img 
+                src="/launch-bike.png" 
+                alt="Royal Enfield Adventure Motorcycle" 
+                className="launch-stage-bike-img" 
+                loading="eager"
+              />
               {/* Crisp Ground / Horizon Line */}
               <div className="roadster-ground-track" aria-hidden="true"></div>
             </div>
@@ -477,7 +481,12 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                 </div>
 
                 {/* Realistic Side-Profile Royal Enfield Adventure Motorcycle */}
-                <MotorcycleSVG isMoving={true} className="splash-enfield-bike" />
+                <img 
+                  src="/launch-bike.png" 
+                  alt="Royal Enfield Adventure Motorcycle" 
+                  className="splash-enfield-bike" 
+                  loading="eager"
+                />
               </div>
 
               {/* Road Surface & Journey Track Line */}
