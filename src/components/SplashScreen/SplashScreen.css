@@ -865,18 +865,49 @@
 /* ==========================================================================
    CLASSICAL VINTAGE ROADSTER LAUNCH SYSTEM
    Features:
-   1. Classic Roadster Motorcycle in SIDE PROFILE BEHIND the box
-      (headlight, handlebars, teardrop tank, seat & wheels visible)
-   2. Compact Rusty Metal Framed Rectangle Box with 4 corner rivets (Main Focus)
-   3. Heavy Tactile Vintage Roadster Starter Push Button
-   4. Biker Gear (Vintage Helmet, Gloves, Tool Roll, Canteen) on the floor in front of the box
+   1. Classic Roadster Motorcycle in SIDE PROFILE (100% Fully Visible)
+   2. Zero Overlap Guarantee: natural vertical layout flow with ample clearances
+   3. Compact Weathered Rusty Metal Plate with 4 Corner Rivets
+   4. Tactile Vintage Roadster Starter Push Button ("TAP TO LAUNCH")
+   5. Biker Gear on the Floor flanking the Starter Plate
    ========================================================================== */
 
+/* Responsive, comfortable scaling when countdown or launch stage is active */
+.splash-screen.is-launch-ready-active .splash-logo-circle-frame,
+.splash-screen.is-countdown-active .splash-logo-circle-frame {
+  width: clamp(120px, 16vh, 160px);
+  height: clamp(120px, 16vh, 160px);
+  margin-bottom: 0.15rem;
+}
+
+.splash-screen.is-launch-ready-active .splash-brand-meta,
+.splash-screen.is-countdown-active .splash-brand-meta {
+  margin-top: 0.4rem;
+  gap: 0.15rem;
+}
+
+.splash-screen.is-launch-ready-active .splash-brand-title,
+.splash-screen.is-countdown-active .splash-brand-title {
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+}
+
+.splash-screen.is-launch-ready-active .splash-brand-sub,
+.splash-screen.is-countdown-active .splash-brand-sub {
+  font-size: clamp(0.5rem, 0.9vw, 0.65rem);
+}
+
+.splash-screen.is-launch-ready-active .splash-meta-tag,
+.splash-screen.is-countdown-active .splash-meta-tag {
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+}
+
+/* Master Stage Container */
 .splash-roadster-launch-stage {
   position: relative;
   width: 100%;
   max-width: 520px;
-  margin: 1.5rem 0 1.25rem;
+  margin: 1rem 0 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -885,16 +916,27 @@
   z-index: 10;
 }
 
-/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (BEHIND THE BOX) */
-.roadster-bike-backdrop {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(340px, 48vw, 440px);
-  height: auto;
-  z-index: 1;
-  pointer-events: none;
+/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (100% FULLY VISIBLE SHOWCASE) */
+.roadster-bike-showcase {
+  position: relative;
+  width: clamp(280px, 44vw, 390px);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.1));
+  animation: roadsterEngineIdle 3.5s ease-in-out infinite;
+}
+
+@keyframes roadsterEngineIdle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
 }
 
 .roadster-side-bike-svg {
@@ -904,23 +946,50 @@
   overflow: visible;
 }
 
+.roadster-ground-track {
+  width: 96%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(120, 113, 108, 0.25) 20%, rgba(120, 113, 108, 0.45) 50%, rgba(120, 113, 108, 0.25) 80%, transparent 100%);
+  margin-top: -6px;
+  border-radius: 2px;
+}
+
+/* Launch Activation Animation */
+.splash-roadster-launch-stage.is-launching .roadster-bike-showcase {
+  transform: scale(1.03) translateX(10px);
+  filter: drop-shadow(0 12px 24px rgba(200, 90, 50, 0.35));
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .splash-roadster-launch-stage.is-launching .roadster-side-headlight {
   filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.95));
   transition: filter 0.3s ease;
 }
 
-/* 2. COMPACT RUSTY METAL FRAMED RECTANGLE BOX (MAIN FOCUS) */
+/* 2. COMPACT RUSTY METAL STARTER PANEL & FLOOR GEAR ROW */
+.vintage-starter-floor-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.4rem, 1.6vw, 0.9rem);
+  margin-top: 0.65rem;
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Compact Rusty Metal Framed Box (Main Focus) */
 .vintage-rusty-box {
   position: relative;
   z-index: 3;
-  width: clamp(260px, 35vw, 320px);
-  background-color: #1C1A18;
+  width: clamp(230px, 32vw, 275px);
+  background-color: #1E1B18;
   background-image: 
-    radial-gradient(circle at 10% 15%, rgba(200, 90, 50, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, rgba(141, 54, 24, 0.15) 0%, transparent 50%),
-    linear-gradient(180deg, #24211E 0%, #1A1816 100%);
-  border-radius: 6px;
-  padding: 1rem 1.25rem 0.85rem;
+    radial-gradient(circle at 10% 15%, rgba(200, 90, 50, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(141, 54, 24, 0.18) 0%, transparent 50%),
+    linear-gradient(180deg, #26221E 0%, #171513 100%);
+  border-radius: 7px;
+  padding: 0.75rem 1rem 0.65rem;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -930,16 +999,17 @@
   border-color: #7A3F24 #4A281A #331A10 #8D4323;
   box-shadow: 
     0 0 0 1px #20130E,
-    0 16px 36px rgba(0, 0, 0, 0.35),
-    inset 0 2px 4px rgba(255, 255, 255, 0.08),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.6);
+    0 12px 28px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
 }
 
 /* 4 Corner Heavy Metallic Rivets */
 .metal-rivet {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   z-index: 5;
   background: radial-gradient(circle at 35% 35%, #E5E0D8 0%, #78716C 55%, #292524 100%);
@@ -948,38 +1018,38 @@
 
 .metal-rivet::after {
   content: '+';
-  font-size: 8px;
+  font-size: 7px;
   color: #1C1917;
   font-weight: 900;
-  line-height: 10px;
+  line-height: 9px;
   text-align: center;
   display: block;
 }
 
 .rivet-tl {
-  top: 6px;
-  left: 7px;
+  top: 5px;
+  left: 6px;
 }
 
 .rivet-tr {
-  top: 6px;
-  right: 7px;
+  top: 5px;
+  right: 6px;
 }
 
 .rivet-bl {
-  bottom: 6px;
-  left: 7px;
+  bottom: 5px;
+  left: 6px;
 }
 
 .rivet-br {
-  bottom: 6px;
-  right: 7px;
+  bottom: 5px;
+  right: 6px;
 }
 
 /* Classical Vintage Roadster Starter Push Button */
 .vintage-roadster-starter-btn {
   width: 100%;
-  max-width: 270px;
+  max-width: 250px;
   border: none;
   outline: none;
   background: transparent;
@@ -994,11 +1064,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
   background: linear-gradient(180deg, #D96538 0%, #B84720 50%, #8D3214 100%);
   border: 2px solid #3A2218;
   border-radius: 6px;
-  padding: 0.75rem 1.35rem;
+  padding: 0.68rem 1.2rem;
   box-shadow: 
     inset 0 2px 0 rgba(255, 255, 255, 0.35),
     inset 0 -3px 0 rgba(0, 0, 0, 0.55),
@@ -1007,8 +1077,8 @@
 }
 
 .btn-ignition-symbol {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   color: #FAF8F5;
   display: flex;
   align-items: center;
@@ -1023,7 +1093,7 @@
 
 .btn-starter-text {
   font-family: var(--font-display, 'Bebas Neue', sans-serif);
-  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   letter-spacing: 0.16em;
   color: #FAF8F5;
   line-height: 1;
@@ -1034,8 +1104,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  margin-top: 0.45rem;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .indicator-glow {
@@ -1048,10 +1118,10 @@
 
 .indicator-label {
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: #78716C;
+  color: #8C8273;
   text-transform: uppercase;
 }
 
@@ -1069,7 +1139,7 @@
 }
 
 .vintage-roadster-starter-btn:active {
-  transform: translateY(3px) !important;
+  transform: translateY(2px) !important;
 }
 
 .vintage-roadster-starter-btn:active .btn-starter-core {
@@ -1080,7 +1150,7 @@
 }
 
 .splash-roadster-launch-stage.is-launching .vintage-roadster-starter-btn {
-  transform: translateY(3px);
+  transform: translateY(2px);
 }
 
 .splash-roadster-launch-stage.is-launching .btn-starter-core {
@@ -1088,26 +1158,14 @@
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.75);
 }
 
-/* 3. BIKER GEAR ON THE FLOOR (RESTING AT BOTTOM CORNERS IN FRONT OF BOX) */
-.floor-gear-container {
-  position: absolute;
-  bottom: -16px;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  z-index: 5;
+/* 3. BIKER GEAR ON THE FLOOR FLANKING THE STARTER PLATE */
+.floor-gear-item {
+  flex-shrink: 0;
   pointer-events: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 10px;
-  box-sizing: border-box;
 }
 
 .floor-gear-left {
-  width: 95px;
-  height: auto;
-  transform: translateY(3px);
+  width: clamp(65px, 9vw, 85px);
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.22));
 }
 
@@ -1118,9 +1176,7 @@
 }
 
 .floor-gear-right {
-  width: 90px;
-  height: auto;
-  transform: translateY(3px);
+  width: clamp(62px, 8.8vw, 82px);
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.22));
 }
 
@@ -1145,47 +1201,47 @@
 /* Responsive Mobile Optimizations */
 @media (max-width: 480px) {
   .splash-roadster-launch-stage {
-    margin: 1.25rem 0 1rem;
+    margin: 0.85rem 0 0.5rem;
   }
 
-  .roadster-bike-backdrop {
-    width: 290px;
-    bottom: 5px;
+  .roadster-bike-showcase {
+    width: clamp(250px, 76vw, 320px);
+  }
+
+  .vintage-starter-floor-row {
+    gap: 0.35rem;
+    margin-top: 0.5rem;
   }
 
   .vintage-rusty-box {
-    width: 245px;
-    padding: 0.85rem 1rem 0.75rem;
+    width: clamp(205px, 60vw, 240px);
+    padding: 0.65rem 0.85rem 0.55rem;
   }
 
   .vintage-roadster-starter-btn {
-    max-width: 220px;
+    max-width: 215px;
   }
 
   .btn-starter-text {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
   }
 
   .btn-starter-core {
-    padding: 0.65rem 1rem;
-    gap: 0.5rem;
+    padding: 0.58rem 0.9rem;
+    gap: 0.45rem;
   }
 
   .btn-ignition-symbol {
-    width: 17px;
-    height: 17px;
-  }
-
-  .floor-gear-container {
-    bottom: -12px;
-    padding: 0 2px;
+    width: 16px;
+    height: 16px;
   }
 
   .floor-gear-left {
-    width: 72px;
+    width: 52px;
   }
 
   .floor-gear-right {
-    width: 68px;
+    width: 50px;
   }
 }

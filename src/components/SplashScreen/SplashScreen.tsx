@@ -277,7 +277,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
   return (
     <div 
-      className={`splash-screen ${isExiting ? 'is-exiting' : ''} ${isCountdownMode ? 'is-countdown-active' : ''}`} 
+      className={`splash-screen ${isExiting ? 'is-exiting' : ''} ${isCountdownMode ? 'is-countdown-active' : ''} ${isLaunchReady ? 'is-launch-ready-active' : ''}`} 
       role="presentation" 
       aria-hidden="true"
     >
@@ -348,8 +348,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         {isLaunchReady && (
           <div className={`splash-roadster-launch-stage ${isLaunching ? 'is-launching' : ''}`}>
             
-            {/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (BEHIND THE BOX) */}
-            <div className="roadster-bike-backdrop" aria-hidden="true">
+            {/* 1. CLASSIC ROADSTER MOTORCYCLE IN SIDE PROFILE (100% FULLY VISIBLE) */}
+            <div className="roadster-bike-showcase" aria-hidden="true">
               <svg className="roadster-side-bike-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {/* Ground contact shadows */}
                 <ellipse cx="85" cy="188" rx="42" ry="7" fill="rgba(0,0,0,0.25)" />
@@ -460,45 +460,14 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                   </g>
                 </g>
               </svg>
+              {/* Crisp Ground / Horizon Line */}
+              <div className="roadster-ground-track" aria-hidden="true"></div>
             </div>
 
-            {/* 2. COMPACT RUSTY METAL FRAMED RECTANGLE BOX (MAIN FOCUS - NO EXTRA TEXTS) */}
-            <div className="vintage-rusty-box">
-              {/* 4 Corner Heavy Metal Rivets */}
-              <span className="metal-rivet rivet-tl"></span>
-              <span className="metal-rivet rivet-tr"></span>
-              <span className="metal-rivet rivet-bl"></span>
-              <span className="metal-rivet rivet-br"></span>
-
-              {/* Classical Vintage Launch Button */}
-              <button 
-                type="button" 
-                className="vintage-roadster-starter-btn"
-                onClick={handleLaunchWebsite}
-                disabled={isLaunching}
-                aria-label="Tap to start engine and launch Backpackers Destinations website"
-              >
-                <div className="btn-starter-core">
-                  <span className="btn-ignition-symbol">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg>
-                  </span>
-                  <span className="btn-starter-text">
-                    {isLaunching ? 'IGNITING ENGINE...' : 'TAP TO LAUNCH'}
-                  </span>
-                </div>
-                <div className="btn-starter-indicator">
-                  <span className="indicator-glow"></span>
-                  <span className="indicator-label">PUSH TO START</span>
-                </div>
-              </button>
-            </div>
-
-            {/* 3. BIKER GEAR ON THE FLOOR (IN FRONT OF BOX AT BOTTOM CORNERS, CLEAR OF BUTTON) */}
-            <div className="floor-gear-container" aria-hidden="true">
+            {/* 2. COMPACT RUSTY METAL STARTER PANEL FLANKED BY FLOOR GEAR */}
+            <div className="vintage-starter-floor-row">
               {/* Left Floor: Vintage 3/4 Helmet & Leather Riding Gloves */}
-              <div className="floor-gear-left">
+              <div className="floor-gear-item floor-gear-left" aria-hidden="true">
                 <svg className="floor-gear-left-svg" viewBox="0 0 140 85" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <ellipse cx="65" cy="76" rx="60" ry="6" fill="rgba(0,0,0,0.25)" />
                   <g className="gear-gloves">
@@ -525,8 +494,41 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                 </svg>
               </div>
 
+              {/* Compact Rusty Metal Framed Box (Main Focus - No Clutter Text) */}
+              <div className="vintage-rusty-box">
+                {/* 4 Corner Heavy Metal Rivets */}
+                <span className="metal-rivet rivet-tl"></span>
+                <span className="metal-rivet rivet-tr"></span>
+                <span className="metal-rivet rivet-bl"></span>
+                <span className="metal-rivet rivet-br"></span>
+
+                {/* Classical Vintage Launch Button */}
+                <button 
+                  type="button" 
+                  className="vintage-roadster-starter-btn"
+                  onClick={handleLaunchWebsite}
+                  disabled={isLaunching}
+                  aria-label="Tap to start engine and launch Backpackers Destinations website"
+                >
+                  <div className="btn-starter-core">
+                    <span className="btn-ignition-symbol">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                      </svg>
+                    </span>
+                    <span className="btn-starter-text">
+                      {isLaunching ? 'IGNITING ENGINE...' : 'TAP TO LAUNCH'}
+                    </span>
+                  </div>
+                  <div className="btn-starter-indicator">
+                    <span className="indicator-glow"></span>
+                    <span className="indicator-label">PUSH TO START</span>
+                  </div>
+                </button>
+              </div>
+
               {/* Right Floor: Leather Overland Tool Roll & Roadster Canteen */}
-              <div className="floor-gear-right">
+              <div className="floor-gear-item floor-gear-right" aria-hidden="true">
                 <svg className="floor-gear-right-svg" viewBox="0 0 135 85" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <ellipse cx="70" cy="76" rx="55" ry="6" fill="rgba(0,0,0,0.25)" />
                   <g className="gear-tool-roll">
