@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { SplashScreen } from './components/SplashScreen/SplashScreen';
+import { DiwaliCelebration } from './components/DiwaliCelebration/DiwaliCelebration';
 import { Home } from './pages/Home';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { RegionExplorePage } from './pages/RegionExplorePage';
@@ -32,6 +34,9 @@ export const App: React.FC = () => {
   });
 
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [showDiwaliCelebration, setShowDiwaliCelebration] = useState<boolean>(() => {
+    return new URLSearchParams(window.location.search).has('celebrate');
+  });
   const [isBookModalOpen, setIsBookModalOpen] = useState<boolean>(false);
   const [bookModalTitle, setBookModalTitle] = useState<string | undefined>(undefined);
   const [bookModalPlan, setBookModalPlan] = useState<string | undefined>(undefined);
@@ -127,6 +132,17 @@ export const App: React.FC = () => {
 
   return (
     <>
+      <SplashScreen onComplete={(wasLiveLaunch) => {
+        if (wasLiveLaunch) {
+          setShowDiwaliCelebration(true);
+        }
+      }} />
+
+      {/* Natural Diwali Chinchubuddis & Sparklers celebration over the live website */}
+      {showDiwaliCelebration && (
+        <DiwaliCelebration onComplete={() => setShowDiwaliCelebration(false)} />
+      )}
+
       {currentRoute.startsWith('destination:') ? (
         <DestinationDetailPage 
           destinationId={currentRoute.replace('destination:', '')} 

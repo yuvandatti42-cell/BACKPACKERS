@@ -181,7 +181,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             </button>
             <div className="nav-vertical-divider" aria-hidden="true" />
             <a 
-              href="https://gearstation.co" 
+              href="https://www.gearstation.in/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="gear-station-link"
@@ -189,7 +189,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             >
               <div className="gear-station-logo-wrap">
                 <img 
-                  src="/gearlogo.webp" 
+                  src="/gslogo.webp" 
                   alt="Gear Station Logo" 
                   className="gear-station-logo-img" 
                 />
@@ -279,7 +279,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
             CONTACT US
           </a>
           <a 
-            href="https://gearstation.co" 
+            href="https://www.gearstation.in/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="mobile-gear-station-link"
@@ -287,7 +287,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
           >
             <div className="gear-station-logo-wrap">
               <img 
-                src="/gearlogo.webp" 
+                src="/gslogo.webp" 
                 alt="Gear Station Logo" 
                 className="gear-station-logo-img" 
               />

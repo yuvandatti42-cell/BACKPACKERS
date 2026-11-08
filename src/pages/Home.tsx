@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { SplashScreen } from '../components/SplashScreen/SplashScreen';
+import React from 'react';
 import { Header } from '../components/Header/Header';
 import { HeroSection } from '../components/HeroSection/HeroSection';
 import { EditorialIntro } from '../components/EditorialIntro/EditorialIntro';
@@ -17,11 +16,8 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ onNavigate, onOpenBookModal }) => {
-  const [isReady, setIsReady] = useState<boolean>(false);
-
   return (
-    <div className={`app-wrapper ${isReady ? 'is-loaded' : ''}`}>
-      <SplashScreen onComplete={() => setIsReady(true)} />
+    <div className="app-wrapper is-loaded">
       <Header onNavigate={onNavigate} onOpenBookModal={onOpenBookModal} currentRoute="home" />
       <main id="main-content">
         <HeroSection onNavigate={onNavigate} />

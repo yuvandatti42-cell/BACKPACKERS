@@ -362,7 +362,7 @@ export const RegionExplorePage: React.FC<RegionExplorePageProps> = ({ regionId, 
                 </a>
 
                 <a 
-                  href="https://gearstation.co" 
+                  href="https://www.gearstation.in/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="btn btn-modal-gear"

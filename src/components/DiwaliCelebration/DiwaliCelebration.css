@@ -1,0 +1,103 @@
+/* ==========================================================================
+   NATURAL DIWALI CELEBRATION OVERLAY (CHINCHUBUDDIS & SPARKLERS)
+   ========================================================================== */
+
+.diwali-celebration-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 99998;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diwali-celebration-container.is-fading {
+  opacity: 0;
+}
+
+.diwali-celebration-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Tasteful Floating Top Pill on the Live Website */
+.diwali-site-banner {
+  position: fixed;
+  top: clamp(1rem, 3.5vw, 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  pointer-events: none;
+  animation: diwaliBannerSlideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes diwaliBannerSlideDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.diwali-banner-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(18, 14, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 
+    0 10px 32px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(255, 193, 7, 0.28);
+}
+
+.diwali-diya-icon {
+  font-size: 1.05rem;
+  animation: diyaFlicker 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes diyaFlicker {
+  0% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 4px #FFA000);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px #FFD700);
+  }
+}
+
+.diwali-banner-text {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+  letter-spacing: 0.12em;
+  color: #FFD700;
+  text-shadow: 0 0 14px rgba(255, 215, 0, 0.5);
+  white-space: nowrap;
+}
+
+@media (max-width: 580px) {
+  .diwali-banner-content {
+    padding: 0.4rem 1rem;
+    gap: 0.45rem;
+  }
+
+  .diwali-banner-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+}
+
