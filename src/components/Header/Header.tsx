@@ -196,20 +196,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
               </div>
               <span className="gear-station-text">GET YOUR GEAR</span>
             </a>
-            <div className="nav-vertical-divider" aria-hidden="true" />
-            {/* Desktop Menu Button in Top Right */}
-            <button 
-              className={`nav-toggle ${isMobileMenuOpen ? 'is-active' : ''}`}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle Menu"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-nav-drawer"
-              title="Menu"
-            >
-              <span className="nav-toggle-bar"></span>
-              <span className="nav-toggle-bar"></span>
-              <span className="nav-toggle-bar"></span>
-            </button>
           </div>
 
           {/* Mobile Header Actions (Glass Search Button + Hamburger Toggle) */}
@@ -232,54 +218,23 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
               aria-label="Toggle Menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-nav-drawer"
-              title="Menu"
             >
-              <span className="nav-toggle-bar"></span>
-              <span className="nav-toggle-bar"></span>
-              <span className="nav-toggle-bar"></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Drawer Backdrop Overlay */}
-      <div 
-        className={`mobile-drawer-backdrop ${isMobileMenuOpen ? 'is-open' : ''}`}
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
-
-      {/* Navigation Drawer */}
+      {/* Mobile Drawer */}
       <div 
         id="mobile-nav-drawer"
         className={`mobile-drawer ${isMobileMenuOpen ? 'is-open' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation Menu"
+        aria-label="Mobile Navigation"
       >
-        <div className="mobile-drawer-header">
-          <div className="mobile-drawer-brand">
-            <div className="brand-logo-circle drawer-logo-circle">
-              <img 
-                src="/logof.webp" 
-                alt="Backpackers Destinations Logo" 
-                className="brand-logo-img" 
-              />
-            </div>
-            <span className="mobile-drawer-brand-name">BACKPACKERS</span>
-          </div>
-          <button 
-            className="mobile-drawer-close-btn"
-            onClick={closeMenu}
-            aria-label="Close Menu"
-            title="Close Menu (Esc)"
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
         <div className="mobile-nav-links">
           <button 
             className="mobile-search-trigger"
