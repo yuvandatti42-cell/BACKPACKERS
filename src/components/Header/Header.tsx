@@ -196,6 +196,19 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenBookModal, cur
               </div>
               <span className="gear-station-text">GET YOUR GEAR</span>
             </a>
+            <div className="nav-vertical-divider" aria-hidden="true" />
+            <button 
+              className={`nav-toggle ${isMobileMenuOpen ? 'is-active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
+              title="Menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
 
           {/* Mobile Header Actions (Glass Search Button + Hamburger Toggle) */}

@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000000;
   background-color: transparent;
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
@@ -212,9 +212,9 @@
   border-color: #FFFFFF !important;
 }
 
-/* Mobile Toggle Hamburger */
+/* Universal Top-Right Hamburger Menu Toggle Button */
 .nav-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 24px;
@@ -224,6 +224,12 @@
   cursor: pointer;
   padding: 0;
   z-index: 1001;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-toggle:hover span {
+  background-color: var(--accent-primary, #E6A817);
 }
 
 .nav-toggle span {
@@ -302,6 +308,22 @@
   }
   .mobile-nav-links {
     gap: 0.85rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-drawer {
+    align-items: center;
+    padding: 6.5rem 2rem 3rem;
+  }
+  .mobile-drawer .mobile-nav-links,
+  .mobile-drawer > div {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .mobile-drawer .mobile-nav-links {
+    margin-bottom: 2rem;
   }
 }
 
@@ -771,10 +793,9 @@
   transform: scale(1.15);
 }
 
-/* Hide mobile glass buttons on Desktop views where nav-col-right is visible */
+/* Hide mobile actions on Desktop views where nav-col-right is active */
 @media (min-width: 901px) {
-  .mobile-glass-search-btn,
-  .mobile-glass-book-btn {
+  .mobile-header-actions {
     display: none !important;
   }
 }
